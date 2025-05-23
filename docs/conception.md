@@ -12,6 +12,3 @@
 
 - Inclure des diagrammes UML, maquettes, etc.
 
-## Prototype
-
-- Inclure des diagrammes UML, maquettes, etc.
