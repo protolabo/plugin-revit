@@ -2,7 +2,7 @@
 
 > **Thèmes**: Génie logiciel, CAD, Intégation logicielle  
 > **Superviseur**: Louis-Edouard Lafontant  
-> **Collaborateurs:** Arman Nunez, Erick Oswaldo de la Cruz Diaz  
+> **Collaborateurs:** Bouthillette Parizeau (BPA)  
 
 ## Informations importantes
 
@@ -14,16 +14,14 @@
 
 ## Équipe
 
-- Alice Dupont: Responsable de...
-- Bob Tremblay: Responsable de...
+- Arman Nunez
+- Erick Oswaldo de la Cruz Diaz
 
 ## Description du projet 
-Dans le domaine de l’ingénierie, l’utilisation d’outils de modélisation tels que AutoCAD, Revit ou MATLAB est fréquente. La conception d’un projet d’ingénierie complet nécessite souvent plusieurs outils spécialisés.
-En télécommunication, par exemple, Revit et Ekahau sont couramment utilisés de manière complémentaire : Revit pour la conception architecturale, et Ekahau pour la simulation et le positionnement optimal des points d’accès réseau (Wi-Fi). Toutefois, l’échange de données entre ces deux logiciels demeure problématique en raison d’un manque de compatibilité directe.
-
-Ce projet, réalisé en collaboration avec la firme d’ingénierie Bouthillette Parizeau (BPA), a pour objectif de développer un plugin pour Revit permettant d’intégrer automatiquement les annotations et données générées par Ekahau, facilitant la conception intégrée des infrastructures de communication.
 
 ### Contexte
+Dans le domaine de l’ingénierie, l’utilisation d’outils de modélisation tels que AutoCAD, Revit ou MATLAB est fréquente. La conception d’un projet d’ingénierie complet nécessite souvent plusieurs outils spécialisés.
+En télécommunication, par exemple, Revit et Ekahau sont couramment utilisés de manière complémentaire : Revit pour la conception architecturale, et Ekahau pour la simulation et le positionnement optimal des points d’accès réseau (Wi-Fi). Toutefois, l’échange de données entre ces deux logiciels demeure problématique en raison d’un manque de compatibilité directe.
 
 ### Problématique ou motivations
 La simulation pour l’analyse des réseaux Wi-Fi dans Ekahau représente une tâche particulièrement longue et fastidieuse. En effet, cette opération nécessite une intervention manuelle laborieuse et minutieuse, ce qui ralentit significativement le processus global de conception et d’optimisation des infrastructures de communication. Actuellement, la seule assistance disponible consiste en l’exportation d’un plan 2D depuis Revit, qui sert de base pour la définition des éléments dans Ekahau.
