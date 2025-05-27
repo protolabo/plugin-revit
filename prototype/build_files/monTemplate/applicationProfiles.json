@@ -1,0 +1,437 @@
+{
+  "applicationProfiles": [
+    {
+      "name": "File Sharing, OneDrive Download",
+      "key": "ApplicationProfile.FileSharingOnedriveDownload",
+      "accessCategory": "AC_BE",
+      "applicationProtocols": [
+        "UNKNOWN"
+      ],
+      "packetSize": 1500,
+      "bitRate": 1.572864E7,
+      "fullDuplex": false,
+      "id": "",
+      "status": "CREATED"
+    },
+    {
+      "name": "Video, YouTube 1080p",
+      "key": "ApplicationProfile.VideoYoutube1080p",
+      "accessCategory": "AC_BE",
+      "applicationProtocols": [
+        "UNKNOWN"
+      ],
+      "packetSize": 1500,
+      "bitRate": 5242880.0,
+      "fullDuplex": false,
+      "id": "",
+      "status": "CREATED"
+    },
+    {
+      "name": "SLA, Heavy",
+      "key": "ApplicationProfile.HighSla",
+      "accessCategory": "AC_BE",
+      "applicationProtocols": [
+        "UNKNOWN"
+      ],
+      "packetSize": 1500,
+      "bitRate": 4194304.0,
+      "fullDuplex": false,
+      "id": "",
+      "status": "CREATED"
+    },
+    {
+      "name": "File Sharing, Dropbox Upload",
+      "key": "ApplicationProfile.FileSharingDropboxUpload",
+      "accessCategory": "AC_BE",
+      "applicationProtocols": [
+        "UNKNOWN"
+      ],
+      "packetSize": 1500,
+      "bitRate": 5242880.0,
+      "fullDuplex": false,
+      "id": "",
+      "status": "CREATED"
+    },
+    {
+      "name": "VoIP, GoToMeeting",
+      "key": "ApplicationProfile.VoipGotomeeting",
+      "accessCategory": "AC_VO",
+      "applicationProtocols": [
+        "UDP",
+        "RTP"
+      ],
+      "packetSize": 200,
+      "bitRate": 67108.864,
+      "fullDuplex": true,
+      "id": "",
+      "status": "CREATED"
+    },
+    {
+      "name": "SLA, Very Low",
+      "key": "ApplicationProfile.VeryLowSla",
+      "accessCategory": "AC_BE",
+      "applicationProtocols": [
+        "UNKNOWN"
+      ],
+      "packetSize": 1500,
+      "bitRate": 268435.456,
+      "fullDuplex": false,
+      "id": "",
+      "status": "CREATED"
+    },
+    {
+      "name": "Video Conf, Wi-Fi Calling",
+      "key": "ApplicationProfile.ConferencingWificallingVideo",
+      "accessCategory": "AC_VI",
+      "applicationProtocols": [
+        "UNKNOWN"
+      ],
+      "packetSize": 1500,
+      "bitRate": 2831155.2,
+      "fullDuplex": false,
+      "id": "",
+      "status": "CREATED"
+    },
+    {
+      "name": "VoIP, Cisco",
+      "key": "ApplicationProfile.VoipCisco",
+      "accessCategory": "AC_VO",
+      "applicationProtocols": [
+        "UDP",
+        "RTP"
+      ],
+      "packetSize": 200,
+      "bitRate": 67108.864,
+      "fullDuplex": true,
+      "id": "",
+      "status": "CREATED"
+    },
+    {
+      "name": "Music, Apple Music",
+      "key": "ApplicationProfile.StreamingMusicApple",
+      "accessCategory": "AC_BE",
+      "applicationProtocols": [
+        "UNKNOWN"
+      ],
+      "packetSize": 1500,
+      "bitRate": 268435.456,
+      "fullDuplex": false,
+      "id": "",
+      "status": "CREATED"
+    },
+    {
+      "name": "Music, Spotify",
+      "key": "ApplicationProfile.StreamingMusicSpotify",
+      "accessCategory": "AC_BE",
+      "applicationProtocols": [
+        "UNKNOWN"
+      ],
+      "packetSize": 1500,
+      "bitRate": 167772.16,
+      "fullDuplex": false,
+      "id": "",
+      "status": "CREATED"
+    },
+    {
+      "name": "Video Conf, GoToMeeting",
+      "key": "ApplicationProfile.ConferencingGotomeetingVideo",
+      "accessCategory": "AC_VI",
+      "applicationProtocols": [
+        "UNKNOWN"
+      ],
+      "packetSize": 1500,
+      "bitRate": 5242880.0,
+      "fullDuplex": false,
+      "id": "",
+      "status": "CREATED"
+    },
+    {
+      "name": "Video, Apple TV 720p",
+      "key": "ApplicationProfile.VideoAppletv720p",
+      "accessCategory": "AC_BE",
+      "applicationProtocols": [
+        "UNKNOWN"
+      ],
+      "packetSize": 1500,
+      "bitRate": 6291456.0,
+      "fullDuplex": false,
+      "id": "",
+      "status": "CREATED"
+    },
+    {
+      "name": "Association Only",
+      "key": "ApplicationProfile.AssociationOnly",
+      "accessCategory": "AC_BE",
+      "applicationProtocols": [
+        "UNKNOWN"
+      ],
+      "packetSize": 0,
+      "bitRate": 0.0,
+      "fullDuplex": false,
+      "id": "",
+      "status": "CREATED"
+    },
+    {
+      "name": "Web Email, Heavy",
+      "key": "ApplicationProfile.WebEmailHeavy",
+      "accessCategory": "AC_BE",
+      "applicationProtocols": [
+        "UNKNOWN"
+      ],
+      "packetSize": 1500,
+      "bitRate": 4194304.0,
+      "fullDuplex": false,
+      "id": "",
+      "status": "CREATED"
+    },
+    {
+      "name": "Video, Netflix 4k",
+      "key": "ApplicationProfile.VideoNetflix4k",
+      "accessCategory": "AC_BE",
+      "applicationProtocols": [
+        "UNKNOWN"
+      ],
+      "packetSize": 1500,
+      "bitRate": 2.62144E7,
+      "fullDuplex": false,
+      "id": "",
+      "status": "CREATED"
+    },
+    {
+      "name": "Video Conf, Webex",
+      "key": "ApplicationProfile.H2641080pRealtime",
+      "accessCategory": "AC_VI",
+      "applicationProtocols": [
+        "UNKNOWN"
+      ],
+      "packetSize": 1500,
+      "bitRate": 5242880.0,
+      "fullDuplex": false,
+      "id": "",
+      "status": "CREATED"
+    },
+    {
+      "name": "File Sharing, OneDrive Upload",
+      "key": "ApplicationProfile.FileSharingOnedriveUpload",
+      "accessCategory": "AC_BE",
+      "applicationProtocols": [
+        "UNKNOWN"
+      ],
+      "packetSize": 1500,
+      "bitRate": 5242880.0,
+      "fullDuplex": false,
+      "id": "",
+      "status": "CREATED"
+    },
+    {
+      "name": "Web Email, Normal",
+      "key": "ApplicationProfile.WebEmailNormal",
+      "accessCategory": "AC_BE",
+      "applicationProtocols": [
+        "UNKNOWN"
+      ],
+      "packetSize": 1500,
+      "bitRate": 2097152.0,
+      "fullDuplex": false,
+      "id": "",
+      "status": "CREATED"
+    },
+    {
+      "name": "Video, YouTube 720p",
+      "key": "ApplicationProfile.VideoYoutube720p",
+      "accessCategory": "AC_BE",
+      "applicationProtocols": [
+        "UNKNOWN"
+      ],
+      "packetSize": 1500,
+      "bitRate": 3145728.0,
+      "fullDuplex": false,
+      "id": "",
+      "status": "CREATED"
+    },
+    {
+      "name": "File Sharing, Heavy",
+      "key": "ApplicationProfile.FileSharingHeavy",
+      "accessCategory": "AC_BE",
+      "applicationProtocols": [
+        "UNKNOWN"
+      ],
+      "packetSize": 1500,
+      "bitRate": 2.097152E7,
+      "fullDuplex": false,
+      "id": "",
+      "status": "CREATED"
+    },
+    {
+      "name": "SLA, Low",
+      "key": "ApplicationProfile.LowSla",
+      "accessCategory": "AC_BE",
+      "applicationProtocols": [
+        "UNKNOWN"
+      ],
+      "packetSize": 1500,
+      "bitRate": 1048576.0,
+      "fullDuplex": false,
+      "id": "",
+      "status": "CREATED"
+    },
+    {
+      "name": "Video Conf, Lync / Skype 1080p",
+      "key": "ApplicationProfile.SkypeH2641080pRealtime",
+      "accessCategory": "AC_VI",
+      "applicationProtocols": [
+        "UNKNOWN"
+      ],
+      "packetSize": 1500,
+      "bitRate": 4194304.0,
+      "fullDuplex": false,
+      "id": "",
+      "status": "CREATED"
+    },
+    {
+      "name": "Mobile, Background Sync",
+      "key": "ApplicationProfile.BackgroundSla",
+      "accessCategory": "AC_BE",
+      "applicationProtocols": [
+        "UNKNOWN"
+      ],
+      "packetSize": 1500,
+      "bitRate": 524288.0,
+      "fullDuplex": false,
+      "id": "",
+      "status": "CREATED"
+    },
+    {
+      "name": "SLA, Normal",
+      "key": "ApplicationProfile.NormalSla",
+      "accessCategory": "AC_BE",
+      "applicationProtocols": [
+        "UNKNOWN"
+      ],
+      "packetSize": 1500,
+      "bitRate": 2097152.0,
+      "fullDuplex": false,
+      "id": "",
+      "status": "CREATED"
+    },
+    {
+      "name": "SLA, Very Heavy",
+      "key": "ApplicationProfile.VeryHighSla",
+      "accessCategory": "AC_BE",
+      "applicationProtocols": [
+        "UNKNOWN"
+      ],
+      "packetSize": 1500,
+      "bitRate": 1.048576E7,
+      "fullDuplex": false,
+      "id": "",
+      "status": "CREATED"
+    },
+    {
+      "name": "Music, Spotify Premium",
+      "key": "ApplicationProfile.StreamingMusicPremium",
+      "accessCategory": "AC_BE",
+      "applicationProtocols": [
+        "UNKNOWN"
+      ],
+      "packetSize": 1500,
+      "bitRate": 335544.32,
+      "fullDuplex": false,
+      "id": "",
+      "status": "CREATED"
+    },
+    {
+      "name": "VoIP, Wi-Fi Calling",
+      "key": "ApplicationProfile.VoipGeneric",
+      "accessCategory": "AC_VO",
+      "applicationProtocols": [
+        "UDP",
+        "RTP"
+      ],
+      "packetSize": 200,
+      "bitRate": 83886.08,
+      "fullDuplex": true,
+      "id": "",
+      "status": "CREATED"
+    },
+    {
+      "name": "Video, Netflix 720p",
+      "key": "ApplicationProfile.VideoNetflix720p",
+      "accessCategory": "AC_BE",
+      "applicationProtocols": [
+        "UNKNOWN"
+      ],
+      "packetSize": 1500,
+      "bitRate": 5242880.0,
+      "fullDuplex": false,
+      "id": "",
+      "status": "CREATED"
+    },
+    {
+      "name": "File Sharing, Dropbox Download",
+      "key": "ApplicationProfile.FileSharingDropboxDownload",
+      "accessCategory": "AC_BE",
+      "applicationProtocols": [
+        "UNKNOWN"
+      ],
+      "packetSize": 1500,
+      "bitRate": 1.6777216E7,
+      "fullDuplex": false,
+      "id": "",
+      "status": "CREATED"
+    },
+    {
+      "name": "VoIP, Lync / Skype",
+      "key": "ApplicationProfile.VoipLync",
+      "accessCategory": "AC_VO",
+      "applicationProtocols": [
+        "UDP",
+        "RTP"
+      ],
+      "packetSize": 200,
+      "bitRate": 67108.864,
+      "fullDuplex": true,
+      "id": "",
+      "status": "CREATED"
+    },
+    {
+      "name": "Video, Netflix 1080p",
+      "key": "ApplicationProfile.VideoNetflix1080p",
+      "accessCategory": "AC_BE",
+      "applicationProtocols": [
+        "UNKNOWN"
+      ],
+      "packetSize": 1500,
+      "bitRate": 7340032.0,
+      "fullDuplex": false,
+      "id": "",
+      "status": "CREATED"
+    },
+    {
+      "name": "File Sharing, Normal",
+      "key": "ApplicationProfile.FileSharingNormal",
+      "accessCategory": "AC_BE",
+      "applicationProtocols": [
+        "UNKNOWN"
+      ],
+      "packetSize": 1500,
+      "bitRate": 1.048576E7,
+      "fullDuplex": false,
+      "id": "",
+      "status": "CREATED"
+    },
+    {
+      "name": "Video, Apple TV 1080p",
+      "key": "ApplicationProfile.VideoAppletv1080p",
+      "accessCategory": "AC_BE",
+      "applicationProtocols": [
+        "UNKNOWN"
+      ],
+      "packetSize": 1500,
+      "bitRate": 8388608.0,
+      "fullDuplex": false,
+      "id": "",
+      "status": "CREATED"
+    }
+  ]
+}
