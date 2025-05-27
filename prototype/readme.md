@@ -8,3 +8,5 @@ To use it, place the **build_files** folder on your desktop.
 
 A file containing information about **walls, windows, and doors** will be created at  
 `build_files\build_tools\elements.txt`.
+
+There is still a scale problem between Ekahau and Revit.!!!
