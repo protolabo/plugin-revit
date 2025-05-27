@@ -12,3 +12,5 @@ A file containing information about **walls, windows, and doors** will be create
 There is still a scale problem between Ekahau and Revit.!!!
 
 Quick demo: [https://www.youtube.com/watch?v=XSdwFscDsAg](https://www.youtube.com/watch?v=XSdwFscDsAg)
+
+For now, only the walls are exported.
