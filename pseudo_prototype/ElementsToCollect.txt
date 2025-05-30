@@ -1,0 +1,4 @@
+Wall: Autodesk.Revit.DB.WallType
+Window: Autodesk.Revit.DB.FamilySymbol
+Door: Autodesk.Revit.DB.FamilySymbol
+Stairs: Autodesk.Revit.DB.ElementType
