@@ -43,7 +43,11 @@ Pour contourner ce problème, il est proposé de développer un plugin intégré
 | Ouverture de projet            | 9 mai         |                                     | ✅ Terminé  |
 | Prototype 1                    | 23 mai        | Maquette + Flux d'activités         | 🔄 En cours |
 | Analyse des exigences          | 30 mai        | Rapport des exigences               | 🔄 En cours |
-<!-- | Prototype 2                    | 30 mai        | Prototype finale + Flux             | ⏳ À venir  | -->
+| Prototype 1                    | 30 mai        | Exploration de l’API de Revit       | 🔄 En cours |
+| Modèle de donneés              | 6 juin        | Diagramme UML ou entité-association | 🔄 En cours |
+| Prototype 1                    | 23 mai        | Exploration des fichiers Ekahau     | 🔄 En cours |
+| Prototype 2                    | 4 juillet     | Prototype finale + Flux             | ⏳ À venir  |
+ 
 <!-- | Architecture                   | 30 mai        | Diagramme UML ou modèle C4          | ⏳ À venir  | -->
 <!-- | Modèle de donneés              | 6 juin        | Diagramme UML ou entité-association | ⏳ À venir  | -->
 <!-- | Revue de conception            | 6 juin        | Feedback encadrant + ajustements    | ⏳ À venir  | -->
