@@ -229,4 +229,4 @@ cython_debug/
 .pypirc
 
 # VS
-.vs
+.vs/
