@@ -227,6 +227,3 @@ cython_debug/
 
 # PyPI configuration file
 .pypirc
-
-# VS
-pseudo_prototype/ExportToEkahau/.vs/
