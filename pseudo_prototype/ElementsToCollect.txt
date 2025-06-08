@@ -1,4 +1,0 @@
-Wall: Autodesk.Revit.DB.WallType	Instance: Autodesk.Revit.DB.Wall
-Window: Autodesk.Revit.DB.FamilySymbol	Instance: Autodesk.Revit.DB.FamilyInstance
-Door: Autodesk.Revit.DB.FamilySymbol	Instance: Autodesk.Revit.DB.FamilyInstance
-Stairs: Autodesk.Revit.DB.ElementType	Instance: Autodesk.Revit.DB.Architecture.Stairs
