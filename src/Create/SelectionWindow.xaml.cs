@@ -22,11 +22,11 @@ namespace Create
 
         private void SelectionWindow_Loaded(object sender, RoutedEventArgs e)
         {
-            // Filtrar solo vistas de tipo FloorPlan
+            // Filter only views of type FloorPlan
             var views = new FilteredElementCollector(_doc)
                             .OfClass(typeof(ViewPlan))
                             .Cast<ViewPlan>()
-                            .Where(v => v.ViewType == ViewType.FloorPlan && !v.IsTemplate) // excluye plantillas
+                            .Where(v => v.ViewType == ViewType.FloorPlan && !v.IsTemplate) // Filter only floor plan views, excluding view templates
                             .OrderBy(v => v.Name);
 
             foreach (var view in views)
@@ -43,12 +43,6 @@ namespace Create
         private void OK_Click(object sender, RoutedEventArgs e)
         {
             SelectedCategories.Clear();
-            if (chkWalls.IsChecked == true)
-                SelectedCategories.Add((int)BuiltInCategory.OST_Walls);
-            if (chkDoors.IsChecked == true)
-                SelectedCategories.Add((int)BuiltInCategory.OST_Doors);
-            if (chkWindows.IsChecked == true)
-                SelectedCategories.Add((int)BuiltInCategory.OST_Windows);
             if (chkStairs.IsChecked == true)
                 SelectedCategories.Add((int)BuiltInCategory.OST_Stairs);
 

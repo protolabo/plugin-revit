@@ -19,28 +19,10 @@ namespace Create.ExportClasses
             SelectionWindow window = new SelectionWindow(doc);
             bool? result = window.ShowDialog();
 
-            if (result != true || window.SelectedCategories.Count == 0 || window.SelectedViewIds.Count == 0)
+            // Only check that at least one view was selected
+            if (result != true || window.SelectedViewIds.Count == 0)
             {
-                TaskDialog.Show("Notice", "No category or view was selected.");
-                return Result.Cancelled;
-            }
-
-            // Valid categories
-            var allowedCats = new HashSet<BuiltInCategory>
-            {
-                BuiltInCategory.OST_Walls,
-                BuiltInCategory.OST_Doors,
-                BuiltInCategory.OST_Windows
-            };
-
-            var selectedCats = window.SelectedCategories
-                                      .Select(id => (BuiltInCategory)id)
-                                      .Where(c => allowedCats.Contains(c))
-                                      .ToHashSet();
-
-            if (!selectedCats.Contains(BuiltInCategory.OST_Walls))
-            {
-                TaskDialog.Show("Notice", "You must select walls to proceed.");
+                TaskDialog.Show("Notice", "No view was selected.");
                 return Result.Cancelled;
             }
 
@@ -56,29 +38,27 @@ namespace Create.ExportClasses
                 string viewName = view.Name.Replace(":", "_").Replace(" ", "_");
                 string filePath = Path.Combine(outputDir, $"elements_{viewName}.json");
 
+                // Collect all walls in the view
                 var walls = new FilteredElementCollector(doc, view.Id)
                     .OfCategory(BuiltInCategory.OST_Walls)
                     .WhereElementIsNotElementType()
                     .ToElements();
 
+                // Collect doors and windows in the view
                 var doorsAndWindows = new List<FamilyInstance>();
-                if (selectedCats.Contains(BuiltInCategory.OST_Doors))
-                {
-                    doorsAndWindows.AddRange(new FilteredElementCollector(doc, view.Id)
-                        .OfCategory(BuiltInCategory.OST_Doors)
-                        .WhereElementIsNotElementType()
-                        .OfType<FamilyInstance>());
-                }
 
-                if (selectedCats.Contains(BuiltInCategory.OST_Windows))
-                {
-                    doorsAndWindows.AddRange(new FilteredElementCollector(doc, view.Id)
-                        .OfCategory(BuiltInCategory.OST_Windows)
-                        .WhereElementIsNotElementType()
-                        .OfType<FamilyInstance>());
-                }
+                doorsAndWindows.AddRange(new FilteredElementCollector(doc, view.Id)
+                    .OfCategory(BuiltInCategory.OST_Doors)
+                    .WhereElementIsNotElementType()
+                    .OfType<FamilyInstance>());
+
+                doorsAndWindows.AddRange(new FilteredElementCollector(doc, view.Id)
+                    .OfCategory(BuiltInCategory.OST_Windows)
+                    .WhereElementIsNotElementType()
+                    .OfType<FamilyInstance>());
 
                 var output = new List<object>();
+
                 foreach (var wall in walls)
                 {
                     var start = wall is Wall w && w.Location is LocationCurve lc
@@ -120,6 +100,7 @@ namespace Create.ExportClasses
         }
     }
 }
+
 
 
 

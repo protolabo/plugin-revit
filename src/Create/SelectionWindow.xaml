@@ -11,10 +11,8 @@
 
         <GroupBox Header="Select Categories" Grid.Row="0" Margin="0,0,0,10">
             <StackPanel>
-                <CheckBox x:Name="chkWalls" Content="Walls"/>
-                <CheckBox x:Name="chkDoors" Content="Doors"/>
-                <CheckBox x:Name="chkWindows" Content="Windows"/>
                 <CheckBox x:Name="chkStairs" Content="Stairs"/>
+                <CheckBox x:Name="chkElevators" Content="Elevators"/>
             </StackPanel>
         </GroupBox>
 
