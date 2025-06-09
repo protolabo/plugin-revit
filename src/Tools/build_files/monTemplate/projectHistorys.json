@@ -1,0 +1,17 @@
+{
+  "projectHistorys": [
+    {
+      "parentIds": [],
+      "timestamp": "",
+      "projectId": "",
+      "projectName": "",
+      "productName": "Ekahau AI Pro",
+      "productVersion": "11.6.0.1",
+      "schemaVersion": "1.8.0",
+      "operation": "LOCAL_SAVE",
+      "platform": "Windows 10 64-bit",
+      "id": "",
+      "status": "CREATED"
+    }
+  ]
+}
