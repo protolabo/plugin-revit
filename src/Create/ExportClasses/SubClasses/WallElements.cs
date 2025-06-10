@@ -41,6 +41,7 @@ namespace Create.ExportClasses.SubClasses
                     var ep = opening["end_point"];
                     if (sp == null || ep == null) continue;
 
+                    // Units transformation.
                     double x1 = convertX((double)sp["x"]);
                     double y1 = convertY((double)sp["y"]);
                     double x2 = convertX((double)ep["x"]);
@@ -50,9 +51,12 @@ namespace Create.ExportClasses.SubClasses
                     string type = opening["type"]?.ToString().ToLower();
                     string wallTypeToUse = type == "doors" ? doorTypeId : windowTypeId;
 
+                    // Creates an ID for each start and end point of a segment according to Ekahau's requirements.
                     string idStart = Guid.NewGuid().ToString();
                     string idEnd = Guid.NewGuid().ToString();
 
+                    // PointAndSegment.MakeWallPoint creates a 'Point' or 'Segment' object 
+                    // using the appropriate format for Ekahau JSON files.
                     wallPointsList.Add(SubClasses.PointAndSegment.MakeWallPoint(idStart, floorPlanId, x1, y1));
                     wallPointsList.Add(SubClasses.PointAndSegment.MakeWallPoint(idEnd, floorPlanId, x2, y2));
                     wallSegmentsList.Add(SubClasses.PointAndSegment.MakeWallSegment(idStart, idEnd, wallTypeToUse));

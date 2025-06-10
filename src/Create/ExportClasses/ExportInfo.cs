@@ -59,6 +59,15 @@ namespace Create.ExportClasses
 
                 var output = new List<object>();
 
+                // Iterate over each wall in the 'walls' collection.
+                // For each wall, extract the start and end points of its location curve if available.
+                //   - Check if the current element is a Wall and if its Location is a LocationCurve.
+                //   - If so, get the 3D coordinates (X, Y, Z) of the start point (index 0) of the curve.
+                //   - Otherwise, assign null to the start point.
+                // Similarly, extract the end point coordinates (index 1) of the location curve.
+
+                // Creates the 'Wall' object with its information and builds the 'openings' list,
+                // which contains the 'door' and 'window' objects embedded in that wall.
                 foreach (var wall in walls)
                 {
                     var start = wall is Wall w && w.Location is LocationCurve lc
@@ -78,6 +87,8 @@ namespace Create.ExportClasses
                         end = end,
                         openings = doorsAndWindows
                             .Where(inst => inst.Host?.Id == wall.Id)
+                            // The 'GetOpenInfo.ExtractOpeningInfo' function retrieves the relevant information 
+                            // of each door and window embedded in the parent wall, and returns an object containing that information.
                             .Select(inst => SubClasses.GetOpenInfo.ExtractOpeningInfo(
                                 inst,
                                 start?.x ?? 0, start?.y ?? 0, start?.z ?? 0,
@@ -91,8 +102,15 @@ namespace Create.ExportClasses
 
                 File.WriteAllText(filePath, JsonConvert.SerializeObject(new { walls = output }, Formatting.Indented));
 
+                // The 'WallOpen.ProcessWallOpen' function splits walls and removes the sections occupied by doors or windows.
+                // For example, if a wall contains a door, this function creates one wall segment from the original start point
+                // to one end of the door, and another segment from the other end of the door to the original wall's endpoint.
+                // In the end, it generates a JSON file containing the information of all resulting walls,
+                // including those that originally had no doors or windows.
                 SubClasses.WallOpen.ProcessWallOpen($"elements_{viewName}", $"empty_walls_{viewName}");
 
+                // The 'ImageCreator.PrepareImageAndFiles' function exports BMP images for each view
+                // and creates the corresponding JSON file containing metadata about those images.
                 SubClasses.ImageCreator.PrepareImageAndFiles(commandData, outputDir, window.SelectedViewIds);
             }
 

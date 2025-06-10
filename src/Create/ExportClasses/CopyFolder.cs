@@ -14,6 +14,7 @@ namespace Create.ExportClasses
     {
         public static Result PrepareFolder(ref string chosenFileName, ref string message, string destDir)
         {
+            // Opens a dialog box allowing the user to choose the filename and location for saving the file.
             using (SaveFileDialog saveFileDialog = new SaveFileDialog())
             {
                 saveFileDialog.Title = "Save As";
@@ -51,6 +52,7 @@ namespace Create.ExportClasses
             return Result.Succeeded;
         }
 
+        // Copies all the 'empty' template files to the folder that will form the final Ekahau file.
         private static void CopyDirectory(string sourceDir, string destDir)
         {
             Directory.CreateDirectory(destDir);

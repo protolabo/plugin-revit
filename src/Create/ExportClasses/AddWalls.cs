@@ -34,6 +34,7 @@ namespace Create.ExportClasses
             var wallTypesJson = File.ReadAllText(Path.Combine(myCopyFolder, "wallTypes.json"));
             var requirementsJson = File.ReadAllText(Path.Combine(myCopyFolder, "requirements.json"));
 
+            // Default values
             string wallConcreteId = Regex.Match(wallTypesJson, @"""name""\s*:\s*""Wall, Concrete"".*?""id""\s*:\s*""([^""]+)""", RegexOptions.Singleline).Groups[1].Value;
             string windowInteriorId = Regex.Match(wallTypesJson, @"""name""\s*:\s*""Window, Interior"".*?""id""\s*:\s*""([^""]+)""", RegexOptions.Singleline).Groups[1].Value;
             string doorInteriorId = Regex.Match(wallTypesJson, @"""name""\s*:\s*""Door, Interior Office"".*?""id""\s*:\s*""([^""]+)""", RegexOptions.Singleline).Groups[1].Value;
@@ -53,6 +54,8 @@ namespace Create.ExportClasses
                 var viewEntry = viewInfo.FirstOrDefault(v => (string)v["viewName"] == viewName.Replace("_", " "));
                 if (viewEntry == null) continue;
 
+                // Retrieves the positions of the four corners of the Crop Region for each view,
+                // using the data stored in the imageData.json file.
                 double minX = (double)viewEntry["min"]["x"];
                 double maxX = (double)viewEntry["max"]["x"];
                 double minY = (double)viewEntry["min"]["y"];
@@ -60,6 +63,9 @@ namespace Create.ExportClasses
                 int imageWidth = (int)viewEntry["width"];
                 int imageHeight = (int)viewEntry["height"];
 
+                // Converts from Revit's internal units (feet) to Ekahau's units (pixels).
+                // This is required for proper spatial scaling in Ekahau maps.
+                // Reference: https://protolabo.github.io/plugin-revit
                 Func<double, double> convertX = (x) => (x - minX) / (maxX - minX) * imageWidth;
                 Func<double, double> convertY = (y) => (maxY - y) / (maxY - minY) * imageHeight;
 
@@ -72,7 +78,13 @@ namespace Create.ExportClasses
                 {
                     var elementsJson = JToken.Parse(File.ReadAllText(elementsPath));
                     //SubFunctions.WallNoOpen.ProcessWallNoOpen(elementsJson, floorPlanId, convertX, convertY, wallConcreteId, wallPointsList, wallSegmentsList);
+                    // The WallElements.ProcessWallElements function adds the corresponding wallPoints and wallSegments 
+                    // for each door and window to the appropriate lists, 
+                    // using the required format for inclusion in the Ekahau JSON file.
                     SubClasses.WallElements.ProcessWallElements(elementsJson, floorPlanId, convertX, convertY, windowInteriorId, doorInteriorId, wallPointsList, wallSegmentsList);
+                    // The function Areas.ProcessAreas selects the list of segments 
+                    // that enclose each room in the Revit model and creates an 'area' object 
+                    // using the required format for inclusion in the corresponding Ekahau project JSON file.
                     SubClasses.Areas.ProcessAreas(doc, viewName, floorPlanId, requirementId, convertX, convertY, areasList);
 
                 }
@@ -81,6 +93,8 @@ namespace Create.ExportClasses
                 foreach (var splitFile in splitFiles)
                 {
                     var splitJson = JToken.Parse(File.ReadAllText(splitFile));
+                    // The WallNoOpen.ProcessWallNoOpen function performs the same operation as WallElements.ProcessWallElements,
+                    // but with walls that have been previously split.
                     SubClasses.WallNoOpen.ProcessWallNoOpen(splitJson, floorPlanId, convertX, convertY, wallConcreteId, wallPointsList, wallSegmentsList);
                 }
             }

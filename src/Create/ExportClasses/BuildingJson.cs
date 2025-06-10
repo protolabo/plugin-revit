@@ -52,7 +52,7 @@ namespace Create.ExportClasses
                     ["buildingId"] = buildingId,
                     ["floorTypeId"] = floorTypeId,
                     ["floorNumber"] = i,
-                    ["height"] = 2.5,
+                    ["height"] = 2.5,           // this value must be updated with actual value in Revit model!!!!!
                     ["thickness"] = 0.5,
                     ["id"] = Guid.NewGuid().ToString(),
                     ["status"] = "CREATED"

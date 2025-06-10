@@ -26,7 +26,11 @@ namespace Create.ExportClasses
             // Current UTC date ISO 8601 with Z
             string isoDate = DateTime.UtcNow.ToString("yyyy-MM-ddTHH:mm:ss.fffZ");
 
-            // Update project.json fields
+            // Update the fields in the project.json file:
+            // - "name" and "title" are set to the baseName (usually the chosen filename without extension).
+            // - "modifiedAt" and "createdAt" are updated to the current ISO date/time string.
+            // - "projectConfigurationId" is updated to the provided configId.
+            // Finally, the modified JSON content is written back to the project.json file.
             string projectJson = File.ReadAllText(projectPath);
             projectJson = Regex.Replace(projectJson, @"""name""\s*:\s*""[^""]*""", $"\"name\": \"{baseName}\"");
             projectJson = Regex.Replace(projectJson, @"""title""\s*:\s*""[^""]*""", $"\"title\": \"{baseName}\"");
@@ -53,6 +57,16 @@ namespace Create.ExportClasses
             string FilesPath = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
             string FilesPathAlias = Path.Combine(FilesPath, "build_files", "build_tools");
 
+            // The keys/names of objects in usageProfiles.json and applicationProfiles.json do not match exactly.
+            // For example, the object with "name": "Normal SLA (2 Mbps)" in usageProfiles corresponds to
+            // "name": "SLA, Normal" in applicationProfiles, so a direct lookup is not possible.
+            // To solve this, an aliases.json file was created containing entries like:
+            // {
+            //    "nombre": "Normal SLA (2 Mbps)",
+            //    "alias": ["SLA, Normal"]
+            // }
+            // This file maps each main name to its possible aliases, enabling linking these objects correctly
+            // by assigning the corresponding IDs based on these alias relationships.
             string usageProfilesPath = Path.Combine(destDir, "usageProfiles.json");
             string applicationProfilesPath = Path.Combine(destDir, "applicationProfiles.json");
             string aliasesPath = Path.Combine(FilesPathAlias, "aliases.json");

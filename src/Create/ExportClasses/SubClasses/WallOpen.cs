@@ -15,13 +15,13 @@ namespace Create.ExportClasses.SubClasses
         {
             string buildToolsPath = Path.Combine(Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location), "build_files", "build_tools");
             string inputPath = Path.Combine(buildToolsPath, $"{inputFileName}.json");
-
             string outputPath = Path.Combine(buildToolsPath, $"{outputFileName}.json");
 
             string json = File.ReadAllText(inputPath);
             var data = JsonConvert.DeserializeObject<Dictionary<string, List<WallData>>>(json);
 
             List<WallData> wallResults = new List<WallData>();
+            // This ID doesn't have any real significance.
             int baseId = 1000000;
 
             foreach (var wall in data["walls"])
@@ -30,6 +30,9 @@ namespace Create.ExportClasses.SubClasses
 
                 if (openings.Count == 0)
                 {
+                    // Ignore walls shorter than one inch in length.
+                    // These are considered too small to be relevant for processing or export.
+                    // This code may change if we get all walls connected!!!!!!!!
                     if (LengthBetweenPoints(wall.start, wall.end) >= 0.08)
                         wallResults.Add(wall);
                     continue;
@@ -61,6 +64,31 @@ namespace Create.ExportClasses.SubClasses
                    (yMin - margin <= center.y && center.y <= yMax + margin);
         }
 
+        // Recursively splits a wall into segments based on the openings (e.g., doors/windows) it contains.
+        //
+        // Parameters:
+        // - wall: The current wall segment to process.
+        // - openings: A list of openings that intersect with this wall segment.
+        // - results: A list where the resulting wall segments without openings will be added.
+        // - newBaseId: The current ID to assign to newly created wall segments.
+        //
+        // Process:
+        // 1. If there are no openings left to process, check if the wall segment's length is at least 0.08 units (approx. 1 inch).
+        //    If so, add it to the results list and return the current newBaseId.
+        // 2. Determine the axis of the wall segment (either "x" or "y") based on the start and end points.
+        //    If the wall is not aligned along X or Y (i.e., diagonal), check length and add it directly to results.
+        // 3. Extract the start and end coordinates of the first opening relative to the wall's axis.
+        // 4. Calculate distances from the wall's start and end to the opening's start and end to find which end to split from.
+        // 5. Depending on which distance is shorter, split the wall segment at the appropriate opening edge:
+        //    - Create two new wall segments (wall1 and wall2).
+        //    - Assign new IDs to each segment.
+        //    - Adjust start and end points accordingly to exclude the opening area.
+        // 6. Increment newBaseId by 2 to prepare IDs for further recursive splits.
+        // 7. Recursively call `RecursiveWallSplit` on the two new wall segments, passing only the openings that lie inside each segment.
+        // 8. Return the updated newBaseId for continued ID assignment.
+        //
+        // This function effectively divides a wall into smaller segments around openings, 
+        // ensuring each wall segment in the results does not intersect with any opening.
         static int RecursiveWallSplit(WallData wall, List<OpeningData> openings, List<WallData> results, int newBaseId)
         {
             if (openings.Count == 0)

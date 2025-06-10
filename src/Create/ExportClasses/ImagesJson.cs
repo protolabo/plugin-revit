@@ -27,6 +27,11 @@ namespace Create.ExportClasses
 
             foreach (var sourceImagePath in exportedBmps)
             {
+                // All images name in Ekahau must follow the format: "name-GUID".
+                // This code renames each image to follow the specific format and moves it to the folder containing the rest of the Ekahau JSON files.
+                // Then updates the images.json file, which holds the list of all images included in the Ekahau file.
+                // Finally, updates the floorPlans.json file, which contains information about each floor (Revit view),
+                // referencing the respective image name so that it appears as the background (map) in the Ekahau project.
                 string originalImageName = Path.GetFileName(sourceImagePath);
                 string imageId = Guid.NewGuid().ToString();
                 string imageName = $"image-{imageId}";

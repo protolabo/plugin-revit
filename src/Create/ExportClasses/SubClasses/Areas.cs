@@ -26,6 +26,10 @@ namespace Create.ExportClasses.SubClasses
             int roomIndex = 1;
             SpatialElementBoundaryOptions boundaryOptions = new SpatialElementBoundaryOptions();
 
+            // The area of each room in Revit is defined by a closed loop of segments.
+            // Unfortunately, a room can contain more than one loop.
+            // This code calculates the loop with the largest area 
+            // to determine the one that encloses the entire room.
             foreach (SpatialElement room in rooms)
             {
                 var boundaryLoops = room.GetBoundarySegments(boundaryOptions);
@@ -50,6 +54,7 @@ namespace Create.ExportClasses.SubClasses
                     y = convertY(p.Y)
                 }).ToList();
 
+                // Ekahau 'area' Object.
                 var areaObject = new
                 {
                     floorPlanId = floorPlanId,
@@ -69,6 +74,7 @@ namespace Create.ExportClasses.SubClasses
         }
 
         // Shoelace formula to compute polygon area
+        // Reference: https://en.wikipedia.org/wiki/Shoelace_formula
         private static double ComputePolygonArea(List<XYZ> points)
         {
             if (points == null || points.Count < 3) return 0;

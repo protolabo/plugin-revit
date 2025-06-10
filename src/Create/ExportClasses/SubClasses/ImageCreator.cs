@@ -52,6 +52,7 @@ namespace Create.ExportClasses.SubClasses
 
                 if (matchingImage == null) continue;
 
+                // Save image info in file.
                 int width = 0, height = 0;
                 using (var bmp = new Bitmap(matchingImage))
                 {
