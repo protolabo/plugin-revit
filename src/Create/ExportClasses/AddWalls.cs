@@ -34,11 +34,11 @@ namespace Create.ExportClasses
             var wallTypesJson = File.ReadAllText(Path.Combine(myCopyFolder, "wallTypes.json"));
             var requirementsJson = File.ReadAllText(Path.Combine(myCopyFolder, "requirements.json"));
 
-            // Default values
-            string wallConcreteId = Regex.Match(wallTypesJson, @"""name""\s*:\s*""Wall, Concrete"".*?""id""\s*:\s*""([^""]+)""", RegexOptions.Singleline).Groups[1].Value;
-            string windowInteriorId = Regex.Match(wallTypesJson, @"""name""\s*:\s*""Window, Interior"".*?""id""\s*:\s*""([^""]+)""", RegexOptions.Singleline).Groups[1].Value;
-            string doorInteriorId = Regex.Match(wallTypesJson, @"""name""\s*:\s*""Door, Interior Office"".*?""id""\s*:\s*""([^""]+)""", RegexOptions.Singleline).Groups[1].Value;
-            string requirementId = Regex.Match(requirementsJson, @"""name""\s*:\s*""Ekahau Best Practices"".*?""id""\s*:\s*""([^""]+)""", RegexOptions.Singleline).Groups[1].Value;
+            // Get proper ID's
+            string wallConcreteId = Getters.GetWallId(wallTypesJson);
+            string windowInteriorId = Getters.GetWindowId(wallTypesJson);
+            string doorInteriorId = Getters.GetDoorId(wallTypesJson);
+            string requirementId = Getters.GetAreaId(requirementsJson);
 
             var viewInfo = JArray.Parse(File.ReadAllText(Path.Combine(buildToolsPath, "imageData.json")));
 

@@ -69,6 +69,7 @@
     <Compile Include="ExportClasses\CreateID.cs" />
     <Compile Include="ExportClasses\ExportEkahau.cs" />
     <Compile Include="ExportClasses\ExportInfo.cs" />
+    <Compile Include="ExportClasses\Getters.cs" />
     <Compile Include="ExportClasses\SubClasses\Areas.cs" />
     <Compile Include="ExportClasses\SubClasses\GetOpenInfo.cs" />
     <Compile Include="ExportClasses\SubClasses\ImageCreator.cs" />
