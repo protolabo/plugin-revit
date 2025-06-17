@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
+using System.Linq;
 using System.Reflection;
 
 namespace Create.ExportClasses
@@ -15,6 +16,7 @@ namespace Create.ExportClasses
             string buildFilesPath = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
             string exportDir = Path.Combine(buildFilesPath, "build_files", "build_tools");
             string[] exportedBmps = Directory.GetFiles(exportDir, "exported_view - *.bmp");
+            var viewInfo = JArray.Parse(File.ReadAllText(Path.Combine(exportDir, "imageData.json")));
 
             if (exportedBmps.Length == 0)
             {
@@ -61,6 +63,7 @@ namespace Create.ExportClasses
                         ["name"] = originalImageName,
                         ["width"] = width,
                         ["height"] = height,
+                        ["metersPerUnit"] = GetMetersPerUnit(originalImageName, exportDir, viewInfo),
                         ["imageId"] = imageId,
                         ["gpsReferencePoints"] = new JArray(),
                         ["floorPlanType"] = "FSPL",
@@ -89,5 +92,80 @@ namespace Create.ExportClasses
 
             return Result.Succeeded;
         }
+
+        private static double GetMetersPerUnit(string imageName, string directoryPath, JArray viewInfo)
+        {
+            // Convert image name to view name and construct the path for elements JSON
+            string viewName = imageName.Replace("exported_view - Floor Plan - ", "").Replace(".bmp", "").Replace(" ", "_");
+            string elementsFilePath = Path.Combine(directoryPath, $"elements_{viewName}.json");
+
+            // Read and parse elements JSON
+            string jsonContent = File.ReadAllText(elementsFilePath);
+            JObject root = JObject.Parse(jsonContent);
+            JToken firstWall = root["walls"]?.First;
+
+            // Extract start and end points (in feet)
+            var start = firstWall["start"];
+            var end = firstWall["end"];
+
+            double startX = start.Value<double>("x");
+            double startY = start.Value<double>("y");
+            // Z coordinate is ignored for 2D calculation
+
+            double endX = end.Value<double>("x");
+            double endY = end.Value<double>("y");
+
+            // Convert feet to meters (1 foot = 0.3048 meters)
+            const double feetToMeters = 0.3048;
+            double startX_m = startX * feetToMeters;
+            double startY_m = startY * feetToMeters;
+
+            double endX_m = endX * feetToMeters;
+            double endY_m = endY * feetToMeters;
+
+            // Calculate 2D distance in meters
+            double deltaX_m = endX_m - startX_m;
+            double deltaY_m = endY_m - startY_m;
+            double distanceMeters = Math.Sqrt(deltaX_m * deltaX_m + deltaY_m * deltaY_m);
+
+            // Find the corresponding view entry in viewInfo using viewName (replace underscores with spaces)
+            string searchViewName = viewName.Replace("_", " ");
+            var viewEntry = viewInfo.FirstOrDefault(v => (string)v["viewName"] == searchViewName);
+
+            // Get bounding box and image size info
+            double minX = (double)viewEntry["min"]["x"];
+            double maxX = (double)viewEntry["max"]["x"];
+            double minY = (double)viewEntry["min"]["y"];
+            double maxY = (double)viewEntry["max"]["y"];
+            int imageWidth = (int)viewEntry["width"];
+            int imageHeight = (int)viewEntry["height"];
+
+            // Conversion functions: from Revit feet coordinates to Ekahau pixel coordinates
+            Func<double, double> convertX = x => (x - minX) / (maxX - minX) * imageWidth;
+            Func<double, double> convertY = y => (maxY - y) / (maxY - minY) * imageHeight;
+
+            // Convert start and end points to pixel coordinates
+            double startX_px = convertX(startX);
+            double startY_px = convertY(startY);
+
+            double endX_px = convertX(endX);
+            double endY_px = convertY(endY);
+
+            // Calculate 2D pixel distance
+            double deltaX_px = endX_px - startX_px;
+            double deltaY_px = endY_px - startY_px;
+            double distancePixels = Math.Sqrt(deltaX_px * deltaX_px + deltaY_px * deltaY_px);
+
+            // Prevent division by zero
+            if (distancePixels == 0)
+            {
+                return 0.026190351367214426;
+            }
+
+            // Calculate meters per pixel
+            double metersPerUnit = distanceMeters / distancePixels;
+            return metersPerUnit;
+        }
+
     }
 }

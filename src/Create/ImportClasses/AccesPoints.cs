@@ -19,6 +19,9 @@ namespace Create.ImportClasses
         {
             int placedCount = 0;
 
+            // Filters access points that have a valid floorPlanId,
+            // then groups them by the corresponding view name (extracted from the floorPlans list).
+            // The view name is processed with ExtractViewName, and only groups with a valid view name are kept.
             var groupedByView = accessPoints
                 .Where(ap => ap["location"]?["floorPlanId"] != null)
                 .GroupBy(ap =>
@@ -32,6 +35,12 @@ namespace Create.ImportClasses
                 })
                 .Where(g => g.Key != null);
 
+            // For each group of access points associated with a view:
+            // - Find the corresponding Revit ViewPlan and its Level.
+            // - Get the crop box of the view to determine coordinate bounds.
+            // - Retrieve the matching Ekahau floor plan to get image dimensions.
+            // - Convert each access point’s Ekahau coordinates (pixels) to Revit coordinates (ft).
+            // - Place a new instance of the access point family symbol at the computed location on the appropriate level.
             foreach (var group in groupedByView)
             {
                 string extractedViewName = group.Key;

@@ -12,6 +12,9 @@ namespace Create.ImportClasses
 {
     internal class EsxJsons
     {
+        // This function displays a dialog box that allows the user to select an Ekahau file from which the access points will be loaded.
+        // Then, it loads the accessPoints.json file from the Ekahau archive to retrieve the list of access points and their positions,
+        // and the floorPlans.json file to obtain the floor view associated with those access points.
         public static bool LoadEsxJsons(out List<JObject> floorPlans, out List<JObject> accessPoints)
         {
             floorPlans = null;

@@ -10,6 +10,7 @@ namespace Create.ImportClasses
 {
     internal class AccesPointFamily
     {
+        // This function loads the Access_Point.rfa file, which contains the 3D model of the access point, and integrates that model into the Revit project.
         public static FamilySymbol LoadAccessPointFamily(Document doc)
         {
             string assemblyPath = Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location);
