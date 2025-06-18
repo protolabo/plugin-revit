@@ -43,7 +43,14 @@
 
 ## Semaine 5
 
+??? note "Premier prototype"
+    - [x] Le code correspondant au premier prototype est ajouté au dépôt du projet.
+
 ## Semaine 6
+
+??? note "Démonstration du premier prototype"
+    - [x] La démonstration du premier prototype est réalisée lors d'une réunion avec le client.
+    - [x] Les fonctionnalités finales que le code devra inclure pour la partie Export sont définies.
 
 ## Semaine 7
 

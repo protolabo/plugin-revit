@@ -41,12 +41,15 @@ Pour contourner ce problème, il est proposé de développer un plugin intégré
 | Jalon (*Milestone*)            | Date prévue   | Livrable                            | Statut      |
 |--------------------------------|---------------|-------------------------------------|-------------|
 | Ouverture de projet            | 9 mai         |                                     | ✅ Terminé  |
-| Prototype 1                    | 23 mai        | Maquette + Flux d'activités         | 🔄 En cours |
+| Prototype 1                    | 23 mai        | Maquette + Flux d'activités         | ✅ Terminé  |
 | Analyse des exigences          | 30 mai        | Rapport des exigences               | 🔄 En cours |
 | Prototype 1                    | 30 mai        | Exploration de l’API de Revit       | 🔄 En cours |
-| Modèle de donneés              | 6 juin        | Diagramme UML ou entité-association | 🔄 En cours |
+| Modèle de donneés              | 6 juin        | Diagramme UML ou entité-association | ✅ Terminé  |
 | Prototype 1                    | 23 mai        | Exploration des fichiers Ekahau     | 🔄 En cours |
+| Revue du prototype             | 11 juin       | Feedback encadrant + ajustements    | ✅ Terminé  |
 | Prototype 2                    | 4 juillet     | Prototype finale + Flux             | ⏳ À venir  |
+
+
  
 <!-- | Architecture                   | 30 mai        | Diagramme UML ou modèle C4          | ⏳ À venir  | -->
 <!-- | Modèle de donneés              | 6 juin        | Diagramme UML ou entité-association | ⏳ À venir  | -->
