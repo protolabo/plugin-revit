@@ -545,18 +545,36 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#fonctionnelles" class="md-nav__link">
+  <a href="#exigences-fonctionnelles-export-vers-ekahau" class="md-nav__link">
     <span class="md-ellipsis">
-      Fonctionnelles
+      Exigences fonctionnelles – Export vers Ekahau
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#non-fonctionnelles" class="md-nav__link">
+  <a href="#exigences-non-fonctionnelles-export-vers-ekahau" class="md-nav__link">
     <span class="md-ellipsis">
-      Non fonctionnelles
+      Exigences non fonctionnelles – Export vers Ekahau
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exigences-fonctionnelles-import-depuis-ekahau" class="md-nav__link">
+    <span class="md-ellipsis">
+      Exigences fonctionnelles – Import depuis Ekahau
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exigences-non-fonctionnelles-import-depuis-ekahau" class="md-nav__link">
+    <span class="md-ellipsis">
+      Exigences non fonctionnelles – Import depuis Ekahau
     </span>
   </a>
   
@@ -571,15 +589,6 @@
   <a href="#recherche-de-solutions" class="md-nav__link">
     <span class="md-ellipsis">
       Recherche de solutions
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#methodologie" class="md-nav__link">
-    <span class="md-ellipsis">
-      Méthodologie
     </span>
   </a>
   
@@ -749,18 +758,36 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#fonctionnelles" class="md-nav__link">
+  <a href="#exigences-fonctionnelles-export-vers-ekahau" class="md-nav__link">
     <span class="md-ellipsis">
-      Fonctionnelles
+      Exigences fonctionnelles – Export vers Ekahau
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#non-fonctionnelles" class="md-nav__link">
+  <a href="#exigences-non-fonctionnelles-export-vers-ekahau" class="md-nav__link">
     <span class="md-ellipsis">
-      Non fonctionnelles
+      Exigences non fonctionnelles – Export vers Ekahau
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exigences-fonctionnelles-import-depuis-ekahau" class="md-nav__link">
+    <span class="md-ellipsis">
+      Exigences fonctionnelles – Import depuis Ekahau
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exigences-non-fonctionnelles-import-depuis-ekahau" class="md-nav__link">
+    <span class="md-ellipsis">
+      Exigences non fonctionnelles – Import depuis Ekahau
     </span>
   </a>
   
@@ -775,15 +802,6 @@
   <a href="#recherche-de-solutions" class="md-nav__link">
     <span class="md-ellipsis">
       Recherche de solutions
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#methodologie" class="md-nav__link">
-    <span class="md-ellipsis">
-      Méthodologie
     </span>
   </a>
   
@@ -810,27 +828,44 @@
 
 <h1 id="etudes-preliminaires">Études préliminaires<a class="headerlink" href="#etudes-preliminaires" title="Permanent link">&para;</a></h1>
 <h2 id="analyse-du-probleme">Analyse du problème<a class="headerlink" href="#analyse-du-probleme" title="Permanent link">&para;</a></h2>
-<ul>
-<li>Revit est largement utilisé dans le secteur de la construction, notamment par les architectes, les ingénieurs et les designers d'intérieur. L'Association professionnelle des designers d'intérieur du Québec (APDIQ) a d'ailleurs mis en place un programme de formation Revit en partenariat avec GRAITEC, soulignant l'importance de cet outil dans la transition numérique du secteur. Cependant, il n’existe aucun outil professionnel, qu’il soit libre ou payant, permettant la communication entre le logiciel de conception Revit et le logiciel d’analyse Ekahau. Un tel outil pourrait réduire significativement le temps nécessaire à l’analyse des réseaux Wi-Fi dans un modèle.</li>
-</ul>
+<p>Revit est largement utilisé dans le secteur de la construction, notamment par les architectes, les ingénieurs et les designers d'intérieur. L'Association professionnelle des designers d'intérieur du Québec (APDIQ) a d'ailleurs mis en place un programme de formation Revit en partenariat avec GRAITEC, soulignant l'importance de cet outil dans la transition numérique du secteur. Cependant, il n’existe aucun outil professionnel, qu’il soit libre ou payant, permettant la communication entre le logiciel de conception Revit et le logiciel d’analyse Ekahau. Un tel outil pourrait réduire significativement le temps nécessaire à l’analyse des réseaux Wi-Fi dans un modèle.</p>
 <h2 id="exigences">Exigences<a class="headerlink" href="#exigences" title="Permanent link">&para;</a></h2>
-<h3 id="fonctionnelles">Fonctionnelles<a class="headerlink" href="#fonctionnelles" title="Permanent link">&para;</a></h3>
+<p>Le projet est divisé en deux parties : <strong>"Export vers Ekahau"</strong> et <strong>"Import depuis Ekahau"</strong>.<br />
+La première partie consiste à générer un fichier compatible avec Ekahau à partir d’un modèle Revit, afin de réaliser une simulation de points d’accès Wi-Fi. Selon l’avancement de cette première phase et le temps disponible, la deuxième partie sera abordée. Celle-ci a pour objectif d’importer les informations 
+des points d’accès simulés dans Ekahau vers le modèle Revit original.</p>
+<h3 id="exigences-fonctionnelles-export-vers-ekahau">Exigences fonctionnelles – Export vers Ekahau<a class="headerlink" href="#exigences-fonctionnelles-export-vers-ekahau" title="Permanent link">&para;</a></h3>
 <ul>
-<li>Développer un plugin Revit capable d’exporter des plans sélectionnés au format Ekahau.</li>
-<li>Permettre la sélection et le filtrage des éléments du modèle à exporter.</li>
-<li>Générer un fichier Ekahau contenant tous les éléments nécessaires à l’analyse et la simulation Wi-Fi.</li>
-<li>Le fichier exporté doit respecter les formats attendus par Ekahau pour assurer la compatibilité.</li>
+<li>🔄 Le fichier Ekahau doit contenir <strong>tous les murs, portes et fenêtres</strong> du modèle Revit, ou uniquement ceux situés à l’intérieur de la zone délimitée par l’utilisateur.</li>
+<li>⏳ Le plugin doit offrir à l’utilisateur la possibilité <strong>d’exclure les escaliers</strong> de la simulation et <strong>d’inclure les murs des ascenseurs</strong>, avec une option <strong>distincte pour chaque étage</strong> du modèle.</li>
+<li>⏳ Tous les éléments exportés vers Ekahau doivent comporter une <strong>valeur d’atténuation en dB</strong>, soit en les faisant correspondre à un type d’élément existant dans Ekahau, soit en <strong>calculant manuellement leur atténuation</strong>.</li>
+<li>⏳ Le fichier exporté doit respecter <strong>la hauteur des étages</strong>, <strong>l’échelle du modèle Revit</strong> et <strong>l’épaisseur des planchers et des plafonds</strong>.</li>
+<li>🔄 Le fichier généré doit contenir <strong>un bâtiment structuré par étages</strong>, reflétant fidèlement l’organisation du modèle Revit.</li>
+<li>🔄 Le plugin doit être facile à utiliser par des ingénieurs ne possédant pas de connaissances approfondies en programmation.</li>
+<li>🔄 L’exportation doit être rapide, afin de ne pas perturber le travail quotidien des utilisateurs.</li>
 </ul>
-<h3 id="non-fonctionnelles">Non fonctionnelles<a class="headerlink" href="#non-fonctionnelles" title="Permanent link">&para;</a></h3>
+<h3 id="exigences-non-fonctionnelles-export-vers-ekahau">Exigences non fonctionnelles – Export vers Ekahau<a class="headerlink" href="#exigences-non-fonctionnelles-export-vers-ekahau" title="Permanent link">&para;</a></h3>
 <ul>
-<li>Le plugin doit être facile à utiliser par les ingénieurs sans connaissances approfondies en programmation.</li>
-<li>L’exportation doit être rapide pour ne pas ralentir le travail quotidien.</li>
+<li>⏳ Automatiser le cadrage de la zone à exporter depuis Revit.  </li>
+<li>✅ Mettre en place automatiquement l'échelle dans Ekahau.</li>
 </ul>
+<h3 id="exigences-fonctionnelles-import-depuis-ekahau">Exigences fonctionnelles – Import depuis Ekahau<a class="headerlink" href="#exigences-fonctionnelles-import-depuis-ekahau" title="Permanent link">&para;</a></h3>
+<ul>
+<li>⏳ Exporter depuis Ekahau vers Revit en <strong>respectant la position exacte</strong> des points d’accès simulés.  </li>
+</ul>
+<h3 id="exigences-non-fonctionnelles-import-depuis-ekahau">Exigences non fonctionnelles – Import depuis Ekahau<a class="headerlink" href="#exigences-non-fonctionnelles-import-depuis-ekahau" title="Permanent link">&para;</a></h3>
+<ul>
+<li>⏳ Modéliser les points d'accès importés dans Revit sous une famille de symbole BPA.</li>
+</ul>
+<p><br></p>
+<div class="admonition note">
+<p class="admonition-title">Légende des symboles</p>
+<p>✅ Terminé, 🔄 En cours, ⏳ À venir</p>
+</div>
 <h2 id="recherche-de-solutions">Recherche de solutions<a class="headerlink" href="#recherche-de-solutions" title="Permanent link">&para;</a></h2>
 <ul>
 <li>À l’heure actuelle, il n’existe aucune solution permettant l’automatisation de la création de modèles Ekahau à partir de modèles Revit, laissant comme seule option leur élaboration manuelle.</li>
 </ul>
-<h2 id="methodologie">Méthodologie<a class="headerlink" href="#methodologie" title="Permanent link">&para;</a></h2>
+<!-- ## Méthodologie -->
 
 
 
