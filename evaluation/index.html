@@ -585,6 +585,21 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="Critères d&#39;évaluation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#liste-des-fichiers" class="md-nav__link">
+    <span class="md-ellipsis">
+      Liste des fichiers
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -593,6 +608,30 @@
       Analyse des résultats
     </span>
   </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#open-issues" class="md-nav__link">
+    <span class="md-ellipsis">
+      Open Issues
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Open Issues">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#problemes-ouverts-par-exigence" class="md-nav__link">
+    <span class="md-ellipsis">
+      Problèmes ouverts par Exigence
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -712,6 +751,21 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="Critères d&#39;évaluation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#liste-des-fichiers" class="md-nav__link">
+    <span class="md-ellipsis">
+      Liste des fichiers
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -720,6 +774,30 @@
       Analyse des résultats
     </span>
   </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#open-issues" class="md-nav__link">
+    <span class="md-ellipsis">
+      Open Issues
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Open Issues">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#problemes-ouverts-par-exigence" class="md-nav__link">
+    <span class="md-ellipsis">
+      Problèmes ouverts par Exigence
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -745,16 +823,68 @@
 <h1 id="evaluation">Évaluation<a class="headerlink" href="#evaluation" title="Permanent link">&para;</a></h1>
 <h2 id="plan-de-test">Plan de test<a class="headerlink" href="#plan-de-test" title="Permanent link">&para;</a></h2>
 <ul>
-<li>Décrire la stratégie de test.</li>
+<li>Tests unitaires des fonctions principales du code</li>
 </ul>
 <h2 id="criteres-devaluation">Critères d'évaluation<a class="headerlink" href="#criteres-devaluation" title="Permanent link">&para;</a></h2>
-<ul>
-<li>Présenter les critères utilisés pour évaluer le système.</li>
-</ul>
+<p>L’évaluation du plugin sera réalisée manuellement sur des modèles Revit disponibles sur le site officiel Autodesk.<br />
+Pour garantir le bon fonctionnement du plugin, d’autres sources que le site officiel Autodesk peuvent également être consultées.</p>
+<h3 id="liste-des-fichiers">Liste des fichiers<a class="headerlink" href="#liste-des-fichiers" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Modèle</th>
+<th>Origine</th>
+<th>Statut</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>rac_basic_sample_project.rvt</td>
+<td>Site officiel Autodesk</td>
+<td>Non conforme</td>
+</tr>
+<tr>
+<td>rac_advanced_sample_project.rvt</td>
+<td>Site officiel Autodesk</td>
+<td>Non conforme</td>
+</tr>
+</tbody>
+</table>
 <h2 id="analyse-des-resultats">Analyse des résultats<a class="headerlink" href="#analyse-des-resultats" title="Permanent link">&para;</a></h2>
 <ul>
 <li>Discuter des résultats obtenus lors des tests.</li>
 </ul>
+<h2 id="open-issues">Open Issues<a class="headerlink" href="#open-issues" title="Permanent link">&para;</a></h2>
+<h3 id="problemes-ouverts-par-exigence">Problèmes ouverts par Exigence<a class="headerlink" href="#problemes-ouverts-par-exigence" title="Permanent link">&para;</a></h3>
+<p><strong>Exigence -</strong> <em>Le fichier Ekahau doit contenir tous les murs, portes et fenêtres du modèle Revit, ou uniquement ceux situés à l’intérieur de la zone délimitée par l’utilisateur.</em> </p>
+<div style="margin-left: 2em;">
+    <b>Problèm -</b> Le code ne détecte pas toutes les portes, par exemple <i>Slider_Door</i> <br>
+    <b>Problèm -</b> Il reste à effectuer des tests sur des modèles contenant des portes dans des murs inclinés. <br>
+    <b>Problèm -</b> La représentation graphique de certains murs dans Revit apparaît incomplète en raison de la superposition d’autres éléments tels que les murs-rideaux (Curtain Walls) ou les garde-corps (Rails), tandis que l’API ne reflète pas ce changement. Il est nécessaire de trouver un moyen d’exporter correctement le mur sectionné. <br>
+    <b>Problèm -</b> Pour le moment, le code obtient les dimensions des portes et fenêtres de différentes manières selon le type d’élément. Idéalement, il faudrait disposer d’une méthode unique et unifiée pour le faire.
+
+</div>
+
+<p><strong>Exigence -</strong> <em>Le fichier généré doit contenir un bâtiment structuré par étages, reflétant fidèlement l’organisation du modèle Revit.</em> </p>
+<div style="margin-left: 2em;">
+    <b>Problèm -</b> Vérifier que les étages sont ordonnés correctement (du premier étage au dernier, de manière ascendante) dans Ekahau. <br>
+    <b>Problèm -</b> Pour le moment, la hauteur des étages ainsi que l’épaisseur des planchers et des plafonds dans le fichier Ekahau exporté ne correspondent pas au modèle Revit.
+
+</div>
+
+<p><strong>Exigence -</strong> <em>Le plugin doit être facile à utiliser par des ingénieurs ne possédant pas de connaissances approfondies en programmation.</em> </p>
+<div style="margin-left: 2em;">
+    <b>Problèm -</b> Il n’existe actuellement aucun moyen d’annuler l’exportation du modèle une fois le processus lancé.
+
+</div>
+
+<p><strong>Exigence -</strong> <em>L’exportation doit être rapide, afin de ne pas perturber le travail quotidien des utilisateurs.</em> </p>
+<div style="margin-left: 2em;">
+    <b>Problèm -</b> Le code génère de nombreux fichiers temporaires qui ne sont pas supprimés après la fin du processus d’exportation.  
+    La création et la manipulation de ces fichiers ralentissent l’exécution du code.  
+    Il est donc nécessaire d’éviter de générer ces fichiers, et s’ils sont indispensables, de les supprimer à la fin du processus.
+
+</div>
 
 
 
