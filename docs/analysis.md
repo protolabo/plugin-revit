@@ -24,6 +24,8 @@ des points d’accès simulés dans Ekahau vers le modèle Revit original.
 
 - ⏳ Automatiser le cadrage de la zone à exporter depuis Revit.  
 - ✅ Mettre en place automatiquement l'échelle dans Ekahau.
+- ⏳ Assurer la compatibilité avec **.NET 8.0**
+- ⏳ Garantir que tous les murs adjacents exportés dans le fichier Ekahau soient interconnectés.
 
 ### Exigences fonctionnelles – Import depuis Ekahau
 

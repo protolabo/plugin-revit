@@ -2,9 +2,9 @@
 
 ## Semaine 1
 
-??? note "Prise de connaissance du projet"
-    - [x] Définition de la liste des logiciels, langages et outils nécessaires au projet
-    - [x] Définition de l’objectif et de la portée du projet
+#### Prise de connaissance du projet
+- Définition de la liste des logiciels, langages et outils nécessaires au projet
+- Définition de l’objectif et de la portée du projet
 
 <!-- !!! info "Notes" -->
 <!-- - Il est possible que nous révisions les exigences après le prototypage -->
@@ -21,36 +21,41 @@
 
 ## Semaine 2
 
-??? note "Phase d’exploration des logiciels"
-    - [x] Exploration de l’API de Revit
-        - [x] Analyse de la documentation officielle et des exemples fournis.
-        - [x] Découverte des classes et méthodes principales.
-        - [x] Expérimentation des mécanismes de filtrage et de sélection d’éléments dans un modèle.
-        - [x] Compréhension des flux de données et des événements que l’API permet de gérer.
-    - [x] Exploration de Ekahau
-        - [x] Analyse approfondie pour comprendre l’organisation et le format des fichiers Ekahau.
-    - [x] Premier prototype (naïf)
+#### Phase d’exploration des logiciels
+- Exploration de l’API de Revit
+    - Analyse de la documentation officielle et des exemples fournis.
+    - Découverte des classes et méthodes principales.
+    - Expérimentation des mécanismes de filtrage et de sélection d’éléments dans un modèle.
+    - Compréhension des flux de données et des événements que l’API permet de gérer.
+- Exploration de Ekahau
+    - Analyse approfondie pour comprendre l’organisation et le format des fichiers Ekahau.
+- Premier prototype (naïf)
 
 !!! warning "Difficultés rencontrées"
     - Ekahau ne propose pas d’interface API permettant la manipulation directe de ses modèles.
 
 ## Semaine 3
 
-??? note "Modélisation UML"
-    - [x] Création de modèles UML distincts pour Revit et Ekahau dans le but de définir clairement le flux de travail et les interactions entre les deux systèmes.
+#### Modélisation UML
+- Création de modèles UML distincts pour Revit et Ekahau dans le but de définir clairement le flux de travail et les interactions entre les deux systèmes.
 
 ## Semaine 4
 
+#### Description formelle du projet
+
+Après s’être réuni avec l’équipe de travail de BPA et s’être familiarisé avec les outils Revit et Ekahau, il est désormais possible de définir formellement le projet et sa portée. Cela permet également de mieux comprendre les exigences du client ainsi que de déterminer la méthodologie à suivre pour le développement du plugin.
+
+
 ## Semaine 5
 
-??? note "Premier prototype"
-    - [x] Le code correspondant au premier prototype est ajouté au dépôt du projet.
+#### Premier prototype
+- Le code correspondant au premier prototype est ajouté au dépôt du projet.
 
 ## Semaine 6
 
-??? note "Démonstration du premier prototype"
-    - [x] La démonstration du premier prototype est réalisée lors d'une réunion avec le client.
-    - [x] Les fonctionnalités finales que le code devra inclure pour la partie Export sont définies.
+#### Démonstration du premier prototype
+- La démonstration du premier prototype est réalisée lors d'une réunion avec le client.
+- Les fonctionnalités finales que le code devra inclure pour la partie Export sont définies.
 
 ## Semaine 7
 
