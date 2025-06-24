@@ -4,17 +4,22 @@ using System.Collections.Generic;
 using System.IO;
 using System.IO.Compression;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace Create.ExportClasses
 {
-    internal class ExportEkahau
+    internal class EkahauFileCreator
     {
-        public static Result CreateEsx(string chosenFileName)
+        public static Result CreateEsxFile(string chosenFileName)
         {
             // Path to the working folder
-            string myCopyPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Desktop), "myCopy");
+            string assemblyFolder = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
+            string buildFilesDir = Path.Combine(assemblyFolder, "build_files");
+            string tempFolderPath = Path.Combine(buildFilesDir, "tempFolder");
+            string tempPath = Path.Combine(tempFolderPath, "Template");
+
 
             // Destination path of the .esx file
             string outputZipPath = Path.ChangeExtension(chosenFileName, ".esx");
@@ -26,7 +31,7 @@ namespace Create.ExportClasses
             }
 
             // Create the zip file (with .esx extension)
-            ZipFile.CreateFromDirectory(myCopyPath, outputZipPath, CompressionLevel.Optimal, false);
+            ZipFile.CreateFromDirectory(tempPath, outputZipPath, CompressionLevel.Optimal, false);
 
             TaskDialog.Show("Success", $"File exported to:\n{outputZipPath}");
 

@@ -22,6 +22,7 @@ namespace Create
             // Load images
             BitmapImage exportIcon = new BitmapImage(new Uri(Path.Combine(dir, "Resources", "export.png")));
             BitmapImage importIcon = new BitmapImage(new Uri(Path.Combine(dir, "Resources", "import.png")));
+            //BitmapImage editIcon = new BitmapImage(new Uri(Path.Combine(dir, "Resources", "edit.png"))); // <-- nueva imagen
 
             // Export button
             PushButtonData exportButtonData = new PushButtonData(
@@ -37,6 +38,13 @@ namespace Create
             importButton.ToolTip = "Import from Ekahau format";
             importButton.LargeImage = importIcon;
 
+            // Edit Openings button
+            PushButtonData editButtonData = new PushButtonData(
+                "btnEditOpenings", "Edit Openings", assemblyPath, "Create.EditOpenings");
+            PushButton editButton = toolsPanel.AddItem(editButtonData) as PushButton;
+            editButton.ToolTip = "Edit door/window dimensions manually";
+            //editButton.LargeImage = editIcon;
+
             return Result.Succeeded;
         }
 
@@ -46,4 +54,5 @@ namespace Create
         }
     }
 }
+
 

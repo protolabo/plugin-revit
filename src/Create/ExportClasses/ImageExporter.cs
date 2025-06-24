@@ -8,16 +8,17 @@ using System.IO;
 using System.Linq;
 using System.Reflection;
 
-namespace Create.ExportClasses.SubClasses
+namespace Create.ExportClasses
 {
-    internal class ImageCreator
+    internal class ImageExporter
     {
-        public static void PrepareImageAndFiles(ExternalCommandData commandData, string destDir, List<ElementId> selectedViews)
+        public static void CreateViewImagesAndReport(ExternalCommandData commandData, string outputDir, List<ElementId> selectedViewIds, Dictionary<ElementId, bool> viewStairsMap)
+
         {
             UIDocument uidoc = commandData.Application.ActiveUIDocument;
             Document doc = uidoc.Document;
 
-            string tempExportDir = Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), "build_files", "build_tools");
+            string tempExportDir = Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), "build_files", "tempFolder");
             Directory.CreateDirectory(tempExportDir);
 
             string imageBasePath = Path.Combine(tempExportDir, "exported_view");
@@ -25,7 +26,7 @@ namespace Create.ExportClasses.SubClasses
 
             JArray imageInfoArray = new JArray();
 
-            foreach (var viewId in selectedViews)
+            foreach (var viewId in selectedViewIds)
             {
                 View view = doc.GetElement(viewId) as View;
                 if (view == null) continue;
@@ -84,7 +85,8 @@ namespace Create.ExportClasses.SubClasses
                         ["z"] = max?.Z
                     },
                     ["width"] = width,
-                    ["height"] = height
+                    ["height"] = height,
+                    ["stairs"] = viewStairsMap.TryGetValue(viewId, out bool hasStairs) && hasStairs
                 };
 
                 imageInfoArray.Add(imageObj);

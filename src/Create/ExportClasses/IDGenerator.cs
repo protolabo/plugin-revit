@@ -9,9 +9,9 @@ using System.Threading.Tasks;
 
 namespace Create.ExportClasses
 {
-    internal class CreateID
+    internal class IDGenerator
     {
-        public static Result GenerateIDInFiles(string destDir)
+        public static Result GenerateIDInJsonFiles(string destDir)
         {
             string[] jsonFiles = Directory.GetFiles(destDir, "*.json", SearchOption.AllDirectories);
             foreach (var jsonFile in jsonFiles)

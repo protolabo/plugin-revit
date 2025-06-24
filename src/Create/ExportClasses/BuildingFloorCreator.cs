@@ -9,9 +9,9 @@ using System.Threading.Tasks;
 
 namespace Create.ExportClasses
 {
-    internal class BuildingJson
+    internal class BuildingFloorCreator
     {
-        public static Result CreateBuildingFloorsJson(string destDir)
+        public static Result CreateBuildingFloorsJsonFiles(string destDir)
         {
             string floorPlansPath = Path.Combine(destDir, "floorPlans.json");
             string buildingsPath = Path.Combine(destDir, "buildings.json");

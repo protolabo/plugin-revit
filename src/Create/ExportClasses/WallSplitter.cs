@@ -7,13 +7,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Create.ExportClasses.SubClasses
+namespace Create.ExportClasses
 {
-    internal class WallOpen
+    internal class WallSplitter
     {
-        public static void ProcessWallOpen(string inputFileName, string outputFileName)
+        public static void SplitWallByOpening(string inputFileName, string outputFileName)
         {
-            string buildToolsPath = Path.Combine(Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location), "build_files", "build_tools");
+            string buildToolsPath = Path.Combine(Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location), "build_files", "tempFolder");
             string inputPath = Path.Combine(buildToolsPath, $"{inputFileName}.json");
             string outputPath = Path.Combine(buildToolsPath, $"{outputFileName}.json");
 
@@ -106,8 +106,55 @@ namespace Create.ExportClasses.SubClasses
             else if (Math.Abs(wall.start.y - wall.end.y) < 1e-6) axis = "x";
             else
             {
-                if (LengthBetweenPoints(wall.start, wall.end) >= 0.08)
-                    results.Add(wall);
+                // Diagonal wall — apply full opening-exclusion split logic
+                double wallLength = LengthBetweenPoints(wall.start, wall.end);
+                if (wallLength < 0.08)
+                    return newBaseId;
+
+                // Determine which side of the opening is closer to wall.start
+                double distA = LengthBetweenPoints(wall.start, opening.start_point);
+                double distB = LengthBetweenPoints(wall.start, opening.end_point);
+
+                Point cut = distA < distB ? opening.start_point : opening.end_point;
+                Point other = distA < distB ? opening.end_point : opening.start_point;
+
+                // First segment: from wall.start to "cut"
+                var wall_d_1 = new WallData
+                {
+                    type = wall.type,
+                    id = newBaseId,
+                    name = wall.name,
+                    start = new Point(wall.start),
+                    end = new Point(cut),
+                    openings = new List<OpeningData>()
+                };
+
+                // Second segment: from "other" to wall.end
+                var wall_d_2 = new WallData
+                {
+                    type = wall.type,
+                    id = newBaseId + 1,
+                    name = wall.name,
+                    start = new Point(other),
+                    end = new Point(wall.end),
+                    openings = new List<OpeningData>()
+                };
+
+                newBaseId += 2;
+
+                // 🚫 Skip adding segments if both are too short (likely a rounding issue or bad split)
+                if (LengthBetweenPoints(wall_d_1.start, wall_d_1.end) < 0.08 &&
+                    LengthBetweenPoints(wall_d_2.start, wall_d_2.end) < 0.08)
+                    return newBaseId;
+
+                // Determine which openings fall inside each new wall segment
+                var openings_d_1 = remainingOpenings.Where(op => IsCenterInsideWall(wall_d_1, CenterOfElement(op))).ToList();
+                var openings_d_2 = remainingOpenings.Where(op => IsCenterInsideWall(wall_d_2, CenterOfElement(op))).ToList();
+
+                // Recursively split each segment further if needed
+                newBaseId = RecursiveWallSplit(wall_d_1, openings_d_1, results, newBaseId);
+                newBaseId = RecursiveWallSplit(wall_d_2, openings_d_2, results, newBaseId);
+
                 return newBaseId;
             }
 

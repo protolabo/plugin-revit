@@ -6,11 +6,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Create.ExportClasses.SubClasses
+namespace Create.ExportClasses
 {
-    internal class WallElements
+    internal class OpeningsListCreator
     {
-        public static void ProcessWallElements(
+        public static void FillOpeningsList(
             JToken elementsJson,
             string floorPlanId,
             Func<double, double> convertX,
@@ -48,8 +48,23 @@ namespace Create.ExportClasses.SubClasses
                     double y2 = convertY((double)ep["y"]);
 
                     // Identify if it is a door or window according to the 'type' field
-                    string type = opening["type"]?.ToString().ToLower();
-                    string wallTypeToUse = type == "doors" ? doorTypeId : windowTypeId;
+                    string type = opening["type"]?.ToString();
+                    string wallTypeToUse = null;
+
+                    if (string.Equals(type, "Doors", StringComparison.OrdinalIgnoreCase))
+                    {
+                        wallTypeToUse = doorTypeId;
+                    }
+                    else if (string.Equals(type, "Windows", StringComparison.OrdinalIgnoreCase))
+                    {
+                        wallTypeToUse = windowTypeId;
+                    }
+                    else
+                    {
+                        // Ignore if any other type
+                        continue;
+                    }
+
 
                     // Creates an ID for each start and end point of a segment according to Ekahau's requirements.
                     string idStart = Guid.NewGuid().ToString();
@@ -57,9 +72,9 @@ namespace Create.ExportClasses.SubClasses
 
                     // PointAndSegment.MakeWallPoint creates a 'Point' or 'Segment' object 
                     // using the appropriate format for Ekahau JSON files.
-                    wallPointsList.Add(SubClasses.PointAndSegment.MakeWallPoint(idStart, floorPlanId, x1, y1));
-                    wallPointsList.Add(SubClasses.PointAndSegment.MakeWallPoint(idEnd, floorPlanId, x2, y2));
-                    wallSegmentsList.Add(SubClasses.PointAndSegment.MakeWallSegment(idStart, idEnd, wallTypeToUse));
+                    wallPointsList.Add(PointAndSegment.MakeWallPoint(idStart, floorPlanId, x1, y1));
+                    wallPointsList.Add(PointAndSegment.MakeWallPoint(idEnd, floorPlanId, x2, y2));
+                    wallSegmentsList.Add(PointAndSegment.MakeWallSegment(idStart, idEnd, wallTypeToUse));
                 }
 
             }

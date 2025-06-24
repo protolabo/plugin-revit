@@ -9,9 +9,9 @@ using System.Threading.Tasks;
 
 namespace Create.ExportClasses
 {
-    internal class Building
+    internal class EkahauBuildingCreator
     {
-        public static Result CreateBuilding(string destDir)
+        public static Result CreateEkahauBuildingFile(string destDir)
         {
             string buildingId = Guid.NewGuid().ToString();
 

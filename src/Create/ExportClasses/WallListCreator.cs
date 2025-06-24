@@ -4,11 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Create.ExportClasses.SubClasses
+namespace Create.ExportClasses
 {
-    internal class WallNoOpen
+    internal class WallListCreator
     {
-        public static void ProcessWallNoOpen(
+        public static void FillWallList(
             Newtonsoft.Json.Linq.JToken elementsJson,
             string floorPlanId,
             Func<double, double> convertX,
@@ -35,9 +35,9 @@ namespace Create.ExportClasses.SubClasses
                 string idStart = Guid.NewGuid().ToString();
                 string idEnd = Guid.NewGuid().ToString();
 
-                wallPointsList.Add(SubClasses.PointAndSegment.MakeWallPoint(idStart, floorPlanId, x1, y1));
-                wallPointsList.Add(SubClasses.PointAndSegment.MakeWallPoint(idEnd, floorPlanId, x2, y2));
-                wallSegmentsList.Add(SubClasses.PointAndSegment.MakeWallSegment(idStart, idEnd, wallTypeId));
+                wallPointsList.Add(PointAndSegment.MakeWallPoint(idStart, floorPlanId, x1, y1));
+                wallPointsList.Add(PointAndSegment.MakeWallPoint(idEnd, floorPlanId, x2, y2));
+                wallSegmentsList.Add(PointAndSegment.MakeWallSegment(idStart, idEnd, wallTypeId));
             }
         }
     }

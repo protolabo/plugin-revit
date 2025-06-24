@@ -9,9 +9,9 @@ using Newtonsoft.Json;
 
 namespace Create.ExportClasses
 {
-    internal class ExportInfo
+    internal class ModelDataExporter
     {
-        public static Result ProcessElements(ExternalCommandData commandData)
+        public static Result ExportModelData(ExternalCommandData commandData)
         {
             UIDocument uidoc = commandData.Application.ActiveUIDocument;
             Document doc = uidoc.Document;
@@ -27,8 +27,15 @@ namespace Create.ExportClasses
             }
 
             string assemblyFolder = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
-            string outputDir = Path.Combine(assemblyFolder, "build_files", "build_tools");
-            Directory.CreateDirectory(outputDir);
+            string buildFilesDir = Path.Combine(assemblyFolder, "build_files");
+            string tempFolderPath = Path.Combine(buildFilesDir, "tempFolder");
+
+            if (Directory.Exists(tempFolderPath))
+            {
+                TemporaryFilesCollector.DeleteTemporaryFiles();
+            }
+
+            Directory.CreateDirectory(tempFolderPath);
 
             foreach (var viewId in window.SelectedViewIds)
             {
@@ -36,7 +43,7 @@ namespace Create.ExportClasses
                 if (view == null) continue;
 
                 string viewName = view.Name.Replace(":", "_").Replace(" ", "_");
-                string filePath = Path.Combine(outputDir, $"elements_{viewName}.json");
+                string filePath = Path.Combine(tempFolderPath, $"elements_{viewName}.json");
 
                 // Collect all walls in the view
                 var walls = new FilteredElementCollector(doc, view.Id)
@@ -78,6 +85,84 @@ namespace Create.ExportClasses
                         ? new { x = lc2.Curve.GetEndPoint(1).X, y = lc2.Curve.GetEndPoint(1).Y, z = lc2.Curve.GetEndPoint(1).Z }
                         : null;
 
+                    // Find doors/windows hosted in the wall 
+                    var hostedInWall = doorsAndWindows
+                        .Where(inst => inst.Host?.Id == wall.Id)
+                        .ToList();
+
+                    // Find generic openings (not FamilyInstance) using FindInserts.
+                    var openingElements = new List<Element>();
+                    if (wall is Wall actualWall)
+                    {
+                        var insertIds = actualWall.FindInserts(true, true, true, true);
+                        foreach (var id in insertIds)
+                        {
+                            var el = doc.GetElement(id);
+                            if (el != null && !(el is FamilyInstance))
+                            {
+                                openingElements.Add(el);
+                            }
+                        }
+                    }
+
+                    // Final list of openings
+                    var openings = new List<object>();
+
+                    // Doors/Windows
+                    openings.AddRange(
+                        hostedInWall.Select(inst =>
+                            WindowDoorDimensions.GetWindowDoorDimensions(
+                                inst,
+                                start?.x ?? 0, start?.y ?? 0, start?.z ?? 0,
+                                end?.x ?? 0, end?.y ?? 0, end?.z ?? 0
+                            )
+                        )
+                    );
+
+                    // General Opening
+                    openings.AddRange(
+                        openingElements.Select(el =>
+                        {
+                            var bbox = el.get_BoundingBox(null);
+                            if (bbox == null) return null;
+
+                            double midX = (bbox.Min.X + bbox.Max.X) / 2;
+                            double midY = (bbox.Min.Y + bbox.Max.Y) / 2;
+                            double midZ = (bbox.Min.Z + bbox.Max.Z) / 2;
+
+                            bool esHorizontal = start != null && end != null &&
+                                                Math.Abs(end.x - start.x) > Math.Abs(end.y - start.y);
+
+                            double alignedY = start?.y ?? midY;
+                            double alignedX = start?.x ?? midX;
+
+                            return new
+                            {
+                                type = "Opening",
+                                name = "Standard",
+                                id = el.Id.IntegerValue,
+                                start_point = new
+                                {
+                                    x = esHorizontal ? bbox.Min.X : alignedX,
+                                    y = esHorizontal ? alignedY : bbox.Min.Y,
+                                    z = bbox.Min.Z
+                                },
+                                end_point = new
+                                {
+                                    x = esHorizontal ? bbox.Max.X : alignedX,
+                                    y = esHorizontal ? alignedY : bbox.Max.Y,
+                                    z = bbox.Max.Z
+                                },
+                                position = new
+                                {
+                                    x = esHorizontal ? midX : alignedX,
+                                    y = esHorizontal ? alignedY : midY,
+                                    z = midZ
+                                }
+                            };
+                        }).Where(o => o != null)
+                    );
+
                     var wallObj = new
                     {
                         type = wall.Category?.Name ?? "Wall",
@@ -85,16 +170,7 @@ namespace Create.ExportClasses
                         name = wall.Name,
                         start = start,
                         end = end,
-                        openings = doorsAndWindows
-                            .Where(inst => inst.Host?.Id == wall.Id)
-                            // The 'GetOpenInfo.ExtractOpeningInfo' function retrieves the relevant information 
-                            // of each door and window embedded in the parent wall, and returns an object containing that information.
-                            .Select(inst => SubClasses.GetOpenInfo.ExtractOpeningInfo(
-                                inst,
-                                start?.x ?? 0, start?.y ?? 0, start?.z ?? 0,
-                                end?.x ?? 0, end?.y ?? 0, end?.z ?? 0
-                            ))
-                            .ToList()
+                        openings = openings
                     };
 
                     output.Add(wallObj);
@@ -107,11 +183,12 @@ namespace Create.ExportClasses
                 // to one end of the door, and another segment from the other end of the door to the original wall's endpoint.
                 // In the end, it generates a JSON file containing the information of all resulting walls,
                 // including those that originally had no doors or windows.
-                SubClasses.WallOpen.ProcessWallOpen($"elements_{viewName}", $"empty_walls_{viewName}");
+                WallSplitter.SplitWallByOpening($"elements_{viewName}", $"empty_walls_{viewName}");
 
                 // The 'ImageCreator.PrepareImageAndFiles' function exports BMP images for each view
                 // and creates the corresponding JSON file containing metadata about those images.
-                SubClasses.ImageCreator.PrepareImageAndFiles(commandData, outputDir, window.SelectedViewIds);
+                ImageExporter.CreateViewImagesAndReport(commandData, tempFolderPath, window.SelectedViewIds, window.SelectedViewStairs);
+
             }
 
             return Result.Succeeded;

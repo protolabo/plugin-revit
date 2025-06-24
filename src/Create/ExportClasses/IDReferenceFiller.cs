@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace Create.ExportClasses
 {
-    internal class UpdateID
+    internal class IDReferenceFiller
     {
         public static Result CompleteJsonReferences(string destDir, string baseName)
         {

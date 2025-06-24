@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace Create.ExportClasses
 {
-    internal class CopyFolder
+    internal class FileTemplateCreator
     {
-        public static Result PrepareFolder(ref string chosenFileName, ref string message, string destDir)
+        public static Result CreateFileTemplate(ref string chosenFileName, ref string message, string destDir)
         {
             // Opens a dialog box allowing the user to choose the filename and location for saving the file.
             using (SaveFileDialog saveFileDialog = new SaveFileDialog())
@@ -39,7 +39,7 @@ namespace Create.ExportClasses
                 //string buildFilesPath = Path.Combine(desktopPath, "build_files");
                 //string sourceDir = Path.Combine(buildFilesPath, "monTemplate");
                 string buildFilesPath = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
-                string sourceDir = Path.Combine(buildFilesPath, "build_files", "monTemplate");
+                string sourceDir = Path.Combine(buildFilesPath, "build_files", "EmptyTemplate");
 
                 CopyDirectory(sourceDir, destDir);
             }

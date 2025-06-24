@@ -5,11 +5,11 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Create.ExportClasses.SubClasses
+namespace Create.ExportClasses
 {
     internal class Areas
     {
-        public static void ProcessAreas(Document doc, string viewName, string floorPlanId, string requirementId, Func<double, double> convertX, Func<double, double> convertY, List<string> areasList)
+        public static void ProcessAreas(Document doc, string viewName, string floorPlanId, Func<double, double> convertX, Func<double, double> convertY, List<string> areasList)
         {
             View view = new FilteredElementCollector(doc)
                 .OfClass(typeof(ViewPlan))
@@ -19,7 +19,7 @@ namespace Create.ExportClasses.SubClasses
             if (view == null) return;
 
             var rooms = new FilteredElementCollector(doc, view.Id)
-                .OfCategory(BuiltInCategory.OST_Rooms)
+                .OfCategory(BuiltInCategory.OST_Stairs)
                 .WhereElementIsNotElementType()
                 .Cast<SpatialElement>();
 
@@ -58,11 +58,11 @@ namespace Create.ExportClasses.SubClasses
                 var areaObject = new
                 {
                     floorPlanId = floorPlanId,
-                    name = $"Area-{roomIndex++}",
-                    noteIds = new List<string>(),
-                    requirementId = requirementId,
-                    capacityItems = new List<string>(),
-                    color = "#2c3e50",
+                    name = $"Exclusion Area-{roomIndex++}",
+                    //noteIds = new List<string>(),
+                    //requirementId = requirementId,
+                    //capacityItems = new List<string>(),
+                    //color = "#2c3e50",
                     area = imagePoints,
                     id = Guid.NewGuid().ToString(),
                     status = "CREATED"

@@ -9,12 +9,12 @@ using System.Reflection;
 
 namespace Create.ExportClasses
 {
-    internal class ImagesJson
+    internal class ImageJsonFileCreator
     {
-        public static Result ProcessExportedBmp(string destDir)
+        public static Result FormatImagesAndCreateJsonFile(string destDir)
         {
             string buildFilesPath = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
-            string exportDir = Path.Combine(buildFilesPath, "build_files", "build_tools");
+            string exportDir = Path.Combine(buildFilesPath, "build_files", "tempFolder");
             string[] exportedBmps = Directory.GetFiles(exportDir, "exported_view - *.bmp");
             var viewInfo = JArray.Parse(File.ReadAllText(Path.Combine(exportDir, "imageData.json")));
 
