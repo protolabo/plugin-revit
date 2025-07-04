@@ -55,7 +55,7 @@ namespace Create.ExportClasses
 
             var wallPointsList = new List<string>();
             var wallSegmentsList = new List<string>();
-            var areasList = new List<string>();
+            //var areasList = new List<string>();
 
             foreach (var imageFile in imageFiles)
             {
@@ -97,10 +97,10 @@ namespace Create.ExportClasses
                     // that enclose each room in the Revit model and creates an 'area' object 
                     // using the required format for inclusion in the corresponding Ekahau project JSON file.
                     // Only call ProcessStairs if stairs is true for this view
-                    if (stairsByViewName.TryGetValue(viewName.Replace("_", " "), out bool hasStairs) && hasStairs)
-                    {
-                        StairsZoneListCreator.FillStairsZoneList(doc, viewName, floorPlanId, convertX, convertY, areasList);
-                    }
+                    //if (stairsByViewName.TryGetValue(viewName.Replace("_", " "), out bool hasStairs) && hasStairs)
+                    //{
+                    //    StairsZoneListCreator.FillStairsZoneList(doc, viewName, floorPlanId, convertX, convertY, areasList);
+                    //}
 
                 }
 
@@ -122,7 +122,7 @@ namespace Create.ExportClasses
 
             File.WriteAllText(Path.Combine(tempPath, "wallPoints.json"), "{\n  \"wallPoints\": [\n" + string.Join(",\n", wallPointsList) + "\n  ]\n}");
             File.WriteAllText(Path.Combine(tempPath, "wallSegments.json"), "{\n  \"wallSegments\": [\n" + string.Join(",\n", wallSegmentsList) + "\n  ]\n}");
-            File.WriteAllText(Path.Combine(tempPath, "exclusionAreas.json"), "{\n  \"exclusionAreas\": [\n" + string.Join(",\n", areasList) + "\n  ]\n}");
+            //File.WriteAllText(Path.Combine(tempPath, "exclusionAreas.json"), "{\n  \"exclusionAreas\": [\n" + string.Join(",\n", areasList) + "\n  ]\n}");
 
             return Result.Succeeded;
         }

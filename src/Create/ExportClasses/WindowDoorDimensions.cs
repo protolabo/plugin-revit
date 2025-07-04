@@ -16,8 +16,8 @@ namespace Create.ExportClasses
 
         public static object GetWindowDoorDimensions(FamilyInstance inst, double wallX1, double wallY1, double wallZ1, double wallX2, double wallY2, double wallZ2)
         {
-            double width = 2.5;  // default width in feet
-            double height = 7.0; // default height in feet
+            double width = 3.2;  // default width in feet
+            double height = 6.0; // default height in feet
 
             // Step 1: Search for width and height parameters in the instance
             Parameter widthParam = inst.LookupParameter("Width");
@@ -33,62 +33,62 @@ namespace Create.ExportClasses
                 height = heightParam.AsDouble();
 
             // Step 2: If missing, try to get from JSON data
-            if (!foundWidth || !foundHeight)
-            {
-                var doorDataList = LoadDoorDataFromJson();
+            //if (!foundWidth || !foundHeight)
+            //{
+            //    var doorDataList = LoadDoorDataFromJson();
 
-                DoorData foundData = doorDataList?.Find(d => d.Name == inst.Name);
+            //    DoorData foundData = doorDataList?.Find(d => d.Name == inst.Name);
 
-                if (foundData != null)
-                {
-                    if (!foundWidth && foundData.Width > 0)
-                        width = foundData.Width;
+            //    if (foundData != null)
+            //    {
+            //        if (!foundWidth && foundData.Width > 0)
+            //            width = foundData.Width;
 
-                    if (!foundHeight && foundData.Height > 0)
-                        height = foundData.Height;
+            //        if (!foundHeight && foundData.Height > 0)
+            //            height = foundData.Height;
 
-                    foundWidth = foundWidth || foundData.Width > 0;
-                    foundHeight = foundHeight || foundData.Height > 0;
-                }
-            }
+            //        foundWidth = foundWidth || foundData.Width > 0;
+            //        foundHeight = foundHeight || foundData.Height > 0;
+            //    }
+            //}
 
             // Step 3: If any are still missing, ask the user to enter them.
-            if (!foundWidth || !foundHeight)
-            {
-                MessageBoxResult res = MessageBox.Show(
-                    $"Las dimensiones del elemento '{inst.Name}' no fueron encontradas.\n¿Deseas agregarlas manualmente?",
-                    "Faltan dimensiones",
-                    MessageBoxButton.OKCancel,
-                    MessageBoxImage.Warning);
+            //if (!foundWidth || !foundHeight)
+            //{
+            //    MessageBoxResult res = MessageBox.Show(
+            //        $"Las dimensiones del elemento '{inst.Name}' no fueron encontradas.\n¿Deseas agregarlas manualmente?",
+            //        "Faltan dimensiones",
+            //        MessageBoxButton.OKCancel,
+            //        MessageBoxImage.Warning);
 
-                if (res == MessageBoxResult.OK)
-                {
-                    // Create a new empty record with the name.
-                    var newItem = new Create.DoorData
-                    {
-                        Name = inst.Name,
-                        Width = foundWidth ? width : 0,
-                        Height = foundHeight ? height : 0,
-                        Thickness = 0
-                    };
+            //    if (res == MessageBoxResult.OK)
+            //    {
+            //        // Create a new empty record with the name.
+            //        var newItem = new Create.DoorData
+            //        {
+            //            Name = inst.Name,
+            //            Width = foundWidth ? width : 0,
+            //            Height = foundHeight ? height : 0,
+            //            Thickness = 0
+            //        };
 
-                    // Show a window for the user to enter or correct data.
-                    var dialog = new Create.EditOpeningsWindow(newItem);
-                    bool? dialogResult = dialog.ShowDialog();
+            //        // Show a window for the user to enter or correct data.
+            //        var dialog = new Create.EditOpeningsWindow(newItem);
+            //        bool? dialogResult = dialog.ShowDialog();
 
-                    if (dialogResult == true)
-                    {
-                        // Get the updated object directly from the window.
-                        var updatedData = dialog.EditedDoorData;
+            //        if (dialogResult == true)
+            //        {
+            //            // Get the updated object directly from the window.
+            //            var updatedData = dialog.EditedDoorData;
 
-                        width = updatedData.Width > 0 ? updatedData.Width : width;
-                        height = updatedData.Height > 0 ? updatedData.Height : height;
+            //            width = updatedData.Width > 0 ? updatedData.Width : width;
+            //            height = updatedData.Height > 0 ? updatedData.Height : height;
 
-                        // Optional: immediately save to JSON for persistence.
-                        SaveDoorDataToJson(updatedData);
-                    }
-                }
-            }
+            //            // Optional: immediately save to JSON for persistence.
+            //            SaveDoorDataToJson(updatedData);
+            //        }
+            //    }
+            //}
 
             // Step 4: Determine the central position of the element
             XYZ center = null;

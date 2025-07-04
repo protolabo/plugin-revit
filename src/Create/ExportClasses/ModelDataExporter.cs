@@ -187,7 +187,7 @@ namespace Create.ExportClasses
 
                 // The 'ImageCreator.PrepareImageAndFiles' function exports BMP images for each view
                 // and creates the corresponding JSON file containing metadata about those images.
-                ImageExporter.CreateViewImagesAndReport(commandData, tempFolderPath, window.SelectedViewIds, window.SelectedViewStairs);
+                ImageExporter.CreateViewImagesAndReport(commandData, tempFolderPath, window.SelectedViewIds);
 
             }
 
