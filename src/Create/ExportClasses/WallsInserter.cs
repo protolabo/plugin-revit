@@ -39,7 +39,6 @@ namespace Create.ExportClasses
             var requirementsJson = File.ReadAllText(Path.Combine(tempPath, "requirements.json"));
 
             // Get proper ID's
-            string wallConcreteId = Getters.GetWallId(wallTypesJson);
             string windowInteriorId = Getters.GetWindowId(wallTypesJson);
             string doorInteriorId = Getters.GetDoorId(wallTypesJson);
             //string requirementId = Getters.GetAreaId(requirementsJson);
@@ -110,7 +109,7 @@ namespace Create.ExportClasses
                     var splitJson = JToken.Parse(File.ReadAllText(splitFile));
                     // The WallNoOpen.ProcessWallNoOpen function performs the same operation as WallElements.ProcessWallElements,
                     // but with walls that have been previously split.
-                    WallListCreator.FillWallList(splitJson, floorPlanId, convertX, convertY, wallConcreteId, wallPointsList, wallSegmentsList);
+                    WallListCreator.FillWallList(splitJson, floorPlanId, convertX, convertY, tempPath, wallPointsList, wallSegmentsList);
                 }
             }
 

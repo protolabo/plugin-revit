@@ -17,7 +17,6 @@ using System.IO.Compression;
 using Create.ExportClasses;
 using System.Reflection;
 
-
 namespace Create
 {
     [Transaction(TransactionMode.ReadOnly)]
@@ -89,6 +88,9 @@ namespace Create
 
                 UIDocument uiDoc = commandData.Application.ActiveUIDocument;
                 Document doc = uiDoc.Document;
+
+                result = AttenuationUpdater.UpdateEkahauValues();
+                if (result != Result.Succeeded) return result;
 
                 // The 'AddWalls.CreateWalls' function generates all the necessary JSON files containing
                 // information about the model's walls, including windows and doors,

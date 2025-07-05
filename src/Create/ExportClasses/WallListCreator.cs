@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Shell;
 
 namespace Create.ExportClasses
 {
@@ -13,13 +15,15 @@ namespace Create.ExportClasses
             string floorPlanId,
             Func<double, double> convertX,
             Func<double, double> convertY,
-            string wallTypeId,
+            string path,
             List<string> wallPointsList,
             List<string> wallSegmentsList)
         {
             var walls = elementsJson["walls"]
                 .Where(w => w["openings"] is Newtonsoft.Json.Linq.JArray arr && arr.Count == 0)
-                .ToList();
+            .ToList();
+
+            var wallTypesJson = File.ReadAllText(Path.Combine(path, "wallTypes.json"));
 
             foreach (var wall in walls)
             {
@@ -35,9 +39,12 @@ namespace Create.ExportClasses
                 string idStart = Guid.NewGuid().ToString();
                 string idEnd = Guid.NewGuid().ToString();
 
+                string wallName = (string)wall["name"];   
+                string wallConcreteId = Getters.GetWallId(wallName, wallTypesJson);
+
                 wallPointsList.Add(PointAndSegment.MakeWallPoint(idStart, floorPlanId, x1, y1));
                 wallPointsList.Add(PointAndSegment.MakeWallPoint(idEnd, floorPlanId, x2, y2));
-                wallSegmentsList.Add(PointAndSegment.MakeWallSegment(idStart, idEnd, wallTypeId));
+                wallSegmentsList.Add(PointAndSegment.MakeWallSegment(idStart, idEnd, wallConcreteId));
             }
         }
     }

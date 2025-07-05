@@ -38,11 +38,11 @@ namespace Create
             importButton.ToolTip = "Import from Ekahau format";
             importButton.LargeImage = importIcon;
 
-            // Edit Openings button
-            PushButtonData editButtonData = new PushButtonData(
-                "btnEditOpenings", "Edit Openings", assemblyPath, "Create.EditOpenings");
-            PushButton editButton = toolsPanel.AddItem(editButtonData) as PushButton;
-            editButton.ToolTip = "Edit door/window dimensions manually";
+            // Walls button
+            PushButtonData wallsButtonData = new PushButtonData(
+                "btnWalls", "Walls", assemblyPath, "Create.EditWalls");
+            PushButton wallsButton = toolsPanel.AddItem(wallsButtonData) as PushButton;
+            wallsButton.ToolTip = "Edit walls mapping manually";
             //editButton.LargeImage = editIcon;
 
             return Result.Succeeded;
