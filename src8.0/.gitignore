@@ -1,0 +1,45 @@
+# Build artifacts
+bin/
+obj/
+
+# User-specific files
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# Visual Studio
+.vs/
+
+# Rider
+.idea/
+
+# NuGet packages
+*.nupkg
+packages/
+*.snupkg
+
+# Logs
+*.log
+
+# ReSharper
+_ReSharper*/
+*.DotSettings.user
+
+# DotCover
+*.dotCover
+
+# VS Code
+.vscode/
+
+# Temporary files
+*.tmp
+*.bak
+*.swp
+
+# Auto-generated files
+Generated_Code/
+
+# Others
+Thumbs.db
+.DS_Store
