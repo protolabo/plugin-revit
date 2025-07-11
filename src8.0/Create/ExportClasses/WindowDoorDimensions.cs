@@ -32,6 +32,7 @@ namespace Create.ExportClasses
             if (foundHeight)
                 height = heightParam.AsDouble();
 
+            /*
             // Step 2: If missing, try to get from JSON data
             if (!foundWidth || !foundHeight)
             {
@@ -89,6 +90,7 @@ namespace Create.ExportClasses
                     }
                 }
             }
+            */
 
             // Step 4: Determine the central position of the element
             XYZ center = null;
@@ -175,14 +177,14 @@ namespace Create.ExportClasses
             };
         }
 
-        private static List<Create.DoorData> LoadDoorDataFromJson()
+        private static List<Create.WallData> LoadDoorDataFromJson()
         {
             try
             {
                 if (File.Exists(dataFilePath))
                 {
                     string json = File.ReadAllText(dataFilePath);
-                    return JsonSerializer.Deserialize<List<Create.DoorData>>(json);
+                    return JsonSerializer.Deserialize<List<Create.WallData>>(json);
                 }
             }
             catch (Exception ex)
@@ -192,18 +194,18 @@ namespace Create.ExportClasses
             return null;
         }
 
-        private static void SaveDoorDataToJson(Create.DoorData newData)
+        private static void SaveDoorDataToJson(Create.WallData newData)
         {
             try
             {
-                List<Create.DoorData> list = LoadDoorDataFromJson() ?? new List<Create.DoorData>();
+                List<Create.WallData> list = LoadDoorDataFromJson() ?? new List<Create.WallData>();
 
-                var existing = list.Find(d => d.Name == newData.Name);
+                var existing = list.Find(d => d.Revit == newData.Revit);
                 if (existing != null)
                 {
-                    existing.Width = newData.Width;
-                    existing.Height = newData.Height;
-                    existing.Thickness = newData.Thickness;
+                    existing.Ekahau = newData.Ekahau;
+                    existing.Structural = newData.Structural;
+                    existing.Architectural = newData.Architectural;
                 }
                 else
                 {

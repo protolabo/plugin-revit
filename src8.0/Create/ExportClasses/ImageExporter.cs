@@ -12,7 +12,7 @@ namespace Create.ExportClasses
 {
     internal class ImageExporter
     {
-        public static void CreateViewImagesAndReport(ExternalCommandData commandData, string outputDir, List<ElementId> selectedViewIds, Dictionary<ElementId, bool> viewStairsMap)
+        public static void CreateViewImagesAndReport(ExternalCommandData commandData, string outputDir, List<ElementId> selectedViewIds)
 
         {
             UIDocument uidoc = commandData.Application.ActiveUIDocument;
@@ -85,8 +85,7 @@ namespace Create.ExportClasses
                         ["z"] = max?.Z
                     },
                     ["width"] = width,
-                    ["height"] = height,
-                    ["stairs"] = viewStairsMap.TryGetValue(viewId, out bool hasStairs) && hasStairs
+                    ["height"] = height
                 };
 
                 imageInfoArray.Add(imageObj);
@@ -96,7 +95,6 @@ namespace Create.ExportClasses
         }
     }
 }
-
 
 
 
