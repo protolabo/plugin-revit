@@ -25,7 +25,7 @@ namespace Create
             "wall_data.json"
         );
 
-        // Constructor con nuevo ítem para agregar directamente
+        // Constructor with new item to add directly
         public EditWallsWindow(WallData newItem) : this()
         {
             walls.Add(newItem);
@@ -38,7 +38,7 @@ namespace Create
         {
             InitializeComponent();
 
-            // Leer archivo de datos JSON
+            // Read JSON data file
             if (File.Exists(dataFilePath))
             {
                 try
@@ -69,12 +69,12 @@ namespace Create
                 windows = new List<WallData>();
             }
 
-            // Conectar datos con los DataGrids
+            // Bind data to the DataGrids
             WallsGrid.ItemsSource = walls;
             DoorsGrid.ItemsSource = doors;
             WindowsGrid.ItemsSource = windows;
 
-            // Leer tipos disponibles
+            // Read available types from Ekahau JSON file
             try
             {
                 string assemblyFolder = Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location);
@@ -87,7 +87,7 @@ namespace Create
                 {
                     string wallTypesJson = File.ReadAllText(wallTypesPath);
 
-                    // Parsear como JObject para acceder a la propiedad "wallTypes"
+                    // Parse as JObject to access the "wallTypes" property
                     var jObject = JObject.Parse(wallTypesJson);
                     var wallTypesArray = jObject["wallTypes"] as JArray;
 
@@ -100,7 +100,7 @@ namespace Create
                             string name = item["name"]?.ToString() ?? "";
                             string key = item["key"]?.ToString() ?? "";
 
-                            // Calcular Attenuation como promedio de los attenuationFactor en propagationProperties
+                            // Calculate Attenuation as the average of the attenuationFactor values in propagationProperties
                             var propagationProps = item["propagationProperties"] as JArray;
                             double attenuation = 0.0;
                             if (propagationProps != null && propagationProps.Count > 0)
