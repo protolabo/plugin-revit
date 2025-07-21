@@ -1,74 +1,109 @@
 [
   {
-    "Revit": "Exterior - Brick on Mtl. Stud",
-    "Ekahau": "Wall, Concrete",
-    "Structural": 12,
-    "Architectural": 12
+    "walls": [
+      {
+        "Revit": "Exterior - Brick on Mtl. Stud",
+        "Ekahau": "Wall, Concrete",
+        "Attenuation": 12
+      },
+      {
+        "Revit": "Exterior - Brick Over Block w Metal Stud",
+        "Ekahau": "Wall, Concrete",
+        "Attenuation": 12
+      },
+      {
+        "Revit": "Exterior - Block on Mtl. Stud",
+        "Ekahau": "Wall, Concrete",
+        "Attenuation": 12
+      },
+      {
+        "Revit": "Wall - Timber Clad",
+        "Ekahau": "Wall, Concrete",
+        "Attenuation": 12
+      },
+      {
+        "Revit": "Interior - 165 Partition (1-hr)",
+        "Ekahau": "Wall, Brick",
+        "Attenuation": 7
+      },
+      {
+        "Revit": "Interior - Partition",
+        "Ekahau": "Wall, Concrete",
+        "Attenuation": 12
+      },
+      {
+        "Revit": "SIP 202mm Wall - conc clad",
+        "Ekahau": "Wall, Concrete",
+        "Attenuation": 12
+      },
+      {
+        "Revit": "SH_Curtain wall",
+        "Ekahau": "Wall, Concrete",
+        "Attenuation": 12
+      },
+      {
+        "Revit": "Foundation - 300mm Concrete",
+        "Ekahau": "Wall, Concrete",
+        "Attenuation": 12
+      },
+      {
+        "Revit": "CL_W1",
+        "Ekahau": "Wall, Dry",
+        "Attenuation": 3
+      },
+      {
+        "Revit": "Retaining - 300mm Concrete",
+        "Ekahau": "Wall, Concrete",
+        "Attenuation": 12
+      },
+      {
+        "Revit": "Cavity wall_sliders",
+        "Ekahau": "Wall, Concrete",
+        "Attenuation": 12
+      }
+    ]
   },
   {
-    "Revit": "Exterior - Brick Over Block w Metal Stud",
-    "Ekahau": "Wall, Concrete",
-    "Structural": 12,
-    "Architectural": 12
+    "Doors": [
+      {
+        "Revit": "1730 x 2134mm",
+        "Ekahau": "Door, Interior Office",
+        "Attenuation": 4
+      },
+      {
+        "Revit": "2.027 x 0.945",
+        "Ekahau": "Door, Interior Office",
+        "Attenuation": 4
+      },
+      {
+        "Revit": "800 x 2100",
+        "Ekahau": "Elevator Shaft",
+        "Attenuation": 150
+      },
+      {
+        "Revit": "Curtain Wall Dbl Glass",
+        "Ekahau": "Door, Interior Office",
+        "Attenuation": 4
+      },
+      {
+        "Revit": "Entrance door",
+        "Ekahau": "Door, Interior Office",
+        "Attenuation": 4
+      }
+    ]
   },
   {
-    "Revit": "Exterior - Block on Mtl. Stud",
-    "Ekahau": "Wall, Concrete",
-    "Structural": 12,
-    "Architectural": 12
-  },
-  {
-    "Revit": "Wall - Timber Clad",
-    "Ekahau": "Wall, Concrete",
-    "Structural": 12,
-    "Architectural": 12
-  },
-  {
-    "Revit": "Interior - 165 Partition (1-hr)",
-    "Ekahau": "Wall, Brick",
-    "Structural": 7,
-    "Architectural": 10
-  },
-  {
-    "Revit": "Interior - Partition",
-    "Ekahau": "Wall, Concrete",
-    "Structural": 12,
-    "Architectural": 12
-  },
-  {
-    "Revit": "SIP 202mm Wall - conc clad",
-    "Ekahau": "Wall, Concrete",
-    "Structural": 12,
-    "Architectural": 12
-  },
-  {
-    "Revit": "SH_Curtain wall",
-    "Ekahau": "Wall, Concrete",
-    "Structural": 12,
-    "Architectural": 12
-  },
-  {
-    "Revit": "Foundation - 300mm Concrete",
-    "Ekahau": "Wall, Concrete",
-    "Structural": 12,
-    "Architectural": 12
-  },
-  {
-    "Revit": "CL_W1",
-    "Ekahau": "Wall, Dry",
-    "Structural": 3,
-    "Architectural": 3
-  },
-  {
-    "Revit": "Retaining - 300mm Concrete",
-    "Ekahau": "Wall, Concrete",
-    "Structural": 12,
-    "Architectural": 12
-  },
-  {
-    "Revit": "Cavity wall_sliders",
-    "Ekahau": "Wall, Concrete",
-    "Structural": 12,
-    "Architectural": 12
+    "Windows": [
+      {
+        "Revit": "1180 x 1170mm",
+        "Ekahau": "Window, Interior",
+        "Attenuation": 1
+      },
+      {
+        "Revit": "Standard",
+        "Ekahau": "Wall, Brick",
+        "Attenuation": 7.2999999999999998
+      }
+    ]
   }
 ]

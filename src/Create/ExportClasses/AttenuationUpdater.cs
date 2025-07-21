@@ -5,6 +5,7 @@ using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using Autodesk.Revit.UI;
 using System.Linq;
+using System.Collections.Generic;
 
 namespace Create.ExportClasses
 {
@@ -24,6 +25,31 @@ namespace Create.ExportClasses
                 var wallDataJson = File.ReadAllText(wallDataPath);
                 var wallDataArray = JArray.Parse(wallDataJson);
 
+                // Combine all walls, doors and windows into one list of JObject
+                var combinedWalls = new List<JObject>();
+
+                foreach (var entry in wallDataArray.Children<JObject>())
+                {
+                    if (entry.ContainsKey("walls"))
+                    {
+                        var wallsArray = entry["walls"] as JArray;
+                        if (wallsArray != null)
+                            combinedWalls.AddRange(wallsArray.Children<JObject>());
+                    }
+                    if (entry.ContainsKey("Doors"))
+                    {
+                        var doorsArray = entry["Doors"] as JArray;
+                        if (doorsArray != null)
+                            combinedWalls.AddRange(doorsArray.Children<JObject>());
+                    }
+                    if (entry.ContainsKey("Windows"))
+                    {
+                        var windowsArray = entry["Windows"] as JArray;
+                        if (windowsArray != null)
+                            combinedWalls.AddRange(windowsArray.Children<JObject>());
+                    }
+                }
+
                 // read wallTypes.json
                 string buildFilesDir = Path.Combine(assemblyFolder, "build_files");
                 string tempFolderPath = Path.Combine(buildFilesDir, "tempFolder");
@@ -38,19 +64,24 @@ namespace Create.ExportClasses
                 var wallTypesObject = JObject.Parse(wallTypesJson);
                 var wallTypesArray = (JArray)wallTypesObject["wallTypes"];
 
-                // update values from wall_data.json to Ekahau json file wallTypes.json
-                foreach (var wall in wallDataArray)
+                // update values from combinedWalls to wallTypesArray
+                foreach (var wall in combinedWalls)
                 {
                     string ekahauName = (string)wall["Ekahau"];
-                    double structuralValue = (double)wall["Structural"];
+                    if (string.IsNullOrEmpty(ekahauName))
+                        continue;
+
+                    double? attenuationValue = wall["Attenuation"]?.Value<double?>();
+                    if (attenuationValue == null)
+                        continue;
 
                     var wallType = wallTypesArray.FirstOrDefault(wt => (string)wt["name"] == ekahauName);
                     if (wallType == null) continue;
 
-                    double thickness = (double)wallType["thickness"];
+                    double thickness = (double)(wallType["thickness"] ?? 0.0);
                     if (thickness == 0) continue;
 
-                    int newAttenuationFactor = (int)Math.Round(structuralValue / thickness);
+                    int newAttenuationFactor = (int)Math.Round(attenuationValue.Value / thickness);
 
                     // update propagationProperties
                     var propagationProperties = (JArray)wallType["propagationProperties"];
@@ -76,4 +107,6 @@ namespace Create.ExportClasses
         }
     }
 }
+
+
 

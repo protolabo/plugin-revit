@@ -1,49 +1,56 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 using Autodesk.Revit.UI;
+using Newtonsoft.Json.Linq;
 
 namespace Create.ExportClasses
 {
     internal class Getters
     {
-        // These functions return the corresponding ID for each wall type from the Ekahau wallTypes JSON file.
-        public static string GetWallId(string wall, string wallTypesJson)
+        private static string GetEkahauNameFromWallData(string revitName, string categoryFilter = null)
+        {
+            string dataFilePath = Path.Combine(
+                Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location),
+                "wall_data.json"
+            );
+
+            string wallDataJson = File.ReadAllText(dataFilePath);
+            var wallDataArray = JArray.Parse(wallDataJson);
+
+            foreach (var entry in wallDataArray.Children<JObject>())
+            {
+                foreach (var category in new[] { "walls", "Doors", "Windows" })
+                {
+                    if (categoryFilter != null && category != categoryFilter) continue;
+
+                    if (entry.TryGetValue(category, out var elements) && elements is JArray elementArray)
+                    {
+                        foreach (var item in elementArray)
+                        {
+                            if ((string)item["Revit"] == revitName)
+                                return (string)item["Ekahau"];
+                        }
+                    }
+                }
+            }
+
+            return "Unknown";
+        }
+
+        public static string GetWallId(string revitWallName, string wallTypesJson)
         {
             try
             {
-                // Get the corresponding Ekahau wall type for the choosen Revit wall from wall_data.json
-                string dataFilePath = Path.Combine(
-                    Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location),
-                    "wall_data.json"
-                );
+                string ekahauName = GetEkahauNameFromWallData(revitWallName, "walls");
 
-                string wallDataJson = File.ReadAllText(dataFilePath);
-                // parse the JSON directly with JObject
-                var wallDataArray = Newtonsoft.Json.Linq.JArray.Parse(wallDataJson);
-                string ekahauName = "Unknown"; // default valkue
-
-                foreach (var item in wallDataArray)
-                {
-                    if ((string)item["Revit"] == wall)
-                    {
-                        ekahauName = (string)item["Ekahau"];
-                        break;
-                    }
-                }
-
-                // search for id in wallTypesJson
                 var match = Regex.Match(
                     wallTypesJson,
                     $@"""name""\s*:\s*""{Regex.Escape(ekahauName)}"".*?""id""\s*:\s*""([^""]+)""",
                     RegexOptions.Singleline
                 );
 
-                return match.Groups[1].Value;
+                return match.Success ? match.Groups[1].Value : "";
             }
             catch (Exception ex)
             {
@@ -52,20 +59,57 @@ namespace Create.ExportClasses
             }
         }
 
-
-        public static string GetWindowId(string wallTypesJson)
+        public static string GetWindowId(string revitName, string wallTypesJson)
         {
-            return Regex.Match(wallTypesJson, @"""name""\s*:\s*""Window, Interior"".*?""id""\s*:\s*""([^""]+)""", RegexOptions.Singleline).Groups[1].Value;
+            try
+            {
+                string ekahauName = GetEkahauNameFromWallData(revitName, "Windows");
+
+                var match = Regex.Match(
+                    wallTypesJson,
+                    $@"""name""\s*:\s*""{Regex.Escape(ekahauName)}"".*?""id""\s*:\s*""([^""]+)""",
+                    RegexOptions.Singleline
+                );
+
+                return match.Success ? match.Groups[1].Value : "";
+            }
+            catch (Exception ex)
+            {
+                TaskDialog.Show("Error", $"Error in GetWindowId: {ex.Message}");
+                return "";
+            }
         }
 
-        public static string GetDoorId(string wallTypesJson)
+        public static string GetDoorId(string revitName, string wallTypesJson)
         {
-            return Regex.Match(wallTypesJson, @"""name""\s*:\s*""Door, Interior Office"".*?""id""\s*:\s*""([^""]+)""", RegexOptions.Singleline).Groups[1].Value;
+            try
+            {
+                string ekahauName = GetEkahauNameFromWallData(revitName, "Doors");
+
+                var match = Regex.Match(
+                    wallTypesJson,
+                    $@"""name""\s*:\s*""{Regex.Escape(ekahauName)}"".*?""id""\s*:\s*""([^""]+)""",
+                    RegexOptions.Singleline
+                );
+
+                return match.Success ? match.Groups[1].Value : "";
+            }
+            catch (Exception ex)
+            {
+                TaskDialog.Show("Error", $"Error in GetDoorId: {ex.Message}");
+                return "";
+            }
         }
 
         public static string GetAreaId(string requirementsJson)
         {
-            return Regex.Match(requirementsJson, @"""name""\s*:\s*""Ekahau Best Practices"".*?""id""\s*:\s*""([^""]+)""", RegexOptions.Singleline).Groups[1].Value;
+            var match = Regex.Match(
+                requirementsJson,
+                @"""name""\s*:\s*""Ekahau Best Practices"".*?""id""\s*:\s*""([^""]+)""",
+                RegexOptions.Singleline
+            );
+            return match.Success ? match.Groups[1].Value : "";
         }
     }
 }
+

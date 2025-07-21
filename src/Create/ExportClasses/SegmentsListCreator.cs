@@ -53,17 +53,17 @@ namespace Create.ExportClasses
                     double y2 = convertY((double)ep["y"]);
 
                     string type = opening["type"]?.ToString();
+                    string segmentName = opening["name"]?.ToString();
                     string wallTypeToUse = null;
                     var wallTypesJson = File.ReadAllText(Path.Combine(path, "wallTypes.json"));
 
                     // Get the corresponding Ekahau wall for every choosen Revit wall.
-                    if (string.Equals(type, "Doors", StringComparison.OrdinalIgnoreCase))
-                        wallTypeToUse = Getters.GetDoorId(wallTypesJson);
-                    else if (string.Equals(type, "Windows", StringComparison.OrdinalIgnoreCase))
-                        wallTypeToUse = Getters.GetWindowId(wallTypesJson);
-                    else if (string.Equals(type, "Walls", StringComparison.OrdinalIgnoreCase)) { 
-                        string wallName = (string)wall["name"];
-                        wallTypeToUse = Getters.GetWallId(wallName, wallTypesJson); }
+                    if (string.Equals(type, "Doors", StringComparison.OrdinalIgnoreCase)) 
+                        wallTypeToUse = Getters.GetDoorId(segmentName, wallTypesJson); 
+                    else if (string.Equals(type, "Windows", StringComparison.OrdinalIgnoreCase)) 
+                        wallTypeToUse = Getters.GetWindowId(segmentName, wallTypesJson); 
+                    else if (string.Equals(type, "Walls", StringComparison.OrdinalIgnoreCase)) 
+                        wallTypeToUse = Getters.GetWallId(segmentName, wallTypesJson); 
                     else
                         continue;
 
