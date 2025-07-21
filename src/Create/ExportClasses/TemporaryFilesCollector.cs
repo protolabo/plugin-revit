@@ -10,6 +10,8 @@ namespace Create.ExportClasses
 {
     internal class TemporaryFilesCollector
     {
+        // This fonction deletes the temporary folder that contains the neccesary files to create
+        // the final Ekahau file.
         public static void DeleteTemporaryFiles()
         {
             try

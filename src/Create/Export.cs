@@ -26,8 +26,10 @@ namespace Create
         {
             // The 'ModelData.ExportModelData' function generates a JSON file containing information
             // about the model's walls, windows, and doors.
-            // - Once the file has been created, this function uses the WallOpen.ProcessWallOpen function to split
-            //      the walls into sections that do not contain doors or windows.
+            // - Use the WindowDoorDimensions.GetWindowDoorDimensions function to obtain the dimensions of elements
+            //      embedded in the walls, such as doors and windows
+            // - Once the json file has been created, this function uses the WallSplitter.SplitWallByOpening function to split
+            //      the walls into sections according to the openings in the wall.
             // - Finally, this function uses the ImageCreator.PrepareImageAndFiles function to export the selected views
             //      as BMP images and creates a JSON file that contains the information of those images.
             ModelDataExporter.ExportModelData(commandData);

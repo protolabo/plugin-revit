@@ -13,6 +13,7 @@ namespace Create.ExportClasses
     {
         public static Result FormatImagesAndCreateJsonFile(string destDir)
         {
+            // Path to files
             string buildFilesPath = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
             string exportDir = Path.Combine(buildFilesPath, "build_files", "tempFolder");
             string[] exportedBmps = Directory.GetFiles(exportDir, "exported_view - *.bmp");
@@ -46,7 +47,7 @@ namespace Create.ExportClasses
                     double width = img.Width;
                     double height = img.Height;
 
-                    // Add to images.json
+                    // Add to Ekahau json file images.json
                     JObject imageEntry = new JObject
                     {
                         ["imageFormat"] = "BMP",
@@ -57,7 +58,7 @@ namespace Create.ExportClasses
                     };
                     imagesArray.Add(imageEntry);
 
-                    // Add to floorPlans.json
+                    // Add to Ekahau json file floorPlans.json
                     JObject floorEntry = new JObject
                     {
                         ["name"] = originalImageName,
@@ -93,6 +94,7 @@ namespace Create.ExportClasses
             return Result.Succeeded;
         }
 
+        // This function is used to automatically specify the model scale in Ekahau
         private static double GetMetersPerUnit(string imageName, string directoryPath, JArray viewInfo)
         {
             // Convert image name to view name and construct the path for elements JSON

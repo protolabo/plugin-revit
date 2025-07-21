@@ -30,6 +30,7 @@ namespace Create.ExportClasses
             string buildFilesDir = Path.Combine(assemblyFolder, "build_files");
             string tempFolderPath = Path.Combine(buildFilesDir, "tempFolder");
 
+            // Delete temporary folder from previous exports if exists.
             if (Directory.Exists(tempFolderPath))
             {
                 TemporaryFilesCollector.DeleteTemporaryFiles();
@@ -37,6 +38,7 @@ namespace Create.ExportClasses
 
             Directory.CreateDirectory(tempFolderPath);
 
+            // Extract all the pertinent information from the REvit Model
             foreach (var viewId in window.SelectedViewIds)
             {
                 View view = doc.GetElement(viewId) as View;
@@ -108,7 +110,8 @@ namespace Create.ExportClasses
                     // Final list of openings
                     var openings = new List<object>();
 
-                    // Doors/Windows
+                    // WindowDoorDimensions.GetWindowDoorDimensions returns an object containing
+                    // position and dimensions for windows and doors
                     openings.AddRange(
                         hostedInWall.Select(inst =>
                             WindowDoorDimensions.GetWindowDoorDimensions(
@@ -119,7 +122,8 @@ namespace Create.ExportClasses
                         )
                     );
 
-                    // General Opening
+                    // Get the position and dimensions for General Openings and creates and object 
+                    // with these informatoins
                     openings.AddRange(
                         openingElements.Select(el =>
                         {
@@ -178,12 +182,12 @@ namespace Create.ExportClasses
 
                 File.WriteAllText(filePath, JsonConvert.SerializeObject(new { walls = output }, Formatting.Indented));
 
-                // The 'WallOpen.ProcessWallOpen' function splits walls and removes the sections occupied by doors or windows.
+                // The 'WallSplitter.SplitWallByOpening' function splits walls in segments according to the openings
+                // in the wall and add them to the list of openings in the wall from the original file.
                 // For example, if a wall contains a door, this function creates one wall segment from the original start point
                 // to one end of the door, and another segment from the other end of the door to the original wall's endpoint.
-                // In the end, it generates a JSON file containing the information of all resulting walls,
-                // including those that originally had no doors or windows.
-                WallSplitter.SplitWallByOpening($"elements_{viewName}", $"empty_walls_{viewName}");
+                // In the end, it generates a copy of the original JSON file adding the new segments.
+                WallSplitter.SplitWallByOpening($"elements_{viewName}", $"segmented_walls_{viewName}");
 
                 // The 'ImageCreator.PrepareImageAndFiles' function exports BMP images for each view
                 // and creates the corresponding JSON file containing metadata about those images.

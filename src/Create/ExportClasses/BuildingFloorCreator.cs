@@ -23,18 +23,21 @@ namespace Create.ExportClasses
                 throw new FileNotFoundException("One or more required files (floorPlans.json, buildings.json, floorTypes.json) are missing.");
             }
 
-            // Load floorPlanIds
+            // Load floorPlanIds from Ekahau json file floorPlans to match avery floor plan to the corresponding
+            // building floor
             var floorPlansJson = JObject.Parse(File.ReadAllText(floorPlansPath));
             var floorPlans = floorPlansJson["floorPlans"] as JArray;
             var floorPlanIds = floorPlans.Select(fp => fp["id"]?.ToString()).Where(id => !string.IsNullOrEmpty(id)).ToList();
 
-            // Get buildingId
+            // Get buildingId to macth every building floor with te corresponding building
+            // (for this code there will be only one building)
             var buildingsJson = JObject.Parse(File.ReadAllText(buildingsPath));
             var buildingId = buildingsJson["buildings"]?[0]?["id"]?.ToString();
             if (string.IsNullOrEmpty(buildingId))
                 throw new Exception("No buildingId found in buildings.json");
 
             // Get floorTypeId from floorTypes.json by searching for key = 'FloorTypes.OfficeUS'
+            // by default this code will always use 'FloorTypes.OfficeUS'
             var floorTypesJson = JObject.Parse(File.ReadAllText(floorTypesPath));
             var floorTypes = floorTypesJson["floorTypes"] as JArray;
             var floorType = floorTypes?.FirstOrDefault(ft => ft["key"]?.ToString() == "FloorTypes.OfficeUS");
@@ -42,7 +45,7 @@ namespace Create.ExportClasses
             if (string.IsNullOrEmpty(floorTypeId))
                 throw new Exception("FloorType with key 'FloorTypes.OfficeUS' not found.");
 
-            // Create entries
+            // Create one building floor for every view in Revit Model
             var buildingFloors = new JArray();
             for (int i = 0; i < floorPlanIds.Count; i++)
             {

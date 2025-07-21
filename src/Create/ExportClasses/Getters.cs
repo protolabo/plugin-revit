@@ -11,20 +11,20 @@ namespace Create.ExportClasses
 {
     internal class Getters
     {
+        // These functions return the corresponding ID for each wall type from the Ekahau wallTypes JSON file.
         public static string GetWallId(string wall, string wallTypesJson)
         {
             try
             {
+                // Get the corresponding Ekahau wall type for the choosen Revit wall from wall_data.json
                 string dataFilePath = Path.Combine(
                     Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location),
                     "wall_data.json"
                 );
 
                 string wallDataJson = File.ReadAllText(dataFilePath);
-
                 // parse the JSON directly with JObject
                 var wallDataArray = Newtonsoft.Json.Linq.JArray.Parse(wallDataJson);
-
                 string ekahauName = "Unknown"; // default valkue
 
                 foreach (var item in wallDataArray)

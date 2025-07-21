@@ -4,8 +4,6 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Create.ExportClasses
 {
@@ -18,31 +16,101 @@ namespace Create.ExportClasses
             string outputPath = Path.Combine(buildToolsPath, $"{outputFileName}.json");
 
             string json = File.ReadAllText(inputPath);
-            var data = JsonConvert.DeserializeObject<Dictionary<string, List<WallData>>>(json);
+            var jsonObject = JObject.Parse(json);
+            var walls = (JArray)jsonObject["walls"];
 
-            List<WallData> wallResults = new List<WallData>();
-            // This ID doesn't have any real significance.
-            int baseId = 1000000;
-
-            foreach (var wall in data["walls"])
+            foreach (var wall in walls)
             {
-                var openings = wall.openings ?? new List<OpeningData>();
-
-                if (openings.Count == 0)
-                {
-                    // Ignore walls shorter than one inch in length.
-                    // These are considered too small to be relevant for processing or export.
-                    // This code may change if we get all walls connected!!!!!!!!
-                    if (LengthBetweenPoints(wall.start, wall.end) >= 0.08)
-                        wallResults.Add(wall);
+                // Checks if the wall is valid
+                if (wall["start"] == null || wall["end"] == null)
                     continue;
+
+                // Get list of origial openings
+                var openingsArray = (JArray)(wall["openings"] ?? new JArray());
+                var openingList = openingsArray.Select(o => o.ToObject<OpeningData>()).ToList();
+
+                var baseWall = new WallData
+                {
+                    id = (int)wall["id"],
+                    name = wall["name"]?.ToString(),
+                    type = wall["type"]?.ToString(),
+                    start = wall["start"].ToObject<Point>(),
+                    end = wall["end"].ToObject<Point>(),
+                    openings = new List<OpeningData>()
+                };
+
+                List<WallData> segments = new List<WallData>();
+
+                // Split wall in segments according to openings list
+                RecursiveWallSplit(baseWall, openingList, segments);
+
+                // Create an object for every segment
+                foreach (var segment in segments)
+                {
+                    var wallSegmentObj = new JObject
+                    {
+                        ["type"] = "Walls",
+                        ["name"] = segment.name,
+                        ["start_point"] = JObject.FromObject(segment.start),
+                        ["end_point"] = JObject.FromObject(segment.end),
+                        ["openings"] = new JArray()
+                    };
+
+                    openingsArray.Add(wallSegmentObj);
                 }
 
-                baseId = RecursiveWallSplit(wall, openings, wallResults, baseId);
+                // Remove "voids" from the final openings list.
+                var filteredOpenings = new JArray(openingsArray.Where(o => o["type"]?.ToString() != "Opening"));
+                wall["openings"] = filteredOpenings;
             }
 
-            var resultJson = JsonConvert.SerializeObject(new { walls = wallResults }, Formatting.Indented);
-            File.WriteAllText(outputPath, resultJson);
+            // At this point, the final list of openings contains only doors, windows, and the wall segments that make up the main wall.
+            // To ensure their proper interconnection, it is necessary to make sure that the wall segments are ordered,
+            // and that the start and end points of each segment are also in the correct order.
+            foreach (var wall in walls)
+            {
+                if (wall["start"] == null || wall["end"] == null || wall["openings"] == null)
+                    continue;
+
+                // Check whether the wall is vertical or horizontal.
+                double startX = wall["start"]["x"].Value<double>();
+                double endX = wall["end"]["x"].Value<double>();
+                double startY = wall["start"]["y"].Value<double>();
+                double endY = wall["end"]["y"].Value<double>();
+                string axis = Math.Abs(startX - endX) < 1e-6 ? "y" : "x";
+
+                var openings = (JArray)wall["openings"];
+
+                // Reorder each segment in ascending order, including its start and end points
+                var orderedOpenings = openings.Select(o =>
+                {
+                    var type = o["type"]?.ToString();
+
+                    if (type == "Doors" || type == "Windows" || type == "Walls")
+                    {
+                        var sp = o["start_point"].ToObject<Point>();
+                        var ep = o["end_point"].ToObject<Point>();
+
+                        bool swap = axis == "x" ? sp.x > ep.x : sp.y > ep.y;
+                        if (swap)
+                        {
+                            o["start_point"] = JObject.FromObject(ep);
+                            o["end_point"] = JObject.FromObject(sp);
+                        }
+                    }
+
+                    var point = o["start_point"];
+                    double sortValue = axis == "x" ? point["x"].Value<double>() : point["y"].Value<double>();
+                    return new { sortValue, obj = o };
+                })
+                .OrderBy(x => x.sortValue)
+                .Select(x => x.obj)
+                .ToList();
+
+                wall["openings"] = new JArray(orderedOpenings);
+            }
+
+            File.WriteAllText(outputPath, jsonObject.ToString(Formatting.Indented));
         }
 
         static double LengthBetweenPoints(Point p1, Point p2)
@@ -64,38 +132,23 @@ namespace Create.ExportClasses
                    (yMin - margin <= center.y && center.y <= yMax + margin);
         }
 
-        // Recursively splits a wall into segments based on the openings (e.g., doors/windows) it contains.
-        //
-        // Parameters:
-        // - wall: The current wall segment to process.
-        // - openings: A list of openings that intersect with this wall segment.
-        // - results: A list where the resulting wall segments without openings will be added.
-        // - newBaseId: The current ID to assign to newly created wall segments.
-        //
-        // Process:
-        // 1. If there are no openings left to process, check if the wall segment's length is at least 0.08 units (approx. 1 inch).
-        //    If so, add it to the results list and return the current newBaseId.
-        // 2. Determine the axis of the wall segment (either "x" or "y") based on the start and end points.
-        //    If the wall is not aligned along X or Y (i.e., diagonal), check length and add it directly to results.
-        // 3. Extract the start and end coordinates of the first opening relative to the wall's axis.
-        // 4. Calculate distances from the wall's start and end to the opening's start and end to find which end to split from.
-        // 5. Depending on which distance is shorter, split the wall segment at the appropriate opening edge:
-        //    - Create two new wall segments (wall1 and wall2).
-        //    - Assign new IDs to each segment.
-        //    - Adjust start and end points accordingly to exclude the opening area.
-        // 6. Increment newBaseId by 2 to prepare IDs for further recursive splits.
-        // 7. Recursively call `RecursiveWallSplit` on the two new wall segments, passing only the openings that lie inside each segment.
-        // 8. Return the updated newBaseId for continued ID assignment.
-        //
-        // This function effectively divides a wall into smaller segments around openings, 
-        // ensuring each wall segment in the results does not intersect with any opening.
-        static int RecursiveWallSplit(WallData wall, List<OpeningData> openings, List<WallData> results, int newBaseId)
+        // The function RecursiveWallSplit is a recursive function that divides a wall into segments depending on the openings
+        // it contains and removes the segments that overlap with the openings to place the corresponding opening in their place.
+        // This function receives a wall, a list of openings, and a list of results.
+        //  - Base case: If the wall does not contain any openings, the wall is added to the results list.
+        //  - Recursive case: The first opening is taken (the first in the list, not necessarily the first in position),
+        //      and the wall is split into two: one segment from one end of the wall to one end of the opening,
+        //      and another segment from the other end of the opening to the other end of the wall.
+        //      Then, the openings are assigned to the appropriate wall segments, the opening used to divide the wall is removed,
+        //      and the function is called recursively with the new wall segments and their corresponding remaining openings.
+        static void RecursiveWallSplit(WallData wall, List<OpeningData> openings, List<WallData> results)
         {
             if (openings.Count == 0)
             {
+                // if the wall is less than 1 inch in length, ignore it
                 if (LengthBetweenPoints(wall.start, wall.end) >= 0.08)
                     results.Add(wall);
-                return newBaseId;
+                return;
             }
 
             var opening = openings[0];
@@ -106,56 +159,49 @@ namespace Create.ExportClasses
             else if (Math.Abs(wall.start.y - wall.end.y) < 1e-6) axis = "x";
             else
             {
-                // Diagonal wall — apply full opening-exclusion split logic
                 double wallLength = LengthBetweenPoints(wall.start, wall.end);
                 if (wallLength < 0.08)
-                    return newBaseId;
+                    return;
 
-                // Determine which side of the opening is closer to wall.start
                 double distA = LengthBetweenPoints(wall.start, opening.start_point);
                 double distB = LengthBetweenPoints(wall.start, opening.end_point);
 
+                // Split wall in segments according to the opening
                 Point cut = distA < distB ? opening.start_point : opening.end_point;
                 Point other = distA < distB ? opening.end_point : opening.start_point;
 
-                // First segment: from wall.start to "cut"
                 var wall_d_1 = new WallData
                 {
                     type = wall.type,
-                    id = newBaseId,
                     name = wall.name,
                     start = new Point(wall.start),
                     end = new Point(cut),
                     openings = new List<OpeningData>()
                 };
 
-                // Second segment: from "other" to wall.end
                 var wall_d_2 = new WallData
                 {
                     type = wall.type,
-                    id = newBaseId + 1,
                     name = wall.name,
                     start = new Point(other),
                     end = new Point(wall.end),
                     openings = new List<OpeningData>()
                 };
 
-                newBaseId += 2;
-
-                // 🚫 Skip adding segments if both are too short (likely a rounding issue or bad split)
                 if (LengthBetweenPoints(wall_d_1.start, wall_d_1.end) < 0.08 &&
                     LengthBetweenPoints(wall_d_2.start, wall_d_2.end) < 0.08)
-                    return newBaseId;
+                    return;
 
-                // Determine which openings fall inside each new wall segment
+                // Filter the remaining openings to assign them to the newly created wall segments.
+                // For each new wall segment, only include openings whose centers lie within its boundaries.
+                // This ensures that each recursive call processes only the openings relevant to its segment.
                 var openings_d_1 = remainingOpenings.Where(op => IsCenterInsideWall(wall_d_1, CenterOfElement(op))).ToList();
                 var openings_d_2 = remainingOpenings.Where(op => IsCenterInsideWall(wall_d_2, CenterOfElement(op))).ToList();
 
-                // Recursively split each segment further if needed
-                newBaseId = RecursiveWallSplit(wall_d_1, openings_d_1, results, newBaseId);
-                newBaseId = RecursiveWallSplit(wall_d_2, openings_d_2, results, newBaseId);
+                RecursiveWallSplit(wall_d_1, openings_d_1, results);
+                RecursiveWallSplit(wall_d_2, openings_d_2, results);
 
-                return newBaseId;
+                return;
             }
 
             double openStart = axis == "x" ? opening.start_point.x : opening.start_point.y;
@@ -168,14 +214,15 @@ namespace Create.ExportClasses
 
             WallData wall1, wall2;
 
+            // Determines whether the opening is closer to the start or the end of the wall.
             if (distStart < distEnd)
             {
+                // Split wall in segments according to the opening
                 double cut = Math.Abs(startVal - openStart) < Math.Abs(startVal - openEnd) ? openStart : openEnd;
 
                 wall1 = new WallData
                 {
                     type = wall.type,
-                    id = newBaseId,
                     name = wall.name,
                     start = new Point(wall.start),
                     end = new Point(wall.start),
@@ -186,7 +233,6 @@ namespace Create.ExportClasses
                 wall2 = new WallData
                 {
                     type = wall.type,
-                    id = newBaseId + 1,
                     name = wall.name,
                     start = new Point(wall.end),
                     end = new Point(wall.end),
@@ -197,12 +243,12 @@ namespace Create.ExportClasses
             }
             else
             {
+                // Split wall in segments according to the opening
                 double cut = Math.Abs(endVal - openStart) < Math.Abs(endVal - openEnd) ? openStart : openEnd;
 
                 wall1 = new WallData
                 {
                     type = wall.type,
-                    id = newBaseId,
                     name = wall.name,
                     start = new Point(wall.end),
                     end = new Point(wall.end),
@@ -213,7 +259,6 @@ namespace Create.ExportClasses
                 wall2 = new WallData
                 {
                     type = wall.type,
-                    id = newBaseId + 1,
                     name = wall.name,
                     start = new Point(wall.start),
                     end = new Point(wall.start),
@@ -223,15 +268,16 @@ namespace Create.ExportClasses
                 else wall2.end.y = cut == openStart ? openEnd : openStart;
             }
 
-            newBaseId += 2;
-
+            // Filter the remaining openings to assign them to the newly created wall segments.
+            // For each new wall segment, only include openings whose centers lie within its boundaries.
+            // This ensures that each recursive call processes only the openings relevant to its segment.
             var openings1 = remainingOpenings.Where(op => IsCenterInsideWall(wall1, CenterOfElement(op))).ToList();
             var openings2 = remainingOpenings.Where(op => IsCenterInsideWall(wall2, CenterOfElement(op))).ToList();
 
-            newBaseId = RecursiveWallSplit(wall1, openings1, results, newBaseId);
-            newBaseId = RecursiveWallSplit(wall2, openings2, results, newBaseId);
+            RecursiveWallSplit(wall1, openings1, results);
+            RecursiveWallSplit(wall2, openings2, results);
 
-            return newBaseId;
+            return;
         }
     }
 
@@ -268,3 +314,6 @@ namespace Create.ExportClasses
         public List<OpeningData> openings;
     }
 }
+
+
+

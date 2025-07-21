@@ -1,127 +1,119 @@
 ﻿using Autodesk.Revit.DB;
-using Autodesk.Revit.UI;
 using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Text.Json;
-using System.Windows;
 
 namespace Create.ExportClasses
 {
     internal class WindowDoorDimensions
     {
-        private static string dataFilePath = Path.Combine(
-            Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location),
-            "door_data.json");
-
-        public static object GetWindowDoorDimensions(FamilyInstance inst, double wallX1, double wallY1, double wallZ1, double wallX2, double wallY2, double wallZ2)
+        public static object GetWindowDoorDimensions(FamilyInstance inst,
+            double wallX1, double wallY1, double wallZ1,
+            double wallX2, double wallY2, double wallZ2)
         {
             double width = 3.2;  // default width in feet
-            double height = 6.0; // default height in feet
+            double height = 6.3; // default height in feet
 
-            // Step 1: Search for width and height parameters in the instance
+            bool foundWidth = false;
+            bool foundHeight = false;
+
+            // 1. Search in instance parameters.
             Parameter widthParam = inst.LookupParameter("Width");
             Parameter heightParam = inst.LookupParameter("Height");
 
-            bool foundWidth = (widthParam != null && widthParam.HasValue);
-            bool foundHeight = (heightParam != null && heightParam.HasValue);
+            // 2. If not found, search in the FamilySymbol using BuiltInParameter.
+            if (widthParam == null || !widthParam.HasValue)
+                widthParam = inst.Symbol?.get_Parameter(BuiltInParameter.DOOR_WIDTH);
 
-            if (foundWidth)
+            if (heightParam == null || !heightParam.HasValue)
+                heightParam = inst.Symbol?.get_Parameter(BuiltInParameter.DOOR_HEIGHT);
+
+            if (widthParam != null && widthParam.HasValue)
+            {
                 width = widthParam.AsDouble();
+                foundWidth = true;
+            }
 
-            if (foundHeight)
+            if (heightParam != null && heightParam.HasValue)
+            {
                 height = heightParam.AsDouble();
+                foundHeight = true;
+            }
 
-            // Step 2: If missing, try to get from JSON data
-            //if (!foundWidth || !foundHeight)
-            //{
-            //    var doorDataList = LoadDoorDataFromJson();
+            // 3. If not found, retrieve from geometry.
+            if (!foundWidth || !foundHeight)
+            {
+                Options geomOptions = new Options
+                {
+                    ComputeReferences = false,
+                    IncludeNonVisibleObjects = false,
+                    DetailLevel = ViewDetailLevel.Fine
+                };
 
-            //    DoorData foundData = doorDataList?.Find(d => d.Name == inst.Name);
+                GeometryElement geomElement = inst.get_Geometry(geomOptions);
 
-            //    if (foundData != null)
-            //    {
-            //        if (!foundWidth && foundData.Width > 0)
-            //            width = foundData.Width;
+                double minX = double.MaxValue, maxX = double.MinValue;
+                double minY = double.MaxValue, maxY = double.MinValue;
+                double minZ = double.MaxValue, maxZ = double.MinValue;
 
-            //        if (!foundHeight && foundData.Height > 0)
-            //            height = foundData.Height;
+                foreach (GeometryObject obj in geomElement)
+                {
+                    if (obj is GeometryInstance geomInst)
+                    {
+                        GeometryElement symbolGeometry = geomInst.GetSymbolGeometry();
+                        foreach (GeometryObject geomObj in symbolGeometry)
+                        {
+                            if (geomObj is Solid solid && solid.Faces.Size > 0)
+                            {
+                                foreach (Edge edge in solid.Edges)
+                                {
+                                    foreach (XYZ point in edge.Tessellate())
+                                    {
+                                        minX = Math.Min(minX, point.X);
+                                        maxX = Math.Max(maxX, point.X);
+                                        minY = Math.Min(minY, point.Y);
+                                        maxY = Math.Max(maxY, point.Y);
+                                        minZ = Math.Min(minZ, point.Z);
+                                        maxZ = Math.Max(maxZ, point.Z);
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
 
-            //        foundWidth = foundWidth || foundData.Width > 0;
-            //        foundHeight = foundHeight || foundData.Height > 0;
-            //    }
-            //}
+                double geomWidth = maxX - minX;
+                double geomHeight = maxZ - minZ;
 
-            // Step 3: If any are still missing, ask the user to enter them.
-            //if (!foundWidth || !foundHeight)
-            //{
-            //    MessageBoxResult res = MessageBox.Show(
-            //        $"Las dimensiones del elemento '{inst.Name}' no fueron encontradas.\n¿Deseas agregarlas manualmente?",
-            //        "Faltan dimensiones",
-            //        MessageBoxButton.OKCancel,
-            //        MessageBoxImage.Warning);
+                if (!foundWidth && geomWidth > 0)
+                    width = geomWidth;
 
-            //    if (res == MessageBoxResult.OK)
-            //    {
-            //        // Create a new empty record with the name.
-            //        var newItem = new Create.DoorData
-            //        {
-            //            Name = inst.Name,
-            //            Width = foundWidth ? width : 0,
-            //            Height = foundHeight ? height : 0,
-            //            Thickness = 0
-            //        };
+                if (!foundHeight && geomHeight > 0)
+                    height = geomHeight;
+            }
 
-            //        // Show a window for the user to enter or correct data.
-            //        var dialog = new Create.EditOpeningsWindow(newItem);
-            //        bool? dialogResult = dialog.ShowDialog();
-
-            //        if (dialogResult == true)
-            //        {
-            //            // Get the updated object directly from the window.
-            //            var updatedData = dialog.EditedDoorData;
-
-            //            width = updatedData.Width > 0 ? updatedData.Width : width;
-            //            height = updatedData.Height > 0 ? updatedData.Height : height;
-
-            //            // Optional: immediately save to JSON for persistence.
-            //            SaveDoorDataToJson(updatedData);
-            //        }
-            //    }
-            //}
-
-            // Step 4: Determine the central position of the element
+            // 4. Calculate central position.
             XYZ center = null;
             object position = null;
+
             if (inst.Location is LocationPoint lp)
-            {
                 center = lp.Point;
-            }
             else if (inst.Location is LocationCurve lc)
-            {
                 center = lc.Curve.Evaluate(0.5, true);
-            }
             else
             {
-                var bbox = inst.get_BoundingBox(null);
+                BoundingBoxXYZ bbox = inst.get_BoundingBox(null);
                 if (bbox != null)
-                {
                     center = (bbox.Min + bbox.Max) / 2;
-                }
             }
 
-            // IMPORTANT!!! Add code for diagonal Walls.
             if (center != null)
             {
                 double x = center.X;
                 double y = center.Y;
                 double z = center.Z;
 
-                // Align X if it's constant in the wall
                 if (Math.Abs(wallX1 - wallX2) < 0.01)
                     x = wallX1;
-
-                // Align y if it's constant in the wall
                 if (Math.Abs(wallY1 - wallY2) < 0.01)
                     y = wallY1;
 
@@ -129,7 +121,7 @@ namespace Create.ExportClasses
                 position = new { x, y, z };
             }
 
-            // Step 5: Calculate start and end points
+            // 5. Calculate start_point y end_point
             object start_point = null;
             object end_point = null;
 
@@ -161,7 +153,7 @@ namespace Create.ExportClasses
                 }
             }
 
-            // Step 6: Return result
+            // 6. Return Object
             return new
             {
                 type = inst.Category?.Name ?? "Unknown",
@@ -174,51 +166,8 @@ namespace Create.ExportClasses
                 end_point
             };
         }
-
-        private static List<Create.WallData> LoadDoorDataFromJson()
-        {
-            try
-            {
-                if (File.Exists(dataFilePath))
-                {
-                    string json = File.ReadAllText(dataFilePath);
-                    return JsonSerializer.Deserialize<List<Create.WallData>>(json);
-                }
-            }
-            catch (Exception ex)
-            {
-                System.Diagnostics.Debug.WriteLine($"Error loading JSON from {dataFilePath}: {ex.Message}");
-            }
-            return null;
-        }
-
-        private static void SaveWallDataToJson(Create.WallData newData)
-        {
-            try
-            {
-                List<Create.WallData> list = LoadDoorDataFromJson() ?? new List<Create.WallData>();
-
-                var existing = list.Find(d => d.Revit == newData.Revit);
-                if (existing != null)
-                {
-                    existing.Ekahau = newData.Ekahau;
-                    existing.Structural = newData.Structural;
-                    existing.Architectural = newData.Architectural;
-                }
-                else
-                {
-                    list.Add(newData);
-                }
-
-                var options = new JsonSerializerOptions { WriteIndented = true };
-                string json = JsonSerializer.Serialize(list, options);
-                File.WriteAllText(dataFilePath, json);
-            }
-            catch (Exception ex)
-            {
-                System.Diagnostics.Debug.WriteLine($"Error saving JSON to {dataFilePath}: {ex.Message}");
-            }
-        }
     }
 }
+
+
 

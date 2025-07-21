@@ -103,14 +103,13 @@
     <Compile Include="ExportClasses\IDGenerator.cs" />
     <Compile Include="ExportClasses\EkahauFileCreator.cs" />
     <Compile Include="ExportClasses\ModelDataExporter.cs" />
-    <Compile Include="ExportClasses\WallListCreator.cs" />
     <Compile Include="ExportClasses\WindowDoorDimensions.cs" />
     <Compile Include="ExportClasses\Getters.cs" />
     <Compile Include="ExportClasses\ImageExporter.cs" />
     <Compile Include="ExportClasses\ImageJsonFileCreator.cs" />
     <Compile Include="ExportClasses\PointAndSegment.cs" />
     <Compile Include="ExportClasses\IDReferenceFiller.cs" />
-    <Compile Include="ExportClasses\OpeningsListCreator.cs" />
+    <Compile Include="ExportClasses\SegmentsListCreator.cs" />
     <Compile Include="ExportClasses\WallSplitter.cs" />
     <Compile Include="Import.cs" />
     <Compile Include="ImportClasses\AccesPointFamily.cs" />

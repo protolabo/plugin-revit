@@ -16,7 +16,7 @@ namespace Create.ExportClasses
             {
                 string assemblyFolder = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
 
-                // wall_data.json
+                // read wall_data.json
                 string wallDataPath = Path.Combine(assemblyFolder, "wall_data.json");
                 if (!File.Exists(wallDataPath))
                     return Result.Failed;
@@ -24,7 +24,7 @@ namespace Create.ExportClasses
                 var wallDataJson = File.ReadAllText(wallDataPath);
                 var wallDataArray = JArray.Parse(wallDataJson);
 
-                // wallTypes.json
+                // read wallTypes.json
                 string buildFilesDir = Path.Combine(assemblyFolder, "build_files");
                 string tempFolderPath = Path.Combine(buildFilesDir, "tempFolder");
                 string tempPath = Path.Combine(tempFolderPath, "Template");
@@ -36,10 +36,9 @@ namespace Create.ExportClasses
 
                 // parse the root object
                 var wallTypesObject = JObject.Parse(wallTypesJson);
-
                 var wallTypesArray = (JArray)wallTypesObject["wallTypes"];
 
-                // process each wall in wall_data
+                // update values from wall_data.json to Ekahau json file wallTypes.json
                 foreach (var wall in wallDataArray)
                 {
                     string ekahauName = (string)wall["Ekahau"];

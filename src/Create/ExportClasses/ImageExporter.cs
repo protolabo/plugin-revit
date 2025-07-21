@@ -46,14 +46,15 @@ namespace Create.ExportClasses
 
                 doc.ExportImage(imageOptions);
 
-                // Find the most recent exported file that contains the view name
+                // Find the most recent exported file that contains the view name to add its information 
+                // to the json file that contains the information for all exported images
                 var matchingImage = Directory.GetFiles(tempExportDir, $"exported_view - *{viewName}*.bmp")
                     .OrderByDescending(File.GetLastWriteTime)
                     .FirstOrDefault();
 
                 if (matchingImage == null) continue;
 
-                // Save image info in file.
+                // Save image information in file.
                 int width = 0, height = 0;
                 using (var bmp = new Bitmap(matchingImage))
                 {

@@ -13,6 +13,7 @@ namespace Create.ExportClasses
     {
         public static Result CreateEkahauBuildingFile(string destDir)
         {
+            // Creates the single building that will contain all the building floors, one per view.
             string buildingId = Guid.NewGuid().ToString();
 
             JObject buildingEntry = new JObject
