@@ -49,7 +49,7 @@ namespace Create
             // the name and location of the Ekahau file. It then copies the basic files required for creating
             // the Ekahau file. These files, stored in the 'monTemplate' folder, contain only the common information
             // shared by all Ekahau files. The missing information will be filled in progressively during the execution of the code.
-            result = FileTemplateCreator.CreateFileTemplate(ref chosenFileName, ref message, destDir);
+            result = FileTemplateCreator.CreateFileTemplate(ref chosenFileName, destDir);
             if (result != Result.Succeeded) return result;
 
             // Extracts the file name without its extension from the full path selected by the user.

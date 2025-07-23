@@ -101,15 +101,6 @@ namespace Create.ExportClasses
             }
         }
 
-        public static string GetAreaId(string requirementsJson)
-        {
-            var match = Regex.Match(
-                requirementsJson,
-                @"""name""\s*:\s*""Ekahau Best Practices"".*?""id""\s*:\s*""([^""]+)""",
-                RegexOptions.Singleline
-            );
-            return match.Success ? match.Groups[1].Value : "";
-        }
     }
 }
 

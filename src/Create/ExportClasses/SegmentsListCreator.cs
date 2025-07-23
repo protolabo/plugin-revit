@@ -10,7 +10,7 @@ namespace Create.ExportClasses
 {
     internal class SegmentsListCreator
     {
-        public static void FillOpeningsList(
+        public static void FillSegmentsList(
             JToken elementsJson,
             string floorPlanId,
             Func<double, double> convertX,

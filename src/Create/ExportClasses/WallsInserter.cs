@@ -76,7 +76,7 @@ namespace Create.ExportClasses
 
                     // The SegmentsListCreator.FillOpeningsList function adds the corresponding wallPoints and wallSegments 
                     // for each door, window and wall segment to the appropriate lists, using the required format for inclusion in the Ekahau JSON file.
-                    SegmentsListCreator.FillOpeningsList(elementsJson, floorPlanId, convertX, convertY, tempPath, wallPointsList, wallSegmentsList);
+                    SegmentsListCreator.FillSegmentsList(elementsJson, floorPlanId, convertX, convertY, tempPath, wallPointsList, wallSegmentsList);
 
                 }
 

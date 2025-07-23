@@ -12,7 +12,7 @@ namespace Create.ExportClasses
 {
     internal class FileTemplateCreator
     {
-        public static Result CreateFileTemplate(ref string chosenFileName, ref string message, string destDir)
+        public static Result CreateFileTemplate(ref string chosenFileName, string destDir)
         {
             // Opens a dialog box allowing the user to choose the filename and location for saving the file.
             using (SaveFileDialog saveFileDialog = new SaveFileDialog())
@@ -26,7 +26,6 @@ namespace Create.ExportClasses
 
                 if (result != DialogResult.OK)
                 {
-                    message = "Operation cancelled by the user.";
                     return Result.Cancelled;
                 }
 
@@ -45,7 +44,6 @@ namespace Create.ExportClasses
             }
             catch (Exception ex)
             {
-                message = $"Error copying template files: {ex.Message}";
                 return Result.Failed;
             }
 
