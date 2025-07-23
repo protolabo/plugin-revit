@@ -992,6 +992,72 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#division-des-murs-en-segments" class="md-nav__link">
+    <span class="md-ellipsis">
+      Division des murs en segments
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Division des murs en segments">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#division-des-murs" class="md-nav__link">
+    <span class="md-ellipsis">
+      Division des murs
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tri-des-ouvertures" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tri des ouvertures
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#interconnexion-entre-murs-et-segments" class="md-nav__link">
+    <span class="md-ellipsis">
+      Interconnexion entre murs et segments
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Interconnexion entre murs et segments">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#interconnexion-entre-segments" class="md-nav__link">
+    <span class="md-ellipsis">
+      Interconnexion entre segments
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#interconnexion-entre-murs" class="md-nav__link">
+    <span class="md-ellipsis">
+      Interconnexion entre murs
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#description-des-classes" class="md-nav__link">
     <span class="md-ellipsis">
       Description des classes
@@ -1966,6 +2032,72 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#division-des-murs-en-segments" class="md-nav__link">
+    <span class="md-ellipsis">
+      Division des murs en segments
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Division des murs en segments">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#division-des-murs" class="md-nav__link">
+    <span class="md-ellipsis">
+      Division des murs
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tri-des-ouvertures" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tri des ouvertures
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#interconnexion-entre-murs-et-segments" class="md-nav__link">
+    <span class="md-ellipsis">
+      Interconnexion entre murs et segments
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Interconnexion entre murs et segments">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#interconnexion-entre-segments" class="md-nav__link">
+    <span class="md-ellipsis">
+      Interconnexion entre segments
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#interconnexion-entre-murs" class="md-nav__link">
+    <span class="md-ellipsis">
+      Interconnexion entre murs
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#description-des-classes" class="md-nav__link">
     <span class="md-ellipsis">
       Description des classes
@@ -2800,6 +2932,177 @@ Longueur ≈ <strong>540,83 pixels</strong></p>
 </code></pre></div>
 <p><img alt="result scale basic model" src="../images/scale_basic.png" />
 <img alt="result scale advance model" src="../images/scale_advance.png" /></p>
+<h2 id="division-des-murs-en-segments"><u>Division des murs en segments</u><a class="headerlink" href="#division-des-murs-en-segments" title="Permanent link">&para;</a></h2>
+<h3 id="division-des-murs">Division des murs<a class="headerlink" href="#division-des-murs" title="Permanent link">&para;</a></h3>
+<p>Supposons que nous ayons un mur avec deux fenêtres, comme illustré sur l’image: </p>
+<p><img alt="représentation d’un mur avec deux fenêtres" src="../images/wall_split/two_windows.png" /></p>
+<p>Par conséquent, si l’on trace le mur et les fenêtres de cette manière, la section du mur correspondant aux fenêtres contiendra à la fois 
+le matériau du vitrage de la fenêtre et celui du mur, et l’analyse de la propagation du signal Internet lors de la simulation dans Ekahau 
+donnera des résultats imprécis.</p>
+<p><img alt="mur avec deux fenêtres sans ouvertures" src="../images/wall_split/two_windows_above.png" /></p>
+<p>Pour cette raison, il est nécessaire de diviser le mur en sections, comme illustré sur la figure.</p>
+<p><img alt="mur avec deux fenêtres et ouvertures" src="../images/wall_split/two_windows_splited.png" /></p>
+<p>Pour cela, nous utiliserons une fonction récursive qui divise le mur en segments en respectant les limites des ouvertures intégrées dans le mur. 
+Pour comprendre le fonctionnement de cette fonction, nous analyserons le mur présenté précédemment. L’algorithme de la fonction, ainsi que les 
+paramètres qu’elle reçoit, seront simplifiés pour une meilleure compréhension.</p>
+<ul>
+<li>
+<p>La fonction reçoit un mur accompagné de la liste des ouvertures qu’il contient. Le mur est défini par ses points de départ et d’arrivée, 
+et chaque ouverture est définie par ses points de départ, intermédiaire et d’arrivée.</p>
+</li>
+<li>
+<p>La fonction prend la première ouverture de la liste et divise le mur en deux segments : l’un allant d’une extrémité du mur à une 
+extrémité de l’ouverture, et l’autre allant de l’autre extrémité du mur à l’autre extrémité de l’ouverture. Pour le moment, il n’est pas important 
+que les ouvertures soient ordonnées. Pour cet exemple, nous supposerons que la première ouverture de la liste est en réalité la deuxième ouverture 
+de gauche à droite. Pour diviser correctement le mur en deux segments, il est nécessaire de déterminer quelle extrémité du mur est la plus proche 
+de chaque extrémité de l’ouverture, comme illustré sur la figure :</p>
+</li>
+</ul>
+<p><img alt="division incorrecte du mur" src="../images/wall_split/two_windows_wrong.png" />
+<img alt="division correcte du mur" src="../images/wall_split/two_windows_rigth.png" /></p>
+<p>Ce fragment de code permet de s’assurer que le mur est segmenté correctement:
+<div class="highlight"><pre><span></span><code><span class="w">  </span><span class="kt">double</span><span class="w"> </span><span class="n">openStart</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">axis</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s">&quot;x&quot;</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="n">opening</span><span class="p">.</span><span class="n">start_point</span><span class="p">.</span><span class="n">x</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">opening</span><span class="p">.</span><span class="n">start_point</span><span class="p">.</span><span class="n">y</span><span class="p">;</span>
+<span class="w">  </span><span class="kt">double</span><span class="w"> </span><span class="n">openEnd</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">axis</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s">&quot;x&quot;</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="n">opening</span><span class="p">.</span><span class="n">end_point</span><span class="p">.</span><span class="n">x</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">opening</span><span class="p">.</span><span class="n">end_point</span><span class="p">.</span><span class="n">y</span><span class="p">;</span>
+<span class="w">  </span><span class="kt">double</span><span class="w"> </span><span class="n">startVal</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">axis</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s">&quot;x&quot;</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="n">wall</span><span class="p">.</span><span class="n">start</span><span class="p">.</span><span class="n">x</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">wall</span><span class="p">.</span><span class="n">start</span><span class="p">.</span><span class="n">y</span><span class="p">;</span>
+<span class="w">  </span><span class="kt">double</span><span class="w"> </span><span class="n">endVal</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">axis</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s">&quot;x&quot;</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="n">wall</span><span class="p">.</span><span class="n">end</span><span class="p">.</span><span class="n">x</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">wall</span><span class="p">.</span><span class="n">end</span><span class="p">.</span><span class="n">y</span><span class="p">;</span>
+
+<span class="w">  </span><span class="kt">double</span><span class="w"> </span><span class="n">distStart</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Math</span><span class="p">.</span><span class="n">Min</span><span class="p">(</span><span class="n">Math</span><span class="p">.</span><span class="n">Abs</span><span class="p">(</span><span class="n">startVal</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">openStart</span><span class="p">),</span><span class="w"> </span><span class="n">Math</span><span class="p">.</span><span class="n">Abs</span><span class="p">(</span><span class="n">startVal</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">openEnd</span><span class="p">));</span>
+<span class="w">  </span><span class="kt">double</span><span class="w"> </span><span class="n">distEnd</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Math</span><span class="p">.</span><span class="n">Min</span><span class="p">(</span><span class="n">Math</span><span class="p">.</span><span class="n">Abs</span><span class="p">(</span><span class="n">endVal</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">openStart</span><span class="p">),</span><span class="w"> </span><span class="n">Math</span><span class="p">.</span><span class="n">Abs</span><span class="p">(</span><span class="n">endVal</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">openEnd</span><span class="p">));</span>
+
+<span class="w">  </span><span class="n">WallData</span><span class="w"> </span><span class="n">wall1</span><span class="p">,</span><span class="w"> </span><span class="n">wall2</span><span class="p">;</span>
+
+<span class="w">  </span><span class="c1">// Determines whether the opening is closer to the start or the end of the wall.</span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">distStart</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">distEnd</span><span class="p">)</span>
+<span class="w">  </span><span class="p">{</span>
+<span class="w">      </span><span class="c1">// Split wall in segments according to the opening</span>
+<span class="w">      </span><span class="kt">double</span><span class="w"> </span><span class="n">cut</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Math</span><span class="p">.</span><span class="n">Abs</span><span class="p">(</span><span class="n">startVal</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">openStart</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">Math</span><span class="p">.</span><span class="n">Abs</span><span class="p">(</span><span class="n">startVal</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">openEnd</span><span class="p">)</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="n">openStart</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">openEnd</span><span class="p">;</span>
+
+<span class="w">      </span><span class="c1">// code continues...</span>
+</code></pre></div></p>
+<ul>
+<li>
+<p>Après avoir divisé le mur, le code supprime l’ouverture de la liste des ouvertures. Pour chaque segment du mur, 
+le code crée une nouvelle liste d’ouvertures et détermine quelles ouvertures correspondent à quel segment du mur.
+Ensuite, elle appelle la fonction récursivement avec chaque segment de mur créé et sa liste correspondante.</p>
+</li>
+<li>
+<p>Le segment de droite ne contient aucune ouverture, tandis que le segment de gauche en contient une. Par conséquent, 
+le segment de droite correspond au cas de base de la fonction récursive et s’arrête, en ajoutant ce segment à la liste 
+des résultats, tandis que le segment de gauche doit à nouveau diviser le mur.</p>
+</li>
+</ul>
+<p><img alt="division restante du mur" src="../images/wall_split/two_windows_rigth_2.png" /></p>
+<ul>
+<li>Le mur est de nouveau divisé en deux segments, et une nouvelle liste d’ouvertures est créée pour chaque segment. 
+Étant donné qu’il ne reste plus d’ouvertures, les deux listes seront vides et les deux segments correspondront au 
+cas de base lors de l’appel récursif de la fonction. Par conséquent, les deux segments sont ajoutés à la liste des 
+résultats et l’exécution de la fonction récursive se termine. On obtient ainsi le mur complètement segmenté.</li>
+</ul>
+<p><img alt="résultat final" src="../images/wall_split/two_windows_splited.png" /></p>
+<h3 id="tri-des-ouvertures">Tri des ouvertures<a class="headerlink" href="#tri-des-ouvertures" title="Permanent link">&para;</a></h3>
+<p>Pour faciliter l’interconnexion des segments, nous devons trier les murs de manière ascendante, ainsi que leurs points de départ et d’arrivée. 
+Supposons que le mur précédent ne contienne pas deux fenêtres, mais une fenêtre et un “vide” que le concepteur a inséré pour que le propriétaire 
+de la maison puisse y placer un électroménager. La représentation graphique serait alors la suivante :</p>
+<p><img alt="mur avec une fenêtre et une ouverture" src="../images/wall_split/window_opening.png" /></p>
+<p>Étant donné que les listes de murs et d’ouvertures ne conservent pas de relation directe avec le modèle graphique, il est possible que la 
+liste des ouvertures du mur ressemble à ceci :</p>
+<p><div class="highlight"><pre><span></span><code><span class="w">    </span><span class="nt">&quot;openings&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">      </span><span class="p">{</span>
+<span class="w">          </span><span class="nt">&quot;type&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;wall&quot;</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">&quot;start_point&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">&quot;end_point&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">6</span>
+<span class="w">      </span><span class="p">},</span>
+<span class="w">      </span><span class="p">{</span>
+<span class="w">          </span><span class="nt">&quot;type&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;void&quot;</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">&quot;start_point&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">6</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">&quot;end_point&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">8</span>
+<span class="w">      </span><span class="p">},</span>
+<span class="w">      </span><span class="p">{</span>
+<span class="w">          </span><span class="nt">&quot;type&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;window&quot;</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">&quot;start_point&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">&quot;end_point&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">2</span>
+<span class="w">      </span><span class="p">},</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">          </span><span class="nt">&quot;type&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;wall&quot;</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">&quot;start_point&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">&quot;end_point&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">2</span>
+<span class="w">      </span><span class="p">},</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">          </span><span class="nt">&quot;type&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;wall&quot;</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">&quot;start_point&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">&quot;end_point&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">8</span>
+<span class="w">      </span><span class="p">}</span>
+<span class="w">    </span><span class="p">]</span>
+</code></pre></div>
+Après avoir divisé le mur en segments, le code s’assure que les ouvertures ainsi que leurs points de départ et d’arrivée sont stockés dans le bon ordre.</p>
+<div class="highlight"><pre><span></span><code><span class="w">    </span><span class="nt">&quot;openings&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">      </span><span class="p">{</span>
+<span class="w">          </span><span class="nt">&quot;type&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;wall&quot;</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">&quot;start_point&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">&quot;end_point&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">2</span>
+<span class="w">      </span><span class="p">},</span>
+<span class="w">      </span><span class="p">{</span>
+<span class="w">          </span><span class="nt">&quot;type&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;window&quot;</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">&quot;start_point&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">&quot;end_point&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">4</span>
+<span class="w">      </span><span class="p">},</span>
+<span class="w">      </span><span class="p">{</span>
+<span class="w">          </span><span class="nt">&quot;type&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;wall&quot;</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">&quot;start_point&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">&quot;end_point&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">6</span>
+<span class="w">      </span><span class="p">},</span>
+<span class="w">      </span><span class="p">{</span>
+<span class="w">          </span><span class="nt">&quot;type&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;void&quot;</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">&quot;start_point&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">6</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">&quot;end_point&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">8</span>
+<span class="w">      </span><span class="p">},</span>
+<span class="w">      </span><span class="p">{</span>
+<span class="w">          </span><span class="nt">&quot;type&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;wall&quot;</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">&quot;start_point&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">8</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">&quot;end_point&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">10</span>
+<span class="w">      </span><span class="p">}</span>
+<span class="w">    </span><span class="p">]</span>
+</code></pre></div>
+<h2 id="interconnexion-entre-murs-et-segments"><u>Interconnexion entre murs et segments</u><a class="headerlink" href="#interconnexion-entre-murs-et-segments" title="Permanent link">&para;</a></h2>
+<p>L’interconnexion des murs et de leurs segments se fait en deux étapes.</p>
+<h3 id="interconnexion-entre-segments">Interconnexion entre segments<a class="headerlink" href="#interconnexion-entre-segments" title="Permanent link">&para;</a></h3>
+<p>Pour commencer, analysons comment connecter les différents segments de mur entre eux. </p>
+<p>Pour créer un mur dans Ekahau, il est nécessaire d’ajouter deux points dans le fichier wallPoints.json avec leurs ID respectifs, 
+puis de créer un segment dans le fichier wallSegments.json en faisant référence aux ID de ces points.</p>
+<p>Pour cette étape, le premier segment n’est pas pris en compte car ce segment contient le point initial du mur, qui sera utilisé ultérieurement 
+pour tenter de connecter le mur avec d’autres murs du modèle. Supposons que le premier segment ait déjà été placé, 
+c’est-à-dire que ses points initial et final sont déjà enregistrés dans le fichier correspondant.</p>
+<p>Pour le mur de l’exemple, on constate que le point final du premier segment est suffisamment proche du point initial du second segment 
+(en fait, ils sont au même point). Donc, au lieu de créer un nouveau point initial pour le second segment, on prend simplement l’ID 
+correspondant au point final du premier segment, on crée un nouveau point correspondant au point final du second segment, puis on crée le segment. 
+Ainsi, pour tracer les deux segments, seuls trois points sont nécessaires, et les murs seront interconnectés.</p>
+<p>Ce processus se répète successivement jusqu’à la fin de la liste des segments.</p>
+<p>Étant donné que les vides ne sont pas tracés, la distance entre le point final du troisième segment et le point initial du 
+cinquième (puisque le vide correspond au quatrième segment) ne permet pas de réaliser l’interconnexion entre les segments. 
+Par conséquent, pour le cinquième segment, il est nécessaire de créer les points initial et final dans le fichier JSON correspondant.</p>
+<h3 id="interconnexion-entre-murs">Interconnexion entre murs<a class="headerlink" href="#interconnexion-entre-murs" title="Permanent link">&para;</a></h3>
+<p>Pour réaliser la connexion entre murs, on utilise une liste auxiliaire qui contient les points initial et final de tous les murs tracés. 
+Ces points correspondent au point initial du premier segment et au point final du dernier segment. Cette liste contient les coordonnées 
+du point ainsi que son ID correspondant</p>
+<p>Pour réaliser l’interconnexion entre murs, il existe deux cas.</p>
+<ul>
+<li>Le mur ne contient qu’un seul segment.</li>
+</ul>
+<p>Si le mur ne contient qu’un seul segment, cela signifie qu’il n’a pas d’ouvertures. Dans ce cas, les points initial et final du 
+segment correspondent aux points initial et final du mur. Pour ce type de murs, on recherche dans la liste auxiliaire s’il existe 
+un point proche de chaque extrémité permettant de réaliser la connexion. S’il n’existe pas de point suffisamment proche pour l’un 
+des points d’extrémité, un nouveau point est créé dans le fichier JSON et ce point est ajouté à la liste auxiliaire.</p>
+<ul>
+<li>Le mur contient plus d’une ouverture</li>
+</ul>
+<p>Si le mur contient plus d’un segment, alors le point initial du premier segment correspond au point initial du mur. Par conséquent, 
+une recherche est effectuée dans la liste auxiliaire pour vérifier s’il existe un point suffisamment proche permettant de réaliser la connexion. 
+S’il n’y a pas de point suffisamment proche, un nouveau point est créé dans le fichier JSON et ce point est ajouté à la liste auxiliaire.</p>
+<p>D’autre part, nous savons que le point final du dernier segment correspond au point final du mur. Par conséquent, une recherche est 
+effectuée dans la liste auxiliaire pour vérifier s’il existe un point suffisamment proche pour créer la connexion. En cas de point trouvé, 
+le dernier segment du fichier JSON est supprimé (car ce segment est créé ailleurs dans le code) et un nouveau segment est créé en utilisant 
+le point trouvé à la place du point final du dernier segment. Si aucun point suffisamment proche n’est trouvé dans la liste auxiliaire, 
+aucune action n’est réalisée, car le dernier segment de tout mur est toujours tracé.</p>
 <h2 id="description-des-classes"><u>Description des classes</u><a class="headerlink" href="#description-des-classes" title="Permanent link">&para;</a></h2>
 <h3 id="attenuationupdater">AttenuationUpdater<a class="headerlink" href="#attenuationupdater" title="Permanent link">&para;</a></h3>
 <p>La classe AttenuationUpdater prend les valeurs d'atténuation saisies par l'utilisateur pour chaque mur dans Ekahau et les met à jour dans le fichier 
