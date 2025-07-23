@@ -689,6 +689,14 @@ en plan en tenant compte de la largeur.
 Finalement, elle retourne un objet anonyme contenant les informations pertinentes : type, id, nom, position, dimensions et points extrêmes.
         
 
+## <u>Interaction entre les classes et leurs méthodes</u>
+
+Le diagramme suivant illustre l’interaction entre les différentes méthodes du code. Plus précisément, il montre le flux de travail général en 
+indiquant à quelle méthode chaque méthode fait appel. Dans le diagramme, chaque méthode appelle celle qui se trouve à l’intérieur de sa propre figure.
+Le numéro à l’intérieur des méthodes principales indique l’ordre dans lequel elles sont appelées par la méthode Export.Execute().
+
+![Diagramme des appels](images/function_call_diagram.png)
+
 ## <u>Troubleshooting</u>
 
 - Erreurs courantes et solutions
