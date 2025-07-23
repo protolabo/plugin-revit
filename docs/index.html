@@ -1514,6 +1514,15 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#interaction-entre-les-classes-et-leurs-methodes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Interaction entre les classes et leurs méthodes
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#troubleshooting" class="md-nav__link">
     <span class="md-ellipsis">
       Troubleshooting
@@ -2479,6 +2488,15 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#interaction-entre-les-classes-et-leurs-methodes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Interaction entre les classes et leurs méthodes
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#troubleshooting" class="md-nav__link">
     <span class="md-ellipsis">
       Troubleshooting
@@ -3096,6 +3114,11 @@ Si toujours indisponibles, calcule les dimensions à partir de la géométrie de
 Elle calcule également deux points (start_point et end_point) perpendiculaires à l'orientation de l'élément qui représentent l'extension 
 en plan en tenant compte de la largeur.</p>
 <p>Finalement, elle retourne un objet anonyme contenant les informations pertinentes : type, id, nom, position, dimensions et points extrêmes.</p>
+<h2 id="interaction-entre-les-classes-et-leurs-methodes"><u>Interaction entre les classes et leurs méthodes</u><a class="headerlink" href="#interaction-entre-les-classes-et-leurs-methodes" title="Permanent link">&para;</a></h2>
+<p>Le diagramme suivant illustre l’interaction entre les différentes méthodes du code. Plus précisément, il montre le flux de travail général en 
+indiquant à quelle méthode chaque méthode fait appel. Dans le diagramme, chaque méthode appelle celle qui se trouve à l’intérieur de sa propre figure.
+Le numéro à l’intérieur des méthodes principales indique l’ordre dans lequel elles sont appelées par la méthode Export.Execute().</p>
+<p><img alt="Diagramme des appels" src="../images/function_call_diagram.png" /></p>
 <h2 id="troubleshooting"><u>Troubleshooting</u><a class="headerlink" href="#troubleshooting" title="Permanent link">&para;</a></h2>
 <ul>
 <li>
