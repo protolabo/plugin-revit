@@ -134,6 +134,35 @@ namespace Create
 
         private void Save_Click(object sender, RoutedEventArgs e)
         {
+            // Validation of duplicate Ekahau types with different attenuation values
+            var allEntries = new List<(string Tab, WallData Data)>();
+
+            // Combine all walls, doors, and windows into a single list with their corresponding tab names
+            allEntries.AddRange(walls.Select(w => ("Walls", w)));
+            allEntries.AddRange(doors.Select(d => ("Doors", d)));
+            allEntries.AddRange(windows.Select(wi => ("Windows", wi)));
+
+            // Group entries by Ekahau type, ignoring empty or null values
+            var groupedByEkahau = allEntries
+                .Where(x => !string.IsNullOrWhiteSpace(x.Data.Ekahau))
+                .GroupBy(x => x.Data.Ekahau);
+
+            // Check each group for inconsistent attenuation values
+            foreach (var group in groupedByEkahau)
+            {
+                var distinctAttenuations = group.Select(x => x.Data.Attenuation).Distinct().ToList();
+                if (distinctAttenuations.Count > 1)
+                {
+                    // If multiple attenuation values found, show error message and cancel saving
+                    string message = $"The Ekahau type \"{group.Key}\" has different attenuation values:\n\n" +
+                                     string.Join("\n", group.Select(x =>
+                                         $"- {x.Tab} | {x.Data.Revit} | {x.Data.Attenuation} dB"));
+
+                    MessageBox.Show(message, "Validation Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                    return;
+                }
+            }
+
             EditedWallData = WallsGrid.SelectedItem as WallData;
 
             try
