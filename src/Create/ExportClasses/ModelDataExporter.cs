@@ -12,7 +12,8 @@ namespace Create.ExportClasses
     internal class ModelDataExporter
     {
         public static Result ExportModelData(ExternalCommandData commandData, 
-            Dictionary<string, ModelData> modelData, Dictionary<string, ModelData> modelDataSegments)
+            Dictionary<string, ModelData> modelData, Dictionary<string, ModelData> modelDataSegments,
+            List<ViewData> viewInfo)
         {
             UIDocument uidoc = commandData.Application.ActiveUIDocument;
             Document doc = uidoc.Document;
@@ -197,7 +198,7 @@ namespace Create.ExportClasses
 
             // The 'ImageCreator.PrepareImageAndFiles' function exports BMP images for each view
             // and creates the corresponding JSON file containing metadata about those images.
-            ImageExporter.CreateViewImagesAndReport(commandData, tempFolderPath, window.SelectedViewIds);
+            ImageExporter.CreateViewImagesAndReport(commandData, tempFolderPath, window.SelectedViewIds, viewInfo);
 
             //// save file
             //string desktopPath = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);

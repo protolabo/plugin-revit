@@ -13,7 +13,7 @@ namespace Create.ExportClasses
 {
     internal class WallsInserter
     {
-        public static Result InsertWallAndOpeningsInEkahauFile(Document doc, Dictionary<string, ModelData> modelDataSegments)
+        public static Result InsertWallAndOpeningsInEkahauFile(Document doc, Dictionary<string, ModelData> modelDataSegments, List<ViewData> viewInfo)
         {
             // Loads neccesary files
             string assemblyFolder = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
@@ -37,7 +37,7 @@ namespace Create.ExportClasses
             var floorPlans = JToken.Parse(File.ReadAllText(Path.Combine(tempPath, "floorPlans.json")));
             var wallTypesJson = File.ReadAllText(Path.Combine(tempPath, "wallTypes.json"));
             var requirementsJson = File.ReadAllText(Path.Combine(tempPath, "requirements.json"));
-            var viewInfo = JArray.Parse(File.ReadAllText(Path.Combine(tempFolderPath, "imageData.json")));
+            // var viewInfo = JArray.Parse(File.ReadAllText(Path.Combine(tempFolderPath, "imageData.json")));
 
             var wallPointsList = new List<string>();
             var wallSegmentsList = new List<string>();
@@ -47,17 +47,17 @@ namespace Create.ExportClasses
                 string imageFileName = Path.GetFileName(imageFile);
                 string viewName = imageFileName.Replace("exported_view - Floor Plan - ", "").Replace(".bmp", "").Replace(" ", "_");
 
-                var viewEntry = viewInfo.FirstOrDefault(v => (string)v["viewName"] == viewName.Replace("_", " "));
+                var viewEntry = viewInfo.FirstOrDefault(v => v.viewName == viewName.Replace("_", " "));
                 if (viewEntry == null) continue;
 
                 // Retrieves the positions of the four corners of the Crop Region for each view,
                 // using the data stored in the imageData.json file.
-                double minX = (double)viewEntry["min"]["x"];
-                double maxX = (double)viewEntry["max"]["x"];
-                double minY = (double)viewEntry["min"]["y"];
-                double maxY = (double)viewEntry["max"]["y"];
-                int imageWidth = (int)viewEntry["width"];
-                int imageHeight = (int)viewEntry["height"];
+                double minX = viewEntry.min.x;
+                double maxX = viewEntry.max.x;
+                double minY = viewEntry.min.y;
+                double maxY = viewEntry.max.y;
+                int imageWidth = viewEntry.width;
+                int imageHeight = viewEntry.height;
 
                 // Converts from Revit's internal units (feet) to Ekahau's units (pixels).
                 // This is required for proper spatial scaling in Ekahau maps.

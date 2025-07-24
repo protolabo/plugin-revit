@@ -11,13 +11,13 @@ namespace Create.ExportClasses
 {
     internal class ImageJsonFileCreator
     {
-        public static Result FormatImagesAndCreateJsonFile(string destDir, Dictionary<string, ModelData> modelData)
+        public static Result FormatImagesAndCreateJsonFile(string destDir, Dictionary<string, ModelData> modelData, List<ViewData> viewInfo)
         {
             // Path to files
             string buildFilesPath = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
             string exportDir = Path.Combine(buildFilesPath, "build_files", "tempFolder");
             string[] exportedBmps = Directory.GetFiles(exportDir, "exported_view - *.bmp");
-            var viewInfo = JArray.Parse(File.ReadAllText(Path.Combine(exportDir, "imageData.json")));
+            //var viewInfo = JArray.Parse(File.ReadAllText(Path.Combine(exportDir, "imageData.json")));
 
             if (exportedBmps.Length == 0)
             {
@@ -95,15 +95,12 @@ namespace Create.ExportClasses
         }
 
         // This function is used to automatically specify the model scale in Ekahau
-        private static double GetMetersPerUnit(string imageName, string directoryPath, JArray viewInfo, Dictionary<string, ModelData> modelData)
+        private static double GetMetersPerUnit(string imageName, string directoryPath, List<ViewData> viewInfo, Dictionary<string, ModelData> modelData)
         {
             // Convert image name to view name and construct the path for elements JSON
             string viewName = imageName.Replace("exported_view - Floor Plan - ", "").Replace(".bmp", "").Replace(" ", "_");
-            //string elementsFilePath = Path.Combine(directoryPath, $"elements_{viewName}.json");
 
             // Read and parse elements JSON
-            //string jsonContent = File.ReadAllText(elementsFilePath);
-            //JObject root = JObject.Parse(jsonContent);
             WallData firstWall = modelData[viewName].walls.First();
 
             // Extract start and end points (in feet)
@@ -132,15 +129,15 @@ namespace Create.ExportClasses
 
             // Find the corresponding view entry in viewInfo using viewName (replace underscores with spaces)
             string searchViewName = viewName.Replace("_", " ");
-            var viewEntry = viewInfo.FirstOrDefault(v => (string)v["viewName"] == searchViewName);
+            var viewEntry = viewInfo.FirstOrDefault(v => v.viewName == searchViewName);
 
             // Get bounding box and image size info
-            double minX = (double)viewEntry["min"]["x"];
-            double maxX = (double)viewEntry["max"]["x"];
-            double minY = (double)viewEntry["min"]["y"];
-            double maxY = (double)viewEntry["max"]["y"];
-            int imageWidth = (int)viewEntry["width"];
-            int imageHeight = (int)viewEntry["height"];
+            double minX = viewEntry.min.x;
+            double maxX = viewEntry.max.x;
+            double minY = viewEntry.min.y;
+            double maxY = viewEntry.max.y;
+            int imageWidth = viewEntry.width;
+            int imageHeight = viewEntry.height;
 
             // Conversion functions: from Revit feet coordinates to Ekahau pixel coordinates
             Func<double, double> convertX = x => (x - minX) / (maxX - minX) * imageWidth;

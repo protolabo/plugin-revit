@@ -49,4 +49,13 @@ namespace Create.ExportClasses
         public Point end;
         public List<OpeningData> openings;
     }
+
+    public class ViewData
+    {
+        public string viewName { get; set; }
+        public Point min { get; set; }
+        public Point max { get; set; }
+        public int width { get; set; }
+        public int height { get; set; }
+    }
 }

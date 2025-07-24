@@ -12,8 +12,11 @@ namespace Create.ExportClasses
 {
     internal class ImageExporter
     {
-        public static void CreateViewImagesAndReport(ExternalCommandData commandData, string outputDir, List<ElementId> selectedViewIds)
-
+        public static void CreateViewImagesAndReport(
+            ExternalCommandData commandData,
+            string outputDir,
+            List<ElementId> selectedViewIds,
+            List<ViewData> viewInfo) 
         {
             UIDocument uidoc = commandData.Application.ActiveUIDocument;
             Document doc = uidoc.Document;
@@ -22,9 +25,6 @@ namespace Create.ExportClasses
             Directory.CreateDirectory(tempExportDir);
 
             string imageBasePath = Path.Combine(tempExportDir, "exported_view");
-            string jsonOutputPath = Path.Combine(tempExportDir, "imageData.json");
-
-            JArray imageInfoArray = new JArray();
 
             foreach (var viewId in selectedViewIds)
             {
@@ -54,7 +54,6 @@ namespace Create.ExportClasses
 
                 if (matchingImage == null) continue;
 
-                // Save image information in file.
                 int width = 0, height = 0;
                 using (var bmp = new Bitmap(matchingImage))
                 {
@@ -70,30 +69,27 @@ namespace Create.ExportClasses
                     max = cropBox.Max;
                 }
 
-                JObject imageObj = new JObject
+                viewInfo.Add(new ViewData
                 {
-                    ["viewName"] = viewName,
-                    ["min"] = new JObject
+                    viewName = viewName,
+                    min = new Point
                     {
-                        ["x"] = min?.X,
-                        ["y"] = min?.Y,
-                        ["z"] = min?.Z
+                        x = min?.X ?? 0,
+                        y = min?.Y ?? 0,
+                        z = min?.Z ?? 0
                     },
-                    ["max"] = new JObject
+                    max = new Point
                     {
-                        ["x"] = max?.X,
-                        ["y"] = max?.Y,
-                        ["z"] = max?.Z
+                        x = max?.X ?? 0,
+                        y = max?.Y ?? 0,
+                        z = max?.Z ?? 0
                     },
-                    ["width"] = width,
-                    ["height"] = height
-                };
-
-                imageInfoArray.Add(imageObj);
+                    width = width,
+                    height = height
+                });
             }
-
-            File.WriteAllText(jsonOutputPath, imageInfoArray.ToString());
         }
+
     }
 }
 
