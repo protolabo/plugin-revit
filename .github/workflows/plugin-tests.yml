@@ -1,4 +1,4 @@
-name: Test WallSplitter
+name: Unit Test
 
 on:
   push:
@@ -26,7 +26,7 @@ jobs:
       run: dotnet build tests/PluginTests/PluginTests.csproj --no-restore --configuration Release
 
     - name: 🚀 Run test
-      run: dotnet run --project tests/PluginTests/PluginTests.csproj --no-build
+      run: dotnet run --project tests/PluginTests/PluginTests.csproj
 
     - name: ✅ Done
       if: success()
