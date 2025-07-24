@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using Autodesk.Revit.DB;
+using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
@@ -9,109 +10,134 @@ namespace Create.ExportClasses
 {
     internal class WallSplitter
     {
-        public static void SplitWallByOpening(string inputFileName, string outputFileName)
+        public static void SplitWallByOpening(Dictionary<string, ModelData> modelData, Dictionary<string, ModelData> modelDataSegments)
         {
-            string buildToolsPath = Path.Combine(Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location), "build_files", "tempFolder");
-            string inputPath = Path.Combine(buildToolsPath, $"{inputFileName}.json");
-            string outputPath = Path.Combine(buildToolsPath, $"{outputFileName}.json");
-
-            string json = File.ReadAllText(inputPath);
-            var jsonObject = JObject.Parse(json);
-            var walls = (JArray)jsonObject["walls"];
-
-            foreach (var wall in walls)
+            foreach (var kvp in modelData)
             {
-                // Checks if the wall is valid
-                if (wall["start"] == null || wall["end"] == null)
-                    continue;
+                string viewName = kvp.Key;
+                var model = kvp.Value;
+                var originalWalls = model.walls;
 
-                // Get list of origial openings
-                var openingsArray = (JArray)(wall["openings"] ?? new JArray());
-                var openingList = openingsArray.Select(o => o.ToObject<OpeningData>()).ToList();
+                List<WallData> updatedWalls = new List<WallData>();
 
-                var baseWall = new WallData
+                foreach (var wall in originalWalls)
                 {
-                    id = (int)wall["id"],
-                    name = wall["name"]?.ToString(),
-                    type = wall["type"]?.ToString(),
-                    start = wall["start"].ToObject<Point>(),
-                    end = wall["end"].ToObject<Point>(),
-                    openings = new List<OpeningData>()
-                };
-
-                List<WallData> segments = new List<WallData>();
-
-                // Split wall in segments according to openings list
-                RecursiveWallSplit(baseWall, openingList, segments);
-
-                // Create an object for every segment
-                foreach (var segment in segments)
-                {
-                    var wallSegmentObj = new JObject
+                    // Checks if the wall is valid
+                    if (wall.start == null || wall.end == null)
                     {
-                        ["type"] = "Walls",
-                        ["name"] = segment.name,
-                        ["start_point"] = JObject.FromObject(segment.start),
-                        ["end_point"] = JObject.FromObject(segment.end),
-                        ["openings"] = new JArray()
+                        updatedWalls.Add(wall); 
+                        continue;
+                    }
+
+                    var baseWall = new WallData
+                    {
+                        id = wall.id,
+                        name = wall.name,
+                        type = wall.type,
+                        start = wall.start,
+                        end = wall.end,
+                        openings = wall.openings != null ? new List<OpeningData>(wall.openings) : new List<OpeningData>()
                     };
 
-                    openingsArray.Add(wallSegmentObj);
+                    List<OpeningData> originalOpenings = wall.openings ?? new List<OpeningData>();
+                    List<WallData> segments = new List<WallData>();
+
+                    // Split wall in segments according to openings list
+                    RecursiveWallSplit(baseWall, originalOpenings, segments);
+
+                    // Create an object for every segment
+                    foreach (var segment in segments)
+                    {
+                        baseWall.openings.Add(new OpeningData
+                        {
+                            type = "Walls",
+                            name = segment.name,
+                            start_point = segment.start,
+                            end_point = segment.end
+                        });
+                    }
+
+                    updatedWalls.Add(baseWall);
+
                 }
 
                 // Remove "voids" from the final openings list.
-                var filteredOpenings = new JArray(openingsArray.Where(o => o["type"]?.ToString() != "Opening"));
-                wall["openings"] = filteredOpenings;
-            }
-
-            // At this point, the final list of openings contains only doors, windows, and the wall segments that make up the main wall.
-            // To ensure their proper interconnection, it is necessary to make sure that the wall segments are ordered,
-            // and that the start and end points of each segment are also in the correct order.
-            foreach (var wall in walls)
-            {
-                if (wall["start"] == null || wall["end"] == null || wall["openings"] == null)
-                    continue;
-
-                // Check whether the wall is vertical or horizontal.
-                double startX = wall["start"]["x"].Value<double>();
-                double endX = wall["end"]["x"].Value<double>();
-                double startY = wall["start"]["y"].Value<double>();
-                double endY = wall["end"]["y"].Value<double>();
-                string axis = Math.Abs(startX - endX) < 1e-6 ? "y" : "x";
-
-                var openings = (JArray)wall["openings"];
-
-                // Reorder each segment in ascending order, including its start and end points
-                var orderedOpenings = openings.Select(o =>
+                foreach (var wall in updatedWalls)
                 {
-                    var type = o["type"]?.ToString();
+                    wall.openings = wall.openings
+                        ?.Where(o => o.type != "Opening")
+                        .ToList();
+                }
 
-                    if (type == "Doors" || type == "Windows" || type == "Walls")
+                // At this point, the final list of openings contains only doors, windows, and the wall segments that make up the main wall.
+                // To ensure their proper interconnection, it is necessary to make sure that the wall segments are ordered,
+                // and that the start and end points of each segment are also in the correct order.
+                foreach (var wall in updatedWalls)
+                {
+                    if (wall.start == null || wall.end == null || wall.openings == null)
+                        continue;
+
+                    // Check whether the wall is vertical or horizontal.
+                    string axis = Math.Abs(wall.start.x - wall.end.x) < 1e-6 ? "y" : "x";
+
+                    // Reorder each segment in ascending order, including its start and end points
+                    foreach (var o in wall.openings)
                     {
-                        var sp = o["start_point"].ToObject<Point>();
-                        var ep = o["end_point"].ToObject<Point>();
-
-                        bool swap = axis == "x" ? sp.x > ep.x : sp.y > ep.y;
-                        if (swap)
+                        if (o.start_point != null && o.end_point != null)
                         {
-                            o["start_point"] = JObject.FromObject(ep);
-                            o["end_point"] = JObject.FromObject(sp);
+                            bool swap = axis == "x"
+                                ? o.start_point.x > o.end_point.x
+                                : o.start_point.y > o.end_point.y;
+
+                            if (swap)
+                            {
+                                var temp = o.start_point;
+                                o.start_point = o.end_point;
+                                o.end_point = temp;
+                            }
                         }
                     }
 
-                    var point = o["start_point"];
-                    double sortValue = axis == "x" ? point["x"].Value<double>() : point["y"].Value<double>();
-                    return new { sortValue, obj = o };
-                })
-                .OrderBy(x => x.sortValue)
-                .Select(x => x.obj)
-                .ToList();
+                    wall.openings = wall.openings
+                        .OrderBy(o =>
+                        {
+                            return axis == "x" ? o.start_point.x : o.start_point.y;
+                        })
+                        .ToList();
+                }
 
-                wall["openings"] = new JArray(orderedOpenings);
+
+
+                // Replace the original walls with the updated ones containing embedded segments
+                modelDataSegments[viewName] = new ModelData
+                {
+                    walls = updatedWalls
+                };
             }
 
-            File.WriteAllText(outputPath, jsonObject.ToString(Formatting.Indented));
+
+            //// save file
+            //string desktopPath = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
+            //string outputFilePath = Path.Combine(desktopPath, "model_data_segments.json");
+
+            //var options = new System.Text.Json.JsonSerializerOptions
+            //{
+            //    WriteIndented = true,
+            //    PropertyNamingPolicy = System.Text.Json.JsonNamingPolicy.CamelCase
+            //};
+
+            //try
+            //{
+            //    string json = Newtonsoft.Json.JsonConvert.SerializeObject(modelDataSegments, Newtonsoft.Json.Formatting.Indented);
+            //    File.WriteAllText(outputFilePath, json);
+                
+            //}
+            //catch (Exception ex)
+            //{
+            //    //TaskDialog.Show("Error", $"No JSON:\n{ex.Message}");
+            //}
         }
+
 
         static double LengthBetweenPoints(Point p1, Point p2)
         {
@@ -281,38 +307,6 @@ namespace Create.ExportClasses
         }
     }
 
-    public class Point
-    {
-        public double x;
-        public double y;
-        public double z;
-
-        public Point() { }
-
-        public Point(Point other)
-        {
-            x = other.x;
-            y = other.y;
-            z = other.z;
-        }
-    }
-
-    public class OpeningData
-    {
-        public Point start_point;
-        public Point end_point;
-        public Point position;
-    }
-
-    public class WallData
-    {
-        public string type;
-        public int id;
-        public string name;
-        public Point start;
-        public Point end;
-        public List<OpeningData> openings;
-    }
 }
 
 

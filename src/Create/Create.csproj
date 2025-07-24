@@ -95,6 +95,7 @@
     <Compile Include="EditWalls.cs" />
     <Compile Include="Export.cs" />
     <Compile Include="ExportClasses\AttenuationUpdater.cs" />
+    <Compile Include="ExportClasses\ModelData.cs" />
     <Compile Include="ExportClasses\TemporaryFilesCollector.cs" />
     <Compile Include="ExportClasses\WallsInserter.cs" />
     <Compile Include="ExportClasses\BuildingFloorCreator.cs" />

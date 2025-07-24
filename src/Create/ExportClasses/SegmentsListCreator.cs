@@ -5,13 +5,14 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Windows.Shapes;
 
 namespace Create.ExportClasses
 {
     internal class SegmentsListCreator
     {
         public static void FillSegmentsList(
-            JToken elementsJson,
+            List<WallData> wallsWithOpenings,
             string floorPlanId,
             Func<double, double> convertX,
             Func<double, double> convertY,
@@ -23,7 +24,7 @@ namespace Create.ExportClasses
             // Newly processed walls will search this list to find ends of other walls that are close enough to connect with.
             var wallPointObjects = new List<WallPoint>();
 
-            var wallTypesJson = File.ReadAllText(Path.Combine(path, "wallTypes.json"));
+            var wallTypesJson = File.ReadAllText(System.IO.Path.Combine(path, "wallTypes.json"));
 
             // Obtains the list of all segments that make up the wall based on the list of openings.
             // The original list of openings includes the doors and windows embedded in the wall,
@@ -32,33 +33,31 @@ namespace Create.ExportClasses
             // and those segments were added to the openings list. For these reasons,
             // the openings must be treated as wall segments.
             // The voids will be filtered out later to avoid drawing them in the Ekahau file.
-            var wallsWithOpenings = elementsJson["walls"]
-                .Where(w => w["openings"] is JArray arr && arr.Count > 0)
-                .ToList();
+            wallsWithOpenings.Where(w => w.openings != null && w.openings.Count > 0).ToList();
 
             foreach (var wall in wallsWithOpenings)
             {
-                var openings = wall["openings"].ToList();
+                var openings = wall.openings;
 
                 // If a wall has only one segment, it means it has no openings, in which case we can look directly
                 // inside the points list for two points that are close enough to connect the start and end of the wall.
                 if (openings.Count == 1)
                 {
                     var opening = openings[0];
-                    var sp = opening["start_point"];
-                    var ep = opening["end_point"];
+                    var sp = opening.start_point;
+                    var ep = opening.end_point;
                     if (sp == null || ep == null) continue;
 
-                    double x1 = convertX((double)sp["x"]);
-                    double y1 = convertY((double)sp["y"]);
-                    double x2 = convertX((double)ep["x"]);
-                    double y2 = convertY((double)ep["y"]);
+                    double x1 = convertX(sp.x);
+                    double y1 = convertY(sp.y);
+                    double x2 = convertX(ep.x);
+                    double y2 = convertY(ep.y);
 
-                    string type = opening["type"]?.ToString();
-                    string segmentName = opening["name"]?.ToString();
+                    string type = opening.type;
+                    string segmentName = opening.name;
                     string wallTypeToUse = null;
 
-                    // Get corresponding ID for every wall
+                    // Get the corresponding Ekahau wall for every choosen Revit wall.
                     if (string.Equals(type, "Doors", StringComparison.OrdinalIgnoreCase))
                         wallTypeToUse = Getters.GetDoorId(segmentName, wallTypesJson);
                     else if (string.Equals(type, "Windows", StringComparison.OrdinalIgnoreCase))
@@ -72,36 +71,25 @@ namespace Create.ExportClasses
 
                     // Search the list for a point that is close enough (less than 1 inch)
                     var nearbyStart = wallPointObjects.FirstOrDefault(p => CalculateDistance(p.X, p.Y, x1, y1) < minDistance);
-                    string idStart;
-                    if (nearbyStart != null)
-                    {
-                        idStart = nearbyStart.Id;
-                    }
-                    else
+                    string idStart = nearbyStart?.Id ?? Guid.NewGuid().ToString();
+                    if (nearbyStart == null)
                     {
                         // If no nearby point is found, add the wall’s point to the Ekahau points list and to the auxiliary list.
-                        idStart = Guid.NewGuid().ToString();
                         wallPointsList.Add(PointAndSegment.MakeWallPoint(idStart, floorPlanId, x1, y1));
                         wallPointObjects.Add(new WallPoint { Id = idStart, X = x1, Y = y1 });
                     }
 
                     // Search the list for a point that is close enough (less than 1 inch) to the end point.
                     var nearbyEnd = wallPointObjects.FirstOrDefault(p => CalculateDistance(p.X, p.Y, x2, y2) < minDistance);
-                    string idEnd;
-                    if (nearbyEnd != null)
+                    string idEnd = nearbyEnd?.Id ?? Guid.NewGuid().ToString();
+                    if (nearbyEnd == null)
                     {
-                        idEnd = nearbyEnd.Id;
-                    }
-                    else
-                    {
-                        idEnd = Guid.NewGuid().ToString();
                         wallPointsList.Add(PointAndSegment.MakeWallPoint(idEnd, floorPlanId, x2, y2));
                         wallPointObjects.Add(new WallPoint { Id = idEnd, X = x2, Y = y2 });
                     }
 
                     // Create the segment using either the found nearby points or the wall’s extreme points.
                     wallSegmentsList.Add(PointAndSegment.MakeWallSegment(idStart, idEnd, wallTypeToUse));
-
                     continue;
                 }
 
@@ -114,18 +102,18 @@ namespace Create.ExportClasses
 
                 foreach (var opening in openings)
                 {
-                    var sp = opening["start_point"];
-                    var ep = opening["end_point"];
+                    var sp = opening.start_point;
+                    var ep = opening.end_point;
                     if (sp == null || ep == null) continue;
 
                     // Transformation of units from Revit to Ekahau.
-                    double x1 = convertX((double)sp["x"]);
-                    double y1 = convertY((double)sp["y"]);
-                    double x2 = convertX((double)ep["x"]);
-                    double y2 = convertY((double)ep["y"]);
+                    double x1 = convertX(sp.x);
+                    double y1 = convertY(sp.y);
+                    double x2 = convertX(ep.x);
+                    double y2 = convertY(ep.y);
 
-                    string type = opening["type"]?.ToString();
-                    string segmentName = opening["name"]?.ToString();
+                    string type = opening.type;
+                    string segmentName = opening.name;
                     string wallTypeToUse = null;
 
                     // Get the corresponding Ekahau wall for every choosen Revit wall.
@@ -155,30 +143,20 @@ namespace Create.ExportClasses
                         {
                             idStart = Guid.NewGuid().ToString();
                             wallPointsList.Add(PointAndSegment.MakeWallPoint(idStart, floorPlanId, x1, y1));
-                            wallPointObjects.Add(new WallPoint
-                            {
-                                Id = idStart,
-                                X = x1,
-                                Y = y1
-                            });
+                            wallPointObjects.Add(new WallPoint { Id = idStart, X = x1, Y = y1 });
                         }
 
                         // Always create the Final Point of first segment
                         string idEnd = Guid.NewGuid().ToString();
                         wallPointsList.Add(PointAndSegment.MakeWallPoint(idEnd, floorPlanId, x2, y2));
                         wallSegmentsList.Add(PointAndSegment.MakeWallSegment(idStart, idEnd, wallTypeToUse));
-                        wallPointObjects.Add(new WallPoint
-                        {
-                            Id = idEnd,
-                            X = x2,
-                            Y = y2
-                        });
+                        wallPointObjects.Add(new WallPoint { Id = idEnd, X = x2, Y = y2 });
 
                         prevEndX = x2;
                         prevEndY = y2;
                         prevEndId = idEnd;
                     }
-                    // the rest of the openings
+                    // the rest of the segments
                     else
                     {
                         // Calculate the distance between the previous end point and the current start point.
@@ -204,6 +182,7 @@ namespace Create.ExportClasses
                             // it will not be connected and will be treated as the starting point of another
                             // series of interconnected segments.
                             // This likely means it corresponds to a "void" in the wall.
+
                             string idStart = Guid.NewGuid().ToString();
                             string idEnd = Guid.NewGuid().ToString();
 
@@ -254,16 +233,16 @@ namespace Create.ExportClasses
                                 string newSegment = PointAndSegment.MakeWallSegment(startId, nearbyPoint.Id, wallTypeId);
                                 wallSegmentsList.Add(newSegment);
                             }
-
                         }
                         catch (Exception ex)
                         {
                             Console.WriteLine("Error processing the last segment: " + ex.Message);
                         }
                     }
+
+                    // No nearby point found; add as a new point.
                     else if (nearbyPoint == null)
                     {
-                        // No nearby point found; add as a new point.
                         wallPointObjects.Add(new WallPoint
                         {
                             Id = prevEndId,
@@ -272,10 +251,10 @@ namespace Create.ExportClasses
                         });
                     }
                 }
-
-
             }
         }
+
+
         private static double CalculateDistance(double x1, double y1, double x2, double y2)
         {
             double dx = x2 - x1;

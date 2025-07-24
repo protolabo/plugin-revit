@@ -6,7 +6,7 @@ namespace Create.ExportClasses
 {
     internal class WindowDoorDimensions
     {
-        public static object GetWindowDoorDimensions(FamilyInstance inst,
+        public static OpeningData GetWindowDoorDimensions(FamilyInstance inst,
             double wallX1, double wallY1, double wallZ1,
             double wallX2, double wallY2, double wallZ2)
         {
@@ -154,17 +154,33 @@ namespace Create.ExportClasses
             }
 
             // 6. Return Object
-            return new
+            return new OpeningData
             {
                 type = inst.Category?.Name ?? "Unknown",
                 id = inst.Id.IntegerValue,
                 name = inst.Name,
-                position,
+                position = position != null ? new Point
+                {
+                    x = ((dynamic)position).x,
+                    y = ((dynamic)position).y,
+                    z = ((dynamic)position).z
+                } : null,
                 width_ft = width,
                 height_ft = height,
-                start_point,
-                end_point
+                start_point = start_point != null ? new Point
+                {
+                    x = ((dynamic)start_point).x,
+                    y = ((dynamic)start_point).y,
+                    z = ((dynamic)start_point).z
+                } : null,
+                end_point = end_point != null ? new Point
+                {
+                    x = ((dynamic)end_point).x,
+                    y = ((dynamic)end_point).y,
+                    z = ((dynamic)end_point).z
+                } : null
             };
+
         }
     }
 }

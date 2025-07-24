@@ -13,7 +13,7 @@ namespace Create.ExportClasses
 {
     internal class WallsInserter
     {
-        public static Result InsertWallAndOpeningsInEkahauFile(Document doc)
+        public static Result InsertWallAndOpeningsInEkahauFile(Document doc, Dictionary<string, ModelData> modelDataSegments)
         {
             // Loads neccesary files
             string assemblyFolder = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
@@ -69,16 +69,9 @@ namespace Create.ExportClasses
                     .FirstOrDefault(fp => (string)fp["name"] == imageFileName)?["id"]?.ToString();
                 if (string.IsNullOrEmpty(floorPlanId)) continue;
 
-                string elementsPath = Path.Combine(tempFolderPath, $"segmented_walls_{viewName}.json");
-                if (File.Exists(elementsPath))
-                {
-                    var elementsJson = JToken.Parse(File.ReadAllText(elementsPath));
-
-                    // The SegmentsListCreator.FillOpeningsList function adds the corresponding wallPoints and wallSegments 
-                    // for each door, window and wall segment to the appropriate lists, using the required format for inclusion in the Ekahau JSON file.
-                    SegmentsListCreator.FillSegmentsList(elementsJson, floorPlanId, convertX, convertY, tempPath, wallPointsList, wallSegmentsList);
-
-                }
+                // The SegmentsListCreator.FillOpeningsList function adds the corresponding wallPoints and wallSegments 
+                // for each door, window and wall segment to the appropriate lists, using the required format for inclusion in the Ekahau JSON file.
+                SegmentsListCreator.FillSegmentsList(modelDataSegments[viewName].walls, floorPlanId, convertX, convertY, tempPath, wallPointsList, wallSegmentsList);
 
             }
 

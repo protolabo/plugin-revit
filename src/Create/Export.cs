@@ -24,6 +24,9 @@ namespace Create
     {
         public Result Execute(ExternalCommandData commandData, ref string message, ElementSet elements)
         {
+            Dictionary<string, ModelData> modelData = new Dictionary<string, ModelData>();
+            Dictionary<string, ModelData> modelDataSegments = new Dictionary<string, ModelData>();
+
             // The 'ModelData.ExportModelData' function generates a JSON file containing information
             // about the model's walls, windows, and doors.
             // - Use the WindowDoorDimensions.GetWindowDoorDimensions function to obtain the dimensions of elements
@@ -32,7 +35,8 @@ namespace Create
             //      the walls into sections according to the openings in the wall.
             // - Finally, this function uses the ImageCreator.PrepareImageAndFiles function to export the selected views
             //      as BMP images and creates a JSON file that contains the information of those images.
-            ModelDataExporter.ExportModelData(commandData);
+            // ModelDataExporter.ExportModelData(commandData); (old version - JSON files)
+            ModelDataExporter.ExportModelData(commandData, modelData, modelDataSegments);
 
             string chosenFileName = null;
 
@@ -75,7 +79,7 @@ namespace Create
                 // The 'ImagesJson.ProcessExportedBmp' function formats the exported images and copies them
                 // to the folder that will contain the other JSON files for the Ekahau project.
                 // It then updates the 'images.json' file with the required image metadata.
-                result = ImageJsonFileCreator.FormatImagesAndCreateJsonFile(destDir);
+                result = ImageJsonFileCreator.FormatImagesAndCreateJsonFile(destDir, modelData);
                 if (result != Result.Succeeded) return result;
 
                 // The 'Building.CreateBuilding' function generates the 'buildings.json' file,
@@ -97,7 +101,7 @@ namespace Create
                 // The 'AddWalls.CreateWalls' function generates all the necessary JSON files containing
                 // information about the model's walls, including windows and doors,
                 // as well as the zones where the simulation will be performed.
-                result = WallsInserter.InsertWallAndOpeningsInEkahauFile(doc);
+                result = WallsInserter.InsertWallAndOpeningsInEkahauFile(doc, modelDataSegments);
                 if (result != Result.Succeeded) return result;
 
                 // CREATE ZIP FILE AND CHANGE FILKE EXTENSION

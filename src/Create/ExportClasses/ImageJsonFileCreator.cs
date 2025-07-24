@@ -11,7 +11,7 @@ namespace Create.ExportClasses
 {
     internal class ImageJsonFileCreator
     {
-        public static Result FormatImagesAndCreateJsonFile(string destDir)
+        public static Result FormatImagesAndCreateJsonFile(string destDir, Dictionary<string, ModelData> modelData)
         {
             // Path to files
             string buildFilesPath = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
@@ -64,7 +64,7 @@ namespace Create.ExportClasses
                         ["name"] = originalImageName,
                         ["width"] = width,
                         ["height"] = height,
-                        ["metersPerUnit"] = GetMetersPerUnit(originalImageName, exportDir, viewInfo),
+                        ["metersPerUnit"] = GetMetersPerUnit(originalImageName, exportDir, viewInfo, modelData),
                         ["imageId"] = imageId,
                         ["gpsReferencePoints"] = new JArray(),
                         ["floorPlanType"] = "FSPL",
@@ -95,27 +95,27 @@ namespace Create.ExportClasses
         }
 
         // This function is used to automatically specify the model scale in Ekahau
-        private static double GetMetersPerUnit(string imageName, string directoryPath, JArray viewInfo)
+        private static double GetMetersPerUnit(string imageName, string directoryPath, JArray viewInfo, Dictionary<string, ModelData> modelData)
         {
             // Convert image name to view name and construct the path for elements JSON
             string viewName = imageName.Replace("exported_view - Floor Plan - ", "").Replace(".bmp", "").Replace(" ", "_");
-            string elementsFilePath = Path.Combine(directoryPath, $"elements_{viewName}.json");
+            //string elementsFilePath = Path.Combine(directoryPath, $"elements_{viewName}.json");
 
             // Read and parse elements JSON
-            string jsonContent = File.ReadAllText(elementsFilePath);
-            JObject root = JObject.Parse(jsonContent);
-            JToken firstWall = root["walls"]?.First;
+            //string jsonContent = File.ReadAllText(elementsFilePath);
+            //JObject root = JObject.Parse(jsonContent);
+            WallData firstWall = modelData[viewName].walls.First();
 
             // Extract start and end points (in feet)
-            var start = firstWall["start"];
-            var end = firstWall["end"];
+            var start = firstWall.start;
+            var end = firstWall.end;
 
-            double startX = start.Value<double>("x");
-            double startY = start.Value<double>("y");
+            double startX = start.x;
+            double startY = start.y;
             // Z coordinate is ignored for 2D calculation
 
-            double endX = end.Value<double>("x");
-            double endY = end.Value<double>("y");
+            double endX = end.x;
+            double endY = end.y;
 
             // Convert feet to meters (1 foot = 0.3048 meters)
             const double feetToMeters = 0.3048;
