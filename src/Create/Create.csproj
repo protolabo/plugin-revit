@@ -123,6 +123,7 @@
     <Compile Include="SelectionWindow.xaml.cs">
       <DependentUpon>SelectionWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="UpdateWalls.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />

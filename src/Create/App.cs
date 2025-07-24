@@ -45,6 +45,13 @@ namespace Create
             wallsButton.ToolTip = "Edit walls mapping manually";
             //editButton.LargeImage = editIcon;
 
+            // Update Walls button
+            PushButtonData updateWallsButtonData = new PushButtonData(
+                "btnUpdate", "Update", assemblyPath, "Create.UpdateWalls");
+            PushButton updateWallsButton = toolsPanel.AddItem(updateWallsButtonData) as PushButton;
+            updateWallsButton.ToolTip = "Look for new type of walls";
+            //editButton.LargeImage = editIcon;
+
             return Result.Succeeded;
         }
 
