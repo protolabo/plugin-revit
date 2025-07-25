@@ -103,7 +103,7 @@ namespace Create
                 // The 'AddWalls.CreateWalls' function generates all the necessary JSON files containing
                 // information about the model's walls, including windows and doors,
                 // as well as the zones where the simulation will be performed.
-                result = WallsInserter.InsertWallAndOpeningsInEkahauFile(doc, modelDataSegments, viewInfo);
+                result = WallsInserter.InsertWallAndOpeningsInEkahauFile(modelDataSegments, viewInfo);
                 if (result != Result.Succeeded) return result;
 
                 // CREATE ZIP FILE AND CHANGE FILKE EXTENSION

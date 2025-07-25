@@ -1,11 +1,8 @@
-﻿using Autodesk.Revit.DB;
-using Autodesk.Revit.UI;
-using Newtonsoft.Json.Linq;
+﻿using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Windows.Shapes;
 
 namespace Create.ExportClasses
 {

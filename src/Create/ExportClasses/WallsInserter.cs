@@ -1,5 +1,4 @@
-﻿using Autodesk.Revit.DB;
-using Autodesk.Revit.UI;
+﻿using Autodesk.Revit.UI;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -13,7 +12,7 @@ namespace Create.ExportClasses
 {
     internal class WallsInserter
     {
-        public static Result InsertWallAndOpeningsInEkahauFile(Document doc, Dictionary<string, ModelData> modelDataSegments, List<ViewData> viewInfo)
+        public static Result InsertWallAndOpeningsInEkahauFile(Dictionary<string, ModelData> modelDataSegments, List<ViewData> viewInfo)
         {
             // Loads neccesary files
             string assemblyFolder = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
