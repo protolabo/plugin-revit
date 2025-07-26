@@ -19,20 +19,22 @@ export_dir = './ExportClasses'
 # 🧹 Delete all files in ExportClasses except ModelData.cs
 for file in os.listdir(export_dir):
     full_path = os.path.join(export_dir, file)
-    if file != 'ModelData.cs' and os.path.isfile(full_path):
+    if file != 'ModelInfo.cs' and os.path.isfile(full_path):
         os.remove(full_path)
         print(f'🗑️ Deleted: {file}')
 
 # Files to copy and modify
 files = [
-     "AttenuationUpdater.cs",
+    "AttenuationUpdater.cs",
     "Getters.cs",
     "ImageJsonFileCreator.cs",
     "ModelData.cs",
     "PointAndSegment.cs",
     "SegmentsListCreator.cs",
     "WallsInserter.cs",
-    "WallSplitter.cs"
+    "WallSplitter.cs",
+    "ModelData.cs",
+    "IDGenerator.cs"
 ]
 
 for filename in files:

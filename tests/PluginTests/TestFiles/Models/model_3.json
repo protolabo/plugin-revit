@@ -1,0 +1,61 @@
+{
+    "cropRegions" : [
+        {
+            "viewName": "01 - Entry Level",
+           "min": {
+                "x": -105.77357350621259,
+                "y": -127.34933455027036,
+                "z": -100.0
+            },
+            "max": {
+                "x": 225.97525363987123,
+                "y": 145.64395734348705,
+                "z": 100.0
+            },
+            "width": 1500,
+            "height": 1234,
+            "scale" : 0.067
+        },
+        {
+            "viewName": "02 - Floor",
+            "min": {
+                "x": -91.8640311047916,
+                "y": -127.16816310116646,
+                "z": -100.0
+            },
+            "max": {
+                "x": 224.71074978519661,
+                "y": 143.65107140334402,
+                "z": 100.0
+            },
+            "width": 1500,
+            "height": 1283,
+            "scale" : 0.064
+        },
+        {
+            "viewName": "03 - Floor",
+            "min": {
+                "x": -91.8640311047916,
+                "y": -127.16816310116646,
+                "z": -1000.0
+            },
+            "max": {
+                "x": 224.71074978519661,
+                "y": 143.65107140334402,
+                "z": -0.1
+            },
+            "width": 1500,
+            "height": 1283,
+            "scale" : 0.064
+        }
+          
+    ],
+    "walls" : "walls_3",
+    "walls_expected" : "walls_expected_3",
+    "images_expected" : [
+        "exported_view - Floor Plan - 01 - Entry Level",
+        "exported_view - Floor Plan - 02 - Floor",
+        "exported_view - Floor Plan - 03 - Floor"
+    ],
+    "wallPoints_expected" : "wallPoints_3"
+}

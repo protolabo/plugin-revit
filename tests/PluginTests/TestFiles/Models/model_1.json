@@ -1,0 +1,26 @@
+{
+    "cropRegions" : [
+        {
+            "viewName" : "Level 1",
+            "min": {
+                "x": -51.19699098296065,
+                "y": -72.00286714334281,
+                "z": -100.0
+            },
+            "max": {
+                "x": 80.80115730025835,
+                "y": 39.52816143607194,
+                "z": 100.0
+            },
+            "width": 1500,
+            "height": 1267,
+            "scale" : 0.027
+        }
+    ],
+    "walls" : "walls_1",
+    "walls_expected" : "walls_expected_1",
+    "images_expected" : [
+        "exported_view - Floor Plan - Level 1"
+    ],
+    "wallPoints_expected" : "wallPoints_1"
+}

@@ -1,0 +1,44 @@
+{
+    "cropRegions" : [
+        {
+            "viewName": "Level 1",
+            "min": {
+                "x": -51.196990982960649,
+                "y": -72.002867143342812,
+                "z": -100.0
+            },
+            "max": {
+                "x": 80.801157300258353,
+                "y": 39.52816143607194,
+                "z": 100.0
+            },
+            "width": 1500,
+            "height": 1267,
+            "scale" : 0.027
+        },
+        {
+            "viewName": "Level 2",
+            "min": {
+                "x": -46.503661007610432,
+                "y": -68.32576291433098,
+                "z": -1000.0
+                },
+            "max": {
+                "x": 66.21381853485812,
+                "y": 32.75371855310199,
+                "z": -0.1
+                },
+            "width": 1500,
+            "height": 1345,
+            "scale" : 0.023
+        }
+          
+    ],
+    "walls" : "walls_2",
+    "walls_expected" : "walls_expected_2",
+    "images_expected" : [
+        "exported_view - Floor Plan - Level 1",
+        "exported_view - Floor Plan - Level 2"
+    ],
+    "wallPoints_expected" : "wallPoints_2"
+}
