@@ -62,14 +62,14 @@
                     </Grid.RowDefinitions>
 
                     <DataGrid x:Name="DoorsGrid"
-                  AutoGenerateColumns="False"
-                  CanUserAddRows="True"
-                  CanUserDeleteRows="True"
-                  ItemsSource="{Binding doors}"
-                  HeadersVisibility="Column"
-                  Margin="0,0,0,10"
-                  Grid.Row="0"
-                  IsReadOnly="False">
+                              AutoGenerateColumns="False"
+                              CanUserAddRows="True"
+                              CanUserDeleteRows="True"
+                              ItemsSource="{Binding doors}"
+                              HeadersVisibility="Column"
+                              Margin="0,0,0,10"
+                              Grid.Row="0"
+                              IsReadOnly="False">
                         <DataGrid.Columns>
                             <DataGridTextColumn Header="Revit Doors" Binding="{Binding Revit}" Width="*" IsReadOnly="True"/>
                             <DataGridTemplateColumn Header="Ekahau Doors" Width="200">
@@ -110,14 +110,14 @@
                     </Grid.RowDefinitions>
 
                     <DataGrid x:Name="WindowsGrid"
-                  AutoGenerateColumns="False"
-                  CanUserAddRows="True"
-                  CanUserDeleteRows="True"
-                  ItemsSource="{Binding windows}"
-                  HeadersVisibility="Column"
-                  Margin="0,0,0,10"
-                  Grid.Row="0"
-                  IsReadOnly="False">
+                              AutoGenerateColumns="False"
+                              CanUserAddRows="True"
+                              CanUserDeleteRows="True"
+                              ItemsSource="{Binding windows}"
+                              HeadersVisibility="Column"
+                              Margin="0,0,0,10"
+                              Grid.Row="0"
+                              IsReadOnly="False">
                         <DataGrid.Columns>
                             <DataGridTextColumn Header="Revit Windows" Binding="{Binding Revit}" Width="*" IsReadOnly="True"/>
                             <DataGridTemplateColumn Header="Ekahau Windows" Width="200">

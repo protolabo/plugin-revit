@@ -22,35 +22,36 @@ namespace Create
             // Load images
             BitmapImage exportIcon = new BitmapImage(new Uri(Path.Combine(dir, "Resources", "export.png")));
             BitmapImage importIcon = new BitmapImage(new Uri(Path.Combine(dir, "Resources", "import.png")));
-            //BitmapImage editIcon = new BitmapImage(new Uri(Path.Combine(dir, "Resources", "edit.png"))); // <-- nueva imagen
+            BitmapImage wallsIcon = new BitmapImage(new Uri(Path.Combine(dir, "Resources", "cells.png")));
+            BitmapImage updateIcon = new BitmapImage(new Uri(Path.Combine(dir, "Resources", "arrow.png")));
 
             // Export button
             PushButtonData exportButtonData = new PushButtonData(
-                "btnExport", "Export", assemblyPath, "Create.Export");
+                "btnExport", "Export\nModel", assemblyPath, "Create.Export");
             PushButton exportButton = toolsPanel.AddItem(exportButtonData) as PushButton;
             exportButton.ToolTip = "Export to Ekahau (.esx) format";
             exportButton.LargeImage = exportIcon;
 
             // Import button
             PushButtonData importButtonData = new PushButtonData(
-                "btnImport", "Import", assemblyPath, "Create.Import");
+                "btnImport", "Import\nAcces Points", assemblyPath, "Create.Import");
             PushButton importButton = toolsPanel.AddItem(importButtonData) as PushButton;
             importButton.ToolTip = "Import from Ekahau format";
             importButton.LargeImage = importIcon;
 
             // Walls button
             PushButtonData wallsButtonData = new PushButtonData(
-                "btnWalls", "Walls", assemblyPath, "Create.EditWalls");
+                "btnWalls", "Edit\nWalls", assemblyPath, "Create.EditWalls");
             PushButton wallsButton = toolsPanel.AddItem(wallsButtonData) as PushButton;
             wallsButton.ToolTip = "Edit walls mapping manually";
-            //editButton.LargeImage = editIcon;
+            wallsButton.LargeImage = wallsIcon;
 
             // Update Walls button
             PushButtonData updateWallsButtonData = new PushButtonData(
-                "btnUpdate", "Update", assemblyPath, "Create.UpdateWalls");
+                "btnUpdate", "Get\nWalls", assemblyPath, "Create.UpdateWalls");
             PushButton updateWallsButton = toolsPanel.AddItem(updateWallsButtonData) as PushButton;
             updateWallsButton.ToolTip = "Look for new type of walls";
-            //editButton.LargeImage = editIcon;
+            updateWallsButton.LargeImage = updateIcon;
 
             return Result.Succeeded;
         }
