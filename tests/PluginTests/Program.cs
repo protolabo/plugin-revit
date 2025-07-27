@@ -13,9 +13,20 @@ class Program
         string modelsPath = "./TestFiles/Models";
         string[] modelFiles = Directory.GetFiles(modelsPath, "*.json");
 
+        // List of models you want to test (file names only)
+        var models = new HashSet<string>
+        {
+            "model_1.json",
+            "model_2.json",
+            "model_3.json"
+        };
+
         foreach (var modelFile in modelFiles)
         {
             string fileName = Path.GetFileName(modelFile);
+
+            if (!models.Contains(fileName))
+                continue; 
 
             Console.WriteLine($"\n🔁 Running tests for model: {fileName}");
 
@@ -48,9 +59,8 @@ class Program
             // AttenuationUpdater TEST
             Console.WriteLine("🧪 Running AttenuationUpdater test...");
             AttenuationUpdaterTester.RunTest();
-
         }
-
     }
 }
+
 

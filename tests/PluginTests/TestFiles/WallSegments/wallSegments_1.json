@@ -1,0 +1,32 @@
+{
+  "wallSegments": [
+{
+              "wallPoints": ["164820e4-d130-4f4f-9df0-45c638d85094", "7e6c3196-6425-4fd8-a460-c58b6c403ed7"],
+              "wallTypeId": "df36218f-4797-4bca-a25d-2927d56c855d",
+              "originType": "WALL_TOOL",
+              "id": "4a598d89-877f-47ad-a1f7-7806f7c1503d",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["63280a05-f13d-4605-996d-f22a2022d3b8", "31b47d41-b21e-47cc-924d-2f3795d3836a"],
+              "wallTypeId": "df36218f-4797-4bca-a25d-2927d56c855d",
+              "originType": "WALL_TOOL",
+              "id": "c1880f50-d362-4c36-a4f6-b23cc82441b0",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["31b47d41-b21e-47cc-924d-2f3795d3836a", "4aca4e42-193c-4297-9aff-edc636dcf10b"],
+              "wallTypeId": "da4f21e0-4995-46ab-9502-877f81d95065",
+              "originType": "WALL_TOOL",
+              "id": "dc9ff35d-834f-440c-b511-a532515c837c",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["4aca4e42-193c-4297-9aff-edc636dcf10b", "d6de9402-16b9-4719-9f1b-7f87dc605f23"],
+              "wallTypeId": "df36218f-4797-4bca-a25d-2927d56c855d",
+              "originType": "WALL_TOOL",
+              "id": "6eebf98f-b7ea-40d4-aec1-b185e97ec023",
+              "status": "CREATED"
+            }
+  ]
+}

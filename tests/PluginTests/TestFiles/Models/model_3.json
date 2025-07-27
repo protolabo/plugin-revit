@@ -57,5 +57,6 @@
         "exported_view - Floor Plan - 02 - Floor",
         "exported_view - Floor Plan - 03 - Floor"
     ],
-    "wallPoints_expected" : "wallPoints_3"
+    "wallPoints_expected" : "wallPoints_3",
+    "wallSegments_expected" : "wallSegments_3"
 }

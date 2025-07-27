@@ -23,7 +23,7 @@
                               Grid.Row="0"
                               IsReadOnly="False">
                         <DataGrid.Columns>
-                            <DataGridTextColumn Header="Revit Wall" Binding="{Binding Revit}" Width="*" />
+                            <DataGridTextColumn Header="Revit Wall" Binding="{Binding Revit}" Width="*" IsReadOnly="True"/>
                             <DataGridTemplateColumn Header="Ekahau Wall" Width="200">
                                 <DataGridTemplateColumn.CellTemplate>
                                     <DataTemplate>
@@ -47,6 +47,7 @@
 
                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Grid.Row="1">
                         <!-- <Button Content="Delete" Width="80" Margin="5,0" Click="Delete_Click" />  -->
+                        <Button Content="Cancel" Width="80" Margin="5,0" Click="Cancel_Click" />
                         <Button Content="Save" Width="80" Margin="5,0" Click="Save_Click" />
                     </StackPanel>
                 </Grid>
@@ -70,7 +71,7 @@
                   Grid.Row="0"
                   IsReadOnly="False">
                         <DataGrid.Columns>
-                            <DataGridTextColumn Header="Revit Doors" Binding="{Binding Revit}" Width="*" />
+                            <DataGridTextColumn Header="Revit Doors" Binding="{Binding Revit}" Width="*" IsReadOnly="True"/>
                             <DataGridTemplateColumn Header="Ekahau Doors" Width="200">
                                 <DataGridTemplateColumn.CellTemplate>
                                     <DataTemplate>
@@ -94,6 +95,7 @@
 
                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Grid.Row="1">
                         <!-- <Button Content="Delete" Width="80" Margin="5,0" Click="Delete_Click" /> -->
+                        <Button Content="Cancel" Width="80" Margin="5,0" Click="Cancel_Click" />
                         <Button Content="Save" Width="80" Margin="5,0" Click="Save_Click" />
                     </StackPanel>
                 </Grid>
@@ -117,7 +119,7 @@
                   Grid.Row="0"
                   IsReadOnly="False">
                         <DataGrid.Columns>
-                            <DataGridTextColumn Header="Revit Windows" Binding="{Binding Revit}" Width="*" />
+                            <DataGridTextColumn Header="Revit Windows" Binding="{Binding Revit}" Width="*" IsReadOnly="True"/>
                             <DataGridTemplateColumn Header="Ekahau Windows" Width="200">
                                 <DataGridTemplateColumn.CellTemplate>
                                     <DataTemplate>
@@ -141,6 +143,7 @@
 
                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Grid.Row="1">
                         <!-- <Button Content="Delete" Width="80" Margin="5,0" Click="Delete_Click" /> -->
+                        <Button Content="Cancel" Width="80" Margin="5,0" Click="Cancel_Click" />
                         <Button Content="Save" Width="80" Margin="5,0" Click="Save_Click" />
                     </StackPanel>
                 </Grid>

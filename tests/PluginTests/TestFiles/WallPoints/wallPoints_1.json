@@ -2,50 +2,50 @@
   "wallPoints": [
 {
               "location": {
-                "floorPlanId": "2657aa0b-58f4-4907-b90a-b0376e76fc18",
+                "floorPlanId": "e770de09-f302-4c6d-ae26-ab68138239bd",
                 "coord": { "x": 841.3151295081802, "y": 573.5856639529588 }
               },
-              "id": "1b0e4fc2-e5d9-477d-8ecc-4b235cefa68f",
+              "id": "164820e4-d130-4f4f-9df0-45c638d85094",
               "status": "CREATED"
             },
 {
               "location": {
-                "floorPlanId": "2657aa0b-58f4-4907-b90a-b0376e76fc18",
+                "floorPlanId": "e770de09-f302-4c6d-ae26-ab68138239bd",
                 "coord": { "x": 841.3151295081802, "y": 537.2841362907554 }
               },
-              "id": "e6d90a75-e830-4c73-9206-f0dd0acce68d",
+              "id": "7e6c3196-6425-4fd8-a460-c58b6c403ed7",
               "status": "CREATED"
             },
 {
               "location": {
-                "floorPlanId": "2657aa0b-58f4-4907-b90a-b0376e76fc18",
+                "floorPlanId": "e770de09-f302-4c6d-ae26-ab68138239bd",
                 "coord": { "x": 841.3151295081802, "y": 502.62251336902057 }
               },
-              "id": "8a3b060f-4b87-40dd-8531-8905818c2ab4",
+              "id": "63280a05-f13d-4605-996d-f22a2022d3b8",
               "status": "CREATED"
             },
 {
               "location": {
-                "floorPlanId": "2657aa0b-58f4-4907-b90a-b0376e76fc18",
+                "floorPlanId": "e770de09-f302-4c6d-ae26-ab68138239bd",
                 "coord": { "x": 841.3151295081802, "y": 472.2470051097395 }
               },
-              "id": "71e8baff-d1cd-4752-a9f2-74a475615af4",
+              "id": "31b47d41-b21e-47cc-924d-2f3795d3836a",
               "status": "CREATED"
             },
 {
               "location": {
-                "floorPlanId": "2657aa0b-58f4-4907-b90a-b0376e76fc18",
+                "floorPlanId": "e770de09-f302-4c6d-ae26-ab68138239bd",
                 "coord": { "x": 841.3151295081806, "y": 407.76893236285633 }
               },
-              "id": "a58cca78-8282-4db9-9026-52b7772d56d8",
+              "id": "4aca4e42-193c-4297-9aff-edc636dcf10b",
               "status": "CREATED"
             },
 {
               "location": {
-                "floorPlanId": "2657aa0b-58f4-4907-b90a-b0376e76fc18",
+                "floorPlanId": "e770de09-f302-4c6d-ae26-ab68138239bd",
                 "coord": { "x": 841.3151295081806, "y": 402.88648870398833 }
               },
-              "id": "138d25b3-9b1d-43fa-823e-e710c33f046d",
+              "id": "d6de9402-16b9-4719-9f1b-7f87dc605f23",
               "status": "CREATED"
             }
   ]

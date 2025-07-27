@@ -22,5 +22,6 @@
     "images_expected" : [
         "exported_view - Floor Plan - Level 1"
     ],
-    "wallPoints_expected" : "wallPoints_1"
+    "wallPoints_expected" : "wallPoints_1",
+    "wallSegments_expected" : "wallSegments_1"
 }

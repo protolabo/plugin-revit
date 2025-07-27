@@ -207,6 +207,11 @@ namespace Create
             }
         }
 
+        private void Cancel_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close(); 
+        }
+
         private void ConfirmAndDelete(WallData item, List<WallData> list, DataGrid grid)
         {
             var result = MessageBox.Show($"Are you sure you want to delete '{item.Revit}'?", "Confirm Delete", MessageBoxButton.YesNo, MessageBoxImage.Warning);

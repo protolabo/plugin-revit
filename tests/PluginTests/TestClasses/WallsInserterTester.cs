@@ -12,13 +12,6 @@ public static class WallsInserterTester
         string tempFolderPath = Path.Combine(buildFilesDir, "tempFolder");
         string tempPath = Path.Combine(tempFolderPath, "Template");
 
-        // Delete existing output JSON files if they exist
-        string wallPointsJson = Path.Combine(tempPath, "wallPoints.json");
-        string wallSegmentsJson = Path.Combine(tempPath, "wallSegments.json");
-
-        if (File.Exists(wallPointsJson)) File.Delete(wallPointsJson);
-        if (File.Exists(wallSegmentsJson)) File.Delete(wallSegmentsJson);
-
         // Step 1: Read configuration file
         string configPath = $"./TestFiles/Models/{model}";
         JObject config = JObject.Parse(File.ReadAllText(configPath));
@@ -47,9 +40,14 @@ public static class WallsInserterTester
         // Call to Plugin Class
         WallsInserter.InsertWallAndOpeningsInEkahauFile(modelSegments, viewInfo);
 
+        string wallPointsJson = Path.Combine(tempPath, "wallPoints.json");
+        string wallSegmentsJson = Path.Combine(tempPath, "wallSegments.json");
+
         // Load expected filenames from config
         string expectedPointsPath = Path.Combine("./TestFiles/WallPoints", (string)config["wallPoints_expected"] + ".json");
-        // string expectedSegmentsPath = Path.Combine("./TestFiles/WallSegments", (string)config["wallSegments_expected"] + ".json");
+        string expectedSegmentsPath = Path.Combine("./TestFiles/WallSegments", (string)config["wallSegments_expected"] + ".json");
+
+        double tolerance = 1e-9;
 
         // ✅ Validate wallPoints.json
         bool allValidPointsJson = false;
@@ -76,7 +74,6 @@ public static class WallsInserterTester
             bool sameCount = actualArray.Count == expectedArray.Count;
             bool allCoordsMatch = true;
             bool allGuidsValid = true;
-            double tolerance = 1e-9;
 
             if (!sameCount)
             {
@@ -143,80 +140,207 @@ public static class WallsInserterTester
         }
 
 
-        // ✅ Validate wallSegments.json with GUID checks (no expected comparison)
-        bool allValidSegmentsJson = false;
+        // ✅ Validate wallSegments.json 
+
+        var expectedSegmentPointsList = new List<(string segmentId, (double x, double y) point1, (double x, double y) point2)>();
+        var segmentPointsList = new List<(string segmentId, (double x, double y) point1, (double x, double y) point2)>();
+
+        if (!File.Exists(expectedSegmentsPath))
+        {
+            Console.WriteLine("❌ wallSegments_expected.json not found.");
+        }
+        else if (!File.Exists(expectedPointsPath))
+        {
+            Console.WriteLine("❌ wallPoints_expected.json not found.");
+        }
+        else
+        {
+            string expectedSegmentsJson = File.ReadAllText(expectedSegmentsPath);
+            string expectedPointsJson = File.ReadAllText(expectedPointsPath);
+
+            JToken expectedSegmentsToken = JToken.Parse(expectedSegmentsJson);
+            JToken expectedPointsToken = JToken.Parse(expectedPointsJson);
+
+            JArray expectedSegments = (JArray)expectedSegmentsToken["wallSegments"];
+            JArray expectedPointsArray = (JArray)expectedPointsToken["wallPoints"];
+
+            // Build a lookup: wallPointId → (x, y) coordinates
+            Dictionary<string, (double x, double y)> expectedPointCoords = expectedPointsArray
+                .Where(wp => wp["location"]?["coord"] != null)
+                .ToDictionary(
+                    wp => (string)wp["id"],
+                    wp =>
+                    {
+                        var coord = wp["location"]["coord"];
+                        return ((double)coord["x"], (double)coord["y"]);
+                    }
+                );
+
+            // Build list of expected segments and their associated point coordinates
+            foreach (var segment in expectedSegments)
+            {
+                string segmentId = (string)segment["id"];
+                var wallPoints = segment["wallPoints"] as JArray;
+
+                if (wallPoints != null && wallPoints.Count == 2)
+                {
+                    string wp1 = (string)wallPoints[0];
+                    string wp2 = (string)wallPoints[1];
+
+                    if (expectedPointCoords.ContainsKey(wp1) && expectedPointCoords.ContainsKey(wp2))
+                    {
+                        expectedSegmentPointsList.Add((segmentId, expectedPointCoords[wp1], expectedPointCoords[wp2]));
+                    }
+                }
+            }
+
+            // // Print expected segment IDs and their corresponding point coordinates
+            // foreach (var entry in expectedSegmentPointsList)
+            // {
+            //     Console.WriteLine($"📐 Expected Segment GUID: {entry.segmentId}");
+            //     Console.WriteLine($"    ↳ Point 1: ({entry.point1.x}, {entry.point1.y})");
+            //     Console.WriteLine($"    ↳ Point 2: ({entry.point2.x}, {entry.point2.y})");
+            // }
+        }
+
 
         if (!File.Exists(wallSegmentsJson))
         {
             Console.WriteLine("❌ wallSegments.json not found.");
         }
+        else if (!File.Exists(wallPointsJson))
+        {
+            Console.WriteLine("❌ wallPoints.json not found.");
+        }
         else
         {
-            string actualJson = File.ReadAllText(wallSegmentsJson);
-            JToken actual = JToken.Parse(actualJson);
+            string actualSegmentsJson = File.ReadAllText(wallSegmentsJson);
+            string wallPointsContent = File.ReadAllText(wallPointsJson);
 
-            JArray actualSegments = (JArray)actual["wallSegments"];
-            bool allGuidsValid = true;
+            JToken segmentsToken = JToken.Parse(actualSegmentsJson);
+            JToken wallPointsToken = JToken.Parse(wallPointsContent);
 
-            if (actualSegments == null)
+            JArray actualSegments = (JArray)segmentsToken["wallSegments"];
+            JArray wallPointsArray = (JArray)wallPointsToken["wallPoints"];
+
+            // Build a lookup: wallPointId → (x, y) coordinates
+            Dictionary<string, (double x, double y)> wallPointCoords = wallPointsArray
+                .Where(wp => wp["location"]?["coord"] != null)
+                .ToDictionary(
+                    wp => (string)wp["id"],
+                    wp =>
+                    {
+                        var coord = wp["location"]["coord"];
+                        return ((double)coord["x"], (double)coord["y"]);
+                    }
+                );
+
+            // Build list of segments and their associated point coordinates
+            foreach (var segment in actualSegments)
             {
-                Console.WriteLine("❌ wallSegments array is missing in wallSegments.json.");
+                string segmentId = (string)segment["id"];
+                string wallTypeId = (string)segment["wallTypeId"]; 
+
+                // Validate GUIDs here
+                if (!IsValidGuid(segmentId))
+                {
+                    Console.WriteLine($"❌ Invalid GUID for segment id: {segmentId}");
+                    continue; // Skip invalid segment
+                }
+                if (!IsValidGuid(wallTypeId))
+                {
+                    Console.WriteLine($"❌ Invalid GUID for wallTypeId in segment id: {segmentId}");
+                    continue; // Skip invalid segment
+                }
+                
+                var wallPoints = segment["wallPoints"] as JArray;
+
+                if (wallPoints != null && wallPoints.Count == 2)
+                {
+                    string wp1 = (string)wallPoints[0];
+                    string wp2 = (string)wallPoints[1];
+
+                    if (wallPointCoords.ContainsKey(wp1) && wallPointCoords.ContainsKey(wp2))
+                    {
+                        segmentPointsList.Add((segmentId, wallPointCoords[wp1], wallPointCoords[wp2]));
+                    }
+                }
+            }
+
+            // // Print segment IDs and their corresponding point coordinates
+            // foreach (var entry in segmentPointsList)
+            // {
+            //     Console.WriteLine($"🧱 Segment GUID: {entry.segmentId}");
+            //     Console.WriteLine($"   ↳ Point 1: ({entry.point1.x}, {entry.point1.y})");
+            //     Console.WriteLine($"   ↳ Point 2: ({entry.point2.x}, {entry.point2.y})");
+            // }
+        }
+
+        bool PointsMatch((double x, double y) p1, (double x, double y) p2)
+        {
+            return Math.Abs(p1.x - p2.x) <= tolerance && Math.Abs(p1.y - p2.y) <= tolerance;
+        }
+
+        bool SegmentsMatch(
+            (double x, double y) e1p1, (double x, double y) e1p2,
+            (double x, double y) a1p1, (double x, double y) a1p2)
+        {
+            // Match if points equal in same order OR reversed order
+            return (PointsMatch(e1p1, a1p1) && PointsMatch(e1p2, a1p2))
+                || (PointsMatch(e1p1, a1p2) && PointsMatch(e1p2, a1p1));
+        }
+
+        // Test: Check length first
+        if (expectedSegmentPointsList.Count != segmentPointsList.Count)
+        {
+            Console.WriteLine($"❌ Segment count mismatch: expected {expectedSegmentPointsList.Count}, actual {segmentPointsList.Count}");
+        }
+        else
+        {
+            Console.WriteLine($"✅ Segment counts match: {expectedSegmentPointsList.Count} segments");
+
+            bool allMatched = true;
+
+            // Create a copy of actual segments to remove matched ones
+            var actualSegmentsCopy = segmentPointsList.ToList();
+
+            foreach (var expectedSegment in expectedSegmentPointsList)
+            {
+                bool foundMatch = false;
+
+                for (int i = 0; i < actualSegmentsCopy.Count; i++)
+                {
+                    var actualSegment = actualSegmentsCopy[i];
+                    if (SegmentsMatch(expectedSegment.point1, expectedSegment.point2, actualSegment.point1, actualSegment.point2))
+                    {
+                        // Match found - remove to avoid duplicates
+                        actualSegmentsCopy.RemoveAt(i);
+                        foundMatch = true;
+                        // Console.WriteLine($"✅ Match found for expected segment: {expectedSegment.segmentId}");
+                        break;
+                    }
+                }
+
+                if (!foundMatch)
+                {
+                    Console.WriteLine($"❌ No matching segment found for expected segment: {expectedSegment.segmentId}");
+                    allMatched = false;
+                }
+            }
+
+            if (allMatched)
+            {
+                Console.WriteLine("✅ All expected segments matched successfully.");
             }
             else
             {
-                for (int i = 0; i < actualSegments.Count; i++)
-                {
-                    var segment = actualSegments[i];
-
-                    // Validate GUIDs in wallPoints (array of strings)
-                    var wallPoints = segment["wallPoints"] as JArray;
-                    if (wallPoints != null)
-                    {
-                        for (int j = 0; j < wallPoints.Count; j++)
-                        {
-                            string wpId = (string)wallPoints[j];
-                            if (!IsValidGuid(wpId))
-                            {
-                                allGuidsValid = false;
-                                Console.WriteLine($"❌ Invalid GUID in wallPoints[{j}] at segment index {i}: {wpId}");
-                            }
-                        }
-                    }
-                    else
-                    {
-                        Console.WriteLine($"⚠️ Warning: wallPoints is missing or not an array at segment index {i}");
-                    }
-
-                    // Validate GUID in wallTypeId
-                    string wallTypeId = (string)segment["wallTypeId"];
-                    if (!IsValidGuid(wallTypeId))
-                    {
-                        allGuidsValid = false;
-                        Console.WriteLine($"❌ Invalid GUID for wallTypeId at segment index {i}: {wallTypeId}");
-                    }
-
-                    // Validate GUID in id
-                    string id = (string)segment["id"];
-                    if (!IsValidGuid(id))
-                    {
-                        allGuidsValid = false;
-                        Console.WriteLine($"❌ Invalid GUID for id at segment index {i}: {id}");
-                    }
-                }
-
-                if (allGuidsValid)
-                {
-                    allValidSegmentsJson = true;
-                    Console.WriteLine("✅ wallSegments.json GUIDs are all valid.");
-                }
-                else
-                {
-                    Console.WriteLine("❌ wallSegments.json validation failed due to invalid GUIDs.");
-                }
+                Console.WriteLine("⚠️ Some expected segments were not matched.");
             }
         }
+        
 
     }
+
     
     private static bool IsValidGuid(string id)
     {

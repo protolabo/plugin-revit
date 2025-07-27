@@ -40,5 +40,6 @@
         "exported_view - Floor Plan - Level 1",
         "exported_view - Floor Plan - Level 2"
     ],
-    "wallPoints_expected" : "wallPoints_2"
+    "wallPoints_expected" : "wallPoints_2",
+    "wallSegments_expected" : "wallSegments_2"
 }
