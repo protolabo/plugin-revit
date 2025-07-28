@@ -141,6 +141,8 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Resources\arrow.png" />
+    <Content Include="Resources\cells.png" />
     <Content Include="Resources\export.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
