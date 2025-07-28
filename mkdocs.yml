@@ -67,11 +67,7 @@ markdown_extensions:
 
 plugins:
   - search
-  - mermaid2
 
-
-extra_css:
-  - css/no-sidebar.css
 
 nav:
   - Vue d'ensemble: index.md
@@ -80,5 +76,14 @@ nav:
   - Conception: conception.md
   - Tests & Évaluation: evaluation.md
   - Résultats: results.md
-  - Docs: docs.md
+  - Documentation (wiki):
+      - Accueil: wiki/index.md
+      - Installation: wiki/installation.md
+      - How-tos: wiki/how-to.md
+      - Développement: 
+        - Description des fichiers Ekahau: wiki/development/index.md
+        - Systèmes de coordonnées Revit et Ekahau: wiki/development/coordinate-system.md
+        - Division des murs en segments: wiki/development/wall-segmentation.md
+        - Description des classes: wiki/development/classes.md
+      - Troubleshooting & FAQ: wiki/troubleshooting.md
   - References: references.md

@@ -1,3 +1,8 @@
+---
+hide:
+  - navigation
+---
+
 # Références
 
 - Lister les ouvrages, articles et ressources académiques consultés.

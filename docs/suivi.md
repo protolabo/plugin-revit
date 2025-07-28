@@ -1,3 +1,8 @@
+---
+hide:
+  - navigation
+---
+
 # Suivi de projet
 
 ## Semaine 1

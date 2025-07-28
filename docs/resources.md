@@ -1,3 +1,7 @@
+# Resources
+
+## Mermaid
+
 ```mermaid
 graph TD
     A[Start] --> B{Decision}
@@ -13,12 +17,8 @@ pie title Which animals do you prefer as pets?
     "Hamsters" : 101
 ```
 
-## Why it's useful in IFT3150:
-> For computer science projects, visualizing algorithms, data flow, or system architecture is key. Mermaid lets students easily include diagrams without needing external images.
 
----
-
-### ✅ `pymdown-extensions`
+## `pymdown-extensions`
 
 This is a collection of **enhanced Markdown extensions**, mostly used with **Material for MkDocs**. It enables:
 

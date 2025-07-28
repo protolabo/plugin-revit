@@ -1,4 +1,9 @@
-# Projet IFT3150: Développement d’un plugin Revit pour l’intégration des données Ekahau
+---
+hide:
+  - navigation
+---
+
+# Développement d’un plugin Revit pour l’intégration des données Ekahau
 
 > **Thèmes**: Génie logiciel, CAD, Intégation logicielle  
 > **Superviseur**: Louis-Edouard Lafontant  

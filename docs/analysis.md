@@ -1,3 +1,8 @@
+---
+hide:
+  - navigation
+---
+
 # Études préliminaires
 
 ## Analyse du problème
