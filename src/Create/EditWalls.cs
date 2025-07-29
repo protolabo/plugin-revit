@@ -16,7 +16,7 @@ namespace Create
         {
             try
             {
-                EditWallsWindow window = new EditWallsWindow();
+                EditWallsWindow window = new EditWallsWindow(commandData);
                 window.ShowDialog();
                 return Result.Succeeded;
             }

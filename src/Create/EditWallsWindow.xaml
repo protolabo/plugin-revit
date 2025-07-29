@@ -4,7 +4,23 @@
         Title="Edit Elements" Height="500" Width="800"
         WindowStartupLocation="CenterScreen">
     <Grid Margin="10">
-        <TabControl>
+        <Grid.RowDefinitions>
+            <!-- Row for the common CheckBox -->
+            <RowDefinition Height="Auto" />
+            <!-- Row for the TabControl -->
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <!-- Common CheckBox above all tabs -->
+        <CheckBox Grid.Row="0"
+                  Content="Show only elements from this model"
+                  Margin="0,0,0,10"
+                  Name="FilterByModelCheckBox"
+                  Checked="FilterByModelCheckBox_Changed"
+                  Unchecked="FilterByModelCheckBox_Changed"
+                  />
+
+        <TabControl Grid.Row="1">
             <!-- Walls Tab -->
             <TabItem Header="Walls">
                 <Grid Margin="10">
@@ -15,7 +31,7 @@
 
                     <DataGrid x:Name="WallsGrid"
                               AutoGenerateColumns="False"
-                              CanUserAddRows="True"
+                              CanUserAddRows="False"
                               CanUserDeleteRows="True"
                               ItemsSource="{Binding walls}"
                               HeadersVisibility="Column"
@@ -63,7 +79,7 @@
 
                     <DataGrid x:Name="DoorsGrid"
                               AutoGenerateColumns="False"
-                              CanUserAddRows="True"
+                              CanUserAddRows="False"
                               CanUserDeleteRows="True"
                               ItemsSource="{Binding doors}"
                               HeadersVisibility="Column"
@@ -111,7 +127,7 @@
 
                     <DataGrid x:Name="WindowsGrid"
                               AutoGenerateColumns="False"
-                              CanUserAddRows="True"
+                              CanUserAddRows="False"
                               CanUserDeleteRows="True"
                               ItemsSource="{Binding windows}"
                               HeadersVisibility="Column"
@@ -152,6 +168,7 @@
         </TabControl>
     </Grid>
 </Window>
+
 
 
 

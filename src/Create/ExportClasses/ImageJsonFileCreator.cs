@@ -58,28 +58,54 @@ namespace Create.ExportClasses
                     };
                     imagesArray.Add(imageEntry);
 
+                    // Add to Ekahau json file floorPlans.json
                     double metersPerUnit = GetMetersPerUnit(originalImageName, exportDir, viewInfo, modelData);
 
-                    // Add to Ekahau json file floorPlans.json
-                    JObject floorEntry = new JObject
+                    // Scale calculated successfully
+                    if (metersPerUnit == 0.0)
                     {
-                        ["name"] = originalImageName,
-                        ["width"] = width,
-                        ["height"] = height,
-                        ["metersPerUnit"] = metersPerUnit == 0.0 ? "" : metersPerUnit.ToString(),
-                        ["imageId"] = imageId,
-                        ["gpsReferencePoints"] = new JArray(),
-                        ["floorPlanType"] = "FSPL",
-                        ["cropMinX"] = 0.0,
-                        ["cropMinY"] = 0.0,
-                        ["cropMaxX"] = width,
-                        ["cropMaxY"] = height,
-                        ["rotateUpDirection"] = "UP",
-                        ["tags"] = new JArray(),
-                        ["id"] = Guid.NewGuid().ToString(),
-                        ["status"] = "CREATED"
-                    };
-                    floorPlansArray.Add(floorEntry);
+                        JObject floorEntry = new JObject
+                        {
+                            ["name"] = originalImageName,
+                            ["width"] = width,
+                            ["height"] = height,
+                            ["imageId"] = imageId,
+                            ["gpsReferencePoints"] = new JArray(),
+                            ["floorPlanType"] = "FSPL",
+                            ["cropMinX"] = 0.0,
+                            ["cropMinY"] = 0.0,
+                            ["cropMaxX"] = width,
+                            ["cropMaxY"] = height,
+                            ["rotateUpDirection"] = "UP",
+                            ["tags"] = new JArray(),
+                            ["id"] = Guid.NewGuid().ToString(),
+                            ["status"] = "CREATED"
+                        };
+                        floorPlansArray.Add(floorEntry);
+                    } 
+                    else
+                    {
+                        JObject floorEntry = new JObject
+                        {
+                            ["name"] = originalImageName,
+                            ["width"] = width,
+                            ["height"] = height,
+                            ["metersPerUnit"] = metersPerUnit,
+                            ["imageId"] = imageId,
+                            ["gpsReferencePoints"] = new JArray(),
+                            ["floorPlanType"] = "FSPL",
+                            ["cropMinX"] = 0.0,
+                            ["cropMinY"] = 0.0,
+                            ["cropMaxX"] = width,
+                            ["cropMaxY"] = height,
+                            ["rotateUpDirection"] = "UP",
+                            ["tags"] = new JArray(),
+                            ["id"] = Guid.NewGuid().ToString(),
+                            ["status"] = "CREATED"
+                        };
+                        floorPlansArray.Add(floorEntry);
+
+                    }      
                 }
             }
 

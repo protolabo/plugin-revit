@@ -58,4 +58,11 @@ namespace Create.ExportClasses
         public int width { get; set; }
         public int height { get; set; }
     }
+
+    public class WallPoint
+    {
+        public double X { get; set; }
+        public double Y { get; set; }
+        public string Id { get; set; }
+    }
 }

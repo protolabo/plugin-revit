@@ -7,6 +7,8 @@ using System.Windows;
 using Newtonsoft.Json.Linq;
 using System.Windows.Controls;
 using System.ComponentModel;
+using Autodesk.Revit.UI;
+using Autodesk.Revit.DB;
 
 namespace Create
 {
@@ -15,6 +17,8 @@ namespace Create
         private List<WallData> walls;
         private List<WallData> doors;
         private List<WallData> windows;
+
+        private ExternalCommandData _commandData;
 
         public WallData EditedWallData { get; private set; }
         public List<string> AvailableWallTypes { get; set; }
@@ -26,7 +30,7 @@ namespace Create
         );
 
         // Constructor with new item to add directly
-        public EditWallsWindow(WallData newItem) : this()
+        public EditWallsWindow(ExternalCommandData commandData, WallData newItem) : this(commandData)
         {
             walls.Add(newItem);
             WallsGrid.Items.Refresh();
@@ -34,9 +38,12 @@ namespace Create
             WallsGrid.ScrollIntoView(newItem);
         }
 
-        public EditWallsWindow()
+        public EditWallsWindow(ExternalCommandData commandData)
         {
             InitializeComponent();
+            _commandData = commandData;
+
+            LoadUsedTypesFromModel(commandData);
 
             // Read JSON data file
             if (File.Exists(dataFilePath))
@@ -131,6 +138,84 @@ namespace Create
 
             this.DataContext = this;
         }
+
+        private void FilterByModelCheckBox_Changed(object sender, RoutedEventArgs e)
+        {
+            bool isChecked = FilterByModelCheckBox.IsChecked == true;
+
+            // TODO: implement filtering logic based on isChecked value
+
+            if (isChecked)
+            {
+                // Filter grids to show only elements from this model
+                FilterGridsForCurrentModel();
+            }
+            else
+            {
+                // Show all elements (remove filter)
+                ShowAllElementsInGrids();
+            }
+        }
+
+        private void FilterGridsForCurrentModel()
+        {
+            var filteredWalls = walls.Where(w => usedTypeNames.Contains(w.Revit)).ToList();
+            var filteredDoors = doors.Where(d => usedTypeNames.Contains(d.Revit)).ToList();
+            var filteredWindows = windows.Where(win => usedTypeNames.Contains(win.Revit)).ToList();
+
+            WallsGrid.ItemsSource = filteredWalls;
+            DoorsGrid.ItemsSource = filteredDoors;
+            WindowsGrid.ItemsSource = filteredWindows;
+        }
+
+        private void ShowAllElementsInGrids()
+        {
+            // Reset the ItemsSource to show all items
+            WallsGrid.ItemsSource = walls;
+            DoorsGrid.ItemsSource = doors;
+            WindowsGrid.ItemsSource = windows;
+        }
+
+        private HashSet<string> usedTypeNames = new HashSet<string>();
+
+        private void LoadUsedTypesFromModel(ExternalCommandData commandData)
+        {
+            Document doc = commandData.Application.ActiveUIDocument.Document;
+
+            // Categories to check
+            BuiltInCategory[] filteredCategories = new[]
+            {
+        BuiltInCategory.OST_Walls,
+        BuiltInCategory.OST_Doors,
+        BuiltInCategory.OST_Windows
+    };
+
+            usedTypeNames.Clear();
+
+            foreach (var category in filteredCategories)
+            {
+                // Get all instances of this category
+                var instances = new FilteredElementCollector(doc)
+                                    .OfCategory(category)
+                                    .WhereElementIsNotElementType()
+                                    .ToElements();
+
+                foreach (var instance in instances)
+                {
+                    ElementId typeId = instance.GetTypeId();
+                    Element typeElement = doc.GetElement(typeId);
+                    if (typeElement != null)
+                    {
+                        string typeName = typeElement.Name;
+                        if (!usedTypeNames.Contains(typeName))
+                        {
+                            usedTypeNames.Add(typeName);
+                        }
+                    }
+                }
+            }
+        }
+
 
         private void Save_Click(object sender, RoutedEventArgs e)
         {
@@ -241,7 +326,7 @@ namespace Create
 
         private void EkahauCombo_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            var comboBox = sender as ComboBox;
+            var comboBox = sender as System.Windows.Controls.ComboBox;
             if (comboBox == null) return;
 
             var selectedName = comboBox.SelectedItem as string;
