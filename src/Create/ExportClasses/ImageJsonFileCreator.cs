@@ -59,7 +59,7 @@ namespace Create.ExportClasses
                     imagesArray.Add(imageEntry);
 
                     // Add to Ekahau json file floorPlans.json
-                    double metersPerUnit = GetMetersPerUnit(originalImageName, exportDir, viewInfo, modelData);
+                    double metersPerUnit = GetMetersPerUnit(originalImageName, viewInfo);
 
                     // Scale calculated successfully
                     if (metersPerUnit == 0.0)
@@ -123,7 +123,7 @@ namespace Create.ExportClasses
         }
 
         // This function is used to automatically specify the model scale in Ekahau
-        private static double GetMetersPerUnit(string imageName, string directoryPath, List<ViewData> viewInfo, Dictionary<string, ModelData> modelData)
+        private static double GetMetersPerUnit(string imageName, List<ViewData> viewInfo)
         {
             // Extract view name from image file name
             string viewName = imageName
@@ -164,7 +164,7 @@ namespace Create.ExportClasses
 
             if (diagonalPixels == 0)
             {
-                Console.WriteLine("❌ Image diagonal is zero. Invalid width/height.");
+                TaskDialog.Show("Warning", "The model scale could not be established.");
                 return 0.0;
             }
 

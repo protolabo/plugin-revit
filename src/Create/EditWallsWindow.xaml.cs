@@ -143,8 +143,6 @@ namespace Create
         {
             bool isChecked = FilterByModelCheckBox.IsChecked == true;
 
-            // TODO: implement filtering logic based on isChecked value
-
             if (isChecked)
             {
                 // Filter grids to show only elements from this model
@@ -185,10 +183,10 @@ namespace Create
             // Categories to check
             BuiltInCategory[] filteredCategories = new[]
             {
-        BuiltInCategory.OST_Walls,
-        BuiltInCategory.OST_Doors,
-        BuiltInCategory.OST_Windows
-    };
+                BuiltInCategory.OST_Walls,
+                BuiltInCategory.OST_Doors,
+                BuiltInCategory.OST_Windows
+            };
 
             usedTypeNames.Clear();
 
