@@ -44,6 +44,8 @@ namespace Create.ExportClasses
             var wallPointsList = new List<string>();
             var wallSegmentsList = new List<string>();
 
+            var wallPointObjectsByFloor = new Dictionary<string, List<WallPoint>>();
+
             foreach (var imageFile in imageFiles)
             {
                 string imageFileName = Path.GetFileName(imageFile);
@@ -71,15 +73,24 @@ namespace Create.ExportClasses
                     .FirstOrDefault(fp => (string)fp["name"] == imageFileName)?["id"]?.ToString();
                 if (string.IsNullOrEmpty(floorPlanId)) continue;
 
+                if (!wallPointObjectsByFloor.ContainsKey(floorPlanId))
+                {
+                    wallPointObjectsByFloor[floorPlanId] = new List<WallPoint>();
+                }
+
+                var wallPointObjects = wallPointObjectsByFloor[floorPlanId];
+
                 // The SegmentsListCreator.FillOpeningsList function adds the corresponding wallPoints and wallSegments 
                 // for each door, window and wall segment to the appropriate lists, using the required format for inclusion in the Ekahau JSON file.
-                SegmentsListCreator.FillSegmentsList(modelDataSegments[viewName].walls, floorPlanId, convertX, convertY, tempPath, wallPointsList, wallSegmentsList);
+                SegmentsListCreator.FillSegmentsList(modelDataSegments[viewName].walls, floorPlanId, convertX, convertY, tempPath, wallPointsList, wallSegmentsList, wallPointObjects);
 
             }
 
             File.WriteAllText(Path.Combine(tempPath, "wallPoints.json"), "{\n  \"wallPoints\": [\n" + string.Join(",\n", wallPointsList) + "\n  ]\n}");
             File.WriteAllText(Path.Combine(tempPath, "wallSegments.json"), "{\n  \"wallSegments\": [\n" + string.Join(",\n", wallSegmentsList) + "\n  ]\n}");
             //File.WriteAllText(Path.Combine(tempPath, "exclusionAreas.json"), "{\n  \"exclusionAreas\": [\n" + string.Join(",\n", areasList) + "\n  ]\n}");
+
+            // FloorAligner.AlignFloorsAndGenerateJson(wallPointObjectsByFloor, viewInfo, tempPath);
 
             // return Result.Succeeded;
             return true;

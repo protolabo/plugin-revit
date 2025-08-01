@@ -38,7 +38,7 @@ public static class Exporter
         bool allValid = true;
 
         // Read Model json configuration file
-        string testFilePath = $"./TestFiles/Models/{model}";
+        string testFilePath = $"./TestFiles/Integration/Models/{model}";
         string jsonContent = File.ReadAllText(testFilePath);
         ModelInfo testInfo = JsonConvert.DeserializeObject<ModelInfo>(jsonContent);
 

@@ -1,0 +1,99 @@
+// 1. regular: 1 wall with 1 opening and 1 door
+i[]Lw[0,10]{o[2,4]d[4,6]}
+i[]Lw[0,10]{w[0,2]o[2,4]d[4,6]w[6,10]}
+
+// 2. edge case: 2 walls, second wall starts at 3, the door starts at 0
+i[]Lw[0,10]{o[2,4]d[4,6]}w[3,10]{d[0,5]}
+i[]Lw[0,10]{w[0,2]o[2,4]d[4,6]w[6,10]}w[3,10]{d[0,5]w[5,10]}
+
+// 3. edge case: 1 wall, the wall ends at 10, door ends at 12
+i[]Lw[0,10]{o[2,4]d[6,12]}
+i[]Lw[0,10]{w[0,2]o[2,4]w[4,6]d[6,12]}
+
+// 4. edge case: 1 wall, the wall ends at 10, window ends at 12
+i[]Lw[0,10]{o[2,4]g[6,12]}
+i[]Lw[0,10]{w[0,2]o[2,4]w[4,6]g[6,12]}
+
+// 5. overlap: 1 wall, 1 door ends at 6, 1 door start at 4
+i[]Lw[0,10]{d[2,6]d[4,8]}
+i[]Lw[0,10]{w[0,2]d[2,5]d[5,8]w[8,10]}
+
+// 6. regular: just to confirm tha converters handles var type double
+i[]Lw[0,10]{d[2,5.5]d[5.5,8]}
+i[]Lw[0,10]{w[0,2]d[2,5.5]d[5.5,8]w[8,10]}
+
+// 7. overlap: 1 wall, 1 door ends at 6, 1 door start at 5, var type double in result
+i[]Lw[0,10]{d[2,6]d[5,8]}
+i[]Lw[0,10]{w[0,2]d[2,5.5]d[5.5,8]w[8,10]}
+
+// 8. overlap: 1 wall, 1 door completly overlaps another and start at same point
+i[]Lw[0,10]{d[2,6]d[2,8]}
+i[]Lw[0,10]{w[0,2]d[2,8]w[8,10]}
+
+// 9. overlap: 1 wall, 1 door completly overlaps another at the begining of the wall
+i[]Lw[2,10]{d[2,6]d[2,8]}
+i[]Lw[2,10]{d[2,8]w[8,10]}
+
+// 10. overlap: 1 wall, 1 door completly overlaps another and end at same point
+i[]Lw[0,10]{d[2,8]d[4,8]}
+i[]Lw[0,10]{w[0,2]d[2,8]w[8,10]}
+
+// 11. overlap: openings not in order
+i[]Lw[0,10]{d[4,8]d[2,8]}
+i[]Lw[0,10]{w[0,2]d[2,8]w[8,10]}
+
+// 12. overlap: 1 wall, 1 door completly overlaps another that is smaller
+i[]Lw[0,10]{g[4,6]g[2,8]}
+i[]Lw[0,10]{w[0,2]g[2,8]w[8,10]}
+
+// 13. overlap: 1 wall, 1 window completly overlaps a door
+i[]Lw[0,10]{d[4,6]g[2,8]}
+i[]Lw[0,10]{w[0,2]g[2,8]w[8,10]}
+
+// 14. overlap: 1 wall, 1 window completly overlaps a door
+i[]Lw[0,10]{g[4,6]d[2,8]}
+i[]Lw[0,10]{w[0,2]d[2,8]w[8,10]}
+
+// 15. overlap: multiple elements overlap
+i[]Lw[0,20]{d[2,6]d[4,10]d[8,12]}
+i[]Lw[0,20]{w[0,2]d[2,5]d[5,9]d[9,12]w[12,20]}
+
+// 16. overlap: triple overlap
+i[]Lw[0,10]{d[2,6]d[4,8]d[3,7]}
+i[]Lw[0,10]{w[0,2]d[2,5]d[5,8]w[8,10]}
+
+// 17. overlap: 1 wall, 1 opening overlaps a door
+i[]Lw[0,10]{o[2,6]d[4,8]}
+i[]Lw[0,10]{w[0,2]o[2,4]d[4,8]w[8,10]}
+
+// 18. overlap: 1 wall, 1 opening overlaps a window
+i[]Lw[0,10]{o[4,8]g[2,6]}
+i[]Lw[0,10]{w[0,2]g[2,6]o[6,8]w[8,10]}
+
+// 19. overlap: 1 wall, 1 opening overlaps a window, elements not in order
+i[]Lw[0,10]{o[4,8]g[2,6]}
+i[]Lw[0,10]{w[0,2]g[2,6]o[6,8]w[8,10]}
+
+// 20. overlap: 1 wall, 1 opening overlaps a window and a door
+i[]Lw[0,20]{d[2,6]o[4,10]g[8,12]}
+i[]Lw[0,20]{w[0,2]d[2,6]o[6,8]g[8,12]w[12,20]}
+
+// 21. overlap: 1 wall, 2 opening overlaps a window
+i[]Lw[0,20]{o[2,6]g[4,10]o[8,12]}
+i[]Lw[0,20]{w[0,2]o[2,4]g[4,10]o[10,12]w[12,20]}
+
+// 22. overlap: 1 wall, 2 opening overlaps a door
+i[]Lw[0,20]{o[2,6]d[4,10]o[8,12]}
+i[]Lw[0,20]{w[0,2]o[2,4]d[4,10]o[10,12]w[12,20]}
+
+// 23. overlap: 1 wall, 2 opening overlap
+i[]Lw[0,20]{o[2,6]o[4,12]}
+i[]Lw[0,20]{w[0,2]o[2,12]w[12,20]}
+
+// 24. overlap: 1 wall, 1 opening overlaps another opening and window
+i[]Lw[0,20]{o[2,6]o[4,10]g[8,12]}
+i[]Lw[0,20]{w[0,2]o[2,8]g[8,12]w[12,20]}
+
+// 25. overlap: 1 wall, 1 opening overlaps a door and another opening
+i[]Lw[0,20]{d[2,6]o[4,10]o[8,12]}
+i[]Lw[0,20]{w[0,2]d[2,6]o[6,12]w[12,20]}

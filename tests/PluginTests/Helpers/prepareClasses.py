@@ -13,10 +13,10 @@ import sys
 import re
 sys.stdout.reconfigure(encoding='utf-8')
 
-# 📁 Target directory
+# Target directory
 export_dir = './ExportClasses'
 
-# 🧹 Delete all files in ExportClasses except ModelData.cs
+# Delete all files in ExportClasses except ModelData.cs
 for file in os.listdir(export_dir):
     full_path = os.path.join(export_dir, file)
     if file != 'ModelInfo.cs' and os.path.isfile(full_path):
@@ -102,6 +102,13 @@ for filename in files:
             modified_line = re.sub(r'\bResult\b', 'bool', line, count=1)
             new_lines.append(f'{modified_line}')
             print(f'🔧 Changed function return type to bool in {filename_only}: {line.strip()}')
+
+        # Replace private static → public static
+        elif re.match(r'^\s*private\s+static\s+\w+', line) and not stripped.startswith('//'):
+            new_lines.append(f'{indent}// {stripped}')
+            modified_line = line.replace('private', 'public', 1)
+            new_lines.append(f'{modified_line}')
+            print(f'🔧 Changed function visibility to public in {filename_only}: {line.strip()}')
 
         else:
             new_lines.append(line)

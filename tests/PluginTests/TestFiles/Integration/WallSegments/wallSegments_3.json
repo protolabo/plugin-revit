@@ -1,0 +1,3308 @@
+{
+  "wallSegments": [
+{
+              "wallPoints": ["8fd0f49f-2669-4c1c-81fb-6fdb6fe26a7e", "4d5d0aad-6e52-4144-a2fd-8b36706fcf86"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "5213ff14-48ab-4d47-973b-5a34190f1ab9",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["4d5d0aad-6e52-4144-a2fd-8b36706fcf86", "48a5a155-0eef-48aa-9dcc-1177cf5e496f"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "bf2eb59a-022d-4dcc-876c-717295512b42",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["48a5a155-0eef-48aa-9dcc-1177cf5e496f", "a5264392-d9b0-4c8d-8c88-7a7f282aa504"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "7e08d0e7-8a5c-4c3d-8b2f-aa52feafedde",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["fe97b379-dce9-4ad5-b624-41b5f9e78130", "839f2957-ede9-449a-b8e7-0a26a19473b7"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "7c5b638a-62e2-47ec-8a66-b6a569f5de34",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["348dd563-8477-40dc-b567-5a599ef9b84d", "dd3fd99f-1546-4709-89ff-ba49f23ddd84"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "2ef752ab-1f1b-459a-9ec3-f947b5799d31",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["6a236e0a-0273-42f7-893e-6953132783b0", "ec0ab806-58b1-460f-be70-02c22c7fe333"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "d241e677-127a-4cf0-baab-12cc1ced8b86",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["ec0ab806-58b1-460f-be70-02c22c7fe333", "92a47f9e-56e5-445b-b520-901790d36129"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "ee37dfba-6497-4940-ad99-ff137fa57970",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["92a47f9e-56e5-445b-b520-901790d36129", "e53a1a5c-1940-4b3e-a8f1-2ccc694bfc0a"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "e47c2d22-d4c7-4e04-b6d3-8c144cc4eecc",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["e53a1a5c-1940-4b3e-a8f1-2ccc694bfc0a", "5e29bf88-55fb-4141-8db5-e4aabca4429d"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "b0490af1-7d10-4eae-bb2d-fcdb5cf590e9",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["5e29bf88-55fb-4141-8db5-e4aabca4429d", "303978fb-66c9-44a4-b79e-5cd528236b42"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "4cedac50-5004-415d-849c-68304d6ca8f9",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["303978fb-66c9-44a4-b79e-5cd528236b42", "0e5e338e-72f1-4da5-992e-4e09a1194434"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "69fb053f-2e0f-4c9e-bafe-614ca73d4455",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["0e5e338e-72f1-4da5-992e-4e09a1194434", "dc9d980b-6a36-4c89-a761-bb927194ccdc"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "0cf789f0-cadc-45d9-a383-66ddec7d013d",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["dc9d980b-6a36-4c89-a761-bb927194ccdc", "39f9fb84-9c9b-4eea-af51-94566964f9d1"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "03dc12d0-0f60-4522-8780-c22df30ff999",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["39f9fb84-9c9b-4eea-af51-94566964f9d1", "469f7e47-5ec9-41f0-9cbb-03edab47f6c2"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "082a5353-2f70-4306-831a-fd47cc95c70a",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["469f7e47-5ec9-41f0-9cbb-03edab47f6c2", "973c7334-ce91-407d-ba04-94ae33e49d14"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "ddb19dc9-dbbe-4e37-83d2-3594113af78a",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["973c7334-ce91-407d-ba04-94ae33e49d14", "f2237af1-2d8b-478a-bce6-e2be146d8c73"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "2182d716-9e64-4127-bd8b-58997afb468a",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["f2237af1-2d8b-478a-bce6-e2be146d8c73", "35033fed-943d-46e1-8732-aae6d931340a"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "bce3efe8-c8df-4c04-a528-1ebd62d017b1",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["35033fed-943d-46e1-8732-aae6d931340a", "48d84359-55f2-4076-9c46-909a6351266e"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "56e43dd3-2c62-46cf-9c76-86a5639639ee",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["74a4c056-5b88-479f-85db-cfc6b0444bb2", "4754255e-7178-4568-87a7-f8b3482e1395"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "644137c6-dea6-4933-99d5-9e772f7182f7",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["87c7e2a6-7f03-4c52-9110-0561d7e8b58a", "81b46e80-1748-467e-abbf-0521dd6c33d2"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "94264f28-e490-486f-a036-1ab6a60eb904",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["87c7e2a6-7f03-4c52-9110-0561d7e8b58a", "6adfda19-a4a7-4184-8244-037550a7aa45"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "cd19305b-fa87-42b4-a3db-7cfdb24986d9",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["6da64689-576e-4060-9485-3354408ff0f1", "74a4c056-5b88-479f-85db-cfc6b0444bb2"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "ff6349cc-c788-4d35-98f5-4b38aa5797e7",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["3a8d4593-7595-4936-b75b-2fe19bc4b079", "c935205e-0d79-4322-9dff-3dfcee189b46"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "1bc02cba-57b4-48b3-bbd1-f14013766497",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["c935205e-0d79-4322-9dff-3dfcee189b46", "f46ada71-6e76-4d45-ae52-71230b296b73"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "a2ffdbb5-8434-440b-898b-20ae450ba7e8",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["f46ada71-6e76-4d45-ae52-71230b296b73", "b1a1776a-97b6-436f-b3ba-935b747a1d11"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "4fed3344-6e8a-443e-8d4c-576f1c9ae261",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["f12845b3-d4b6-4954-83e1-f504de829aea", "b1a1776a-97b6-436f-b3ba-935b747a1d11"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "ac0ef5cd-2a8e-4a4b-bf10-7f7338609edc",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["d5307ba3-9818-40fb-9df2-0bcc4d2d3bab", "f12845b3-d4b6-4954-83e1-f504de829aea"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "bb46a22b-8de4-4030-9203-eb7e72af1494",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["981814a6-d843-4963-b372-a29b26c8b7f6", "f6120094-4d80-4ab5-852e-8303b720eb3e"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "3a2f7b1c-a78e-41a6-a0a7-f89103df75ea",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["f6120094-4d80-4ab5-852e-8303b720eb3e", "25cfef55-4808-412e-baa6-bab84a4baadb"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "f9bec212-5e51-4d6f-8ac2-bba4ae3359f2",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["25cfef55-4808-412e-baa6-bab84a4baadb", "cfe2d7d8-62db-454d-bcc7-5cf3dea64a03"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "a493396d-9fb8-4278-aa91-f425bbd4f967",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["cfe2d7d8-62db-454d-bcc7-5cf3dea64a03", "8895c631-59b3-4f8f-b008-5d2ac1507bda"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "a88e23e3-e7a3-46bb-ae52-aab5b0b389d7",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["8895c631-59b3-4f8f-b008-5d2ac1507bda", "54da72c8-2863-4f3c-9f21-8695c3b09d72"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "11433530-6b07-4437-8432-0c863ec82089",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["54da72c8-2863-4f3c-9f21-8695c3b09d72", "3ca0e42b-3843-411f-8de2-bf84c40161df"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "22edaf2d-6fa2-4f1a-95bd-1f8d5227b392",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["3ca0e42b-3843-411f-8de2-bf84c40161df", "4c2f3420-f6cc-45d5-9f85-6c3e79ef3bb1"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "f0bedba3-5b35-43a0-8c56-d14bd8cf390a",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["4c2f3420-f6cc-45d5-9f85-6c3e79ef3bb1", "a124cff7-faee-419e-b216-f7d92f67b137"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "86124b7e-384f-406d-93d4-67965c2f9141",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["a124cff7-faee-419e-b216-f7d92f67b137", "9c6e23a0-0e90-4808-bb23-0f55c09810f0"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "8c9d5588-5886-4e62-bc37-775b32c3c200",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["842b0754-eb29-4b70-a35a-3298f2e6aaaf", "1d96f9d1-dbe8-479c-a337-341656bc0881"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "2c5e7518-c417-4b1f-bf28-c2c33a29f3bf",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["1d96f9d1-dbe8-479c-a337-341656bc0881", "a6e04bca-29cf-487a-a0bd-f4f5acb6f9b9"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "3a965be6-84e1-41af-884c-72acc4ddc84c",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["a6e04bca-29cf-487a-a0bd-f4f5acb6f9b9", "6770a761-d7e0-4d7b-9400-d538f9734643"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "093a7d35-f980-4863-9122-303cb80327a2",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["6770a761-d7e0-4d7b-9400-d538f9734643", "3d256c6c-6917-45c4-81ac-e1a028ecfbe6"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "2f76e320-f965-48d5-b810-20f06e8dfd3b",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["3d256c6c-6917-45c4-81ac-e1a028ecfbe6", "3621a269-63ca-4ee6-91f6-cfbbbdfd4387"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "9d8a3d83-b1c0-44c4-a757-0f8a6d68669f",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["981814a6-d843-4963-b372-a29b26c8b7f6", "3177e097-8115-4072-833e-52a97f3f0a9f"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "bdb760a1-3b4a-4223-86f5-667f4e988145",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["3177e097-8115-4072-833e-52a97f3f0a9f", "00637379-169b-4a4e-8753-3e8b8ebfbcbf"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "0385dee9-4f76-48e9-9a83-0ef24d73e36f",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["00637379-169b-4a4e-8753-3e8b8ebfbcbf", "cf81cada-5aba-4474-9489-75eed5e0ec88"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "4601cf9b-59b5-4a63-b99d-770b14eba7b3",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["f02a864d-f03d-4806-9093-e689bd936cb8", "4dd81a3d-61a3-47e3-bfbe-eb12c047b370"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "ac353c25-2dd4-491f-8988-19b0ed41413d",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["a20a63f4-d70b-4188-9903-bc0c7ea4ebb3", "6413f123-ffe4-4009-9fe9-c3f2c2a141ed"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "8ef361a6-b0a9-421c-89d8-28a1633313a4",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["9c6e23a0-0e90-4808-bb23-0f55c09810f0", "48d84359-55f2-4076-9c46-909a6351266e"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "07749b3e-c1bb-4700-8260-93413cd933ce",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["1243bb91-9d7b-4de5-8ae9-bf0f822a5a11", "0dc83fca-3745-407a-9731-62c332a04403"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "a37b1c5a-bf86-42b8-99b4-b38864a361ed",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["0dc83fca-3745-407a-9731-62c332a04403", "796d829d-86c0-4a57-b705-0c8ee357d547"],
+              "wallTypeId": "c75408e4-67c7-461b-80a1-41eb9afe656a",
+              "originType": "WALL_TOOL",
+              "id": "d4186737-81c8-4c50-8357-870e8677cade",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["796d829d-86c0-4a57-b705-0c8ee357d547", "3b36eeaa-07d9-49fa-b21d-6f2fb2ad79eb"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "4a45066c-b1f2-4ce5-ba86-d0cca15f57ba",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["f817e3a0-efbe-4c38-8471-959f25441110", "1fa49b4d-f6a8-4905-aeda-a470353b24e3"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "b0cfb771-1812-4ee8-b361-53c63610a44e",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["1fa49b4d-f6a8-4905-aeda-a470353b24e3", "29c1d523-23ac-4d7b-8a00-4baeb9f39e83"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "ae40bd83-a357-4d56-b2a1-1b2b9d0b6560",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["29c1d523-23ac-4d7b-8a00-4baeb9f39e83", "3dbe745c-68f6-48f6-88c2-791d857ab61a"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "803a2c84-1c41-4988-aa3e-b2b1f81186c0",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["e64d8595-180a-4f77-97e4-15c376f36431", "3dbe745c-68f6-48f6-88c2-791d857ab61a"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "b7b83dd4-fb57-4b6f-8e10-019c51b91f07",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["6ba02dd3-3d9e-409b-9c5b-3e25895e39f2", "1a2ca656-b193-4ace-bcc8-e528359d3305"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "5f059c54-80e7-42ed-8618-ce5994e28798",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["1a2ca656-b193-4ace-bcc8-e528359d3305", "80c66631-2fa1-41cf-a091-204f10018663"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "c2e0be60-6ae9-4f71-b3b4-679bf6b6d0fe",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["80c66631-2fa1-41cf-a091-204f10018663", "e600875d-458e-401f-ab4f-9626a4454fd1"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "ea982e95-65ac-475f-97b4-8e6f930fe211",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["1b51e511-9013-4b5c-8960-f595e618685c", "9b33ee14-f241-4b15-8a76-07d807e0d1ca"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "76b64327-7f5f-4d2e-8323-99123338863d",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["9b33ee14-f241-4b15-8a76-07d807e0d1ca", "ca1ba83f-a167-4bc1-b9bf-444b3d5f89c8"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "094d1d59-9322-41ce-9698-4dbec83624b5",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["ca1ba83f-a167-4bc1-b9bf-444b3d5f89c8", "2b526411-83d2-44fb-a652-72d8cfa5dc54"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "49ede5a3-89fa-4f86-8b46-5163bc4bc36c",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["9395602c-c6a8-496a-872a-b98d6dd17942", "ae686fc9-83b6-4aaf-9406-246b5c79fd85"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "63302091-7012-4210-9a9c-660d787ce81e",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["2abb4ef0-5f1f-45cc-8324-eb090cd870c2", "a9d4244a-7e81-414d-888d-440476d334e3"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "8360496d-f2fe-46e6-baad-9c642849ab66",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["2d098f96-5939-4c1a-b886-5cb1f6aba7a1", "7ae4c254-f098-4acf-8bec-03162d5d1b72"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "81cf7b2f-a136-48bf-9024-81b059959715",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["7ae4c254-f098-4acf-8bec-03162d5d1b72", "9da309ba-17d4-4328-af6a-724bd94d0378"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "8f331236-7b36-4f2a-917f-911f37c73412",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["9da309ba-17d4-4328-af6a-724bd94d0378", "c28ac3a7-874c-4f38-b4ff-210495c38aa5"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "2c1d52c7-64b0-4ddc-ada3-d155ef4992e8",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["c28ac3a7-874c-4f38-b4ff-210495c38aa5", "d41135e2-7950-454c-98f9-3983d6614f8d"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "e9bb06cd-201b-4104-8417-65bf958149b3",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["d41135e2-7950-454c-98f9-3983d6614f8d", "cb3f1958-e497-484d-be9d-4b1ce49db8e8"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "6ab0487b-69d2-4ad1-a502-c272c166ead2",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["72f184ef-0115-4c86-8746-6012bfe310d1", "9df39d30-40d6-46c7-b09f-893b30e812a3"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "06b1fec2-38a1-4d3f-bcce-a30073c7ed8e",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["9df39d30-40d6-46c7-b09f-893b30e812a3", "4c87d10f-1f23-47d2-a58a-b380909a9000"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "4d099de1-4a72-4171-852f-8f16f4012045",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["4c87d10f-1f23-47d2-a58a-b380909a9000", "944f7719-63e9-4995-bca0-9c2469f885ba"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "551e5a89-29cd-4e49-80dc-fa3c34f16735",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["dd3fd99f-1546-4709-89ff-ba49f23ddd84", "7c475dbd-686b-4058-9c9b-5fd15eaa8703"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "01f76880-22ff-40b5-8ffc-2542419a0073",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["060df40f-a207-41cc-a06a-852de5d4818e", "7bed9283-8a22-4ae5-a740-e2fd93af33b1"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "232bf8fa-13fd-4a0b-b2bf-844f4006ffe3",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["3b21d054-f151-4427-8548-0788fc6248ec", "a37e4623-cb2e-4735-98f6-8b507691d9ea"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "e47a8200-daf4-41cb-b767-445ee2bca4d9",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["65db068f-2d47-4491-a55b-fc7a9eb0a2b3", "3bc3e5c5-070c-45fb-b168-56683bc53c0b"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "5b4c0c67-f90b-421c-9474-e691b060aa1d",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["3bc3e5c5-070c-45fb-b168-56683bc53c0b", "0d908d16-f2ac-4def-9e73-22aa40fce21d"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "b7577ff5-32b2-4116-8aab-fea5d089c5e3",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["0d908d16-f2ac-4def-9e73-22aa40fce21d", "981814a6-d843-4963-b372-a29b26c8b7f6"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "dbf3decc-81e9-4a21-b7ed-7b2771054cd9",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["060df40f-a207-41cc-a06a-852de5d4818e", "b254e9c8-5cdf-47ba-9022-51788fe73eae"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "d399d1ac-e030-4d79-b425-e9416eed5228",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["2bee4178-7fb6-4681-9f36-0ac5504ef05f", "71099462-357d-4873-8f24-d0d76e1f4379"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "d483a088-e37f-4ab7-831e-bfa9344be9e2",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["480c6666-4b2e-4e69-8f2f-6d246405ac16", "39a10c41-674f-45d4-a8f0-7b5ce1795a58"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "fb43be33-e68c-4499-a1d1-fd3f9084854e",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["b2976319-352d-4010-9e6f-d30c12665dab", "8e31380a-3909-4426-9c5c-ea2eb8efd96a"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "00b529a4-acb5-43ae-a19a-94d5ea1a80ce",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["8e31380a-3909-4426-9c5c-ea2eb8efd96a", "005ac655-39ea-4786-8e24-dfc47eb79f5a"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "6c2f0490-c147-4320-8bc4-87d15b9beff5",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["005ac655-39ea-4786-8e24-dfc47eb79f5a", "a99657ea-d40e-4aab-a0fe-3ab7d036c6f5"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "84486452-ddfb-4874-be1e-843281ba957f",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["bdbec6b0-de83-422e-b2f2-8a7428296272", "6324ffb1-b8bb-4fec-9723-4c991af13219"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "f0e8960e-dd56-4bf7-9f1f-f14ea63f050e",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["6324ffb1-b8bb-4fec-9723-4c991af13219", "91c5bf9e-4162-41e2-8c8b-b6b758d22523"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "d412648d-2944-4cfb-859e-19dd44ac21f7",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["91c5bf9e-4162-41e2-8c8b-b6b758d22523", "a2896cd6-991d-4b4f-913c-edcdce6db19a"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "71e85e91-f73a-4eed-ba04-871afb3cd116",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["a2896cd6-991d-4b4f-913c-edcdce6db19a", "ef056d57-70f6-4208-926e-a99733142519"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "f3789ad9-5898-47c3-836a-ff383720a2a7",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["fe97b379-dce9-4ad5-b624-41b5f9e78130", "acf730bb-9483-4b1f-96dc-1f0a105928a9"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "52ab40c8-4cda-48b8-b084-6a86f0489183",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["74407f3e-d84d-4567-9090-1e055b9e5a87", "366325f4-2a43-481d-902b-3fb4783f8ed5"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "91e6f73a-ba5c-4b9d-90e0-7ba619f26a60",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["366325f4-2a43-481d-902b-3fb4783f8ed5", "b0aed81f-b168-4d10-af59-705d5886c2a9"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "8f23ce99-d492-4291-b93f-4eff2c4b85f0",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["b0aed81f-b168-4d10-af59-705d5886c2a9", "17e0a136-b81c-4054-ab4c-b856f02fe0d6"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "de0c8afa-4c62-4c38-82e9-f5d478c1fb5c",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["17e0a136-b81c-4054-ab4c-b856f02fe0d6", "6933d80a-f76c-41a8-9026-c9e2be1d64ed"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "08c55d52-aa95-4877-bde6-9b45c7291613",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["6933d80a-f76c-41a8-9026-c9e2be1d64ed", "15037f23-e5f5-462c-b1c4-5e14e29a6d37"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "0fee269e-d249-444e-a5c1-263bea1267ff",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["15037f23-e5f5-462c-b1c4-5e14e29a6d37", "e7ca10e8-be73-4ac8-8010-f88053908882"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "bdb9e03b-c9da-4cfd-9623-e5e123711650",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["e7ca10e8-be73-4ac8-8010-f88053908882", "b254e9c8-5cdf-47ba-9022-51788fe73eae"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "360a0ab9-e0a4-4885-8cc0-374cc1e02a4d",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["f4f28de8-689c-4148-8b6d-6cfd5ca34206", "613c92ab-1d01-4af1-9625-6fa2ebc7bce8"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "43e70af7-1224-4954-b6f4-d6f34337e540",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["f4f28de8-689c-4148-8b6d-6cfd5ca34206", "2d9147b5-9ba4-46b4-a7e2-3cf55187efa3"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "d2f38f89-b510-4e60-929a-15864c5d24c1",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["2d9147b5-9ba4-46b4-a7e2-3cf55187efa3", "70d65c02-1cd6-41f9-889b-bb7fbb8d658d"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "ddc86bfb-5f96-4c0d-b174-19bbc8f343ea",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["8a5bf064-f430-4829-b28d-181afc6037a2", "842b0754-eb29-4b70-a35a-3298f2e6aaaf"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "ee95796d-6f9a-44f5-91d9-6ff334109585",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["053c73c4-241c-42ab-b3ac-c07205e6897e", "53783492-2046-4acd-93f6-4108110c1282"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "df420b9e-7b58-4e0d-bbd3-6ed766da5678",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["53783492-2046-4acd-93f6-4108110c1282", "436398c0-4e5f-4b28-a29c-c609b00fed79"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "365c399e-c74a-42b6-acb4-df0b4dadd77b",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["436398c0-4e5f-4b28-a29c-c609b00fed79", "ed87da8d-b756-45a5-8ed2-020726a3e84c"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "f19780a6-c01a-4f05-b316-91a3253adbb7",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["bfc42c62-5bc7-43e2-863f-00cd5f9b48f5", "fffea426-e858-44b9-90a0-361715623cae"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "20f22a6b-06c9-453f-9498-365fb32c6092",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["8f748afb-2127-4104-a64d-7e851a785e64", "3621a269-63ca-4ee6-91f6-cfbbbdfd4387"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "757bbaf5-71c8-4f8c-82b4-819ca74adfc6",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["2d9147b5-9ba4-46b4-a7e2-3cf55187efa3", "b47158d2-c229-4650-ab2b-739fe6201143"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "f674ec94-2357-4af3-acc7-cf7f50fa9607",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["bfc42c62-5bc7-43e2-863f-00cd5f9b48f5", "0464ac01-b5d1-463c-825d-572d77e33d8a"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "72171a25-962b-404e-bb67-a140b663c1ed",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["0464ac01-b5d1-463c-825d-572d77e33d8a", "329443bb-5212-4091-9055-8fac142282ac"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "95af3cc3-b95f-482e-9f1f-f0d4eeb94eb2",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["329443bb-5212-4091-9055-8fac142282ac", "7760956b-27fb-48be-be50-87ebc6da8072"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "401714b4-841a-42dc-9c56-36e15bd784fc",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["7760956b-27fb-48be-be50-87ebc6da8072", "4337ab71-a0ad-457d-93dd-0018177c01c2"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "8d6c87ab-36e9-49d2-8431-77558ce1bf1c",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["4337ab71-a0ad-457d-93dd-0018177c01c2", "2c799d69-4dfd-4695-83a0-e5249df7cd5f"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "7d921016-e904-42c7-86f4-5c769248178c",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["005b3613-f2d6-4c27-9b79-6919663f3279", "47f1f2d1-87b0-49db-935c-1e1a81ef0053"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "b62a560d-fe27-41f4-b3fc-d4b5e1cf29d2",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["cf522427-b732-4e5f-b019-b087a3bcd396", "e59aadc9-7e46-453f-b255-56a279b467da"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "add8a8b5-4e07-4768-95c4-41e4af951956",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["76f0e116-95ff-4b2e-ba9c-1cf8b97559d8", "f9630452-58d6-4448-a9d8-bfcdfdc47efd"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "1500e185-a0ca-4c5a-b59a-85e5ee049e8f",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["16679fad-6cc3-46a4-b4fe-237cf1969e68", "8fed9d84-df7b-4259-9b77-619eff6a95a2"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "38d15e11-a6b8-48bc-8b71-4559068028cd",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["47f1f2d1-87b0-49db-935c-1e1a81ef0053", "e59aadc9-7e46-453f-b255-56a279b467da"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "4d8f8b2f-9606-4c40-b499-4ce38a4e4f6a",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["b47158d2-c229-4650-ab2b-739fe6201143", "884303d5-9123-41e0-b5f3-e10f4d781748"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "892891ae-f554-4537-98ee-945e2251b775",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["884303d5-9123-41e0-b5f3-e10f4d781748", "ad9f4c38-f503-48d9-b469-f68d60345f43"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "e46f608b-ef7f-42b9-9da6-0e5f9782d432",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["ad9f4c38-f503-48d9-b469-f68d60345f43", "97896b8e-e5bf-4e3d-9115-88c53c1456c2"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "e5dc57db-a2c9-4560-b177-8885d5e5147c",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["97896b8e-e5bf-4e3d-9115-88c53c1456c2", "fa3ad9ca-893b-4262-af08-5d1f9ca8e3ae"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "506b0039-90b2-46cf-8ae6-eb8fa6cd76cb",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["fa3ad9ca-893b-4262-af08-5d1f9ca8e3ae", "6e975767-c0d5-41cf-ae6a-7891117c4dd7"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "a2e37be1-4315-4e2f-ba20-506a2fc5e4e6",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["6e975767-c0d5-41cf-ae6a-7891117c4dd7", "23344ffb-32e6-4198-b14d-e4daa4e03c79"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "752f89e0-d279-4098-a657-36328ce62cc0",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["23344ffb-32e6-4198-b14d-e4daa4e03c79", "91090743-4698-47a8-bcff-b77622a920ec"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "ee2985e7-f99c-4291-86c0-e3a9dc6e9d95",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["91090743-4698-47a8-bcff-b77622a920ec", "4a134b02-ef13-47a0-b896-76c199f0b795"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "50ed78f7-58e7-4086-9407-65f1cb18466a",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["4a134b02-ef13-47a0-b896-76c199f0b795", "66a7909b-e2af-4cdd-82b9-493911306f29"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "28d82a53-ace8-4bc5-804e-299d0a7cfd87",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["66a7909b-e2af-4cdd-82b9-493911306f29", "baa04992-79d4-4da4-a551-e0bd582d8ad0"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "994b4505-56f0-4b30-b9ca-dbf17571afb9",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["baa04992-79d4-4da4-a551-e0bd582d8ad0", "8744489d-f6c9-4e89-99a0-bff7b804300f"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "a163802d-0742-4d0e-b909-2edfc173f2a6",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["8744489d-f6c9-4e89-99a0-bff7b804300f", "ebda3604-d4a5-4a4f-8557-596994c205bc"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "a4d7f4ab-86a0-4fb7-8216-16c2f58a4b3b",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["ebda3604-d4a5-4a4f-8557-596994c205bc", "2c78a2b4-a084-4e9e-9ee4-6e0da61bf35f"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "832964b1-3eb6-4647-b8ae-d2637e8f7725",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["2c78a2b4-a084-4e9e-9ee4-6e0da61bf35f", "45a902b1-63bb-40fa-8b12-a16c22f1bde3"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "d04a2a27-e07f-4067-ab19-adabb206509a",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["45a902b1-63bb-40fa-8b12-a16c22f1bde3", "e6726a38-d246-4f39-9263-17f2d01d7d53"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "78439053-b6e3-4247-9594-a8c1a6c0c144",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["e6726a38-d246-4f39-9263-17f2d01d7d53", "822f0aa1-d64b-4c65-bd1f-935a15ea6f41"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "b1e3d817-6fec-40eb-8002-d9440e15620e",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["822f0aa1-d64b-4c65-bd1f-935a15ea6f41", "3d9b4340-35ab-467b-bc9a-344fbb9dca85"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "b6c48155-9e65-4d06-a566-257724e38f9c",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["3d9b4340-35ab-467b-bc9a-344fbb9dca85", "c19d3420-4d6d-4540-9d2d-0263da4d0f45"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "41bbc5a5-ca37-4d19-8a6f-08a4a4199fba",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["c19d3420-4d6d-4540-9d2d-0263da4d0f45", "32f95949-f62c-4ed1-9b59-8e07b730197f"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "d048d38c-0dee-4269-9ae9-b146e0ccb38b",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["264b366f-59e7-4232-b570-0376e2db8676", "d7b8a921-56c5-40c1-b6f2-9b09018c59f2"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "c663b5dd-f6bc-4f07-a67b-30dcf55d0b2c",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["4be2c787-c5cf-4fe9-ad17-99cda72704ab", "635164fd-97db-4a4f-b530-200137859d23"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "5b6b6b04-8411-4b57-8c6e-31391d476a39",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["f3556626-7b65-4c17-ad00-2d212a53610d", "e05c6f03-6671-4003-807d-5a941189dcbc"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "15210c73-c47c-403f-ab5d-67c19a96e7c1",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["ba644130-530a-4c4e-8c6a-182f7d26698a", "9feec1f8-f279-4f6b-842e-32c1d662f1af"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "423321ba-f295-4bc8-8a2b-3e662c0b515d",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["cc6cfb50-060f-4d8d-8f6e-7e4aa2cf2bbf", "d6544031-3732-4f39-bd32-4612ae8818ad"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "ca40d385-0c02-4678-854a-eeb4edc09a1c",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["70d65c02-1cd6-41f9-889b-bb7fbb8d658d", "32f95949-f62c-4ed1-9b59-8e07b730197f"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "9a80d964-066b-4a0c-a6c2-d2714c29cb9f",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["8bb87e2e-7e08-4357-8454-2b10de10c33c", "3833057a-131f-4d82-b154-b7226cebe705"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "fe046c06-3c79-42bc-ae71-8df95145d1d8",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["3833057a-131f-4d82-b154-b7226cebe705", "65db35b9-924e-4a72-b91e-213036abc09b"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "54244a89-a6c9-4784-9f9e-04e114f5e480",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["65db35b9-924e-4a72-b91e-213036abc09b", "8974fd3e-6965-43aa-8e87-30e4a6e1f6a0"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "79baf4bd-7cea-4ba9-8f91-da6ebe197bcd",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["aaa149aa-1839-4bf9-a36f-0b7b4bef6aff", "81b46e80-1748-467e-abbf-0521dd6c33d2"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "6e341bd0-b244-4b1e-85dd-f122c75b3036",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["ee671660-95e2-4d96-b88c-883fd51d3fb0", "d5307ba3-9818-40fb-9df2-0bcc4d2d3bab"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "b8ddcc0e-3313-4218-9c01-43cfefbebc6a",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["172d6a5b-32d2-4776-a83f-a193b921c64a", "3a8d4593-7595-4936-b75b-2fe19bc4b079"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "e7a709ff-ec00-4900-85e3-40077f1e5a03",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["1faa4c72-e883-459f-bbbc-f647f6322d10", "ff713f48-4169-44fb-81cd-888536fc63ef"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "16d1c100-9d63-4452-85b2-5d82d5e8a3a2",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["bc0a6090-a9d3-44b5-af45-3c00606793e7", "20683ce7-3a7b-4e87-9b6b-0277f15c5fff"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "448240fa-41e2-4926-bd22-98a051115a9a",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["6adfda19-a4a7-4184-8244-037550a7aa45", "bc52e1a3-e5d1-4cd2-97df-f25b0b5dec83"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "ea98287b-a43e-4e4b-9bb5-6372f370c3f3",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["bc52e1a3-e5d1-4cd2-97df-f25b0b5dec83", "ad7eda43-709c-4db8-b05d-9fa424e621ef"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "9e52cfa8-29e5-46c6-9e92-15673b205239",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["ad7eda43-709c-4db8-b05d-9fa424e621ef", "8e367605-5f9b-4796-a14d-48060e652db0"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "d9457691-08db-4f1f-91a5-3eeded6fc5c8",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["8e367605-5f9b-4796-a14d-48060e652db0", "6da64689-576e-4060-9485-3354408ff0f1"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "4914c5c4-7005-4e62-adec-151fc797a846",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["a37e4623-cb2e-4735-98f6-8b507691d9ea", "6a4959e5-038b-44ab-91c2-4895213b9c12"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "10931387-8565-4024-b8b5-3d4953185929",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["4754255e-7178-4568-87a7-f8b3482e1395", "9719f276-346b-4d21-a6a4-6514d4384647"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "88c36a26-8ddc-4fbc-a3aa-d9ad66f8d56d",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["9719f276-346b-4d21-a6a4-6514d4384647", "9179f8be-6cdc-49e6-9e99-319416d0fa4c"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "61aeb51c-2fa6-4f88-b4f5-0fa5f8f58fe9",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["9179f8be-6cdc-49e6-9e99-319416d0fa4c", "d58e6731-34b3-4edc-9843-fab585c0d626"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "103eb7cb-5f25-4929-b14b-9aaaf051497a",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["ef056d57-70f6-4208-926e-a99733142519", "3b36eeaa-07d9-49fa-b21d-6f2fb2ad79eb"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "03031d07-b361-4b54-b41a-48c9750af45e",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["debf5ed6-1fc0-404e-a1d5-a9038f95cb7a", "92eed483-37fe-4ecf-bd03-686e24e4588e"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "6e215ca9-52f4-4d09-a901-fccd2439b14c",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["92eed483-37fe-4ecf-bd03-686e24e4588e", "43690dc0-3bf8-4ddf-bd01-2ed0af9a2dcd"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "161991d1-7f14-4d85-b8a2-9c705a953c02",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["43690dc0-3bf8-4ddf-bd01-2ed0af9a2dcd", "a9cd187a-5edf-47b3-bf77-9f91c09e0d68"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "2cdc235f-1356-42f9-b67f-7ab2da101f66",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["a9cd187a-5edf-47b3-bf77-9f91c09e0d68", "4f3e1dd9-1628-469c-aa8b-751a0f4b818a"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "92e69e19-aeef-4271-b373-19edfb503794",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["4f3e1dd9-1628-469c-aa8b-751a0f4b818a", "5eea5fe8-3733-4cde-971b-6421461622d0"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "4b39ec55-4617-43fa-a651-0f36b54905ef",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["dfe4eb60-d371-4607-b23a-7f0d685462a3", "41cad8c7-6587-43d8-9e63-402b9508fc4a"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "d8afee39-0532-4fe4-b3f8-7bb14c6cb7e9",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["7fa77a98-39f1-40dc-862e-f0a5870dae29", "b9697a74-ac5f-490b-893d-b40b9019474d"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "99893474-7a05-48a3-8c8a-e37652089821",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["79c6fb92-78c6-43da-be1f-18da8db3c943", "17c8bba5-891f-46cd-8003-7a9f7e9f8672"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "bbc0e814-587a-4f36-845a-ef141b97b924",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["c55ed79c-6806-4ce8-b0f3-bbb2339bf161", "5804c87c-334a-49e7-aa0f-f87fa7597dc2"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "ef7f0576-c397-4e48-a83b-a904b127187c",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["5804c87c-334a-49e7-aa0f-f87fa7597dc2", "7821e0e0-63b9-40d1-a7a9-738f29037a64"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "8972c36d-5ab3-432e-995d-e460e5d2e1a9",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["7821e0e0-63b9-40d1-a7a9-738f29037a64", "8c183744-d7cd-4fbc-8c40-9c1544961483"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "4ea36ff0-e439-4d2b-9ab6-6ee2af02782e",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["8c183744-d7cd-4fbc-8c40-9c1544961483", "6537cd22-b1e0-48ab-8ae2-bf9e8e32c3ec"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "c5996215-a1c1-49d5-9896-ee33c7d96a9c",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["6537cd22-b1e0-48ab-8ae2-bf9e8e32c3ec", "8b23be12-b726-44cc-8fda-f107cf5500ba"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "012aa239-45f3-4082-8c34-16cf9f899aee",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["8b23be12-b726-44cc-8fda-f107cf5500ba", "160c1f7f-1117-44e8-a6ff-0b5022170561"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "cf408049-90d2-4325-9d56-280e55bbc3bc",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["160c1f7f-1117-44e8-a6ff-0b5022170561", "412012c0-f94c-4993-b740-75f9f54788f6"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "d40a9e79-6f1a-46b5-9fdc-7337c8777bc1",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["412012c0-f94c-4993-b740-75f9f54788f6", "85ec32d7-ce43-4695-b1a5-0ca1da7c4350"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "2e15969a-c416-408e-9e9a-3219075be1ef",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["85ec32d7-ce43-4695-b1a5-0ca1da7c4350", "71b63ba8-2e51-4476-b57e-8ae173e2564e"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "e4beab05-98c2-4d02-8347-8dde1ac564ee",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["71b63ba8-2e51-4476-b57e-8ae173e2564e", "4c115ba4-365e-4847-867a-16c7838b7074"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "19ed7c97-d263-417a-8fe1-7f24d005b825",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["4c115ba4-365e-4847-867a-16c7838b7074", "174e1796-b04c-4bbe-8333-ac2819da1e5a"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "1c147694-6624-44d6-9987-6857e30c0355",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["174e1796-b04c-4bbe-8333-ac2819da1e5a", "2535b78f-6f05-48d4-b199-147bed1a831b"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "d8208d45-d879-43d4-88ad-967a12c6d9cf",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["2535b78f-6f05-48d4-b199-147bed1a831b", "5256ba86-8e4f-479c-bad9-1a44440c5080"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "4e62830e-dc09-4c32-ab86-5054893e262a",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["5256ba86-8e4f-479c-bad9-1a44440c5080", "40a6c3bf-0087-43fc-bca5-c73421708c1c"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "a4df8640-2221-4245-8fb1-53deab6da226",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["40a6c3bf-0087-43fc-bca5-c73421708c1c", "ae716b00-1e1b-4547-afcd-8da78f03e47b"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "0df3cb51-e1bf-498a-9c52-dff636db50bd",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["ae716b00-1e1b-4547-afcd-8da78f03e47b", "29752362-4b1a-40bf-b295-2570ceb3dcbe"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "6848d76a-6cb3-468a-a5c9-e200cace3227",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["29752362-4b1a-40bf-b295-2570ceb3dcbe", "1dc64c15-3b2f-4d7c-ad2e-0a698039981f"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "346c3809-6cd3-44f3-9c89-bd11c1638e7d",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["1dc64c15-3b2f-4d7c-ad2e-0a698039981f", "559d1f45-1b6c-45c7-9425-6a26c1d3f3dc"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "d148820a-ddb6-4131-9d9c-15a218c72e03",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["559d1f45-1b6c-45c7-9425-6a26c1d3f3dc", "7e5245c7-4dd9-44a6-aeac-4e9f8825c3b5"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "1407d218-39d5-4c09-994c-bf2ecd7858dc",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["98747b13-d798-4370-bbf6-f46a54c00ca4", "305e6199-483a-4081-9dca-9c95c391b443"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "20262a34-100c-4da9-a6fa-87d17fad22d6",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["43856668-5ee5-4d04-8059-e4b8ea757975", "f6cf5990-62e1-4f66-a742-aa58b6bd4fc5"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "74d69df3-d672-43fd-802e-7d3b7e311252",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["43856668-5ee5-4d04-8059-e4b8ea757975", "ed8259de-97b0-4538-aa20-a583965f9fce"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "bba5fb74-1cb6-4b2f-83d1-5f114403bda7",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["fee206b3-b535-4b95-8c78-00bf9aa1415a", "98747b13-d798-4370-bbf6-f46a54c00ca4"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "ed2fd7e1-02e7-4e55-a5f5-eb588b154fe2",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["b04d49ab-6287-4f98-a313-ac61ab7c9451", "83fd7c79-2c59-46ca-b4fe-c33900626340"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "198001b8-e743-4f53-abb6-3c6c184a7f42",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["d3db4b81-bd10-44d6-97fc-7c878d61551f", "83fd7c79-2c59-46ca-b4fe-c33900626340"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "0411b1d2-f28f-4bc2-bb9a-abb450ab1773",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["e209ebfc-d4aa-4c3f-a5e6-9e1c754c9848", "d3db4b81-bd10-44d6-97fc-7c878d61551f"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "dff65cc7-2f43-46fd-91ba-aa30f5aad15c",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["0fcc98f0-f546-4ac0-8bb7-c486ec69113e", "7e5245c7-4dd9-44a6-aeac-4e9f8825c3b5"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "b78781be-d406-4b16-9bc3-485b1d04d454",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["17c8bba5-891f-46cd-8003-7a9f7e9f8672", "6cb199d8-ebe5-4e8a-8f10-a93beb03fcd1"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "89d18c3f-170e-4ef9-8249-ffa611b1a5d2",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["0a9515ef-3a63-4903-9be8-37932bae9890", "c17bdc09-e1fc-48b7-b275-d341e975a225"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "9c5fe477-da02-4e72-a8fd-f35c25a58039",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["da54dd15-4519-4a3a-8bd1-d1848c2c30a2", "0ce6c7c4-80af-4f09-870b-093b1915854e"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "11eb3651-8781-4dec-88af-23537617e5ef",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["7fa77a98-39f1-40dc-862e-f0a5870dae29", "1e742b93-9d25-4eb0-b3e0-4a430d5a695e"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "3db9d532-97fe-4702-881b-b62d80e9f323",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["9273ab51-8777-4db9-b81c-b05956f99d29", "3bf7e12a-cae2-4376-aafb-1f5e17e4fabf"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "cd104e34-7fa6-4dec-9266-184944e90f29",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["9273ab51-8777-4db9-b81c-b05956f99d29", "c0ee9c4a-93df-40b8-bf8b-b1c652a5acf6"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "97523508-f782-4395-a8fb-3f7b15fda02a",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["c0ee9c4a-93df-40b8-bf8b-b1c652a5acf6", "7b2f95b0-5b9b-452a-a4c6-b4144d49273c"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "956662d1-a76c-432d-8521-d5f3910f60ae",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["82c26712-5a56-4daa-8689-2e03a0322c3f", "7185ef59-e6d7-47f7-923f-38002d879727"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "f36caeb8-6b1e-4496-b197-151eb793908a",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["b89bba65-f212-4f87-8d33-6e160605c01c", "f2aa88ab-a5a2-4713-a30e-386140515683"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "fd9c3801-078f-4ff8-8ccf-6e021cf227e6",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["7b2f95b0-5b9b-452a-a4c6-b4144d49273c", "a863ca81-a05d-4cde-98a3-643170dd887e"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "6880826f-e507-48f0-b9ba-6239a73c0d0d",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["e18cc33c-d587-443a-a616-67a8f4936fb6", "f6cf5990-62e1-4f66-a742-aa58b6bd4fc5"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "0470296c-f56b-468a-a635-bf0f0e97bece",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["882ae31a-496b-43d9-b0ad-670e0072107e", "e209ebfc-d4aa-4c3f-a5e6-9e1c754c9848"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "5f390f32-00a9-4f06-b0cb-f84c0e8aa85a",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["73b79cea-04dc-452f-9fff-3312d7b2cc7c", "b04d49ab-6287-4f98-a313-ac61ab7c9451"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "a70dc245-1a9b-47ec-add5-044025ab297e",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["3519abc1-c8ee-465d-a241-badca2bb48d3", "b82c4ed7-b1b0-4acc-a62a-8bc63dabcd77"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "b11ab173-08a7-4286-be69-62640857b4fa",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["07792933-1518-45fc-80f5-58b8c8b7ff86", "76a050fc-1dce-49eb-af3b-7018311f1d72"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "2a84bae0-8d0e-40a8-9596-0323869329bd",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["ed8259de-97b0-4538-aa20-a583965f9fce", "deaf155a-22d8-4ebb-a3c5-6a7e00a5b72e"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "e627489e-65c4-46d3-bc85-3223109b32cc",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["deaf155a-22d8-4ebb-a3c5-6a7e00a5b72e", "63be9173-f2c8-4211-b768-331255e9a88b"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "8ad60d8c-5a09-47c3-bb38-de09d1d826bd",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["63be9173-f2c8-4211-b768-331255e9a88b", "07783801-5213-478b-b229-c98f489866e2"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "336e632c-89a6-40e4-a9af-b076c59612f4",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["07783801-5213-478b-b229-c98f489866e2", "fee206b3-b535-4b95-8c78-00bf9aa1415a"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "dbb1ecdd-5e1f-4f28-af26-e8ce24ab16cb",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["925b9984-b289-4c5d-bf48-7407c1962809", "4114cd0a-0e19-49c0-aff8-06c86ac622f8"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "f024b415-6425-43e5-b46d-04844bac72f3",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["4114cd0a-0e19-49c0-aff8-06c86ac622f8", "025e0147-381c-4573-9825-6a4673e58135"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "f0fa117e-e5b0-4fb6-811a-d698dd92a3d8",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["025e0147-381c-4573-9825-6a4673e58135", "0fcc98f0-f546-4ac0-8bb7-c486ec69113e"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "30f4b08e-3757-4c12-8e00-6eae51ea7264",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["7185ef59-e6d7-47f7-923f-38002d879727", "87be625f-83e1-4eb2-834e-a508d8076787"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "4360bfe9-1ebe-4b31-a9ae-41087349e173",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["87be625f-83e1-4eb2-834e-a508d8076787", "830ed17f-fb4d-4bf5-b551-afe8210903bb"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "ad6104d0-2170-488c-aa1f-a03a7b640458",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["830ed17f-fb4d-4bf5-b551-afe8210903bb", "a5570b31-4396-4ce2-93f2-6b794b7b7e18"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "b0a894f9-b7ee-4ef8-a5b8-07b9ac98ffc5",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["a5570b31-4396-4ce2-93f2-6b794b7b7e18", "10b21371-e72b-4775-9c27-5be0a7166c56"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "a04335b8-72f4-4883-8b7a-3643bff6c973",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["10b21371-e72b-4775-9c27-5be0a7166c56", "1f89366a-9b2d-4cf3-a0d1-f1b2f2ef1bf7"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "55f4c4ca-e3e9-4014-b86b-8c2b1ff8b906",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["925b9984-b289-4c5d-bf48-7407c1962809", "eac48edb-87ac-426a-9a7c-7e34be4b2beb"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "a7a8cd7a-d413-4f46-a865-71009d011d27",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["38c1e10c-8150-4a92-a5e8-d66e6d3a1614", "a731e5f7-d675-46d0-8ca9-2f50b0237d95"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "fa1d959a-5784-42f8-b148-94dbb28d8448",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["a731e5f7-d675-46d0-8ca9-2f50b0237d95", "959b9c00-60d6-4443-986e-7f72dcb8a422"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "cdd89134-f2e2-468a-a3ef-7e50c54b0b56",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["959b9c00-60d6-4443-986e-7f72dcb8a422", "15fb2f7e-1115-4d75-ba27-cd3d1c898a2e"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "4d4e6b20-6a9d-482b-b770-d074e2fb392f",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["15fb2f7e-1115-4d75-ba27-cd3d1c898a2e", "763504be-1d01-4cba-85e0-d9c44d99fb38"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "4647a589-1454-4ebb-8b39-aa616ea69b0b",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["763504be-1d01-4cba-85e0-d9c44d99fb38", "11481604-2e98-4747-8b23-4cbbe78a18c5"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "0b1d1a93-46ca-4ea2-bfbe-aad2f8cb4bec",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["d78d25f7-1f93-4dff-b2e4-630d9525e082", "b3be14b9-999e-4236-8d37-3383cc9580ba"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "e422a9f3-5a43-4346-9715-e50d33e7ef25",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["9867d6ce-a556-4758-9a48-ccc6338b7795", "aeea4138-d319-45d6-90fc-c55024e1d4e5"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "f36b4187-d15b-4e4c-911f-d0ea1dcc6a17",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["aeea4138-d319-45d6-90fc-c55024e1d4e5", "d4630066-05e9-4f40-8ae7-c686abfc054f"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "5460044f-ef3b-45da-b1ac-ea228548f994",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["d4630066-05e9-4f40-8ae7-c686abfc054f", "00649df5-62b7-4915-817c-de6b470bae60"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "da775e46-764c-4e6c-b509-e0d7188a81ff",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["dba5b00e-65cc-47b7-b9d5-7e2815549149", "f5a0e591-7f18-4ace-b74f-abd86f720a8c"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "4238837a-451e-4ab3-9970-1ae8d68cdce9",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["f5a0e591-7f18-4ace-b74f-abd86f720a8c", "a16f215f-4a99-4173-a5b8-aef9c70c27b7"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "2bc4013a-fa8e-4f68-9100-bb3044243c63",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["a16f215f-4a99-4173-a5b8-aef9c70c27b7", "1da6ec60-c74a-40ed-801f-bf8fddc1ae12"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "d98583b2-c090-41c4-a10a-d83b9ca27dbe",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["2f16e513-b896-45a8-8eae-d4b7f1ee56d0", "6daadff4-9f35-4547-beab-632ea42593e2"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "e6ec9549-f880-4364-b2fd-335d156071cd",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["6daadff4-9f35-4547-beab-632ea42593e2", "dc40d97a-aad1-4b70-aa6a-571659e1cd5f"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "f2894af5-cf9b-48e3-8f01-4164b82dd26b",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["dc40d97a-aad1-4b70-aa6a-571659e1cd5f", "b308efac-c2b4-49ce-a1ed-c3feb2f3ba81"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "cea0c8cc-0a1c-47b7-980a-aed091106ea1",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["adbf0c38-4a70-4e0b-b6e2-b7f33cf6e204", "6f5aa0bf-4fcb-4f39-b9ad-86e05f77780a"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "9e521625-fee6-4a64-bb62-aaed8eecea70",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["1d509802-952b-42d9-afaf-44abc71afaf4", "1f89366a-9b2d-4cf3-a0d1-f1b2f2ef1bf7"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "ebcf9822-ea9d-4e05-8989-e417879c11c8",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["c0ee9c4a-93df-40b8-bf8b-b1c652a5acf6", "55148ab7-07c3-44ab-82bd-c40ad1b781af"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "208c111b-1732-4d87-b15f-48292df6a87c",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["adbf0c38-4a70-4e0b-b6e2-b7f33cf6e204", "cb1ce564-7823-419f-9c8d-5b6ba7109d97"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "d716fd0e-fb6f-430d-82e4-0da05daba356",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["cb1ce564-7823-419f-9c8d-5b6ba7109d97", "09136f10-511d-4114-985a-bf27bf8ab10a"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "c46620a1-4c52-4ea6-b4f6-8d9e73572bcd",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["09136f10-511d-4114-985a-bf27bf8ab10a", "87616ec6-2d5c-4ea1-ab4d-9e3cb9cc9eb9"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "012973ba-ad1d-4b9e-8ee1-2bdc16f4726a",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["87616ec6-2d5c-4ea1-ab4d-9e3cb9cc9eb9", "b39c285f-f7cd-42e8-8fca-0e6c3123a9d4"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "0da5e55d-c6fe-49ba-92e9-7fb693b17194",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["b39c285f-f7cd-42e8-8fca-0e6c3123a9d4", "b5cc0072-4a05-45de-8bb6-0a96424f5ba7"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "42da42aa-1627-47ef-be8f-d00946087e58",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["de7de68d-76dd-4775-913c-5444e2d27e74", "e2700d61-1f1e-4bab-8c9a-d26ca41e81c1"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "132375a0-72aa-4b43-bdbe-7df84af1a2d6",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["e8f0bbb8-a379-44fa-a39f-5eb71adedfb3", "1e2219ce-4b88-41bf-9fa7-68d89e2e9839"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "81791f89-0fab-446f-8977-c62e72b664ed",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["2daddb04-1f73-42ca-bac5-8b7ef7eb0b94", "9eb54fd3-0934-4c7b-b67b-e7b0285d3058"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "633a272a-d7e6-4bf1-a812-f19c5985c054",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["b1a25358-c194-4684-a823-a56afcfe1ba6", "56485360-50b5-410e-8516-7ff5746a041d"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "4621cb89-3874-4b85-aea5-6457cda964cc",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["e2700d61-1f1e-4bab-8c9a-d26ca41e81c1", "1e2219ce-4b88-41bf-9fa7-68d89e2e9839"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "4f0aa1a1-3318-4636-aee8-6abb9793fee6",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["55148ab7-07c3-44ab-82bd-c40ad1b781af", "3d34a9db-2d22-49e3-b632-e8378baed8dc"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "ec9eeb33-5f83-4fb3-9de5-61314adc7f31",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["3d34a9db-2d22-49e3-b632-e8378baed8dc", "aba6471b-6b8d-4153-bcdb-cd09da041a4c"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "09b7240a-1156-437b-9210-72f0e0ec69e4",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["aba6471b-6b8d-4153-bcdb-cd09da041a4c", "a852906d-9e2e-4067-85eb-317cca99f9ad"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "d0ae76f0-228b-4974-9128-ea349370aaef",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["a852906d-9e2e-4067-85eb-317cca99f9ad", "afdba9a8-d68c-4f08-a0fb-c858997ba8f3"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "00f2bf39-d800-4e63-b479-843027488d84",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["afdba9a8-d68c-4f08-a0fb-c858997ba8f3", "056f2323-5f6b-4f1b-aa95-c46dfea5251e"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "6d1e9123-a8b5-4263-9058-44e514905aae",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["056f2323-5f6b-4f1b-aa95-c46dfea5251e", "725fbe48-cb61-4cbd-8820-e89bc388b47d"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "147cd91d-98e0-41e5-b373-cd2674a38841",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["725fbe48-cb61-4cbd-8820-e89bc388b47d", "f4049c0c-bbb3-41cd-8867-9ba9c333b030"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "e88b5026-cde5-4779-a691-9e76c9a53630",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["f4049c0c-bbb3-41cd-8867-9ba9c333b030", "04f4c3f3-0bca-4ed6-8235-91ca158cd633"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "9a6baefc-c1ba-4f54-9033-e4ea089d9763",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["04f4c3f3-0bca-4ed6-8235-91ca158cd633", "9806c1e1-bbbc-4af6-b114-7f827790573a"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "1f271c3d-cadb-4dd6-ae26-8bee7dc36e73",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["9806c1e1-bbbc-4af6-b114-7f827790573a", "1f61eb28-dc07-40b7-b38e-d4933f641347"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "4d23c9ff-67d0-4fc0-a5b2-c2feda83f0fb",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["1f61eb28-dc07-40b7-b38e-d4933f641347", "25aa8b0e-3fd1-4669-9a6b-987a66958cba"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "4bb5e16b-dd05-4a93-badb-21265eaaa764",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["25aa8b0e-3fd1-4669-9a6b-987a66958cba", "20a0e10d-c7ba-4625-95a9-e717fdcd2c61"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "5299f300-58b5-4531-b2fd-5c834a3963a1",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["20a0e10d-c7ba-4625-95a9-e717fdcd2c61", "5c3d022c-c1b9-4d6e-985c-cf76c15167e9"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "003d5d71-7f6e-4db0-bfbc-3995b3be5fad",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["5c3d022c-c1b9-4d6e-985c-cf76c15167e9", "101dc663-9b37-426b-9d69-ff3e7900a7eb"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "af138647-95fd-4f42-8930-553b41144bb4",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["101dc663-9b37-426b-9d69-ff3e7900a7eb", "c7ba964c-c2e9-4233-b097-d8722a92407b"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "ef8ae0c2-0a23-486f-9297-c5dc7df97ea4",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["c7ba964c-c2e9-4233-b097-d8722a92407b", "68baa27e-9532-4fb4-9b4c-2541caaaf82d"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "a5ffff76-1a40-4d76-b874-e77775f548b5",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["68baa27e-9532-4fb4-9b4c-2541caaaf82d", "a863ca81-a05d-4cde-98a3-643170dd887e"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "66a00ce3-a0fc-4b5f-8faa-6d976ae6a624",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["23a3bb7e-dd02-4891-bc89-c1029f09521b", "39c451aa-50c2-4635-b40c-d7995bf99ec4"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "3b86cfef-528d-4380-990f-0e7f4410515d",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["39c451aa-50c2-4635-b40c-d7995bf99ec4", "4a57a179-5d6d-4ddb-ab28-ffbfd72cf270"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "e85d9aaf-9451-4fb6-abcf-3862a8c8f681",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["4a57a179-5d6d-4ddb-ab28-ffbfd72cf270", "a0623614-3c5e-4130-99b3-117fc929739a"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "fdea5103-5de8-460a-bc4f-8639502832aa",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["3c4c2f07-fcaf-4c37-9a7d-48ccdfb649f9", "d7973ae9-cb96-49ac-9d8f-a6a85cf4bc26"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "4ef873aa-b0db-4a9e-bd17-6a98986c7915",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["818354d9-796f-4b02-9db3-c69d3d5c2631", "6cab6153-c374-4e24-8752-577b63e9e30e"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "3b8f03b4-d996-4d4a-99bc-291492ea7f74",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["4bebde16-a2a1-4431-8a9b-50687aa34d50", "7e86a630-402b-43ca-9a69-7b554f3df493"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "5fb6f871-3061-4ecd-98f8-16d1d1f1cc58",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["89b1e507-17dd-4746-bb4b-e55e32c02b63", "bb7dc321-fab9-47ad-94cb-57503ba9818f"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "921b2450-07b4-4056-8665-233ffe4bfba5",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["5a1412ba-6566-49b4-850d-5bf309b1a9fd", "88021def-52df-441e-aa4d-8b09362e0ea4"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "8b870745-f440-4886-b80c-bf23abaf5135",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["7dec3ad0-3afc-4e8f-a177-8e8c5839c18a", "6ad2ce27-3fb1-428b-b380-2e157a04876f"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "4c953ede-8a78-4ae2-b9a4-a5d7d1e32394",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["2db615c0-72f2-4034-8d61-0e50dd1339d6", "fc6e7dfa-e1e1-4227-a1d1-226e251cc5d7"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "4930e29a-01dd-4acc-89bf-9021925702e1",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["9ea526e4-8472-4f39-ab83-2e430c9f2857", "236060f2-472a-448e-b82b-7b9347ee8e9b"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "47803b9b-2a39-42f5-9b5b-33df44f4debe",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["15fc401c-66fb-4831-b840-caabea1cd09d", "61cecea7-ab9b-4959-b226-ac5801d48420"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "3d1d0814-8ea6-4292-b6b4-f41df0ea4ce4",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["5a0fb722-2198-431d-a3ed-c7ec51e31c02", "1254bb40-6585-457a-bfc6-cf0f0594eb11"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "bd7d4806-7d37-4431-b52e-8645a71f5016",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["15fc401c-66fb-4831-b840-caabea1cd09d", "995fc048-9b8a-460e-82cd-836d9cdcbaee"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "7b46ca19-49f2-4aac-bcd5-6c207d5de6f9",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["3b61d155-83fc-4a6d-994f-6474e0e3c063", "0efea71a-9366-4e30-8625-4f4163fb24bc"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "6deb7f1a-81cb-4508-ae47-eb10f6bb4a79",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["58f8d2c0-73c2-49dd-8401-d6dde4ad58f6", "e3c4d193-30cc-4fec-a9b7-3bef71d9b667"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "64420b62-0801-4b98-9b52-4580b1710214",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["4935ec45-3917-4e4a-a1c3-b01feaf5a921", "bf11737c-9035-4cc1-8e17-c20d9ad311e5"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "0dde7352-4e9b-47c5-afb6-ca3dcbe0b667",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["bf11737c-9035-4cc1-8e17-c20d9ad311e5", "23c6ec8f-c60e-41dd-b700-287d716ea93d"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "3ccef091-3b34-4b50-af22-a5c022a3370f",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["23c6ec8f-c60e-41dd-b700-287d716ea93d", "dba5b00e-65cc-47b7-b9d5-7e2815549149"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "f680362a-d0eb-40ce-b520-1755cfefce5d",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["c4fcae96-f9ae-4974-944c-d3c6afe06a83", "09ead4c8-5771-426a-80d3-bca965301cdb"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "445e186c-285e-47a7-94db-06a30ae575df",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["cbd11573-201e-4ce3-a0e6-ca54195501ef", "91d6b058-b7a3-4adf-acaf-2a37498c0f9b"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "9006c17b-9723-44e1-b25a-a6ecb741f456",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["d20d7feb-4cc6-442b-971e-7343aae7b8bc", "f234939e-603d-4f17-9583-767813f1c4fd"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "f07bb34d-1504-479b-b7f6-f207c88106e6",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["0ec30124-5af7-4636-867d-a8b5f578bf7a", "0904d46c-903a-4825-b931-2189c19f4662"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "d271b3e9-d37f-4c73-9f4e-25fa20ba97f8",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["88a544ef-45d3-4e15-b162-d5e63de7247e", "9aa8cb95-7377-42c6-92a5-574fe4034c90"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "7b6d45eb-a48e-4145-a43f-520c5fe69e2e",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["9aa8cb95-7377-42c6-92a5-574fe4034c90", "c13e3ded-8b3d-4851-bbfc-d5ea6c8efb66"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "bc8ec0c2-6f9d-4839-b6be-86a383b859f0",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["c13e3ded-8b3d-4851-bbfc-d5ea6c8efb66", "6f3e1a49-bbec-4865-8d43-d440815980cc"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "9f9d1c6c-4965-4718-8abb-39d7c3dcca0b",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["63a223ac-5c1b-4b66-9d35-e9d7f67f7b3e", "b1f71381-9b36-4704-844e-75e035347277"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "700b015b-ed0e-418d-9908-a15582200881",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["fa2dedb2-b7bb-4567-a6fc-9859013629f2", "63a223ac-5c1b-4b66-9d35-e9d7f67f7b3e"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "fc562336-aed4-4f98-aef2-30a2e01859e3",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["19569ef5-719c-4c67-8d94-f1927a3dd075", "d4ff9a53-786b-4dab-9669-68621d392a45"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "c431a546-6ff6-4ca3-8a17-e19e6ce81ab2",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["db37b63d-0c1a-4227-acb3-ec19c2d980c6", "a703feee-c730-4a6d-baf9-a99f2383ffab"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "35a8930e-4505-4540-8ce0-74ae488d89ef",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["a703feee-c730-4a6d-baf9-a99f2383ffab", "7204fa87-7c3b-4d41-8396-f3a7d6e394d9"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "cef2b05f-cd6a-4002-a6de-e71610a89097",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["7204fa87-7c3b-4d41-8396-f3a7d6e394d9", "7784afc5-27f4-43df-8ce0-e7ce9ef612c9"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "ecc4f074-d268-4aba-9a3f-1c496aa056d5",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["7784afc5-27f4-43df-8ce0-e7ce9ef612c9", "d1ca4a15-a837-4d2e-9309-9df6a7bcfcc4"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "3e2943de-4c66-45f8-ac18-528a59f778a4",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["d1ca4a15-a837-4d2e-9309-9df6a7bcfcc4", "5b9ba8ce-757f-4f17-9ffb-369f17e7aead"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "e3af9853-3abf-4039-b524-15fb870a52c8",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["d80d11fe-7ff6-4b93-84d5-057a126c0d25", "415069b9-bba6-423a-8f29-cb5989c0b3ae"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "9b3ce909-9e7a-4550-b539-6a0fa3c1e5a9",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["0c17966a-bbf5-4e7f-a9f5-a87f610013c9", "438495a2-89d3-4e8d-9170-f6208d1fe574"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "107fccee-bbba-47cb-b35a-ec2602ab897d",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["4beaba98-3db7-4d10-90ee-41cdbf99a15e", "35ebd0dc-0ecf-46cb-8742-ac05413d96c7"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "b9fff397-ac2e-4511-bbe7-8cbfe808ff90",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["88a544ef-45d3-4e15-b162-d5e63de7247e", "11c28c0d-0aec-449d-b115-1c3db4ba8ebc"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "f1a53503-17ed-4a8f-8e9d-e3f05db7e481",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["11c28c0d-0aec-449d-b115-1c3db4ba8ebc", "5b2f1d53-8222-445a-9827-de2e526273b2"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "d026aa06-4778-4639-a759-559a20a4d332",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["5b2f1d53-8222-445a-9827-de2e526273b2", "d20d7feb-4cc6-442b-971e-7343aae7b8bc"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "7791eb37-8af3-4206-b838-ad9ce8e95f36",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["c4fcae96-f9ae-4974-944c-d3c6afe06a83", "fa2dedb2-b7bb-4567-a6fc-9859013629f2"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "13faadb6-226f-47c8-bc8e-e5beca07d82a",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["19569ef5-719c-4c67-8d94-f1927a3dd075", "8f298f3d-bcff-4e7f-90d1-df2270e979d0"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "05684605-6055-498e-bf75-97552f5a9c55",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["8f298f3d-bcff-4e7f-90d1-df2270e979d0", "af3edbc7-be72-4446-b077-58bd24fb43d2"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "cb04580e-c66d-467e-bab4-8f94156f2c3e",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["af3edbc7-be72-4446-b077-58bd24fb43d2", "d80d11fe-7ff6-4b93-84d5-057a126c0d25"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "7044bda8-aef6-43f8-9635-3e6d6c168369",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["dba5b00e-65cc-47b7-b9d5-7e2815549149", "f1aefc55-89a3-4921-86a9-a116f332a30e"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "408a7973-9704-4de4-9ef5-428607ee0087",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["f1aefc55-89a3-4921-86a9-a116f332a30e", "39eb1bdb-89e5-40b3-9c5c-5560d5d883dd"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "22f49736-53d3-4d61-8dc0-9284296a2b83",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["39eb1bdb-89e5-40b3-9c5c-5560d5d883dd", "07792933-1518-45fc-80f5-58b8c8b7ff86"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "4bfdfc9a-cba8-4715-a283-c684796f5ca6",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["95648680-bfb2-49be-a3f8-fec5843d865e", "306c218e-4cd5-4260-8932-37b82a6c1c77"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "4b4597fb-e441-4edd-a574-f659bd70966a",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["306c218e-4cd5-4260-8932-37b82a6c1c77", "db3b7c31-00b1-4f5a-a77a-3564368172ea"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "6860686f-bea7-4d31-a7b4-b92397cdf741",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["db3b7c31-00b1-4f5a-a77a-3564368172ea", "b1579d91-d6dc-46eb-8e8f-92b3af3c0374"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "f93917e6-f440-46ba-b41a-8ac406c6ba74",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["b1579d91-d6dc-46eb-8e8f-92b3af3c0374", "79bbcf23-5fe3-4960-8676-9c060f36eb7f"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "ff86972e-0bf8-48b3-abc1-c04904900c17",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["79bbcf23-5fe3-4960-8676-9c060f36eb7f", "24fe319a-71d8-4f53-b531-2714fac69761"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "05d48dd4-bc5f-4871-91b9-80828bb273d1",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["24fe319a-71d8-4f53-b531-2714fac69761", "168f3ba0-0bd0-4fb1-8ced-a8052b39108b"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "4408005a-6f41-4ede-a437-0dff1c89980e",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["168f3ba0-0bd0-4fb1-8ced-a8052b39108b", "6081b4db-6510-4779-a9f9-f0434b35a6f9"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "294d684e-cc55-4b22-a5a0-0747953a7d79",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["6081b4db-6510-4779-a9f9-f0434b35a6f9", "5f00a635-2dd0-4c20-b33d-a6987c6a75f6"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "552b5073-8122-497e-9d0e-90f270a650aa",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["5f00a635-2dd0-4c20-b33d-a6987c6a75f6", "9ee4b4fb-2540-4740-9ac1-2565e3242ee9"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "2b62fc0c-98f9-40b2-ab10-3e6d2ad8a9ce",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["9ee4b4fb-2540-4740-9ac1-2565e3242ee9", "15db22d3-6114-409f-940f-78dd89201f28"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "c7888f97-0d5b-40b3-b0f6-504f4528e645",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["15db22d3-6114-409f-940f-78dd89201f28", "dba5b00e-65cc-47b7-b9d5-7e2815549149"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "aba72b89-facb-404d-a93e-452f9dbfe23a",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["1da6ec60-c74a-40ed-801f-bf8fddc1ae12", "c4fcae96-f9ae-4974-944c-d3c6afe06a83"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "d5ae4074-a0f2-4949-8898-2855773621f6",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["f2aa88ab-a5a2-4713-a30e-386140515683", "152359f4-d30c-4767-a49a-980e2fe64395"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "dda26c52-e84f-4556-a2c1-5a66b7940d07",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["fda9f27d-adec-47ca-a1cd-a62edc4c9ef6", "10875419-75bc-4159-b766-ca0f529fcfc9"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "5d88035a-da0b-4a6a-9604-bf9eaca03287",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["305e6199-483a-4081-9dca-9c95c391b443", "4572d08f-d93c-43e3-9957-c31c0abc1152"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "1f3f8295-0e84-4e45-8e85-427194ef986d",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["904cc01e-8074-44f0-930a-2dbc8a704557", "849f776b-57d5-4294-8624-b8de38483d42"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "c6435e33-5f3b-4206-8cd8-72ea1a2e8be1",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["7b7bd599-dc01-4d2e-a3b8-a0e1424a69cf", "b6c7445f-7a95-4dfa-a64a-339f699be0f7"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "08d89cbb-0b97-4180-ad6a-6c88adfdc797",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["bdb9423a-7f49-4606-9baa-6eb90397f957", "c77788df-53f1-4898-a9f3-06957edc3205"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "e0ffc2be-2194-4ae2-b2c0-9163dbade0a0",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["3be40174-39c3-462e-a128-8b96d994b21e", "900562a3-cbcc-47c0-a880-ed467bad7d2e"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "84aa006d-2b9d-4a57-b828-a3c3ebdf344a",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["900562a3-cbcc-47c0-a880-ed467bad7d2e", "d323e1bb-7963-4683-a314-c64489d817bd"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "c03267e1-9ccb-44fa-998d-8128d27c380b",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["d323e1bb-7963-4683-a314-c64489d817bd", "d4749f83-34d8-4619-afa7-73b9177f1908"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "ee83b34d-9d4f-4b26-8dc4-0291cc00b9fc",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["d4749f83-34d8-4619-afa7-73b9177f1908", "fbab41b0-cae6-4373-baa0-d19ecb712abd"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "5b02b2a3-d77c-40ce-ab81-3b46602c6a95",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["fbab41b0-cae6-4373-baa0-d19ecb712abd", "01964815-0b75-4335-9303-92161004a1e9"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "f029a623-b49f-48c0-ac7d-f0119bb17ce8",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["01964815-0b75-4335-9303-92161004a1e9", "2d263118-2557-4ce1-95bc-99ce47d7ffc2"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "de59f5fd-e204-4768-bf07-b2c15e85cbf9",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["2d263118-2557-4ce1-95bc-99ce47d7ffc2", "c2408f77-df51-4b8d-94dc-2bb8cd23cd6e"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "33477f69-3e8b-4867-8ade-ddac6a8f4e98",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["c2408f77-df51-4b8d-94dc-2bb8cd23cd6e", "0d5c7f9a-983b-451f-a9dc-dc0902fde0e7"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "97e75343-e9bf-40af-84cd-277122183229",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["0d5c7f9a-983b-451f-a9dc-dc0902fde0e7", "c5b52598-9b70-409a-aced-581651b6e9e7"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "99bb4009-fce2-4341-99ad-c35fee9b9d51",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["c5b52598-9b70-409a-aced-581651b6e9e7", "206dd1f2-d0d2-4b56-850b-66d0df32e2f7"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "21cf1b30-4522-480e-9a9f-70d8e3c4a0ff",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["206dd1f2-d0d2-4b56-850b-66d0df32e2f7", "26938d94-7d9e-4fca-9002-0f256123f894"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "02a04120-939a-4871-963a-e1e4361798a8",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["26938d94-7d9e-4fca-9002-0f256123f894", "ed5b2e68-59c3-4d6d-9580-3ab67c4b0107"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "803a43a2-bf40-4fcc-9bd7-b68a9a74c001",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["ed5b2e68-59c3-4d6d-9580-3ab67c4b0107", "9db880a0-f91b-42b1-9a28-fc08b3b80246"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "171ccebd-cb0e-4a29-8825-ee1a2d69deb8",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["9db880a0-f91b-42b1-9a28-fc08b3b80246", "d6a3165a-82e0-4510-9416-5533b95c4bdc"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "84f9757f-1db3-418b-ba70-185391b3f5fd",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["d6a3165a-82e0-4510-9416-5533b95c4bdc", "c224d028-651b-496c-a9f5-4174df92d29c"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "01dbae9c-e163-4a84-8410-fd6aad047105",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["c224d028-651b-496c-a9f5-4174df92d29c", "e817dc9e-aa80-4701-a9c5-133b6845a5d8"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "599e09fc-8e6a-497d-a367-13f0445096f9",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["e817dc9e-aa80-4701-a9c5-133b6845a5d8", "6374f67b-bad3-461c-8c7b-3736e779dbf1"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "06739e77-6312-45c7-9d1c-52fc05214584",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["6374f67b-bad3-461c-8c7b-3736e779dbf1", "2f8b6c44-373d-4856-b46f-b920a98ce5b9"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "108786e0-d8fa-4e2e-af4e-8f8f71793e6f",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["2f8b6c44-373d-4856-b46f-b920a98ce5b9", "46884836-b093-42c0-a57f-56f6b4917ec6"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "ad5ada92-6d77-4240-9e23-8e1008632967",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["6bc0631b-7031-4a1c-9c1c-f139683a088d", "efcac429-2958-4685-ac00-245c8f5d51da"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "9332e2e1-b3df-4893-869d-444becf2d666",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["9f5ec359-0909-47e4-af5f-287066917a85", "83b73795-342b-44e5-8bd0-4421ebb40b1b"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "ae9b7c4b-f8f2-485a-bdfc-92a5672897a9",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["9f5ec359-0909-47e4-af5f-287066917a85", "f58d60ae-d153-48a7-8d64-315eb053082d"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "82f213ea-6239-469a-8f20-95828c30eed9",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["54601821-c04a-4d1a-a9a0-003f548c0324", "6bc0631b-7031-4a1c-9c1c-f139683a088d"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "f97145be-f07d-4b3f-9eb5-1303e6acd451",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["bf77a2c0-1ce9-4871-a202-1383cd6af08e", "46884836-b093-42c0-a57f-56f6b4917ec6"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "2fd345bb-23a3-4f5f-bec4-bf25bfd5421b",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["c77788df-53f1-4898-a9f3-06957edc3205", "d6e7e4c5-5436-4666-b898-6f1da13e823c"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "546ff7f5-f13d-457d-bb09-0714020ff229",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["4f8c4716-a2f7-4091-b966-abfe53ba0a7b", "6cd89489-b794-4794-bfad-5584adf8b9e6"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "6d0619ed-2217-4861-9299-92640d680cd0",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["3fe30138-baf4-4d44-aaae-fab2535bffd4", "ea31494b-8ed0-482d-a881-f5dda82ac995"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "e30a3908-a20a-4a10-a60c-6f6bad5ffc49",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["7b7bd599-dc01-4d2e-a3b8-a0e1424a69cf", "956431d9-a34a-4a9d-a48c-8013479d9ed6"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "b2e45305-87cc-4c6a-976c-8d299e02ab24",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["0f8587b6-0b5f-474a-acd0-bfab9ab8f5d5", "e9165dd4-753d-4f4a-bba7-d2678a1b5777"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "f8d22c11-095d-4961-89fe-fb51999368a5",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["0f8587b6-0b5f-474a-acd0-bfab9ab8f5d5", "ddac71ff-e8b3-4ef2-a38b-db2917a52f8a"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "e6e6a5d3-ad42-4708-b693-b4a096bef07b",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["ddac71ff-e8b3-4ef2-a38b-db2917a52f8a", "4a6d0cbe-4041-444a-bb93-73c0914f7ae2"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "ad5d87a3-4074-4e2f-9a7b-6875c65eb739",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["3ddb4a78-987a-4b03-b708-0e19dadee3e3", "ad6573aa-d835-45fd-9148-f45a2f8a7417"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "0cbcbdeb-51fb-468e-802c-25a21e1c8db7",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["b6cc9ad4-7ae4-45c6-af96-0b0d7c326025", "bfe94a74-f273-44f1-92ee-8bdb0bbf1cda"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "bcae2b31-00f3-4380-bc66-8b6b1fb421c9",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["4a6d0cbe-4041-444a-bb93-73c0914f7ae2", "7a64d5ec-15ea-458e-8dbb-5582ad676d68"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "5fa2c83b-d633-40bc-bf26-fcc1165d7bfc",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["beaf8986-3aef-4ef6-867c-0b6c6cb887ef", "83b73795-342b-44e5-8bd0-4421ebb40b1b"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "02bcee3d-3529-4a00-a10e-b35a1c0d71d9",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["9c5b1f8c-6573-46e3-b598-96fae6181970", "d8c390e4-a164-43b7-9f36-906ab750eca1"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "117b371a-b42d-4ef0-b7f4-d446e7b678c6",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["7afabe62-6120-4ee4-a826-4808563bf523", "129e0ecc-32e7-446c-8831-0c00dfcf7d6e"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "4c9d489f-a0ac-4332-9c3b-488e1cd639c1",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["9be51e77-a83a-4712-90e4-ce6ef88f5da4", "4de44cbe-acee-40c2-9ccc-7fae09f323f9"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "044a5c21-e13a-43fa-aa97-9e5c2b8cf630",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["53fbad5e-6b61-4358-8651-2b3c8ee20afb", "93df16fd-48ea-49a4-899c-a56c8cbc0c3d"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "d48632c0-0491-4dfb-9cde-ff862f26216e",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["f58d60ae-d153-48a7-8d64-315eb053082d", "2f3772ba-085a-42e5-82e8-fa7cfcbcb09d"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "6bccf27c-b855-4460-9b62-d03f5e0922f5",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["2f3772ba-085a-42e5-82e8-fa7cfcbcb09d", "5fbbbe40-4806-4c4c-a8cd-e8ddb61b2d11"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "8a9dc40b-ce20-4093-9b00-836ff537ef48",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["5fbbbe40-4806-4c4c-a8cd-e8ddb61b2d11", "a52bbeb1-a3cd-433c-925f-02e18e86f3cb"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "a795b57c-8523-4a61-8539-402884d5a1f0",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["a52bbeb1-a3cd-433c-925f-02e18e86f3cb", "54601821-c04a-4d1a-a9a0-003f548c0324"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "a6d0d54c-0fbb-4584-9933-4940c49313ec",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["e1c3dcc2-cff2-4565-958a-de325731bfe9", "9c6c460b-da32-49a8-bbab-fc3132f80279"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "dcf583aa-7b4d-4457-a4c3-027ae84e1f7b",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["9c6c460b-da32-49a8-bbab-fc3132f80279", "c640514e-075c-4f34-87ef-530ec50b3c1f"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "ea1a00a4-ea7a-44dd-b3f0-d1babc3726af",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["c640514e-075c-4f34-87ef-530ec50b3c1f", "d7991229-10e8-49a8-a25c-0a65cd342284"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "94d4bd5e-a472-4be0-8381-fb658bac3e23",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["d7991229-10e8-49a8-a25c-0a65cd342284", "71ec2c64-21f3-4ef3-8aeb-c93be14cf1aa"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "bb943785-25f7-4240-a264-045687ba85b1",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["71ec2c64-21f3-4ef3-8aeb-c93be14cf1aa", "d51502ea-4d42-488e-941d-006e77633709"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "c3bfc107-56c7-4f65-9bf4-5ec968eef310",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["d51502ea-4d42-488e-941d-006e77633709", "b6eef07f-58d2-4c9f-8ecc-0c9a9e3f3d36"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "c7ce8df2-a91c-46ad-92ac-cb5648e2650a",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["b6eef07f-58d2-4c9f-8ecc-0c9a9e3f3d36", "b56ca8df-0e42-4118-9736-d27a7e515124"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "863b56d8-fab5-4a54-b407-080970a1ef16",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["b56ca8df-0e42-4118-9736-d27a7e515124", "84b8388a-1f20-488f-a141-98414aec0cdf"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "8b448dea-5065-4f1f-8e94-b4535b066290",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["84b8388a-1f20-488f-a141-98414aec0cdf", "79b96974-a985-40cb-a438-590c5974e805"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "c00b9624-850e-4128-84d2-c34994506ac8",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["79b96974-a985-40cb-a438-590c5974e805", "01041881-19c0-4025-98b9-e9246ee7839e"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "0686f95a-cc54-40e7-93d5-eba31662952e",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["01041881-19c0-4025-98b9-e9246ee7839e", "f55eba16-fcae-4fcd-8977-65c54f73c5ea"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "ab595bc6-85c3-43b7-a69e-2ceb5e97c502",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["f55eba16-fcae-4fcd-8977-65c54f73c5ea", "5fce8c9c-bd16-4d4a-beaf-93042ed1b53a"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "9619eb88-d897-45da-bf73-1b34b2cf62de",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["5fce8c9c-bd16-4d4a-beaf-93042ed1b53a", "bf77a2c0-1ce9-4871-a202-1383cd6af08e"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "bec2f072-c96f-4cb1-ba01-7de028e2db32",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["ad6573aa-d835-45fd-9148-f45a2f8a7417", "c137d9a4-a81c-4988-96ec-22f2d015bbe2"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "b96e5792-f0af-4c29-b00a-a885735248dc",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["c137d9a4-a81c-4988-96ec-22f2d015bbe2", "882c7b4f-748c-4da4-bacc-2152577b82c7"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "1b076513-5153-4e2d-b355-706b3ee5d599",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["882c7b4f-748c-4da4-bacc-2152577b82c7", "b1aec70a-243e-4014-885b-3afd5349aefa"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "a7cf84ec-9abd-419c-bba2-8768999b77db",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["b1aec70a-243e-4014-885b-3afd5349aefa", "3fc975a8-a999-4a1a-b411-158cb092e806"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "74bc0ebb-8c8c-4a73-ab64-7a2075f7b790",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["3fc975a8-a999-4a1a-b411-158cb092e806", "2c071c75-ac1f-4abc-872e-2c8b7559e4ee"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "0097088b-e766-43eb-810d-f1324d08d5cd",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["90b81e22-73bb-457e-a570-a7029b4d210b", "0bf8084e-0a64-480d-9a37-dd10e8ff3799"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "6d307684-2686-45c6-b39a-9b82ae60d7c5",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["0bf8084e-0a64-480d-9a37-dd10e8ff3799", "3ad2eeea-5fdc-4847-9fd2-691617af5354"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "d10522c7-d2c2-4bec-8854-8f5085e4eff2",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["8d49bddb-74af-49b7-8488-44fb73e875b9", "d01d5192-4ce2-4340-8cd1-0be4bb2e064c"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "205c065a-6f44-442b-bd6c-7b9842ceb29e",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["0262e490-f852-4847-a9de-4708213f6f57", "02085dda-b92b-4ce2-aa19-503580399c5a"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "349532d9-4226-4d71-9418-5afe6c48eb6f",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["02085dda-b92b-4ce2-aa19-503580399c5a", "173aec62-ae40-450d-960e-fdb54ebf5164"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "cbb81d60-71e9-45d7-8d05-3d7eaa388d9d",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["173aec62-ae40-450d-960e-fdb54ebf5164", "bf3cf0c4-c7ef-43a3-a864-b1512416408c"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "994f349c-bdc9-435a-9960-2a04f9b862e6",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["376c96f2-afe6-44de-8c34-3b70350b626d", "4befea4d-f01c-4a64-abc8-197c2460e117"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "81d047f3-59c1-47d7-b3da-508d5097b894",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["4befea4d-f01c-4a64-abc8-197c2460e117", "9657069a-aa45-4051-9b33-9e2149c3d557"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "0c18c078-5384-4586-a894-965e43a72723",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["9657069a-aa45-4051-9b33-9e2149c3d557", "fd7884bc-19ae-49d6-acbb-bef9a785772f"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "0c25d2d1-3da2-4005-b910-fe71b5e1b96b",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["fd7884bc-19ae-49d6-acbb-bef9a785772f", "576e46b6-a066-4e28-92fd-1bfcac36e187"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "3003cd1b-76e5-42f6-87f9-f2661e3c7028",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["576e46b6-a066-4e28-92fd-1bfcac36e187", "d6c81216-f682-4048-b53e-112a0da2cca8"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "b3118cd5-c8b2-45e7-8b5c-8d1e09150d2b",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["d6c81216-f682-4048-b53e-112a0da2cca8", "b03ad577-d1d6-47e4-bdaa-1be3e6d12ce0"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "f89ae09b-7f32-4621-b856-22072f0d2fbe",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["b03ad577-d1d6-47e4-bdaa-1be3e6d12ce0", "b7753820-5796-4615-bb82-20a2e579e647"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "859fb294-f4a0-48e5-beb7-574b9a1dff49",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["b7753820-5796-4615-bb82-20a2e579e647", "9a8bc4f9-1eb0-4dd9-a30f-2e42f4235222"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "8317b753-b8f3-4152-83a4-4934aed57488",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["9a8bc4f9-1eb0-4dd9-a30f-2e42f4235222", "4d6b0aea-5c78-45a7-b6c3-c1c49a7503bd"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "e7fa6c49-a3fe-4b76-8600-e7ec8cc5ca9d",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["4d6b0aea-5c78-45a7-b6c3-c1c49a7503bd", "ec3694f3-de69-4ccb-8194-6a36b3c38e77"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "bf62d958-7576-44b1-85b2-538bf416ed43",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["ec3694f3-de69-4ccb-8194-6a36b3c38e77", "03cc6c74-503f-4178-be59-cbc1adc621a7"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "a53ec9e9-acd0-4f6d-ba24-610299b4b6a4",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["03cc6c74-503f-4178-be59-cbc1adc621a7", "0bde7f82-4e88-4306-82be-f3ad08ac58b7"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "8608b3b2-46ab-4a5c-94c8-215bc237f355",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["0bde7f82-4e88-4306-82be-f3ad08ac58b7", "e1c3dcc2-cff2-4565-958a-de325731bfe9"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "67dce478-b079-4c7f-a73f-ff95d00f70a5",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["f84cd355-fa85-48b7-9713-c570a4c80954", "bbe6acf0-c031-4107-b987-0c164a7c3131"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "aad36d1c-9623-4e16-839d-83abd656fd0d",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["bbe6acf0-c031-4107-b987-0c164a7c3131", "c6b7c162-e15f-414f-bf99-aa686eed5d92"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "9e252e2a-fbe9-415d-a60f-73156f1341ba",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["c6b7c162-e15f-414f-bf99-aa686eed5d92", "5008d17b-c693-418e-a574-7be545b78fbc"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "5238f7b1-e465-4e38-91c0-b33aecde2834",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["cd101a5d-0036-48b9-94d6-68419668d584", "8d53cdf3-8710-4168-b01a-ce55d7cb9a5c"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "3cb2a3e6-15cd-4aab-8544-36a254b7fdb9",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["0494be3e-1859-4a18-9f6d-c4ffa1be133f", "2c071c75-ac1f-4abc-872e-2c8b7559e4ee"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "b5ebf277-0549-42a3-9478-6a92af540b52",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["ddac71ff-e8b3-4ef2-a38b-db2917a52f8a", "93bd2ec3-7fa9-428c-bd08-d33615020b3c"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "dca6b3c0-5207-4e85-9826-300fdbaf1eb1",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["cd101a5d-0036-48b9-94d6-68419668d584", "a92b6132-c755-461a-b7cd-8bdf9ba6ace9"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "b36d4ccc-de1e-4e2a-b385-26c3b0ae29a3",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["a92b6132-c755-461a-b7cd-8bdf9ba6ace9", "720028c3-90fb-41e6-bd4f-21629ec77b55"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "d19e7b77-a975-4280-a4d0-4c0160028b21",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["720028c3-90fb-41e6-bd4f-21629ec77b55", "6345e723-981f-4032-b074-1bc44c30754d"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "fb8c4e19-93d1-47e2-aae1-9f059724a4cc",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["6345e723-981f-4032-b074-1bc44c30754d", "4f9a8cd5-3c7b-4104-a20d-4f216609ef29"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "5dec6b47-366b-4ed2-9fe4-7a39664f2321",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["4f9a8cd5-3c7b-4104-a20d-4f216609ef29", "d6cb6fe7-0c34-4483-be6d-77661deeb193"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "1386191e-de97-4de6-b2b7-52975de5becc",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["83e8b36a-881e-470a-9cec-cfecd9fef789", "a1fd825d-91d1-455e-8ab2-dff837e0cc54"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "f503295e-f0b6-46a1-b52d-e61da9a7ea5f",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["9bf86da0-88d4-43f6-ab6b-3f4077980a62", "224c8a37-ca00-4424-9ce4-658b9454f424"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "c4002135-d3d0-404f-a874-92a2382c1318",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["eb7595ab-177a-40a9-b1ac-1bce7551dfa3", "ec61ddfc-84fc-4759-8d18-2fb200518478"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "c2775e98-31e5-47f2-bc4d-ae1d4f5e72a3",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["51fed3ad-d4b3-4b67-9e08-8737dce441c5", "a55f280f-c7da-477e-a0b5-1f6df3f8fb99"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "39b499aa-1a55-4f97-b3d6-c4d2e3f50fa2",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["a1fd825d-91d1-455e-8ab2-dff837e0cc54", "224c8a37-ca00-4424-9ce4-658b9454f424"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "58592580-1179-47af-8db8-c5bef72f8644",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["93bd2ec3-7fa9-428c-bd08-d33615020b3c", "0dd7afde-7fa1-48df-ae10-40c10a66b90e"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "db4fd1eb-5658-4be6-aef7-8905c74ad6dd",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["0dd7afde-7fa1-48df-ae10-40c10a66b90e", "0d58a8c5-2cce-4292-8020-40feb948f003"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "a9fc74b1-4c66-4b63-ab63-da8fda1e3ddf",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["0d58a8c5-2cce-4292-8020-40feb948f003", "27c5b6ec-14a0-47b4-8ad3-4c2938e7fe00"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "e6e42fa4-ce42-44df-944c-5ebe884a6c2a",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["27c5b6ec-14a0-47b4-8ad3-4c2938e7fe00", "f7608c0c-2642-43f5-a624-89d1b14ec90e"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "8cf73913-1d72-4b02-abe2-a1a15ccac38f",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["f7608c0c-2642-43f5-a624-89d1b14ec90e", "b115c440-e696-4573-bec9-bf3df0b3e234"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "2fa4e087-e203-4194-b6ae-71a0c057cc37",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["b115c440-e696-4573-bec9-bf3df0b3e234", "73866196-436f-4cdd-9e75-b8aaf72aa4ab"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "7fd4383e-e8e4-4fe3-8e62-5e1a24f5684f",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["73866196-436f-4cdd-9e75-b8aaf72aa4ab", "9b587450-d3ba-48eb-b586-f79c78b2bad0"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "e74d39c6-ae68-474f-b73b-f768eb599d1b",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["9b587450-d3ba-48eb-b586-f79c78b2bad0", "8a4b8a07-592c-4deb-8546-da324a25f0ab"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "bc2af902-1d0b-47b5-b351-45a64442d1b8",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["8a4b8a07-592c-4deb-8546-da324a25f0ab", "14761319-5cea-469a-b841-4a84d6605649"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "15d4e1a4-45c2-4ccb-9981-a9b941943f26",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["14761319-5cea-469a-b841-4a84d6605649", "ad5df59b-c0d8-483f-b6c0-ceefbfde0937"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "85a51e98-a945-48b6-ae55-b50e5daf67c5",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["ad5df59b-c0d8-483f-b6c0-ceefbfde0937", "3a49ce6f-651f-418c-b7ca-ecf5b0612582"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "4e2e2742-96c7-4496-9356-517ad9c81b34",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["3a49ce6f-651f-418c-b7ca-ecf5b0612582", "0a45b2da-32a8-45df-b714-92aac379989a"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "e455dada-23a4-45e3-8986-f5e0093bf444",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["0a45b2da-32a8-45df-b714-92aac379989a", "226ceb79-c52c-4160-a24e-7aebdf9b9bf8"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "c380cfd5-df22-43f7-bea9-4b71f92387aa",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["226ceb79-c52c-4160-a24e-7aebdf9b9bf8", "2ae0551e-a4ce-440f-ba71-41f70796c526"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "0cbd99c8-59c0-42cd-ae73-738868a5080e",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["2ae0551e-a4ce-440f-ba71-41f70796c526", "24b8f50d-7a18-401f-aae5-43bda88c2cd5"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "311d5db9-daa9-4d52-a5ea-9d51458f698d",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["24b8f50d-7a18-401f-aae5-43bda88c2cd5", "6a2836d4-1c08-4835-bd86-eaa24b4124f8"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "28741e2f-60df-431b-a609-a61b0648091e",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["6a2836d4-1c08-4835-bd86-eaa24b4124f8", "7a64d5ec-15ea-458e-8dbb-5582ad676d68"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "6f6a2bee-08c2-4c26-9487-ccbbaf0c3d46",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["b59678f8-cf2d-42d0-9338-d425563046cf", "d8c5d6a1-6cf0-446d-a655-99867c2d9c16"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "ff38e903-5a97-46dd-87f8-001c088c59fb",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["d8c5d6a1-6cf0-446d-a655-99867c2d9c16", "318ebbf6-0e9a-4311-a72a-5848b76bc7aa"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "cb043016-7c49-4048-85b9-54565f39bf3f",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["318ebbf6-0e9a-4311-a72a-5848b76bc7aa", "d0318808-8c75-472e-8c44-2e2220d7df83"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "195f58b6-2a74-475f-b40f-9da88261fa82",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["0e884693-257d-4b37-a0a0-4a00941bb503", "523fb1d3-8a80-4190-a441-f3b25f252233"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "6edc69b0-c71f-4c4f-b1f9-c7debc8ba9ca",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["523fb1d3-8a80-4190-a441-f3b25f252233", "8bf29673-cf5d-4975-a188-4b84903f85ac"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "0bbcff63-3e8e-48f3-a6e7-3baa9bf86fc4",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["8bf29673-cf5d-4975-a188-4b84903f85ac", "7c63616b-b323-48e4-be36-971d7938e448"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "e8648be9-a08f-4024-a1b9-ab1fb8138a6f",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["3801a5e0-e6b5-462f-9895-c594f6739558", "4ed5f8bd-0946-4c11-abf2-3549b4c1926c"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "5cf25e89-f696-46e0-ae4b-9e6792d5debb",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["7ca7ff9b-e361-4fa8-93f9-ae38de58ea73", "b3d78632-d0a3-46e8-b72c-730f8353002d"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "0ba728b3-1248-4fc3-bef3-e003310702f4",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["15e4056d-d08f-40ad-b2e5-7676f1130541", "514446d5-65e8-45bf-9a5f-577029348825"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "7f14a3cd-504e-4e38-999e-9ba310910702",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["fcecd304-3ee9-4d3e-a214-a93952c4c244", "acb5b239-c40c-4c92-a331-72d5881b2435"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "90381a4e-8960-4bc7-97f0-99821f165735",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["acb5b239-c40c-4c92-a331-72d5881b2435", "deac3574-99b4-457c-8f1e-813c6950af2f"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "d76ac675-1ea1-4fd5-ac26-088a8a91e382",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["deac3574-99b4-457c-8f1e-813c6950af2f", "77419a83-02d4-4ec9-80d1-34007092dc4e"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "95d17a9e-f461-46eb-9cb2-d8054e9a33a2",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["5478c36b-ce60-44b8-9324-8c2cf4dd6ded", "eb871e3c-dc25-43ed-962a-1866c295e595"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "3d8d4744-30a9-464d-97a2-3b452326cfc0",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["4f8c4716-a2f7-4091-b966-abfe53ba0a7b", "5d5fc333-e1c9-44e1-99dd-a2b38206280a"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "5fd85d6e-2b3c-49d7-aba2-001a3c148324",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["fca1a7f2-f676-4f98-9abe-6a22f272a99f", "93cfb167-4d50-495f-8102-3860c343001f"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "e9392837-f3ec-493c-b378-d9bee0e18d7d",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["93cfb167-4d50-495f-8102-3860c343001f", "6e13b92d-672c-4d5d-9679-0ae077f160a1"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "2107676e-d047-4d3f-907f-4ae7a75abd4a",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["6e13b92d-672c-4d5d-9679-0ae077f160a1", "43fbf17a-f4c5-4873-929d-f1865b1ab4fe"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "185ad1d4-a251-43e6-8406-859f7e5a65e7",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["dcddc3ba-b146-4ea9-bec4-90d84233c3ef", "1b7c6614-3953-4c62-9162-406173f9006e"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "d8b34de9-cd34-4f44-aa2f-dea2603426f2",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["9a7375cf-970c-4c7f-b9f2-47bc0617f5d3", "efeb719a-6e0d-4d1d-b427-c1838f0914b8"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "c23d0cf8-4efe-4a67-9997-3d13f27f2bf6",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["efeb719a-6e0d-4d1d-b427-c1838f0914b8", "5995e486-aae1-41e7-8e32-9aba2466598a"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "101f9fb4-3e4a-49e7-83a0-cf1ad2385377",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["5995e486-aae1-41e7-8e32-9aba2466598a", "33564023-41a8-4431-9cea-7243c782803a"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "607b8e3b-6678-4309-a221-96deab5a31ca",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["45f061d7-5e9d-487b-a91e-1ed9f3884fc6", "8a85bb83-b052-4ee9-b7eb-1510c28951ad"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "88237d48-a2b3-47ba-9396-cf4ce82b816e",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["5969623f-38b6-4079-ac5d-a1540c034db4", "4959e1a8-51c8-4f85-b256-53d06dade252"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "9e04044b-70ad-45a4-9f9a-28a15c8a585d",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["72bb6cfc-c5a6-47ac-8918-7a678d6cf517", "cb69949c-da82-491e-9555-2e198412a20e"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "d0ce277f-3958-4470-8e0d-414bf895ac6d",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["cb69949c-da82-491e-9555-2e198412a20e", "9947ea10-e2d3-4c0f-8470-6314b6ac23a2"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "42810ec9-3a92-4733-84b3-688dee633c0e",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["475b0eff-0f07-446f-85e2-e43df31ac256", "f3c81c10-a8a6-49ad-a60f-3f99d51fdfd5"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "51030a3a-c0bf-46cf-b9f3-96d01c55303b",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["de4c9ff6-9db0-4393-9f8e-7e455a2b634e", "2f55c79d-0af9-45f1-b0b6-240ec5fd1075"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "a9a93e30-afef-44b1-9c60-cddb1ae9eed4",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["bfe94a74-f273-44f1-92ee-8bdb0bbf1cda", "c1f0926a-bcea-4922-92f5-23d5de26acea"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "2f49f01d-32a1-4fd0-bd4b-b4540ae969ba",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["671b81fd-a7e2-4874-93d7-1cd014e2a0f7", "74c0ff00-1f2b-4c87-bd03-6456ffcf9578"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "f2357d0a-d2ac-49da-9e1d-ba7d2b2c5d82",
+              "status": "CREATED"
+            },
+{
+              "wallPoints": ["efcac429-2958-4685-ac00-245c8f5d51da", "4bdc2481-4470-4c45-948e-6bf8b390fd8e"],
+              "wallTypeId": "d548c476-0a7f-469c-a2ec-4b0595a15328",
+              "originType": "WALL_TOOL",
+              "id": "11420629-f36c-4b07-bed2-21276e79b67c",
+              "status": "CREATED"
+            }
+  ]
+}

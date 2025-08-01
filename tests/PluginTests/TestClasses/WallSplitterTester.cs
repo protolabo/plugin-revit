@@ -14,13 +14,13 @@ public static class WallSplitterTester
         string tempPath = Path.Combine(tempFolderPath, "Template");
 
         // Load test configuration
-        string testConfigPath = $"./TestFiles/Models/{model}";
+        string testConfigPath = $"./TestFiles/Integration/Models/{model}";
         string configJson = File.ReadAllText(testConfigPath);
         ModelInfo testInfo = JsonConvert.DeserializeObject<ModelInfo>(configJson);
 
         // Dynamically construct paths from config
-        string inputPath = $"./TestFiles/Walls/{testInfo.walls}.json";
-        string expectedPath = $"./TestFiles/Walls/{testInfo.walls_expected}.json";
+        string inputPath = $"./TestFiles/Integration/Walls/{testInfo.walls}.json";
+        string expectedPath = $"./TestFiles/Integration/Walls/{testInfo.walls_expected}.json";
         string outputPath = Path.Combine(tempFolderPath, "walls_segments.json");
 
         try

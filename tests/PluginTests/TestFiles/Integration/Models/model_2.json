@@ -2,6 +2,7 @@
     "cropRegions" : [
         {
             "viewName": "Level 1",
+            "viewNameID" : "4fda2e39-287d-452f-9956-2b7defc75330",
             "min": {
                 "x": -51.196990982960649,
                 "y": -72.002867143342812,
@@ -18,6 +19,7 @@
         },
         {
             "viewName": "Level 2",
+            "viewNameID" : "f8a69ccd-b6b0-4b17-a6b5-e2a204d63c1d",
             "min": {
                 "x": -46.503661007610432,
                 "y": -68.32576291433098,

@@ -61,25 +61,53 @@ namespace Create.ExportClasses
                     imagesArray.Add(imageEntry);
 
                     // Add to Ekahau json file floorPlans.json
-                    JObject floorEntry = new JObject
+                    double metersPerUnit = GetMetersPerUnit(originalImageName, viewInfo);
+
+                    // Scale calculated successfully
+                    if (metersPerUnit == 0.0)
                     {
-                        ["name"] = originalImageName,
-                        ["width"] = width,
-                        ["height"] = height,
-                        ["metersPerUnit"] = GetMetersPerUnit(originalImageName, exportDir, viewInfo, modelData),
-                        ["imageId"] = imageId,
-                        ["gpsReferencePoints"] = new JArray(),
-                        ["floorPlanType"] = "FSPL",
-                        ["cropMinX"] = 0.0,
-                        ["cropMinY"] = 0.0,
-                        ["cropMaxX"] = width,
-                        ["cropMaxY"] = height,
-                        ["rotateUpDirection"] = "UP",
-                        ["tags"] = new JArray(),
-                        ["id"] = Guid.NewGuid().ToString(),
-                        ["status"] = "CREATED"
-                    };
-                    floorPlansArray.Add(floorEntry);
+                        JObject floorEntry = new JObject
+                        {
+                            ["name"] = originalImageName,
+                            ["width"] = width,
+                            ["height"] = height,
+                            ["imageId"] = imageId,
+                            ["gpsReferencePoints"] = new JArray(),
+                            ["floorPlanType"] = "FSPL",
+                            ["cropMinX"] = 0.0,
+                            ["cropMinY"] = 0.0,
+                            ["cropMaxX"] = width,
+                            ["cropMaxY"] = height,
+                            ["rotateUpDirection"] = "UP",
+                            ["tags"] = new JArray(),
+                            ["id"] = Guid.NewGuid().ToString(),
+                            ["status"] = "CREATED"
+                        };
+                        floorPlansArray.Add(floorEntry);
+                    } 
+                    else
+                    {
+                        JObject floorEntry = new JObject
+                        {
+                            ["name"] = originalImageName,
+                            ["width"] = width,
+                            ["height"] = height,
+                            ["metersPerUnit"] = metersPerUnit,
+                            ["imageId"] = imageId,
+                            ["gpsReferencePoints"] = new JArray(),
+                            ["floorPlanType"] = "FSPL",
+                            ["cropMinX"] = 0.0,
+                            ["cropMinY"] = 0.0,
+                            ["cropMaxX"] = width,
+                            ["cropMaxY"] = height,
+                            ["rotateUpDirection"] = "UP",
+                            ["tags"] = new JArray(),
+                            ["id"] = Guid.NewGuid().ToString(),
+                            ["status"] = "CREATED"
+                        };
+                        floorPlansArray.Add(floorEntry);
+
+                    }      
                 }
             }
 
@@ -98,74 +126,54 @@ namespace Create.ExportClasses
         }
 
         // This function is used to automatically specify the model scale in Ekahau
-        private static double GetMetersPerUnit(string imageName, string directoryPath, List<ViewData> viewInfo, Dictionary<string, ModelData> modelData)
+        // private static double GetMetersPerUnit(string imageName, List<ViewData> viewInfo)
+        public static double GetMetersPerUnit(string imageName, List<ViewData> viewInfo)
         {
-            // Convert image name to view name and construct the path for elements JSON
-            string viewName = imageName.Replace("exported_view - Floor Plan - ", "").Replace(".bmp", "").Replace(" ", "_");
+            // Extract view name from image file name
+            string viewName = imageName
+                .Replace("exported_view - Floor Plan - ", "")
+                .Replace(".bmp", "")
+                .Replace(" ", "_");
 
-            // Read and parse elements JSON
-            WallData firstWall = modelData[viewName].walls.First();
-
-            // Extract start and end points (in feet)
-            var start = firstWall.start;
-            var end = firstWall.end;
-
-            double startX = start.x;
-            double startY = start.y;
-            // Z coordinate is ignored for 2D calculation
-
-            double endX = end.x;
-            double endY = end.y;
-
-            // Convert feet to meters (1 foot = 0.3048 meters)
-            const double feetToMeters = 0.3048;
-            double startX_m = startX * feetToMeters;
-            double startY_m = startY * feetToMeters;
-
-            double endX_m = endX * feetToMeters;
-            double endY_m = endY * feetToMeters;
-
-            // Calculate 2D distance in meters
-            double deltaX_m = endX_m - startX_m;
-            double deltaY_m = endY_m - startY_m;
-            double distanceMeters = Math.Sqrt(deltaX_m * deltaX_m + deltaY_m * deltaY_m);
-
-            // Find the corresponding view entry in viewInfo using viewName (replace underscores with spaces)
+            // Match against viewInfo using formatted view name
             string searchViewName = viewName.Replace("_", " ");
             var viewEntry = viewInfo.FirstOrDefault(v => v.viewName == searchViewName);
+            if (viewEntry == null)
+            {
+                Console.WriteLine($"❌ View '{searchViewName}' not found in viewInfo.");
+                return 0.0;
+            }
 
-            // Get bounding box and image size info
+            // Get crop box corners in Revit coordinates (in feet)
             double minX = viewEntry.min.x;
-            double maxX = viewEntry.max.x;
             double minY = viewEntry.min.y;
+            double maxX = viewEntry.max.x;
             double maxY = viewEntry.max.y;
+
+            // Compute the diagonal distance (in feet) between crop box corners
+            double deltaX_ft = maxX - minX;
+            double deltaY_ft = maxY - minY;
+            double diagonalFeet = Math.Sqrt(deltaX_ft * deltaX_ft + deltaY_ft * deltaY_ft);
+
+            // Convert diagonal to meters
+            const double feetToMeters = 0.3048;
+            double diagonalMeters = diagonalFeet * feetToMeters;
+
+            // Get image dimensions in pixels
             int imageWidth = viewEntry.width;
             int imageHeight = viewEntry.height;
 
-            // Conversion functions: from Revit feet coordinates to Ekahau pixel coordinates
-            Func<double, double> convertX = x => (x - minX) / (maxX - minX) * imageWidth;
-            Func<double, double> convertY = y => (maxY - y) / (maxY - minY) * imageHeight;
+            // Compute diagonal of the image in pixels
+            double diagonalPixels = Math.Sqrt(imageWidth * imageWidth + imageHeight * imageHeight);
 
-            // Convert start and end points to pixel coordinates
-            double startX_px = convertX(startX);
-            double startY_px = convertY(startY);
-
-            double endX_px = convertX(endX);
-            double endY_px = convertY(endY);
-
-            // Calculate 2D pixel distance
-            double deltaX_px = endX_px - startX_px;
-            double deltaY_px = endY_px - startY_px;
-            double distancePixels = Math.Sqrt(deltaX_px * deltaX_px + deltaY_px * deltaY_px);
-
-            // Prevent division by zero
-            if (distancePixels == 0)
+            if (diagonalPixels == 0)
             {
-                return 0.026190351367214426;
+                // TaskDialog.Show("Warning", "The model scale could not be established.");
+                return 0.0;
             }
 
             // Calculate meters per pixel
-            double metersPerUnit = distanceMeters / distancePixels;
+            double metersPerUnit = diagonalMeters / diagonalPixels;
             return metersPerUnit;
         }
 

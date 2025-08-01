@@ -17,11 +17,13 @@ public static class SegmentsListCreatorTester
         var wallPointsList = new List<string>();
         var wallSegmentsList = new List<string>();
 
-        string infoPath = $"./TestFiles/Models/{model}"; 
+        var wallPointObjectsByFloor = new Dictionary<string, List<WallPoint>>();
+
+        string infoPath = $"./TestFiles/Integration/Models/{model}"; 
         string infoJson = File.ReadAllText(infoPath);
         ModelInfo modelInfo = JsonConvert.DeserializeObject<ModelInfo>(infoJson);
 
-        string wallsPath = Path.Combine("./TestFiles/Walls", modelInfo.walls + ".json");
+        string wallsPath = Path.Combine("./TestFiles/Integration/Walls", modelInfo.walls + ".json");
 
         if (!File.Exists(wallsPath))
         {
@@ -52,9 +54,32 @@ public static class SegmentsListCreatorTester
             Func<double, double> convertX = (x) => (x - minX) / (maxX - minX) * imageWidth;
             Func<double, double> convertY = (y) => (maxY - y) / (maxY - minY) * imageHeight;
 
-            SegmentsListCreator.FillSegmentsList(modelSegments[viewName].walls, Guid.NewGuid().ToString(), convertX, convertY, 
-            tempPath, wallPointsList, wallSegmentsList);
+            if (!wallPointObjectsByFloor.ContainsKey(viewEntry.viewNameID))
+            {
+                wallPointObjectsByFloor[viewEntry.viewNameID] = new List<WallPoint>();
+            }
+
+            var wallPointObjects = wallPointObjectsByFloor[viewEntry.viewNameID];
+
+            SegmentsListCreator.FillSegmentsList(modelSegments[viewName].walls, Guid.NewGuid().ToString(), convertX, convertY,
+            tempPath, wallPointsList, wallSegmentsList, wallPointObjects);
+            
         }
+
+        // Check wallPointObjectsByFloor Content
+        // foreach (var floorEntry in wallPointObjectsByFloor)
+        // {
+        //     string floorId = floorEntry.Key;
+        //     List<WallPoint> wallPoints = floorEntry.Value;
+
+        //     Console.WriteLine($"Floor ID: {floorId}");
+
+        //     foreach (var point in wallPoints)
+        //     {
+        //         Console.WriteLine($"  WallPoint ID: {point.Id}");
+        //         Console.WriteLine($"    Location: X={point.X}, Y={point.Y}");
+        //     }
+        // }
 
         var regexPoints = new Regex(@"
             ""location""\s*:\s*{[^}]*      # location object

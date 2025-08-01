@@ -1,0 +1,63 @@
+{
+  "Level_1": {
+    "walls": [
+      {
+        "type": "Walls",
+        "id": 198749,
+        "name": "Wall - Timber Clad",
+        "start": {
+          "x": -20.0,
+          "y": 0.0,
+          "z": 0.0
+        },
+        "end": {
+          "x": 20.0,
+          "y": 0.0,
+          "z": 0.0
+        },
+        "openings": [
+          {
+            "type": "Doors",
+            "id": 906937,
+            "name": "1730 x 2134mm",
+            "position": {
+              "x": -18.0,
+              "y": 0.0,
+              "z": 0.0
+            },
+            "start_point": {
+              "x": -23.0,
+              "y": 0.0,
+              "z": 0.0
+            },
+            "end_point": {
+              "x": -13.0,
+              "y": 0.0,
+              "z": 0.0
+            },
+            "width_ft": 10.0,
+            "height_ft": 7.0
+          },
+          {
+            "type": "Walls",
+            "id": 0,
+            "name": "Wall - Timber Clad",
+            "position": null,
+            "start_point": {
+              "x": -13.0,
+              "y": 0.0,
+              "z": 0.0
+            },
+            "end_point": {
+              "x": 20.0,
+              "y": 0.0,
+              "z": 0.0
+            },
+            "width_ft": null,
+            "height_ft": null
+          }
+        ]
+      }
+    ]
+  }
+}

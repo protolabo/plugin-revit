@@ -1,66 +1,48 @@
 ﻿using Create.ExportClasses;
 using System.Reflection;
+using System;
+using System.IO;
+using System.Text;
 
 class Program
 {
     static void Main(string[] args)
     {
-        string assemblyFolder = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
-        string buildFilesDir = Path.Combine(assemblyFolder, "build_files");
-        string tempFolderPath = Path.Combine(buildFilesDir, "tempFolder");
-        string tempPath = Path.Combine(tempFolderPath, "Template");
+        bool generateReport = false;
 
-        string modelsPath = "./TestFiles/Models";
-        string[] modelFiles = Directory.GetFiles(modelsPath, "*.json");
+        StringBuilder consoleOutput = new StringBuilder();
+        TextWriter originalConsole = Console.Out;
 
-        // List of models you want to test (file names only)
-        var models = new HashSet<string>
+        if (generateReport)
         {
-            "model_1.json",
-            "model_2.json",
-            "model_3.json"
-        };
+            Console.SetOut(new StringWriter(consoleOutput));
+        }
 
-        foreach (var modelFile in modelFiles)
+        Console.WriteLine("==========     TESTS REPORT   ==========");
+        Console.WriteLine("\n--- UNIT TESTS REPORT");
+        UnitTests.RunTests();
+
+        Console.WriteLine();
+        Console.WriteLine("\n--- INTEGRATION TESTS REPORT");
+        IntegrationTests.RunScript();
+        
+        Console.WriteLine("\n==========     END REPORT   ==========");
+
+        if (generateReport)
         {
-            string fileName = Path.GetFileName(modelFile);
+            Console.SetOut(originalConsole);
 
-            if (!models.Contains(fileName))
-                continue; 
+            string reportPath = "./test_report.txt";
 
-            Console.WriteLine($"\n🔁 Running tests for model: {fileName}");
+            using (StreamWriter writer = new StreamWriter(reportPath, false, Encoding.UTF8))
+            {
+                // writer.WriteLine("TESTS RAPPORT");
+                // writer.WriteLine();
+                writer.Write(consoleOutput.ToString());
+            }
 
-            TemplateCreator.CreateTemplate(tempPath);
-            Exporter.SimulateExport(fileName);
-
-            // Fill id's values for Empty Template
-            IDGenerator.GenerateIDInJsonFiles(tempPath);
-
-            // ImageJsonFileCreator TEST
-            Console.WriteLine("🧪 Running ImageJsonFileCreator test...");
-            ImageJsonFileCreatorTester.RunTest(fileName);
-
-            // WallSplitter TEST
-            Console.WriteLine("🧪 Running WallSplitter test...");
-            WallSplitterTester.RunTest(fileName);
-
-            // Getters TEST
-            Console.WriteLine("🧪 Running Getters test...");
-            GettersTester.RunTest();
-
-            // SegmentsListCreator TEST
-            Console.WriteLine("🧪 Running SegmentsListCreator test...");
-            SegmentsListCreatorTester.RunTest(fileName);
-
-            // WallsInserter TEST
-            Console.WriteLine("🧪 Running WallsInserter test...");
-            WallsInserterTester.RunTest(fileName);
-
-            // AttenuationUpdater TEST
-            Console.WriteLine("🧪 Running AttenuationUpdater test...");
-            AttenuationUpdaterTester.RunTest();
+            Console.WriteLine($"Report saved at: {reportPath}");
         }
     }
 }
-
 

@@ -15,11 +15,12 @@ namespace Create.ExportClasses
             Func<double, double> convertY,
             string path,
             List<string> wallPointsList,
-            List<string> wallSegmentsList)
+            List<string> wallSegmentsList,
+            List<WallPoint> wallPointObjects)
         {
             // This is an auxiliary list where the start and end points of all processed walls will be stored.
             // Newly processed walls will search this list to find ends of other walls that are close enough to connect with.
-            var wallPointObjects = new List<WallPoint>();
+            //var wallPointObjects = new List<WallPoint>();
 
             var wallTypesJson = File.ReadAllText(System.IO.Path.Combine(path, "wallTypes.json"));
 
@@ -252,19 +253,15 @@ namespace Create.ExportClasses
         }
 
 
-        private static double CalculateDistance(double x1, double y1, double x2, double y2)
+        // private static double CalculateDistance(double x1, double y1, double x2, double y2)
+        public static double CalculateDistance(double x1, double y1, double x2, double y2)
         {
             double dx = x2 - x1;
             double dy = y2 - y1;
             return Math.Sqrt(dx * dx + dy * dy);
         }
 
-        private class WallPoint
-        {
-            public double X { get; set; }
-            public double Y { get; set; }
-            public string Id { get; set; }
-        }
+       
     }
 
 }

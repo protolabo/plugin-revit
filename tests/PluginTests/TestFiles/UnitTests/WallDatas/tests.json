@@ -1,0 +1,49 @@
+{
+  "tests": [
+    {
+      "walls": [
+        "Exterior - Brick on Mtl. Stud",
+        "Exterior - Brick Over Block w Metal Stud",
+        "Exterior - Block on Mtl. Stud"
+        ],
+      "Doors": [
+        "1730 x 2134mm",
+        "2.027 x 0.945"
+        ],
+      "Windows": [
+        "1180 x 1170mm",
+        "Standard"
+        ],
+       "wallData": "wall_data_1"  
+    },
+    {
+      "walls": [
+        "Exterior - Brick on Mtl. Stud",
+        "Exterior - Brick Over Block w Metal Stud"
+        ],
+      "Doors": [
+        "Non existing door",
+        "2.027 x 0.945"
+        ],
+      "Windows": [
+        "1180 x 1170mm",
+        "Non existing Window"
+        ],
+       "wallData": "wall_data_1"  
+    },
+    {
+      "walls": [
+        "SH_Curtain wall",
+        "CL_W1"
+        ],
+      "Doors": [
+        "800 x 2100",
+        "Curtain Wall Dbl Glass"
+        ],
+      "Windows": [
+        "Standard"
+        ],
+       "wallData": "wall_data_1"  
+    }
+  ]
+}

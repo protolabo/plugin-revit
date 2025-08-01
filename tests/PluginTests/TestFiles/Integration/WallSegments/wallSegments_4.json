@@ -1,0 +1,18 @@
+{
+  "wallSegments": [
+{
+              "wallPoints": ["p1", "p2"],
+              "wallTypeId": "",
+              "originType": "WALL_TOOL",
+              "id": "s1",
+              "status": "CREATED"
+            },
+            {
+              "wallPoints": ["p2", "p3"],
+              "wallTypeId": "",
+              "originType": "WALL_TOOL",
+              "id": "s2",
+              "status": "CREATED"
+            }
+  ]
+}

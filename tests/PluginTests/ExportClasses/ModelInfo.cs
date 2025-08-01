@@ -14,6 +14,7 @@ namespace Create.ExportClasses
     public class CropRegion
     {
         public string viewName { get; set; }
+        public string viewNameID { get; set; }
         public Point min { get; set; }
         public Point max { get; set; }
         public int width { get; set; }
@@ -40,11 +41,10 @@ namespace Create.ExportClasses
         public List<WallPoint> WallPoints { get; set; }
     }
 
-    public class WallPoint
+    public class TestCase
     {
-        public string Id { get; set; }
-        public Location Location { get; set; }
-        public string Status { get; set; }
+    public ViewData test { get; set; }
+    public double result { get; set; }
     }
 
     public class Location

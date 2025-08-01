@@ -18,13 +18,13 @@ public static class ImageJsonFileCreatorTester
         string viewInfoJson = File.ReadAllText(Path.Combine(tempFolderPath, "imageData.json"));
         var viewInfo = JsonConvert.DeserializeObject<List<ViewData>>(viewInfoJson);
 
-        string testFilePath = $"./TestFiles/Models/{model}";
+        string testFilePath = $"./TestFiles/Integration/Models/{model}";
 
         string modelInfoContent = File.ReadAllText(testFilePath);
         JObject modelInfo = JObject.Parse(modelInfoContent);
 
         string wallFileName = (string)modelInfo["walls"];
-        string wallFilePath = $"./TestFiles/Walls/{wallFileName}.json";
+        string wallFilePath = $"./TestFiles/Integration/Walls/{wallFileName}.json";
 
         string jsonPathModelData = File.ReadAllText(wallFilePath);
         Dictionary<string, ModelData> modelDataFile =
@@ -242,6 +242,27 @@ public static class ImageJsonFileCreatorTester
                 Console.WriteLine($"❌ Invalid id GUID for {fileName}: {id}");
                 allValidFloor = false;
             }
+
+            // add floorPlanID to imageData.json
+            var imageDataPath = Path.Combine(tempFolderPath, "imageData.json");
+            var cropRegionsText = File.ReadAllText(imageDataPath);
+            var cropRegionsArray = JArray.Parse(cropRegionsText);
+
+            var targetRegion = cropRegionsArray
+                .FirstOrDefault(r => (string)r["viewName"] == levelNameFormatted);
+
+            if (targetRegion != null)
+            {
+                targetRegion["floorPlanId"] = id;
+                File.WriteAllText(imageDataPath, cropRegionsArray.ToString(Formatting.Indented));
+                Console.WriteLine($"✅ floorPlanId added to viewName: {levelNameFormatted}");
+            }
+            else
+            {
+                Console.WriteLine($"⚠️ View name '{levelNameFormatted}' was not found in the cropRegions file.");
+            }
+
+
         }
 
         if (allValidFloor)

@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+// ﻿using Autodesk.Revit.DB;
+using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
@@ -21,13 +22,451 @@ namespace Create.ExportClasses
 
                 foreach (var wall in originalWalls)
                 {
-                    // Checks if the wall is valid
                     if (wall.start == null || wall.end == null)
                     {
-                        updatedWalls.Add(wall); 
+                        updatedWalls.Add(wall);
                         continue;
                     }
 
+                    // Create new point list including wall endpoints and opening endpoints
+                    List<Point> points = new List<Point> { wall.start, wall.end };
+                    foreach (var opening in wall.openings ?? new List<OpeningData>())
+                    {
+                        if (opening.start_point != null) points.Add(opening.start_point);
+                        if (opening.end_point != null) points.Add(opening.end_point);
+                    }
+
+                    // Merge points that are closer than threshold
+                    double threshold = 0.08;
+                    bool changed;
+                    do
+                    {
+                        changed = false;
+                        for (int i = 0; i < points.Count; i++)
+                        {
+                            for (int j = i + 1; j < points.Count; j++)
+                            {
+                                if (Distance(points[i], points[j]) < threshold)
+                                {
+                                    var mid = MidPoint(points[i], points[j]);
+                                    points.RemoveAt(j);
+                                    points.RemoveAt(i);
+                                    points.Add(mid);
+                                    changed = true;
+                                    break;
+                                }
+                            }
+                            if (changed) break;
+                        }
+                    } while (changed);
+
+                    // Sort points according to wall orientation
+                    bool isVertical = Math.Abs(wall.start.x - wall.end.x) < 1e-6;
+                    points = isVertical
+                        ? points.OrderBy(p => p.y).ToList()
+                    : points.OrderBy(p => p.x).ToList();
+
+
+                    // === Filter excessive openings per segment ===
+                    // This block filters the list of openings in order to remove all doors and windows that are
+                    // completely covered by other doors or windows, to prevent multiple instances of these
+                    // elements from being created in case of overlapping
+                    var allOpenings = wall.openings ?? new List<OpeningData>();
+
+                    // Backup of original points
+                    List<Point> filteredPoints = new List<Point>(points);
+
+                    // Filter only doors and windows
+                    var doorsAndWindows = allOpenings
+                        .Where(o => o.type == "Doors" || o.type == "Windows")
+                        .ToList();
+
+                    // Work on a modifiable copy
+                    var filteredOpenings = new List<OpeningData>(doorsAndWindows);
+                        bool reduced;
+                        do
+                        {
+                            // For each segment in the list of points, it checks how many openings pass through that segment.
+                            reduced = false;
+                            for (int i = 0; i < filteredPoints.Count - 1; i++)
+                            {
+                                var p1 = filteredPoints[i];
+                                var p2 = filteredPoints[i + 1];
+                                var mid = MidPoint(p1, p2);
+                                var matching = filteredOpenings
+                                .Where(o =>
+                                    o.start_point != null && o.end_point != null &&
+                                    IsPointWithinSegment(mid, o.start_point, o.end_point, isVertical))
+                                .ToList();
+
+                                if (matching.Count >= 3)
+                                {
+                                    // Keep the one with the smallest start_point
+                                    var minStart = matching.OrderBy(o => isVertical ? o.start_point.y : o.start_point.x).First();
+
+                                    // Keep the one with the largest end_point
+                                    var maxEnd = matching.OrderByDescending(o => isVertical ? o.end_point.y : o.end_point.x).First();
+
+                                    // Remove all others
+                                    foreach (var m in matching)
+                                    {
+                                        if (m != minStart && m != maxEnd)
+                                        {
+                                            filteredOpenings.Remove(m);
+                                            reduced = true;
+                                        }
+                                    }
+
+                                if (reduced) break; // repeat if there were changes
+                            }
+                        }
+
+                    } while (reduced);
+
+                    // Add the rest of the openings that are not Doors/Windows
+                    var otherOpenings = allOpenings
+                        .Where(o => o.type != "Doors" && o.type != "Windows")
+                        .ToList();
+
+                    filteredOpenings.AddRange(otherOpenings);
+
+                    // === Generate final point list from filteredOpenings + wall endpoints ===
+                    List<Point> finalPoints = new List<Point> { wall.start, wall.end };
+
+                    foreach (var opening in filteredOpenings)
+                    {
+                        if (opening.start_point != null) finalPoints.Add(opening.start_point);
+                        if (opening.end_point != null) finalPoints.Add(opening.end_point);
+                    }
+
+                    // Merge close points
+                    double mergeThreshold = 0.08;
+                    bool merged;
+                    do
+                    {
+                        merged = false;
+                        for (int i = 0; i < finalPoints.Count; i++)
+                        {
+                            for (int j = i + 1; j < finalPoints.Count; j++)
+                            {
+                                if (Distance(finalPoints[i], finalPoints[j]) < mergeThreshold)
+                                {
+                                    var mid = MidPoint(finalPoints[i], finalPoints[j]);
+                                    finalPoints.RemoveAt(j);
+                                    finalPoints.RemoveAt(i);
+                                    finalPoints.Add(mid);
+                                    merged = true;
+                                    break;
+                                }
+                            }
+                            if (merged) break;
+                        }
+                    } while (merged);
+
+                    // Sort final point list
+                    finalPoints = isVertical
+                        ? finalPoints.OrderBy(p => p.y).ToList()
+                        : finalPoints.OrderBy(p => p.x).ToList();
+
+                    // ================    END OF FILTER   ====================
+
+                    // Generate segments and classify them
+                    List<OpeningData> segments = new List<OpeningData>();
+
+                    for (int i = 0; i < finalPoints.Count - 1; i++)
+                    {
+                        var p1 = finalPoints[i];
+                        var p2 = finalPoints[i + 1];
+                        var mid = MidPoint(p1, p2);
+
+                        //var allOpenings = wall.openings ?? new List<OpeningData>();
+
+                        // Get openings whose segment contains the midpoint
+                        var matchingOpenings = filteredOpenings.Where(o =>
+                            o.start_point != null && o.end_point != null &&
+                            IsPointWithinSegment(mid, o.start_point, o.end_point, isVertical)).ToList();
+
+                        // Found overlap between two or more openings
+                        if (matchingOpenings.Count >= 2)
+                        {
+                            // Check for mix of doors and windows
+                            //var types = matchingOpenings.Select(o => o.type).ToHashSet();
+                            int doorsQty = matchingOpenings.Count(o => o.type == "Doors");
+                            int windowsQty = matchingOpenings.Count(o => o.type == "Windows");
+                            bool hasMix = doorsQty + windowsQty >= 2;
+
+                            if (hasMix)
+                            {
+                                // Sort the endpoints to split the segment
+                                var (first, second) = IsFirstPointSmaller(p1, p2, isVertical) ? (p1, p2) : (p2, p1);
+                                var cut = MidPoint(first, second);
+
+                                // Get previous segment data
+                                var previousSegment = segments.LastOrDefault();
+
+                                // If the overlap includes only the final portion of teh first element,
+                                // the overlapping segment is split into two halfs
+                                if (previousSegment != null && (previousSegment.type == "Doors" || previousSegment.type == "Windows"))
+                                {
+                                    string previousType = previousSegment.type;
+                                    int previousId = previousSegment.id;
+                                    string previousName = previousSegment.name;
+                                    Point previousPosition = previousSegment?.position;
+                                    Point previousStart = previousSegment.start_point;
+                                    Point previousEnd = previousSegment.end_point;
+                                    double? previousWidth = previousSegment?.width_ft;
+                                    double? previousHeight = previousSegment?.height_ft;
+
+
+                                    // First subsegment — inherits type from previous segment
+                                    segments.Add(new OpeningData
+                                    {
+                                        type = previousType,
+                                        id = previousId,
+                                        name = previousName,
+                                        position = previousPosition,
+                                        start_point = first,
+                                        end_point = cut,
+                                        width_ft = previousWidth,
+                                        height_ft = previousHeight,
+
+                                    });
+
+                                    double tolerance = 0.001;
+
+                                    // For the second segment, check if all the openings end at the same point.
+                                    bool allEndPointsClose = true;
+                                    for (int j = 0; j < matchingOpenings.Count - 1; j++)
+                                    {
+                                        var point1 = matchingOpenings[j].end_point;
+                                        var point2 = matchingOpenings[j + 1].end_point;
+                                        if (Distance(point1, point2) > tolerance)
+                                        {
+                                            allEndPointsClose = false;
+                                            break;
+                                        }
+                                    }
+
+                                    var remainingOpenings = matchingOpenings;
+                                    OpeningData chosen = null;
+
+                                    // if all the openings end at the same point.
+                                    // Second subsegment — inherits from the longest opnening
+                                    if (allEndPointsClose)
+                                    {
+                                        if (remainingOpenings.Count > 0)
+                                        {
+                                            // Find the longest opening
+                                            double maxLength = double.MinValue;
+                                            foreach (var o in remainingOpenings)
+                                            {
+                                                double len = Distance(o.start_point, o.end_point);
+                                                if (len > maxLength)
+                                                {
+                                                    maxLength = len;
+                                                    chosen = o;
+                                                }
+                                            }
+                                        }
+                                    }
+                                    else
+                                    {
+                                        // If the remaining openings end at different points,
+                                        // Second subsegment — inherits from the one whose end point is farthest from the midpoint of the segment.
+                                        if (remainingOpenings.Count > 0)
+                                        {
+                                            double maxDistance = double.MinValue;
+                                            foreach (var o in remainingOpenings)
+                                            {
+                                                double distanceToCut = Distance(o.end_point, cut);
+                                                if (distanceToCut > maxDistance)
+                                                {
+                                                    maxDistance = distanceToCut;
+                                                    chosen = o;
+                                                }
+                                            }
+                                        }
+                                    }
+                                    
+                                    // Second subsegment — inherits from the chosen one
+                                    segments.Add(new OpeningData
+                                    {
+                                        type = chosen.type,
+                                        id = chosen.id,
+                                        name = chosen.name,
+                                        position = chosen.position,
+                                        start_point = cut,
+                                        end_point = chosen.end_point,
+                                        width_ft = chosen.width_ft,
+                                        height_ft = chosen.height_ft,
+                                    });
+
+                                }
+                                else
+                                {
+                                    // In this case, all the segments start at the same point.
+                                    // subsegment is not split — inherits from the longest opnening
+                                    OpeningData chosen = null;
+                                    double maxLength = double.MinValue;
+                                    foreach (var o in matchingOpenings)
+                                    {
+                                        double len = Distance(o.start_point, o.end_point);
+                                        if (len > maxLength)
+                                        {
+                                            maxLength = len;
+                                            chosen = o;
+                                        }
+                                    }
+
+                                    segments.Add(new OpeningData
+                                    {
+                                        type = chosen.type,
+                                        id = chosen.id,
+                                        name = chosen.name,
+                                        position = chosen.position,
+                                        start_point = chosen.start_point,
+                                        end_point = chosen.end_point,
+                                        width_ft = chosen.width_ft,
+                                        height_ft = chosen.height_ft,
+                                    });
+
+                                }
+                                continue;
+                            }
+                            else
+                            {
+                                // Case in which multiple openings are found, but only one of them is a door or a window.
+                                // This block gives priority to doors or windows over generic openings.
+                                // That is, if a segment overlaps both an opening and a door or window,
+                                // the opening segment is removed, and the door or window segment is kept.
+                                OpeningData chosen = null;
+                                foreach (var o in matchingOpenings)
+                                {
+                                    if (o.type == "Doors" || o.type == "Windows")
+                                    {
+                                        chosen = o;
+                                        break;
+                                    }
+                                    else
+                                    {
+                                        chosen = o;
+                                    }
+                                }
+
+                                segments.Add(new OpeningData
+                                {
+                                    type = chosen.type,
+                                    id = chosen.id,
+                                    name = chosen.name,
+                                    position = chosen.position,
+                                    start_point = chosen.start_point,
+                                    end_point = chosen.end_point,
+                                    width_ft = chosen.width_ft,
+                                    height_ft = chosen.height_ft,
+                                });
+                                continue;
+                            }
+                        }
+
+                        // Only one opening passes through this segment.
+                        // Default behavior — either wall or a single opening match
+                        var match = matchingOpenings.FirstOrDefault();
+                        if (match != null)
+                        {
+                            // Opening segment
+                            segments.Add(new OpeningData
+                            {
+                                type = match.type,
+                                name = match.name,
+                                id = match.id,
+                                start_point = p1,
+                                end_point = p2,
+                                width_ft = match.width_ft,
+                                height_ft = match.height_ft,
+                                position = match.position
+                            });
+                        }
+                        else
+                        {
+                            // Wall segment
+                            segments.Add(new OpeningData
+                            {
+                                type = "Walls",
+                                name = wall.name,
+                                start_point = p1,
+                                end_point = p2
+                            });
+                        }
+                    }
+
+
+                    // First merge: merge segments with same ID and type (except walls with id = 0)
+                    List<OpeningData> mergedSegments = new List<OpeningData>();
+
+                    if (segments.Count > 0)
+                    {
+                        OpeningData current = segments[0];
+
+                        for (int i = 1; i < segments.Count; i++)
+                        {
+                            var next = segments[i];
+
+                            // If consecutive segments share the same opening id and type (and id != 0)
+                            if (current.id == next.id && current.type == next.type && current.id != 0)
+                            {
+                                // Extend current segment's end_point to next segment's end_point
+                                current.end_point = next.end_point;
+                            }
+                            else
+                            {
+                                // Add current segment to merged list and move to next
+                                mergedSegments.Add(current);
+                                current = next;
+                            }
+                        }
+
+                        // Add last segment
+                        mergedSegments.Add(current);
+                    }
+                    else
+                    {
+                        mergedSegments = segments;
+                    }
+
+                    // Second pass: merge consecutive segments with type "Openings"
+                    List<OpeningData> finalSegments = new List<OpeningData>();
+
+                    if (mergedSegments.Count > 0)
+                    {
+                        OpeningData current = mergedSegments[0];
+
+                        for (int i = 1; i < mergedSegments.Count; i++)
+                        {
+                            var next = mergedSegments[i];
+
+                            // If both current and next are of type "Openings"
+                            if (current.type == "Opening" && next.type == "Opening")
+                            {
+                                // Extend current to cover next segment
+                                current.end_point = next.end_point;
+                            }
+                            else
+                            {
+                                // Add current to final list and move to next
+                                finalSegments.Add(current);
+                                current = next;
+                            }
+                        }
+
+                        // Add last segment
+                        finalSegments.Add(current);
+                    }
+                    else
+                    {
+                        finalSegments = mergedSegments;
+                    }
+
+                    // Create copy of original wall with updated openings list
                     var baseWall = new WallData
                     {
                         id = wall.id,
@@ -35,51 +474,21 @@ namespace Create.ExportClasses
                         type = wall.type,
                         start = wall.start,
                         end = wall.end,
-                        openings = wall.openings != null ? new List<OpeningData>(wall.openings) : new List<OpeningData>()
+                        openings = finalSegments
                     };
-
-                    List<OpeningData> originalOpenings = wall.openings ?? new List<OpeningData>();
-                    List<WallData> segments = new List<WallData>();
-
-                    // Split wall in segments according to openings list
-                    RecursiveWallSplit(baseWall, originalOpenings, segments);
-
-                    // Create an object for every segment
-                    foreach (var segment in segments)
-                    {
-                        baseWall.openings.Add(new OpeningData
-                        {
-                            type = "Walls",
-                            name = segment.name,
-                            start_point = segment.start,
-                            end_point = segment.end
-                        });
-                    }
 
                     updatedWalls.Add(baseWall);
 
                 }
 
-                // Remove "voids" from the final openings list.
-                foreach (var wall in updatedWalls)
-                {
-                    wall.openings = wall.openings
-                        ?.Where(o => o.type != "Opening")
-                        .ToList();
-                }
-
-                // At this point, the final list of openings contains only doors, windows, and the wall segments that make up the main wall.
-                // To ensure their proper interconnection, it is necessary to make sure that the wall segments are ordered,
-                // and that the start and end points of each segment are also in the correct order.
+                // Sort segments within each wall
                 foreach (var wall in updatedWalls)
                 {
                     if (wall.start == null || wall.end == null || wall.openings == null)
                         continue;
 
-                    // Check whether the wall is vertical or horizontal.
                     string axis = Math.Abs(wall.start.x - wall.end.x) < 1e-6 ? "y" : "x";
 
-                    // Reorder each segment in ascending order, including its start and end points
                     foreach (var o in wall.openings)
                     {
                         if (o.start_point != null && o.end_point != null)
@@ -98,214 +507,80 @@ namespace Create.ExportClasses
                     }
 
                     wall.openings = wall.openings
-                        .OrderBy(o =>
-                        {
-                            return axis == "x" ? o.start_point.x : o.start_point.y;
-                        })
+                        .OrderBy(o => axis == "x" ? o.start_point.x : o.start_point.y)
                         .ToList();
                 }
 
-
-
-                // Replace the original walls with the updated ones containing embedded segments
+                // Save updated walls to modelDataSegments dictionary
                 modelDataSegments[viewName] = new ModelData
                 {
                     walls = updatedWalls
                 };
             }
-
-
-            //// save file
-            //string desktopPath = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
-            //string outputFilePath = Path.Combine(desktopPath, "model_data_segments.json");
-
-            //var options = new System.Text.Json.JsonSerializerOptions
-            //{
-            //    WriteIndented = true,
-            //    PropertyNamingPolicy = System.Text.Json.JsonNamingPolicy.CamelCase
-            //};
-
-            //try
-            //{
-            //    string json = Newtonsoft.Json.JsonConvert.SerializeObject(modelDataSegments, Newtonsoft.Json.Formatting.Indented);
-            //    File.WriteAllText(outputFilePath, json);
-
-            //}
-            //catch (Exception ex)
-            //{
-            //    //TaskDialog.Show("Error", $"No JSON:\n{ex.Message}");
-            //}
         }
 
+        // Auxiliary methods
 
-        static double LengthBetweenPoints(Point p1, Point p2)
+        // Calculates Euclidean distance between two points
+        static double Distance(Point a, Point b)
         {
-            return Math.Sqrt(Math.Pow(p1.x - p2.x, 2) + Math.Pow(p1.y - p2.y, 2));
+            double dx = a.x - b.x;
+            double dy = a.y - b.y;
+            double dz = a.z - b.z;
+            return Math.Sqrt(dx * dx + dy * dy + dz * dz);
         }
 
-        static Point CenterOfElement(OpeningData element) => element.position;
-
-        static bool IsCenterInsideWall(WallData wall, Point center)
+        // Calculates midpoint between two points
+        static Point MidPoint(Point a, Point b)
         {
-            double xMin = Math.Min(wall.start.x, wall.end.x);
-            double xMax = Math.Max(wall.start.x, wall.end.x);
-            double yMin = Math.Min(wall.start.y, wall.end.y);
-            double yMax = Math.Max(wall.start.y, wall.end.y);
-            double margin = 1e-9;
-
-            return (xMin - margin <= center.x && center.x <= xMax + margin) &&
-                   (yMin - margin <= center.y && center.y <= yMax + margin);
+            return new Point
+            {
+                x = (a.x + b.x) / 2,
+                y = (a.y + b.y) / 2,
+                z = (a.z + b.z) / 2
+            };
         }
 
-        // The function RecursiveWallSplit is a recursive function that divides a wall into segments depending on the openings
-        // it contains and removes the segments that overlap with the openings to place the corresponding opening in their place.
-        // This function receives a wall, a list of openings, and a list of results.
-        //  - Base case: If the wall does not contain any openings, the wall is added to the results list.
-        //  - Recursive case: The first opening is taken (the first in the list, not necessarily the first in position),
-        //      and the wall is split into two: one segment from one end of the wall to one end of the opening,
-        //      and another segment from the other end of the opening to the other end of the wall.
-        //      Then, the openings are assigned to the appropriate wall segments, the opening used to divide the wall is removed,
-        //      and the function is called recursively with the new wall segments and their corresponding remaining openings.
-        static void RecursiveWallSplit(WallData wall, List<OpeningData> openings, List<WallData> results)
+        // Checks if point p is within segment defined by points a and b,
+        // considering vertical or horizontal orientation
+        static bool IsPointWithinSegment(Point p, Point a, Point b, bool vertical)
         {
-            if (openings.Count == 0)
+            if (vertical)
             {
-                // if the wall is less than 1 inch in length, ignore it
-                if (LengthBetweenPoints(wall.start, wall.end) >= 0.08)
-                    results.Add(wall);
-                return;
-            }
-
-            var opening = openings[0];
-            var remainingOpenings = openings.Skip(1).ToList();
-
-            string axis;
-            if (Math.Abs(wall.start.x - wall.end.x) < 1e-6) axis = "y";
-            else if (Math.Abs(wall.start.y - wall.end.y) < 1e-6) axis = "x";
-            else
-            {
-                double wallLength = LengthBetweenPoints(wall.start, wall.end);
-                if (wallLength < 0.08)
-                    return;
-
-                double distA = LengthBetweenPoints(wall.start, opening.start_point);
-                double distB = LengthBetweenPoints(wall.start, opening.end_point);
-
-                // Split wall in segments according to the opening
-                Point cut = distA < distB ? opening.start_point : opening.end_point;
-                Point other = distA < distB ? opening.end_point : opening.start_point;
-
-                var wall_d_1 = new WallData
-                {
-                    type = wall.type,
-                    name = wall.name,
-                    start = new Point(wall.start),
-                    end = new Point(cut),
-                    openings = new List<OpeningData>()
-                };
-
-                var wall_d_2 = new WallData
-                {
-                    type = wall.type,
-                    name = wall.name,
-                    start = new Point(other),
-                    end = new Point(wall.end),
-                    openings = new List<OpeningData>()
-                };
-
-                if (LengthBetweenPoints(wall_d_1.start, wall_d_1.end) < 0.08 &&
-                    LengthBetweenPoints(wall_d_2.start, wall_d_2.end) < 0.08)
-                    return;
-
-                // Filter the remaining openings to assign them to the newly created wall segments.
-                // For each new wall segment, only include openings whose centers lie within its boundaries.
-                // This ensures that each recursive call processes only the openings relevant to its segment.
-                var openings_d_1 = remainingOpenings.Where(op => IsCenterInsideWall(wall_d_1, CenterOfElement(op))).ToList();
-                var openings_d_2 = remainingOpenings.Where(op => IsCenterInsideWall(wall_d_2, CenterOfElement(op))).ToList();
-
-                RecursiveWallSplit(wall_d_1, openings_d_1, results);
-                RecursiveWallSplit(wall_d_2, openings_d_2, results);
-
-                return;
-            }
-
-            double openStart = axis == "x" ? opening.start_point.x : opening.start_point.y;
-            double openEnd = axis == "x" ? opening.end_point.x : opening.end_point.y;
-            double startVal = axis == "x" ? wall.start.x : wall.start.y;
-            double endVal = axis == "x" ? wall.end.x : wall.end.y;
-
-            double distStart = Math.Min(Math.Abs(startVal - openStart), Math.Abs(startVal - openEnd));
-            double distEnd = Math.Min(Math.Abs(endVal - openStart), Math.Abs(endVal - openEnd));
-
-            WallData wall1, wall2;
-
-            // Determines whether the opening is closer to the start or the end of the wall.
-            if (distStart < distEnd)
-            {
-                // Split wall in segments according to the opening
-                double cut = Math.Abs(startVal - openStart) < Math.Abs(startVal - openEnd) ? openStart : openEnd;
-
-                wall1 = new WallData
-                {
-                    type = wall.type,
-                    name = wall.name,
-                    start = new Point(wall.start),
-                    end = new Point(wall.start),
-                    openings = new List<OpeningData>()
-                };
-                if (axis == "x") wall1.end.x = cut; else wall1.end.y = cut;
-
-                wall2 = new WallData
-                {
-                    type = wall.type,
-                    name = wall.name,
-                    start = new Point(wall.end),
-                    end = new Point(wall.end),
-                    openings = new List<OpeningData>()
-                };
-                if (axis == "x") wall2.start.x = cut == openStart ? openEnd : openStart;
-                else wall2.start.y = cut == openStart ? openEnd : openStart;
+                double minY = Math.Min(a.y, b.y);
+                double maxY = Math.Max(a.y, b.y);
+                return p.y >= minY && p.y <= maxY;
             }
             else
             {
-                // Split wall in segments according to the opening
-                double cut = Math.Abs(endVal - openStart) < Math.Abs(endVal - openEnd) ? openStart : openEnd;
-
-                wall1 = new WallData
-                {
-                    type = wall.type,
-                    name = wall.name,
-                    start = new Point(wall.end),
-                    end = new Point(wall.end),
-                    openings = new List<OpeningData>()
-                };
-                if (axis == "x") wall1.end.x = cut; else wall1.end.y = cut;
-
-                wall2 = new WallData
-                {
-                    type = wall.type,
-                    name = wall.name,
-                    start = new Point(wall.start),
-                    end = new Point(wall.start),
-                    openings = new List<OpeningData>()
-                };
-                if (axis == "x") wall2.end.x = cut == openStart ? openEnd : openStart;
-                else wall2.end.y = cut == openStart ? openEnd : openStart;
+                double minX = Math.Min(a.x, b.x);
+                double maxX = Math.Max(a.x, b.x);
+                return p.x >= minX && p.x <= maxX;
             }
-
-            // Filter the remaining openings to assign them to the newly created wall segments.
-            // For each new wall segment, only include openings whose centers lie within its boundaries.
-            // This ensures that each recursive call processes only the openings relevant to its segment.
-            var openings1 = remainingOpenings.Where(op => IsCenterInsideWall(wall1, CenterOfElement(op))).ToList();
-            var openings2 = remainingOpenings.Where(op => IsCenterInsideWall(wall2, CenterOfElement(op))).ToList();
-
-            RecursiveWallSplit(wall1, openings1, results);
-            RecursiveWallSplit(wall2, openings2, results);
-
-            return;
         }
+
+        // private static bool IsFirstPointSmaller(Point p1, Point p2, bool isVertical)
+        public static bool IsFirstPointSmaller(Point p1, Point p2, bool isVertical)
+        {
+            if (isVertical)
+                return p1.y < p2.y;
+            else
+                return p1.x < p2.x;
+        }
+
+        // private static bool ArePointsEqual(Point p1, Point p2, double tolerance = 0.0001)
+        public static bool ArePointsEqual(Point p1, Point p2, double tolerance = 0.0001)
+        {
+            if (p1 == null || p2 == null)
+                return false;
+
+            return Math.Abs(p1.x - p2.x) < tolerance &&
+                   Math.Abs(p1.y - p2.y) < tolerance &&
+                   Math.Abs(p1.z - p2.z) < tolerance;
+        }
+
+
     }
-
 }
 
 

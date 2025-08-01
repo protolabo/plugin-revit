@@ -8,7 +8,8 @@ namespace Create.ExportClasses
 {
     internal class Getters
     {
-        private static string GetEkahauNameFromWallData(string revitName, string categoryFilter = null)
+        // private static string GetEkahauNameFromWallData(string revitName, string categoryFilter = null)
+        public static string GetEkahauNameFromWallData(string revitName, string categoryFilter = null)
         {
             string dataFilePath = Path.Combine(
                 Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location),

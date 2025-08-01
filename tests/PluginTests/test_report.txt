@@ -1,0 +1,268 @@
+﻿==========     TESTS REPORT   ==========
+
+--- UNIT TESTS REPORT
+
+🧪 Running WallSplitterUnit test...
+
+- Running test for: horizontalWalls.txt
+✅ Test 1 passed
+✅ Test 2 passed
+✅ Test 3 passed
+✅ Test 4 passed
+✅ Test 5 passed
+✅ Test 6 passed
+✅ Test 7 passed
+✅ Test 8 passed
+✅ Test 9 passed
+✅ Test 10 passed
+✅ Test 11 passed
+✅ Test 12 passed
+✅ Test 13 passed
+✅ Test 14 passed
+✅ Test 15 passed
+✅ Test 16 passed
+✅ Test 17 passed
+✅ Test 18 passed
+✅ Test 19 passed
+✅ Test 20 passed
+✅ Test 21 passed
+✅ Test 22 passed
+✅ Test 23 passed
+✅ Test 24 passed
+✅ Test 25 passed
+
+- Running test for: verticalWalls.txt
+✅ Test 1 passed
+✅ Test 2 passed
+✅ Test 3 passed
+✅ Test 4 passed
+✅ Test 5 passed
+✅ Test 6 passed
+✅ Test 7 passed
+✅ Test 8 passed
+✅ Test 9 passed
+✅ Test 10 passed
+✅ Test 11 passed
+✅ Test 12 passed
+✅ Test 13 passed
+✅ Test 14 passed
+✅ Test 15 passed
+✅ Test 16 passed
+✅ Test 17 passed
+✅ Test 18 passed
+✅ Test 19 passed
+✅ Test 20 passed
+✅ Test 21 passed
+✅ Test 22 passed
+✅ Test 23 passed
+✅ Test 24 passed
+✅ Test 25 passed
+
+- Running test for: inclinedWalls.txt
+✅ Test 1 passed
+✅ Test 2 passed
+✅ Test 3 passed
+✅ Test 4 passed
+✅ Test 5 passed
+✅ Test 6 passed
+✅ Test 7 passed
+✅ Test 8 passed
+✅ Test 9 passed
+✅ Test 10 passed
+✅ Test 11 passed
+✅ Test 12 passed
+✅ Test 13 passed
+✅ Test 14 passed
+✅ Test 15 passed
+✅ Test 16 passed
+✅ Test 17 passed
+✅ Test 18 passed
+✅ Test 19 passed
+✅ Test 20 passed
+✅ Test 21 passed
+✅ Test 22 passed
+✅ Test 23 passed
+✅ Test 24 passed
+✅ Test 25 passed
+
+🧪 Running GetMetersPerUnit test...
+📂 Running tests from: imageData_1.json
+✅ Level 1: expected 0.0203, got 0.0203
+✅ Level 1: expected 0.0610, got 0.0610
+✅ Level 1: expected 0.0359, got 0.0359
+✅ Level 1: expected 0.0000, got 0.0000
+✅ Level 1: expected 0.0610, got 0.0610
+
+🧪 Running Getters test...
+Running test #1
+- Exterior - Brick on Mtl. Stud → Obtained ID = e6ebb55b-ed17-4c01-ba6e-ea7db1535e79, Expected ID = e6ebb55b-ed17-4c01-ba6e-ea7db1535e79
+- Exterior - Brick Over Block w Metal Stud → Obtained ID = e6ebb55b-ed17-4c01-ba6e-ea7db1535e79, Expected ID = e6ebb55b-ed17-4c01-ba6e-ea7db1535e79
+- Exterior - Block on Mtl. Stud → Obtained ID = e6ebb55b-ed17-4c01-ba6e-ea7db1535e79, Expected ID = e6ebb55b-ed17-4c01-ba6e-ea7db1535e79
+- 1730 x 2134mm → Obtained ID = 5461b54d-3724-4112-95ee-f5c3f4e5d722, Expected ID = 5461b54d-3724-4112-95ee-f5c3f4e5d722
+- 2.027 x 0.945 → Obtained ID = 5461b54d-3724-4112-95ee-f5c3f4e5d722, Expected ID = 5461b54d-3724-4112-95ee-f5c3f4e5d722
+- 1180 x 1170mm → Obtained ID = 9904ead0-4b9f-42cb-a665-fcad33415c73, Expected ID = 9904ead0-4b9f-42cb-a665-fcad33415c73
+- Standard → Obtained ID = fc755c6d-194a-4a24-9cc2-66ca53a400e6, Expected ID = fc755c6d-194a-4a24-9cc2-66ca53a400e6
+✅ All IDs match their expected values.
+Running test #2
+- Exterior - Brick on Mtl. Stud → Obtained ID = e6ebb55b-ed17-4c01-ba6e-ea7db1535e79, Expected ID = e6ebb55b-ed17-4c01-ba6e-ea7db1535e79
+- Exterior - Brick Over Block w Metal Stud → Obtained ID = e6ebb55b-ed17-4c01-ba6e-ea7db1535e79, Expected ID = e6ebb55b-ed17-4c01-ba6e-ea7db1535e79
+- Non existing door → Obtained ID = 385565fb-6d16-416b-a19d-9371ee9f8366, Expected ID = 385565fb-6d16-416b-a19d-9371ee9f8366
+- Non existing Window → Obtained ID = 385565fb-6d16-416b-a19d-9371ee9f8366, Expected ID = 385565fb-6d16-416b-a19d-9371ee9f8366
+- 2.027 x 0.945 → Obtained ID = 5461b54d-3724-4112-95ee-f5c3f4e5d722, Expected ID = 5461b54d-3724-4112-95ee-f5c3f4e5d722
+- 1180 x 1170mm → Obtained ID = 9904ead0-4b9f-42cb-a665-fcad33415c73, Expected ID = 9904ead0-4b9f-42cb-a665-fcad33415c73
+✅ All IDs match their expected values.
+Running test #3
+- SH_Curtain wall → Obtained ID = fc755c6d-194a-4a24-9cc2-66ca53a400e6, Expected ID = fc755c6d-194a-4a24-9cc2-66ca53a400e6
+- Standard → Obtained ID = fc755c6d-194a-4a24-9cc2-66ca53a400e6, Expected ID = fc755c6d-194a-4a24-9cc2-66ca53a400e6
+- CL_W1 → Obtained ID = 4536ae45-351e-4293-a7a8-58b26e7525f9, Expected ID = 4536ae45-351e-4293-a7a8-58b26e7525f9
+- 800 x 2100 → Obtained ID = 6d9b70fc-3046-4aa7-8d24-28a284ef04af, Expected ID = 6d9b70fc-3046-4aa7-8d24-28a284ef04af
+- Curtain Wall Dbl Glass → Obtained ID = 5461b54d-3724-4112-95ee-f5c3f4e5d722, Expected ID = 5461b54d-3724-4112-95ee-f5c3f4e5d722
+✅ All IDs match their expected values.
+
+
+--- INTEGRATION TESTS REPORT
+
+🔁 - Running tests for model: model_1.json
+✅ All files generated.
+
+🧪 Running ImageJsonFileCreator test...
+✅ All expected images were found.
+✅ Correct image count: 1
+✅ All image files are present and correctly named with GUIDs.
+✅ All cropRegions and BMP image entries match and have valid GUIDs.
+✅ floorPlanId added to viewName: Level 1
+✅ All floorPlans match their cropRegion definitions.
+
+🧪 Running WallSplitter test...
+✅ Segmentation completed.
+✅ The result matches the expected file.
+
+🧪 Running SegmentsListCreator test...
+✅ All strings Points match the expected WallSegment structure.
+✅ All strings Segments match the expected WallSegment structure.
+
+🧪 Running WallsInserter test...
+📌 Expected - View: Level 1 (ID: e770de09-f302-4c6d-ae26-ab68138239bd) → 6 points
+✅ All GUIDs in actual points are valid.
+📌 Actual - FloorPlan: exported_view - Floor Plan - Level 1.bmp (ID: d81ce6d0-aff8-43af-b8c4-92c4d3eb78bb) → 6 points
+🔍 Comparing list #1: expected = 6, actual = 6
+✅ Finished list #1: remaining unmatched actual points = 0
+✅ All expected points were matched successfully. No duplicates remaining.
+✅ Segment counts match: 4 segments
+✅ All expected segments matched successfully.
+
+🧪 Running AttenuationUpdater test...
+✅ All 19 attenuation values match expected values.
+
+🔁 - Running tests for model: model_2.json
+✅ All files generated.
+
+🧪 Running ImageJsonFileCreator test...
+✅ All expected images were found.
+✅ Correct image count: 2
+✅ All image files are present and correctly named with GUIDs.
+✅ All cropRegions and BMP image entries match and have valid GUIDs.
+✅ floorPlanId added to viewName: Level 1
+✅ floorPlanId added to viewName: Level 2
+✅ All floorPlans match their cropRegion definitions.
+
+🧪 Running WallSplitter test...
+✅ Segmentation completed.
+✅ The result matches the expected file.
+
+🧪 Running SegmentsListCreator test...
+✅ All strings Points match the expected WallSegment structure.
+✅ All strings Segments match the expected WallSegment structure.
+
+🧪 Running WallsInserter test...
+📌 Expected - View: Level 1 (ID: 4fda2e39-287d-452f-9956-2b7defc75330) → 60 points
+📌 Expected - View: Level 2 (ID: f8a69ccd-b6b0-4b17-a6b5-e2a204d63c1d) → 83 points
+✅ All GUIDs in actual points are valid.
+📌 Actual - FloorPlan: exported_view - Floor Plan - Level 1.bmp (ID: aecae6ae-74b0-40f4-bd9c-4fb661d61829) → 60 points
+📌 Actual - FloorPlan: exported_view - Floor Plan - Level 2.bmp (ID: af20244e-ad6a-4626-9dfa-97e646d8419c) → 83 points
+🔍 Comparing list #1: expected = 60, actual = 60
+✅ Finished list #1: remaining unmatched actual points = 0
+🔍 Comparing list #2: expected = 83, actual = 83
+✅ Finished list #2: remaining unmatched actual points = 0
+✅ All expected points were matched successfully. No duplicates remaining.
+✅ Segment counts match: 106 segments
+✅ All expected segments matched successfully.
+
+🧪 Running AttenuationUpdater test...
+✅ All 19 attenuation values match expected values.
+
+🔁 - Running tests for model: model_3.json
+✅ All files generated.
+
+🧪 Running ImageJsonFileCreator test...
+✅ All expected images were found.
+✅ Correct image count: 3
+✅ All image files are present and correctly named with GUIDs.
+✅ All cropRegions and BMP image entries match and have valid GUIDs.
+✅ floorPlanId added to viewName: 01 - Entry Level
+✅ floorPlanId added to viewName: 02 - Floor
+✅ floorPlanId added to viewName: 03 - Floor
+✅ All floorPlans match their cropRegion definitions.
+
+🧪 Running WallSplitter test...
+✅ Segmentation completed.
+✅ The result matches the expected file.
+
+🧪 Running SegmentsListCreator test...
+✅ All strings Points match the expected WallSegment structure.
+✅ All strings Segments match the expected WallSegment structure.
+
+🧪 Running WallsInserter test...
+📌 Expected - View: 01 - Entry Level (ID: e2b519f7-2f42-4dc0-a239-b724e57136a0) → 199 points
+📌 Expected - View: 02 - Floor (ID: 6c9a7dc4-f32d-4222-904b-ddb8ec686d1e) → 213 points
+📌 Expected - View: 03 - Floor (ID: ec8ca334-6559-47a0-8b14-e6ebb7152582) → 186 points
+✅ All GUIDs in actual points are valid.
+📌 Actual - FloorPlan: exported_view - Floor Plan - 01 - Entry Level.bmp (ID: ed64d872-733e-4e08-9c78-31393db74f45) → 199 points
+📌 Actual - FloorPlan: exported_view - Floor Plan - 02 - Floor.bmp (ID: 551febf0-6ad8-46b6-b4ea-4e38dfe95076) → 213 points
+📌 Actual - FloorPlan: exported_view - Floor Plan - 03 - Floor.bmp (ID: f487cf38-f740-4c5b-b367-500bf2508da4) → 186 points
+🔍 Comparing list #1: expected = 199, actual = 199
+✅ Finished list #1: remaining unmatched actual points = 0
+🔍 Comparing list #2: expected = 213, actual = 213
+✅ Finished list #2: remaining unmatched actual points = 0
+🔍 Comparing list #3: expected = 186, actual = 186
+✅ Finished list #3: remaining unmatched actual points = 0
+✅ All expected points were matched successfully. No duplicates remaining.
+✅ Segment counts match: 472 segments
+✅ All expected segments matched successfully.
+
+🧪 Running AttenuationUpdater test...
+✅ All 19 attenuation values match expected values.
+
+🔁 - Running tests for model: model_4.json
+✅ All files generated.
+
+🧪 Running ImageJsonFileCreator test...
+✅ All expected images were found.
+✅ Correct image count: 1
+✅ All image files are present and correctly named with GUIDs.
+✅ All cropRegions and BMP image entries match and have valid GUIDs.
+✅ floorPlanId added to viewName: Level 1
+✅ All floorPlans match their cropRegion definitions.
+
+🧪 Running WallSplitter test...
+✅ Segmentation completed.
+✅ The result matches the expected file.
+
+🧪 Running SegmentsListCreator test...
+✅ All strings Points match the expected WallSegment structure.
+✅ All strings Segments match the expected WallSegment structure.
+
+🧪 Running WallsInserter test...
+📌 Expected - View: Level 1 (ID: view_1) → 3 points
+✅ All GUIDs in actual points are valid.
+📌 Actual - FloorPlan: exported_view - Floor Plan - Level 1.bmp (ID: 43073aba-2bed-43b2-a77e-229198b8dce5) → 3 points
+🔍 Comparing list #1: expected = 3, actual = 3
+✅ Finished list #1: remaining unmatched actual points = 0
+✅ All expected points were matched successfully. No duplicates remaining.
+✅ Segment counts match: 2 segments
+✅ All expected segments matched successfully.
+
+🧪 Running AttenuationUpdater test...
+✅ All 19 attenuation values match expected values.
+
+==========     END REPORT   ==========

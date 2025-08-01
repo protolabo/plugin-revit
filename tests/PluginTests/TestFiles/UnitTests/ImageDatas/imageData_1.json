@@ -1,0 +1,102 @@
+[
+  {
+    "test":
+    {
+      "viewName": "Level 1",
+      "min": {
+        "x": -50.0,
+        "y": -50.0,
+        "z": -50.0
+      },
+      "max": {
+        "x": 50.0,
+        "y": 50.0,
+        "z": 50.0
+      },
+      "width": 1500,
+      "height": 1500,
+      "floorPlanId": "3083e843-7601-4fe2-a7b1-1cac3ab593a5"
+    },
+    "result": 0.02032
+  },
+  {
+    "test":
+    {
+      "viewName": "Level 1",
+      "min": {
+        "x": -100.0,
+        "y": -100.0,
+        "z": -100.0
+      },
+      "max": {
+        "x": 100.0,
+        "y": 100.0,
+        "z": 100.0
+      },
+      "width": 1000,
+      "height": 1000,
+      "floorPlanId": "3083e843-7601-4fe2-a7b1-1cac3ab593a5"
+    },
+    "result": 0.06096
+  },
+  {
+    "test":
+    {
+      "viewName": "Level 1",
+      "min": {
+        "x": -200.0,
+        "y": -200.0,
+        "z": -200.0
+      },
+      "max": {
+        "x": -50.0,
+        "y": -50.0,
+        "z": -50.0
+      },
+      "width": 1000,
+      "height": 1500,
+      "floorPlanId": "3083e843-7601-4fe2-a7b1-1cac3ab593a5"
+    },
+    "result": 0.035865718
+  },
+  {
+    "test":
+    {
+      "viewName": "Level 1",
+      "min": {
+        "x": 50.0,
+        "y": 50.0,
+        "z": 50.0
+      },
+      "max": {
+        "x": 50.0,
+        "y": 50.0,
+        "z": 50.0
+      },
+      "width": 1500,
+      "height": 1500,
+      "floorPlanId": "3083e843-7601-4fe2-a7b1-1cac3ab593a5"
+    },
+    "result": 0
+  },
+  {
+    "test":
+    {
+      "viewName": "Level 1",
+      "min": {
+        "x": 50.0,
+        "y": 50.0,
+        "z": 50.0
+      },
+      "max": {
+        "x": 150.0,
+        "y": 150.0,
+        "z": 150.0
+      },
+      "width": 500,
+      "height": 500,
+      "floorPlanId": "3083e843-7601-4fe2-a7b1-1cac3ab593a5"
+    },
+    "result": 0.06096
+  }
+]
