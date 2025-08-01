@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using Autodesk.Revit.DB;
+using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
@@ -63,30 +64,129 @@ namespace Create.ExportClasses
                     bool isVertical = Math.Abs(wall.start.x - wall.end.x) < 1e-6;
                     points = isVertical
                         ? points.OrderBy(p => p.y).ToList()
-                        : points.OrderBy(p => p.x).ToList();
+                    : points.OrderBy(p => p.x).ToList();
 
-                    //Console.WriteLine($"Points for wall ID {wall.id}:");
-                    //foreach (var point in points)
-                    //{
-                    //    Console.WriteLine($"  Point(x: {point.x}, y: {point.y}, z: {point.z})");
-                    //}
+
+                    // === Filter excessive openings per segment ===
+                    // This block filters the list of openings in order to remove all doors and windows that are
+                    // completely covered by other doors or windows, to prevent multiple instances of these
+                    // elements from being created in case of overlapping
+                    var allOpenings = wall.openings ?? new List<OpeningData>();
+
+                    // Backup of original points
+                    List<Point> filteredPoints = new List<Point>(points);
+
+                    // Filter only doors and windows
+                    var doorsAndWindows = allOpenings
+                        .Where(o => o.type == "Doors" || o.type == "Windows")
+                        .ToList();
+
+                    // Work on a modifiable copy
+                    var filteredOpenings = new List<OpeningData>(doorsAndWindows);
+                        bool reduced;
+                        do
+                        {
+                            // For each segment in the list of points, it checks how many openings pass through that segment.
+                            reduced = false;
+                            for (int i = 0; i < filteredPoints.Count - 1; i++)
+                            {
+                                var p1 = filteredPoints[i];
+                                var p2 = filteredPoints[i + 1];
+                                var mid = MidPoint(p1, p2);
+                                var matching = filteredOpenings
+                                .Where(o =>
+                                    o.start_point != null && o.end_point != null &&
+                                    IsPointWithinSegment(mid, o.start_point, o.end_point, isVertical))
+                                .ToList();
+
+                                if (matching.Count >= 3)
+                                {
+                                    // Keep the one with the smallest start_point
+                                    var minStart = matching.OrderBy(o => isVertical ? o.start_point.y : o.start_point.x).First();
+
+                                    // Keep the one with the largest end_point
+                                    var maxEnd = matching.OrderByDescending(o => isVertical ? o.end_point.y : o.end_point.x).First();
+
+                                    // Remove all others
+                                    foreach (var m in matching)
+                                    {
+                                        if (m != minStart && m != maxEnd)
+                                        {
+                                            filteredOpenings.Remove(m);
+                                            reduced = true;
+                                        }
+                                    }
+
+                                if (reduced) break; // repeat if there were changes
+                            }
+                        }
+
+                    } while (reduced);
+
+                    // Add the rest of the openings that are not Doors/Windows
+                    var otherOpenings = allOpenings
+                        .Where(o => o.type != "Doors" && o.type != "Windows")
+                        .ToList();
+
+                    filteredOpenings.AddRange(otherOpenings);
+
+                    // === Generate final point list from filteredOpenings + wall endpoints ===
+                    List<Point> finalPoints = new List<Point> { wall.start, wall.end };
+
+                    foreach (var opening in filteredOpenings)
+                    {
+                        if (opening.start_point != null) finalPoints.Add(opening.start_point);
+                        if (opening.end_point != null) finalPoints.Add(opening.end_point);
+                    }
+
+                    // Merge close points
+                    double mergeThreshold = 0.08;
+                    bool merged;
+                    do
+                    {
+                        merged = false;
+                        for (int i = 0; i < finalPoints.Count; i++)
+                        {
+                            for (int j = i + 1; j < finalPoints.Count; j++)
+                            {
+                                if (Distance(finalPoints[i], finalPoints[j]) < mergeThreshold)
+                                {
+                                    var mid = MidPoint(finalPoints[i], finalPoints[j]);
+                                    finalPoints.RemoveAt(j);
+                                    finalPoints.RemoveAt(i);
+                                    finalPoints.Add(mid);
+                                    merged = true;
+                                    break;
+                                }
+                            }
+                            if (merged) break;
+                        }
+                    } while (merged);
+
+                    // Sort final point list
+                    finalPoints = isVertical
+                        ? finalPoints.OrderBy(p => p.y).ToList()
+                        : finalPoints.OrderBy(p => p.x).ToList();
+
+                    // ================    END OF FILTER   ====================
 
                     // Generate segments and classify them
                     List<OpeningData> segments = new List<OpeningData>();
 
-                    for (int i = 0; i < points.Count - 1; i++)
+                    for (int i = 0; i < finalPoints.Count - 1; i++)
                     {
-                        var p1 = points[i];
-                        var p2 = points[i + 1];
+                        var p1 = finalPoints[i];
+                        var p2 = finalPoints[i + 1];
                         var mid = MidPoint(p1, p2);
 
-                        var allOpenings = wall.openings ?? new List<OpeningData>();
+                        //var allOpenings = wall.openings ?? new List<OpeningData>();
 
                         // Get openings whose segment contains the midpoint
-                        var matchingOpenings = allOpenings.Where(o =>
+                        var matchingOpenings = filteredOpenings.Where(o =>
                             o.start_point != null && o.end_point != null &&
                             IsPointWithinSegment(mid, o.start_point, o.end_point, isVertical)).ToList();
 
+                        // Found overlap between two or more openings
                         if (matchingOpenings.Count >= 2)
                         {
                             // Check for mix of doors and windows
@@ -104,6 +204,8 @@ namespace Create.ExportClasses
                                 // Get previous segment data
                                 var previousSegment = segments.LastOrDefault();
 
+                                // If the overlap includes only the final portion of teh first element,
+                                // the overlapping segment is split into two halfs
                                 if (previousSegment != null && (previousSegment.type == "Doors" || previousSegment.type == "Windows"))
                                 {
                                     string previousType = previousSegment.type;
@@ -131,6 +233,8 @@ namespace Create.ExportClasses
                                     });
 
                                     double tolerance = 0.001;
+
+                                    // For the second segment, check if all the openings end at the same point.
                                     bool allEndPointsClose = true;
                                     for (int j = 0; j < matchingOpenings.Count - 1; j++)
                                     {
@@ -145,25 +249,10 @@ namespace Create.ExportClasses
 
                                     var remainingOpenings = matchingOpenings;
                                     OpeningData chosen = null;
-                                    if (!allEndPointsClose)
-                                    {
-                                        if (remainingOpenings.Count > 0)
-                                        {
-                                            double maxDistance = double.MinValue;
-                                            foreach (var o in remainingOpenings)
-                                            {
-                                                double distanceToCut = Distance(o.end_point, cut);
-                                                if (distanceToCut > maxDistance)
-                                                {
-                                                    maxDistance = distanceToCut;
-                                                    chosen = o;
-                                                }
-                                            }
-                                        }
 
-
-                                    }
-                                    else
+                                    // if all the openings end at the same point.
+                                    // Second subsegment — inherits from the longest opnening
+                                    if (allEndPointsClose)
                                     {
                                         if (remainingOpenings.Count > 0)
                                         {
@@ -179,11 +268,27 @@ namespace Create.ExportClasses
                                                 }
                                             }
                                         }
-
+                                    }
+                                    else
+                                    {
+                                        // If the remaining openings end at different points,
+                                        // Second subsegment — inherits from the one whose end point is farthest from the midpoint of the segment.
+                                        if (remainingOpenings.Count > 0)
+                                        {
+                                            double maxDistance = double.MinValue;
+                                            foreach (var o in remainingOpenings)
+                                            {
+                                                double distanceToCut = Distance(o.end_point, cut);
+                                                if (distanceToCut > maxDistance)
+                                                {
+                                                    maxDistance = distanceToCut;
+                                                    chosen = o;
+                                                }
+                                            }
+                                        }
                                     }
                                     
-
-                                    // Second subsegment — inherits from the longest remaining opening or previous
+                                    // Second subsegment — inherits from the chosen one
                                     segments.Add(new OpeningData
                                     {
                                         type = chosen.type,
@@ -199,6 +304,8 @@ namespace Create.ExportClasses
                                 }
                                 else
                                 {
+                                    // In this case, all the segments start at the same point.
+                                    // subsegment is not split — inherits from the longest opnening
                                     OpeningData chosen = null;
                                     double maxLength = double.MinValue;
                                     foreach (var o in matchingOpenings)
@@ -211,7 +318,6 @@ namespace Create.ExportClasses
                                         }
                                     }
 
-                                    // Second subsegment — inherits from the longest remaining opening or previous
                                     segments.Add(new OpeningData
                                     {
                                         type = chosen.type,
@@ -225,14 +331,15 @@ namespace Create.ExportClasses
                                     });
 
                                 }
-
-
                                 continue;
                             }
                             else
                             {
+                                // Case in which multiple openings are found, but only one of them is a door or a window.
+                                // This block gives priority to doors or windows over generic openings.
+                                // That is, if a segment overlaps both an opening and a door or window,
+                                // the opening segment is removed, and the door or window segment is kept.
                                 OpeningData chosen = null;
-
                                 foreach (var o in matchingOpenings)
                                 {
                                     if (o.type == "Doors" || o.type == "Windows")
@@ -261,6 +368,7 @@ namespace Create.ExportClasses
                             }
                         }
 
+                        // Only one opening passes through this segment.
                         // Default behavior — either wall or a single opening match
                         var match = matchingOpenings.FirstOrDefault();
                         if (match != null)
