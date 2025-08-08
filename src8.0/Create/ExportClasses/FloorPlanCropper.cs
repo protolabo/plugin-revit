@@ -1,4 +1,4 @@
-﻿using Autodesk.Revit.DB;
+using Autodesk.Revit.DB;
 using Autodesk.Revit.UI;
 using System;
 using System.Collections.Generic;
@@ -27,7 +27,12 @@ namespace Create.ExportClasses
                 {
                     foreach (var viewId in plan_views_ids)
                     {
-                        View view = doc.GetElement(viewId) as ViewPlan;
+                        // HIDING ANNOTATIONS
+                        int hiddenCategories = 0;
+                        hiddenCategories = HideAnnotationCategories(doc, viewId);
+                        // HIDING ANNOTATIONS
+
+                        ViewPlan? view = doc.GetElement(viewId) as ViewPlan;
                         if (view == null) continue;
 
                         view.CropBoxActive = true;
@@ -120,5 +125,174 @@ namespace Create.ExportClasses
 
             return bbox;
         }
+
+
+        // HIDING ANNOTATIONS CODE STARTS
+        private static int HideAnnotationCategories(Document doc, ElementId view_id)
+        {
+            ViewPlan? view = doc.GetElement(view_id) as ViewPlan;
+            int hiddenCount = 0;
+
+            // (hopefully) Exhaustive list of ALL annotation categories
+            List<BuiltInCategory> allAnnotationCategories = new List<BuiltInCategory>
+        {
+            // === BASIC ANNOTATIONS ===
+            BuiltInCategory.OST_TextNotes,
+            BuiltInCategory.OST_KeynoteTags,
+            BuiltInCategory.OST_GenericAnnotation,
+            BuiltInCategory.OST_Tags,
+            
+            // === DIMENSIONS ===
+            BuiltInCategory.OST_Dimensions,
+            BuiltInCategory.OST_SpotElevations,
+            BuiltInCategory.OST_SpotCoordinates,
+            BuiltInCategory.OST_SpotSlopes,
+            BuiltInCategory.OST_MultiReferenceAnnotations,
+            
+            // === DETAILS AND SYMBOLS ===
+            BuiltInCategory.OST_DetailComponents,
+            BuiltInCategory.OST_DetailComponentTags,
+            BuiltInCategory.OST_GenericModel, // Can contain annotations
+            BuiltInCategory.OST_GenericModelTags,
+            
+            // === LINES ===
+            BuiltInCategory.OST_Lines,
+            BuiltInCategory.OST_SketchLines,
+            BuiltInCategory.OST_CLines,
+            BuiltInCategory.OST_CenterLines,
+            BuiltInCategory.OST_HiddenLines,
+            //BuiltInCategory.OST_MediumLines,
+            //BuiltInCategory.OST_WideLines,
+            
+            // === SPECIALIZED ANNOTATIONS ===
+            //BuiltInCategory.OST_SectionMarks,
+            BuiltInCategory.OST_ElevationMarks,
+            BuiltInCategory.OST_CalloutHeads,
+            //BuiltInCategory.OST_ViewTitles,
+            BuiltInCategory.OST_ViewportLabel,
+            BuiltInCategory.OST_Views,
+            
+            // === GRILLS AND LEVELS ===
+            BuiltInCategory.OST_Grids,
+            BuiltInCategory.OST_GridHeads,
+            BuiltInCategory.OST_Levels,
+            BuiltInCategory.OST_LevelHeads,
+            BuiltInCategory.OST_ProjectBasePoint,
+            //BuiltInCategory.OST_SurveyPoint,
+            
+            // === REVISIONS ===
+            BuiltInCategory.OST_RevisionClouds,
+            BuiltInCategory.OST_RevisionCloudTags,
+            
+            // === MEP ANNOTATIONS ===
+            BuiltInCategory.OST_DuctTags,
+            BuiltInCategory.OST_PipeTags,
+            BuiltInCategory.OST_CableTrayTags,
+            BuiltInCategory.OST_ConduitTags,
+            BuiltInCategory.OST_ElectricalFixtureTags,
+            BuiltInCategory.OST_LightingFixtureTags,
+            BuiltInCategory.OST_MechanicalEquipmentTags,
+            BuiltInCategory.OST_PlumbingFixtureTags,
+            BuiltInCategory.OST_ElectricalEquipmentTags,
+            BuiltInCategory.OST_CommunicationDeviceTags,
+            BuiltInCategory.OST_DataDeviceTags,
+            BuiltInCategory.OST_FireAlarmDeviceTags,
+            BuiltInCategory.OST_LightingDeviceTags,
+            BuiltInCategory.OST_NurseCallDeviceTags,
+            BuiltInCategory.OST_SecurityDeviceTags,
+            BuiltInCategory.OST_TelephoneDeviceTags,
+            
+            // === STRUCTURAL ANNOTATIONS ===
+            BuiltInCategory.OST_StructuralFramingTags,
+            BuiltInCategory.OST_StructuralColumnTags,
+            BuiltInCategory.OST_StructuralFoundationTags,
+            BuiltInCategory.OST_RebarTags,
+            //BuiltInCategory.OST_StructuralConnectionTags,
+            BuiltInCategory.OST_FabricAreaTags,
+            BuiltInCategory.OST_FabricReinforcementTags,
+            //BuiltInCategory.OST_PathReinforcementTags,
+            //BuiltInCategory.OST_AreaReinforcementTags,
+            
+            // === ARCHITECTURAL ANNOTATIONS ===
+            BuiltInCategory.OST_DoorTags,
+            BuiltInCategory.OST_WindowTags,
+            BuiltInCategory.OST_WallTags,
+            BuiltInCategory.OST_RoomTags,
+            BuiltInCategory.OST_AreaTags,
+            BuiltInCategory.OST_FloorTags,
+            BuiltInCategory.OST_CeilingTags,
+            BuiltInCategory.OST_RoofTags,
+            BuiltInCategory.OST_StairsTags,
+            BuiltInCategory.OST_RailingSystemTags,
+            BuiltInCategory.OST_CurtainWallPanelTags,
+            BuiltInCategory.OST_CurtainWallMullionTags,
+            BuiltInCategory.OST_SpecialityEquipmentTags,
+            BuiltInCategory.OST_FurnitureSystemTags,
+            BuiltInCategory.OST_FurnitureTags,
+            BuiltInCategory.OST_CaseworkTags,
+            BuiltInCategory.OST_PlantingTags,
+            
+            // === SHEETS AND SCHEDULES ===
+            BuiltInCategory.OST_Schedules,
+            BuiltInCategory.OST_TitleBlocks,
+            BuiltInCategory.OST_ScheduleGraphics,
+            
+            // === OTHER ANNOTATIONS ===
+            BuiltInCategory.OST_Matchline,
+            //BuiltInCategory.OST_ScopeBoxes,
+            BuiltInCategory.OST_ReferencePoints,
+            BuiltInCategory.OST_ColorFillLegends,
+            //BuiltInCategory.OST_ColorFillSchemas,
+            BuiltInCategory.OST_BuildingPad,
+            BuiltInCategory.OST_Site,
+            BuiltInCategory.OST_Property,
+            BuiltInCategory.OST_Viewports,
+            BuiltInCategory.OST_ImportObjectStyles,
+            
+            // === SPECIAL ANNOTATIONS ===
+            BuiltInCategory.OST_Fascia,
+            BuiltInCategory.OST_Gutter,
+            BuiltInCategory.OST_EdgeSlab,
+            BuiltInCategory.OST_RoofSoffit,
+            BuiltInCategory.OST_Entourage,
+            BuiltInCategory.OST_Parking,
+            BuiltInCategory.OST_Roads,
+            BuiltInCategory.OST_Topography,
+            
+            // === TEMPORARY ANNOTATIONS ===
+            //BuiltInCategory.OST_TemporaryDimensions,
+            
+            // === MASS ANNOTATIONS ===
+            BuiltInCategory.OST_MassTags,
+            BuiltInCategory.OST_Mass
+        };
+
+            foreach (BuiltInCategory category in allAnnotationCategories)
+            {
+                // We check whether the category is hideable and whether it is already
+                // hidden or not
+                try
+                {
+                    Category cat = doc.Settings.Categories.get_Item(category);
+                    if (cat != null && view.CanCategoryBeHidden(cat.Id))
+                    {
+                        if (!view.GetCategoryHidden(cat.Id))
+                        {
+                            view.SetCategoryHidden(cat.Id, true);
+                            hiddenCount++;
+                        }
+                    }
+                }
+                catch (Exception)
+                {
+                    continue;
+                }
+            }
+
+            return hiddenCount;
+        }
     }
+    // HIDING ANNOTATIONS CODE ENDS
+
+
 }
