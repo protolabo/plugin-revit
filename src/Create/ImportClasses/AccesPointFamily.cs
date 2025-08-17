@@ -8,19 +8,19 @@ using Autodesk.Revit.DB;
 
 namespace Create.ImportClasses
 {
-    internal class AccesPointFamily
+    internal class AccessPointFamily
     {
-        // This function loads the Access_Point.rfa file, which contains the 3D model of the access point, and integrates that model into the Revit project.
-        public static FamilySymbol LoadAccessPointFamily(Document doc)
+        // Generic method to load any family by file name and family name
+        public static FamilySymbol LoadFamily(Document doc, string fileName, string familyName)
         {
             string assemblyPath = Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location);
-            string familyPath = Path.Combine(assemblyPath, "build_files", "build_tools", "Access_Point.rfa");
+            string familyPath = Path.Combine(assemblyPath, "build_files", "build_tools", fileName);
 
             if (!File.Exists(familyPath))
                 return null;
 
             Family family;
-            using (Transaction tx = new Transaction(doc, "Load Access Point Family"))
+            using (Transaction tx = new Transaction(doc, $"Load {familyName} Family"))
             {
                 tx.Start();
                 doc.LoadFamily(familyPath, out family);
@@ -30,11 +30,11 @@ namespace Create.ImportClasses
             FamilySymbol symbol = new FilteredElementCollector(doc)
                 .OfClass(typeof(FamilySymbol))
                 .Cast<FamilySymbol>()
-                .FirstOrDefault(fs => fs.Family.Name.Equals("Access_Point", StringComparison.OrdinalIgnoreCase));
+                .FirstOrDefault(fs => fs.Family.Name.Equals(familyName, StringComparison.OrdinalIgnoreCase));
 
             if (symbol != null && !symbol.IsActive)
             {
-                using (Transaction tx = new Transaction(doc, "Activate Access Point Symbol"))
+                using (Transaction tx = new Transaction(doc, $"Activate {familyName} Symbol"))
                 {
                     tx.Start();
                     symbol.Activate();
@@ -45,5 +45,17 @@ namespace Create.ImportClasses
             return symbol;
         }
 
+        // Specific method to load Access Point family
+        public static FamilySymbol LoadAccessPointFamily(Document doc)
+        {
+            return LoadFamily(doc, "Access_Point.rfa", "Access_Point");
+        }
+
+        // Specific method to load Bluetooth Beacon family
+        public static FamilySymbol LoadBluetoothBeaconFamily(Document doc)
+        {
+            return LoadFamily(doc, "Bluetooth_Beacon.rfa", "Bluetooth_Beacon");
+        }
     }
 }
+

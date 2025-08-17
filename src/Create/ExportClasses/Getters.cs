@@ -12,7 +12,7 @@ namespace Create.ExportClasses
         {
             string dataFilePath = Path.Combine(
                 Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location),
-                "wall_data.json"
+                "build_files", "build_tools", "wall_data.json"
             );
 
             string wallDataJson = File.ReadAllText(dataFilePath);

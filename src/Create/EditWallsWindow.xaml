@@ -57,7 +57,11 @@
                                     </DataTemplate>
                                 </DataGridTemplateColumn.CellEditingTemplate>
                             </DataGridTemplateColumn>
-                            <DataGridTextColumn Header="Attenuation" Binding="{Binding Attenuation}" Width="100" />
+                            <DataGridTextColumn Header="Attenuation" Width="100">
+                                <DataGridTextColumn.Binding>
+                                    <Binding Path="Attenuation" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged"/>
+                                </DataGridTextColumn.Binding>
+                            </DataGridTextColumn>
                         </DataGrid.Columns>
                     </DataGrid>
 
@@ -105,7 +109,11 @@
                                     </DataTemplate>
                                 </DataGridTemplateColumn.CellEditingTemplate>
                             </DataGridTemplateColumn>
-                            <DataGridTextColumn Header="Attenuation" Binding="{Binding Attenuation}" Width="100" />
+                            <DataGridTextColumn Header="Attenuation" Width="100">
+                                <DataGridTextColumn.Binding>
+                                    <Binding Path="Attenuation" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged"/>
+                                </DataGridTextColumn.Binding>
+                            </DataGridTextColumn>
                         </DataGrid.Columns>
                     </DataGrid>
 
@@ -153,7 +161,11 @@
                                     </DataTemplate>
                                 </DataGridTemplateColumn.CellEditingTemplate>
                             </DataGridTemplateColumn>
-                            <DataGridTextColumn Header="Attenuation" Binding="{Binding Attenuation}" Width="100" />
+                            <DataGridTextColumn Header="Attenuation" Width="100">
+                                <DataGridTextColumn.Binding>
+                                    <Binding Path="Attenuation" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged"/>
+                                </DataGridTextColumn.Binding>
+                            </DataGridTextColumn>
                         </DataGrid.Columns>
                     </DataGrid>
 

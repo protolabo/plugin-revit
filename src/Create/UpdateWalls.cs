@@ -17,7 +17,7 @@ namespace Create
         {
             Document doc = commandData.Application.ActiveUIDocument.Document;
             string assemblyFolder = Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location);
-            string wallDataPath = Path.Combine(assemblyFolder, "wall_data.json");
+            string wallDataPath = Path.Combine(assemblyFolder, "build_files", "build_tools", "wall_data.json");
 
             if (!File.Exists(wallDataPath))
             {

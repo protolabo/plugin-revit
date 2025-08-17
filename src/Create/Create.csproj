@@ -94,7 +94,9 @@
     <Compile Include="App.cs" />
     <Compile Include="EditWalls.cs" />
     <Compile Include="Export.cs" />
+    <Compile Include="ExportClasses\AnnotationHandler.cs" />
     <Compile Include="ExportClasses\AttenuationUpdater.cs" />
+    <Compile Include="ExportClasses\FileDumper.cs" />
     <Compile Include="ExportClasses\ModelData.cs" />
     <Compile Include="ExportClasses\TemporaryFilesCollector.cs" />
     <Compile Include="ExportClasses\WallsInserter.cs" />
@@ -114,9 +116,10 @@
     <Compile Include="ExportClasses\WallSplitter.cs" />
     <Compile Include="Import.cs" />
     <Compile Include="ImportClasses\AccesPointFamily.cs" />
-    <Compile Include="ImportClasses\AccesPoints.cs" />
-    <Compile Include="ImportClasses\EsxJsons.cs" />
-    <Compile Include="ImportClasses\SubClasses\GetViewName.cs" />
+    <Compile Include="ImportClasses\AccesPointsPlacer.cs" />
+    <Compile Include="ImportClasses\AntennaGetters.cs" />
+    <Compile Include="ImportClasses\JsonFilesExtractor.cs" />
+    <Compile Include="ImportClasses\ViewNameGetter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="EditWallsWindow.xaml.cs">
       <DependentUpon>EditWallsWindow.xaml</DependentUpon>
@@ -150,5 +153,6 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

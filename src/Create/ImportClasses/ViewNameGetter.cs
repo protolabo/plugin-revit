@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Create.ImportClasses.SubClasses
+namespace Create.ImportClasses
 {
-    internal class GetViewName
+    internal class ViewNameGetter
     {
         public static string ExtractViewName(string fileName)
         {

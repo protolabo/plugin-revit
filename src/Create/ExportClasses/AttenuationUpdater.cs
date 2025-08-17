@@ -18,7 +18,12 @@ namespace Create.ExportClasses
                 string assemblyFolder = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
 
                 // read wall_data.json
-                string wallDataPath = Path.Combine(assemblyFolder, "wall_data.json");
+                string assemblyPath = Assembly.GetExecutingAssembly().Location;
+                string basePath = Path.GetDirectoryName(assemblyPath);
+                string wallDataPath = Path.Combine(basePath, "build_files", "build_tools", "wall_data.json");
+                string wallTypesOriginalPath = Path.Combine(basePath, "build_files", "build_tools", "wallTypesOriginal.json");
+
+                //string wallDataPath = Path.Combine(assemblyFolder, "wall_data.json");
                 if (!File.Exists(wallDataPath))
                     return Result.Failed;
 
@@ -60,6 +65,14 @@ namespace Create.ExportClasses
 
                 var wallTypesJson = File.ReadAllText(wallTypesPath);
 
+                var wallTypesOriginalJson = File.ReadAllText(wallTypesOriginalPath);
+                var wallTypesOriginalObject = JObject.Parse(wallTypesOriginalJson);
+                var wallTypesOriginalArray = (JArray)wallTypesOriginalObject["wallTypes"];
+
+                // Crear diccionario por nombre para rápido acceso
+                var wallOriginalDict = wallTypesOriginalArray
+                    .ToDictionary(wt => (string)wt["name"], wt => wt);
+
                 // parse the root object
                 var wallTypesObject = JObject.Parse(wallTypesJson);
                 var wallTypesArray = (JArray)wallTypesObject["wallTypes"];
@@ -71,7 +84,10 @@ namespace Create.ExportClasses
                     if (string.IsNullOrEmpty(ekahauName))
                         continue;
 
-                    double? attenuationValue = wall["Attenuation"]?.Value<double?>();
+                    if (!wallOriginalDict.TryGetValue(ekahauName, out var originalWall))
+                        continue;
+
+                    double? attenuationValue = originalWall["assignedAttenuation"]?.Value<double?>();
                     if (attenuationValue == null)
                         continue;
 

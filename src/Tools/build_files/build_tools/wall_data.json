@@ -3,106 +3,87 @@
     "walls": [
       {
         "Revit": "Exterior - Brick on Mtl. Stud",
-        "Ekahau": "Wall, Concrete",
-        "Attenuation": 12
+        "Ekahau": "Wall, Brick"
       },
       {
         "Revit": "Exterior - Brick Over Block w Metal Stud",
-        "Ekahau": "Wall, Concrete",
-        "Attenuation": 12
+        "Ekahau": "Wall, Dry, Hollow"
       },
       {
         "Revit": "Exterior - Block on Mtl. Stud",
-        "Ekahau": "Wall, Concrete",
-        "Attenuation": 12
+        "Ekahau": "Wall, Brick"
       },
       {
         "Revit": "Wall - Timber Clad",
-        "Ekahau": "Wall, Concrete",
-        "Attenuation": 12
+        "Ekahau": "Door, Steel Fire/Exit"
       },
       {
         "Revit": "Interior - 165 Partition (1-hr)",
-        "Ekahau": "Wall, Brick",
-        "Attenuation": 7
+        "Ekahau": "Wall, Cinder Block"
       },
       {
         "Revit": "Interior - Partition",
-        "Ekahau": "Wall, Concrete",
-        "Attenuation": 12
+        "Ekahau": "Unknown"
       },
       {
         "Revit": "SIP 202mm Wall - conc clad",
-        "Ekahau": "Wall, Concrete",
-        "Attenuation": 12
+        "Ekahau": "Unknown"
       },
       {
         "Revit": "SH_Curtain wall",
-        "Ekahau": "Wall, Concrete",
-        "Attenuation": 12
+        "Ekahau": "Unknown"
       },
       {
         "Revit": "Foundation - 300mm Concrete",
-        "Ekahau": "Wall, Concrete",
-        "Attenuation": 12
+        "Ekahau": "Unknown"
       },
       {
         "Revit": "CL_W1",
-        "Ekahau": "Wall, Dry",
-        "Attenuation": 3
+        "Ekahau": "Unknown"
       },
       {
         "Revit": "Retaining - 300mm Concrete",
-        "Ekahau": "Wall, Concrete",
-        "Attenuation": 12
+        "Ekahau": "Unknown"
       },
       {
         "Revit": "Cavity wall_sliders",
-        "Ekahau": "Wall, Concrete",
-        "Attenuation": 12
+        "Ekahau": "Unknown"
       }
     ]
   },
   {
     "Doors": [
       {
-        "Revit": "1730 x 2134mm",
-        "Ekahau": "Door, Interior Office",
-        "Attenuation": 4
+        "Revit": "800 x 2100",
+        "Ekahau": "Door, Solid Wood"
       },
       {
         "Revit": "2.027 x 0.945",
-        "Ekahau": "Door, Interior Office",
-        "Attenuation": 4
-      },
-      {
-        "Revit": "800 x 2100",
-        "Ekahau": "Elevator Shaft",
-        "Attenuation": 150
-      },
-      {
-        "Revit": "Curtain Wall Dbl Glass",
-        "Ekahau": "Door, Interior Office",
-        "Attenuation": 4
+        "Ekahau": "Door, Solid Wood"
       },
       {
         "Revit": "Entrance door",
-        "Ekahau": "Door, Interior Office",
-        "Attenuation": 4
+        "Ekahau": "Door, Interior Office"
+      },
+      {
+        "Revit": "1730 x 2134mm",
+        "Ekahau": "Door, Steel Rollup"
+      },
+      {
+        "Revit": "Curtain Wall Dbl Glass",
+        "Ekahau": "Unknown"
       }
     ]
   },
   {
     "Windows": [
       {
-        "Revit": "1180 x 1170mm",
-        "Ekahau": "Window, Interior",
-        "Attenuation": 1
+        "Revit": "Standard",
+        "Ekahau": "Window, Thick"
       },
       {
-        "Revit": "Standard",
-        "Ekahau": "Wall, Brick",
-        "Attenuation": 7.2999999999999998
+        "Revit": "1180 x 1170mm",
+        "Ekahau": "Window, Interior"
       }
     ]
   }

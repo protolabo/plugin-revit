@@ -46,6 +46,8 @@ namespace Create.ExportClasses
                 View view = doc.GetElement(viewId) as View;
                 if (view == null) continue;
 
+                AnnotationHandler.HideAnnotations(doc, view);
+
                 string viewName = view.Name.Replace(":", "_").Replace(" ", "_");
 
                 // Collect all walls in the view
@@ -200,76 +202,9 @@ namespace Create.ExportClasses
             // and creates the corresponding JSON file containing metadata about those images.
             ImageExporter.CreateViewImagesAndReport(commandData, tempFolderPath, window.SelectedViewIds, viewInfo);
 
+            AnnotationHandler.ShowAnnotations(doc, window);
 
-            //string desktopPath = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
-            //// Save viewInfo as JSON in desktop
-            //try
-            //{
-            //    string viewInfoJson = JsonConvert.SerializeObject(viewInfo, Formatting.Indented);
-            //    string outputPath = Path.Combine(desktopPath, "view_info.json");
-
-            //    File.WriteAllText(outputPath, viewInfoJson);
-            //    Console.WriteLine($"✅ Archivo view_info.json guardado en: {outputPath}");
-            //}
-            //catch (Exception ex)
-            //{
-            //    Console.WriteLine($"❌ Error al guardar view_info.json: {ex.Message}");
-            //}
-
-
-            //// save file
-            //string outputFilePath = Path.Combine(desktopPath, "model_data.json");
-
-            //var options = new System.Text.Json.JsonSerializerOptions
-            //{
-            //    WriteIndented = true,
-            //    PropertyNamingPolicy = System.Text.Json.JsonNamingPolicy.CamelCase
-            //};
-
-            //try
-            //{
-            //    string json = Newtonsoft.Json.JsonConvert.SerializeObject(modelData, Newtonsoft.Json.Formatting.Indented);
-            //    File.WriteAllText(outputFilePath, json);
-            //    //TaskDialog.Show("Export", $"Saved file:\n{outputFilePath}");
-            //}
-            //catch (Exception ex)
-            //{
-            //    TaskDialog.Show("Error", $"No JSON:\n{ex.Message}");
-            //}//string desktopPath = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
-            //// Save viewInfo as JSON in desktop
-            //try
-            //{
-            //    string viewInfoJson = JsonConvert.SerializeObject(viewInfo, Formatting.Indented);
-            //    string outputPath = Path.Combine(desktopPath, "view_info.json");
-
-            //    File.WriteAllText(outputPath, viewInfoJson);
-            //    Console.WriteLine($"✅ Archivo view_info.json guardado en: {outputPath}");
-            //}
-            //catch (Exception ex)
-            //{
-            //    Console.WriteLine($"❌ Error al guardar view_info.json: {ex.Message}");
-            //}
-
-
-            //// save file
-            //string outputFilePath = Path.Combine(desktopPath, "model_data.json");
-
-            //var options = new System.Text.Json.JsonSerializerOptions
-            //{
-            //    WriteIndented = true,
-            //    PropertyNamingPolicy = System.Text.Json.JsonNamingPolicy.CamelCase
-            //};
-
-            //try
-            //{
-            //    string json = Newtonsoft.Json.JsonConvert.SerializeObject(modelData, Newtonsoft.Json.Formatting.Indented);
-            //    File.WriteAllText(outputFilePath, json);
-            //    //TaskDialog.Show("Export", $"Saved file:\n{outputFilePath}");
-            //}
-            //catch (Exception ex)
-            //{
-            //    TaskDialog.Show("Error", $"No JSON:\n{ex.Message}");
-            //}
+            //FileDumper.DumpViewInfo(viewInfo, modelData);
 
             return Result.Succeeded;
         }

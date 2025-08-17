@@ -9,6 +9,7 @@ using System.Windows.Controls;
 using System.ComponentModel;
 using Autodesk.Revit.UI;
 using Autodesk.Revit.DB;
+using System.Reflection;
 
 namespace Create
 {
@@ -26,6 +27,8 @@ namespace Create
 
         private string dataFilePath = Path.Combine(
             Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location),
+            "build_files",
+            "build_tools",
             "wall_data.json"
         );
 
@@ -86,9 +89,8 @@ namespace Create
             {
                 string assemblyFolder = Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location);
                 string buildFilesDir = Path.Combine(assemblyFolder, "build_files");
-                string tempFolderPath = Path.Combine(buildFilesDir, "tempFolder");
-                string destDir = Path.Combine(tempFolderPath, "Template");
-                string wallTypesPath = Path.Combine(destDir, "wallTypes.json");
+                string destDir = Path.Combine(buildFilesDir, "build_tools");
+                string wallTypesPath = Path.Combine(destDir, "wallTypesOriginal.json");
 
                 if (File.Exists(wallTypesPath))
                 {
@@ -107,26 +109,45 @@ namespace Create
                             string name = item["name"]?.ToString() ?? "";
                             string key = item["key"]?.ToString() ?? "";
 
-                            // Calculate Attenuation as the average of the attenuationFactor values in propagationProperties
-                            var propagationProps = item["propagationProperties"] as JArray;
-                            double attenuation = 0.0;
-                            if (propagationProps != null && propagationProps.Count > 0)
-                            {
-                                attenuation = propagationProps
-                                    .Select(p => (double?)p["attenuationFactor"] ?? 0.0)
-                                    .Average();
-                            }
+                            // Take calculatedAttenuation directly from JSON
+                            double calculatedAttenuation = item["calculatedAttenuation"]?.ToObject<double>() ?? 0.0;
+                            double assignedAttenuation = item["assignedAttenuation"]?.ToObject<double>() ?? 0.0;
 
                             wallTypeItems.Add(new WallTypeItem
                             {
                                 Name = name,
                                 Ekahau = key,
-                                CalculatedAttenuation = Math.Round(attenuation, 1)
+                                CalculatedAttenuation = Math.Round(calculatedAttenuation, 1),
+                                AssignedAttenuation = Math.Round(assignedAttenuation, 1)
                             });
                         }
 
                         this.AvailableWallTypeItems = wallTypeItems;
                         this.AvailableWallTypes = wallTypeItems.Select(item => item.ToString()).ToList();
+
+                        // ---------------------------
+                        // Assign assignedAttenuation to each WallData based on Ekahau name
+                        // ---------------------------
+                        Action<List<WallData>> assignAttenuation = list =>
+                        {
+                            foreach (var w in list)
+                            {
+                                var wallType = AvailableWallTypeItems.FirstOrDefault(x => x.Name == w.Ekahau);
+                                if (wallType != null)
+                                {
+                                    w.Attenuation = wallType.AssignedAttenuation; // Assign value from JSON
+                                    w.WallTypeReference = wallType;
+                                }
+
+                                // Subscribe to PropertyChanged to propagate future changes
+                                w.PropertyChanged += Wall_PropertyChanged;
+                            }
+                        };
+
+                        assignAttenuation(walls);
+                        assignAttenuation(doors);
+                        assignAttenuation(windows);
+
                     }
                 }
             }
@@ -134,7 +155,6 @@ namespace Create
             {
                 MessageBox.Show($"Error loading wallTypes.json: {ex.Message}", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
-
 
             this.DataContext = this;
         }
@@ -217,75 +237,90 @@ namespace Create
 
         private void Save_Click(object sender, RoutedEventArgs e)
         {
-            // Validation: ensure there are no negative attenuation values
-            var negativeWalls = walls.Where(w => w.Attenuation < 0).ToList();
-            var negativeDoors = doors.Where(d => d.Attenuation < 0).ToList();
-            var negativeWindows = windows.Where(w => w.Attenuation < 0).ToList();
-
-            if (negativeWalls.Any() || negativeDoors.Any() || negativeWindows.Any())
-            {
-                string message = "Some elements have negative attenuation values:\n";
-
-                if (negativeWalls.Any())
-                    message += "\nWalls:\n" + string.Join("\n", negativeWalls.Select(w => $"- {w.Revit}: {w.Attenuation} dB"));
-                if (negativeDoors.Any())
-                    message += "\nDoors:\n" + string.Join("\n", negativeDoors.Select(d => $"- {d.Revit}: {d.Attenuation} dB"));
-                if (negativeWindows.Any())
-                    message += "\nWindows:\n" + string.Join("\n", negativeWindows.Select(w => $"- {w.Revit}: {w.Attenuation} dB"));
-
-                MessageBox.Show(message, "Validation Error", MessageBoxButton.OK, MessageBoxImage.Warning);
-                return;
-            }
-
-            // Validation of duplicate Ekahau types with different attenuation values
-            var allEntries = new List<(string Tab, WallData Data)>();
-
-            allEntries.AddRange(walls.Select(w => ("Walls", w)));
-            allEntries.AddRange(doors.Select(d => ("Doors", d)));
-            allEntries.AddRange(windows.Select(wi => ("Windows", wi)));
-
-            var groupedByEkahau = allEntries
-                .Where(x => !string.IsNullOrWhiteSpace(x.Data.Ekahau))
-                .GroupBy(x => x.Data.Ekahau);
-
-            foreach (var group in groupedByEkahau)
-            {
-                var distinctAttenuations = group.Select(x => x.Data.Attenuation).Distinct().ToList();
-                if (distinctAttenuations.Count > 1)
-                {
-                    string message = $"The Ekahau type \"{group.Key}\" has different attenuation values:\n\n" +
-                                     string.Join("\n", group.Select(x =>
-                                         $"- {x.Tab} | {x.Data.Revit} | {x.Data.Attenuation} dB"));
-
-                    MessageBox.Show(message, "Validation Error", MessageBoxButton.OK, MessageBoxImage.Error);
-                    return;
-                }
-            }
-
-            EditedWallData = WallsGrid.SelectedItem as WallData;
-
+            // ----------------------------
+            // Save walls, doors, windows to wallData.json
+            // ----------------------------
             try
             {
                 var output = new List<object>
                 {
-                    new { walls },
-                    new { Doors = doors },
-                    new { Windows = windows }
+                    new { walls = walls.Select(w => new { w.Revit, w.Ekahau }).ToList() },
+                    new { Doors = doors.Select(d => new { d.Revit, d.Ekahau }).ToList() },
+                    new { Windows = windows.Select(win => new { win.Revit, win.Ekahau }).ToList() }
                 };
 
                 var options = new JsonSerializerOptions { WriteIndented = true };
                 string json = System.Text.Json.JsonSerializer.Serialize(output, options);
                 File.WriteAllText(dataFilePath, json);
+
             }
             catch
             {
-                MessageBox.Show("Error saving data.", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show("Error saving wallData.json.", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
+
+            // ----------------------------
+            // Update assignedAttenuation in wallTypesOriginal.json
+            // ----------------------------
+            try
+            {
+                string assemblyFolder = Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location);
+                string buildFilesDir = Path.Combine(assemblyFolder, "build_files");
+                string destDir = Path.Combine(buildFilesDir, "build_tools");
+                string wallTypesPath = Path.Combine(destDir, "wallTypesOriginal.json");
+
+                if (File.Exists(wallTypesPath))
+                {
+                    string wallTypesJson = File.ReadAllText(wallTypesPath);
+                    var jObject = JObject.Parse(wallTypesJson);
+                    var wallTypesArray = jObject["wallTypes"] as JArray;
+
+                    if (wallTypesArray != null)
+                    {
+                        foreach (var wallType in wallTypesArray)
+                        {
+                            string name = wallType["name"]?.ToString();
+                            if (string.IsNullOrEmpty(name)) continue;
+
+                            // Find any edited WallData with matching Ekahau name
+                            var matchingData = walls.Concat(doors).Concat(windows)
+                                                    .FirstOrDefault(w => w.Ekahau == name);
+
+                            if (matchingData != null)
+                            {
+                                double attenuation = matchingData.Attenuation;
+
+                                // Validation: do not allow negative values
+                                if (attenuation < 0)
+                                {
+                                    MessageBox.Show($"Negative attenuation values are not allowed. Wall type: '{name}'.",
+                                                    "Error",
+                                                    MessageBoxButton.OK,
+                                                    MessageBoxImage.Error);
+                                    return; // stop saving process
+                                }
+
+                                wallType["assignedAttenuation"] = attenuation;
+                            }
+
+                        }
+
+                        // Save updated wallTypesOriginal.json
+                        File.WriteAllText(wallTypesPath, jObject.ToString(Newtonsoft.Json.Formatting.Indented));
+                    }
+                }
+            }
+            catch
+            {
+                MessageBox.Show("Error updating wallTypesOriginal.json.", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
             }
 
             this.DialogResult = true;
             this.Close();
         }
+
 
 
         private void Delete_Click(object sender, RoutedEventArgs e)
@@ -336,9 +371,43 @@ namespace Create
             var wallData = comboBox.DataContext as WallData;
             if (wallData == null) return;
 
-            wallData.Attenuation = wallItem.CalculatedAttenuation;
+            wallData.Attenuation = wallItem.AssignedAttenuation;
             wallData.Ekahau = wallItem.Name;
         }
+
+        private void Wall_PropertyChanged(object sender, PropertyChangedEventArgs e)
+        {
+            var wall = sender as WallData;
+            if (wall == null || string.IsNullOrEmpty(wall.Ekahau)) return;
+
+            if (e.PropertyName == nameof(WallData.Attenuation))
+            {
+                // Update all rows with the same Ekahau type
+                foreach (var w in walls.Where(x => x.Ekahau == wall.Ekahau && x != wall))
+                {
+                    w.Attenuation = wall.Attenuation; // This will trigger OnPropertyChanged for each row
+                }
+                foreach (var d in doors.Where(x => x.Ekahau == wall.Ekahau))
+                {
+                    d.Attenuation = wall.Attenuation;
+                }
+                foreach (var win in windows.Where(x => x.Ekahau == wall.Ekahau))
+                {
+                    win.Attenuation = wall.Attenuation;
+                }
+
+                // Also update the corresponding WallTypeItem
+                var wallType = AvailableWallTypeItems.FirstOrDefault(x => x.Name == wall.Ekahau);
+                if (wallType != null)
+                {
+                    wallType.CalculatedAttenuation = wall.Attenuation;
+                }
+            }
+
+            // Optional: if you want to propagate Ekahau name changes too, you can add similar logic here
+        }
+
+
     }
 
     public class WallData : INotifyPropertyChanged
@@ -362,12 +431,31 @@ namespace Create
         public double Attenuation
         {
             get => _attenuation;
-            set { _attenuation = value; OnPropertyChanged(nameof(Attenuation)); }
+            set
+            {
+                if (_attenuation != value)
+                {
+                    _attenuation = value;
+                    OnPropertyChanged(nameof(Attenuation));
+                    UpdateWallTypeItem();
+                }
+            }
         }
+
+        // Reference to the corresponding WallTypeItem
+        public WallTypeItem WallTypeReference { get; set; }
 
         public event PropertyChangedEventHandler PropertyChanged;
         protected void OnPropertyChanged(string propertyName) =>
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+
+        private void UpdateWallTypeItem()
+        {
+            if (WallTypeReference != null)
+            {
+                WallTypeReference.CalculatedAttenuation = _attenuation;
+            }
+        }
     }
 
     public class WallTypeItem
@@ -375,6 +463,7 @@ namespace Create
         public string Name { get; set; }
         public string Ekahau { get; set; }
         public double CalculatedAttenuation { get; set; }
+        public double AssignedAttenuation { get; set; }
 
         public override string ToString()
         {
