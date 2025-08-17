@@ -1,0 +1,90 @@
+[
+  {
+    "walls": [
+      {
+        "Revit": "Exterior - Brick on Mtl. Stud",
+        "Ekahau": "Wall, Brick"
+      },
+      {
+        "Revit": "Exterior - Brick Over Block w Metal Stud",
+        "Ekahau": "Wall, Dry, Hollow"
+      },
+      {
+        "Revit": "Exterior - Block on Mtl. Stud",
+        "Ekahau": "Wall, Brick"
+      },
+      {
+        "Revit": "Wall - Timber Clad",
+        "Ekahau": "Door, Steel Fire/Exit"
+      },
+      {
+        "Revit": "Interior - 165 Partition (1-hr)",
+        "Ekahau": "Wall, Cinder Block"
+      },
+      {
+        "Revit": "Interior - Partition",
+        "Ekahau": "Unknown"
+      },
+      {
+        "Revit": "SIP 202mm Wall - conc clad",
+        "Ekahau": "Unknown"
+      },
+      {
+        "Revit": "SH_Curtain wall",
+        "Ekahau": "Unknown"
+      },
+      {
+        "Revit": "Foundation - 300mm Concrete",
+        "Ekahau": "Unknown"
+      },
+      {
+        "Revit": "CL_W1",
+        "Ekahau": "Unknown"
+      },
+      {
+        "Revit": "Retaining - 300mm Concrete",
+        "Ekahau": "Unknown"
+      },
+      {
+        "Revit": "Cavity wall_sliders",
+        "Ekahau": "Unknown"
+      }
+    ]
+  },
+  {
+    "Doors": [
+      {
+        "Revit": "800 x 2100",
+        "Ekahau": "Door, Solid Wood"
+      },
+      {
+        "Revit": "2.027 x 0.945",
+        "Ekahau": "Door, Solid Wood"
+      },
+      {
+        "Revit": "Entrance door",
+        "Ekahau": "Door, Interior Office"
+      },
+      {
+        "Revit": "1730 x 2134mm",
+        "Ekahau": "Door, Steel Rollup"
+      },
+      {
+        "Revit": "Curtain Wall Dbl Glass",
+        "Ekahau": "Unknown"
+      }
+    ]
+  },
+  {
+    "Windows": [
+      {
+        "Revit": "Standard",
+        "Ekahau": "Window, Thick"
+      },
+      {
+        "Revit": "1180 x 1170mm",
+        "Ekahau": "Window, Interior"
+      }
+    ]
+  }
+]

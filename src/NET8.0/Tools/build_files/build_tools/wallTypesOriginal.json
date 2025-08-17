@@ -1,0 +1,664 @@
+{
+  "wallTypes": [
+    {
+      "name": "Window, Interior",
+      "key": "Window",
+      "color": "#ADE1FF",
+      "propagationProperties": [
+        {
+          "band": "TWO",
+          "attenuationFactor": 200.0,
+          "reflectionCoefficient": 0.6944,
+          "diffractionCoefficient": 11.0
+        },
+        {
+          "band": "FIVE",
+          "attenuationFactor": 200.0,
+          "reflectionCoefficient": 0.6944,
+          "diffractionCoefficient": 11.0
+        },
+        {
+          "band": "SIX",
+          "attenuationFactor": 200.0,
+          "reflectionCoefficient": 0.6944,
+          "diffractionCoefficient": 11.0
+        }
+      ],
+      "thickness": 0.005,
+      "lowerEdge": 0.0,
+      "keybindNumber": 4,
+      "id": "9eb9cc46-bf97-4365-846f-5d1893c6f49c",
+      "status": "CREATED",
+      "calculatedAttenuation": 1.0,
+      "assignedAttenuation": 3.0
+    },
+    {
+      "name": "Network Cabling",
+      "key": "NetworkCabling",
+      "color": "#CCCCCC",
+      "propagationProperties": [
+        {
+          "band": "TWO",
+          "attenuationFactor": 0.0,
+          "reflectionCoefficient": 0.5,
+          "diffractionCoefficient": 11.0
+        },
+        {
+          "band": "FIVE",
+          "attenuationFactor": 0.0,
+          "reflectionCoefficient": 0.5,
+          "diffractionCoefficient": 11.0
+        },
+        {
+          "band": "SIX",
+          "attenuationFactor": 0.0,
+          "reflectionCoefficient": 0.5,
+          "diffractionCoefficient": 11.0
+        }
+      ],
+      "thickness": 0.005,
+      "lowerEdge": 0.0,
+      "id": "203da5f0-c53f-4fe5-8ae2-80a832c20fff",
+      "status": "CREATED",
+      "calculatedAttenuation": 0.0,
+      "assignedAttenuation": 0.0
+    },
+    {
+      "name": "Bookshelf",
+      "key": "Bookshelf",
+      "color": "#B07842",
+      "propagationProperties": [
+        {
+          "band": "TWO",
+          "attenuationFactor": 5.71,
+          "reflectionCoefficient": 0.25,
+          "diffractionCoefficient": 11.0
+        },
+        {
+          "band": "FIVE",
+          "attenuationFactor": 5.71,
+          "reflectionCoefficient": 0.25,
+          "diffractionCoefficient": 11.0
+        },
+        {
+          "band": "SIX",
+          "attenuationFactor": 5.71,
+          "reflectionCoefficient": 0.25,
+          "diffractionCoefficient": 11.0
+        }
+      ],
+      "thickness": 0.35,
+      "lowerEdge": 0.0,
+      "id": "edc2852c-e961-48b1-a83a-5d465052f1b1",
+      "status": "CREATED",
+      "calculatedAttenuation": 2.0,
+      "assignedAttenuation": 3.0
+    },
+    {
+      "name": "Wall, Brick",
+      "key": "BrickWall",
+      "color": "#E1390B",
+      "propagationProperties": [
+        {
+          "band": "TWO",
+          "attenuationFactor": 33.33,
+          "reflectionCoefficient": 0.405,
+          "diffractionCoefficient": 11.0
+        },
+        {
+          "band": "FIVE",
+          "attenuationFactor": 33.33,
+          "reflectionCoefficient": 0.405,
+          "diffractionCoefficient": 11.0
+        },
+        {
+          "band": "SIX",
+          "attenuationFactor": 33.33,
+          "reflectionCoefficient": 0.405,
+          "diffractionCoefficient": 11.0
+        }
+      ],
+      "thickness": 0.3,
+      "lowerEdge": 0.0,
+      "keybindNumber": 2,
+      "id": "a3736496-abd5-48fc-b015-7390968d55a7",
+      "status": "CREATED",
+      "calculatedAttenuation": 10.0,
+      "assignedAttenuation": 9.0
+    },
+    {
+      "name": "Door, Steel Fire/Exit",
+      "key": "SteelFire/ExitDoor",
+      "color": "#999999",
+      "propagationProperties": [
+        {
+          "band": "TWO",
+          "attenuationFactor": 325.0,
+          "reflectionCoefficient": 0.405,
+          "diffractionCoefficient": 11.0
+        },
+        {
+          "band": "FIVE",
+          "attenuationFactor": 325.0,
+          "reflectionCoefficient": 0.405,
+          "diffractionCoefficient": 11.0
+        },
+        {
+          "band": "SIX",
+          "attenuationFactor": 325.0,
+          "reflectionCoefficient": 0.405,
+          "diffractionCoefficient": 11.0
+        }
+      ],
+      "thickness": 0.04,
+      "lowerEdge": 0.0,
+      "id": "ad7b5c99-d23d-46ad-a342-f3847be72155",
+      "status": "CREATED",
+      "calculatedAttenuation": 13.0,
+      "assignedAttenuation": 3.0
+    },
+    {
+      "name": "Wall, Dry, Hollow",
+      "key": "DryWallHollow",
+      "color": "#D4B99B",
+      "propagationProperties": [
+        {
+          "band": "TWO",
+          "attenuationFactor": 20.0,
+          "reflectionCoefficient": 0.1111,
+          "diffractionCoefficient": 11.0
+        },
+        {
+          "band": "FIVE",
+          "attenuationFactor": 20.0,
+          "reflectionCoefficient": 0.1111,
+          "diffractionCoefficient": 11.0
+        },
+        {
+          "band": "SIX",
+          "attenuationFactor": 20.0,
+          "reflectionCoefficient": 0.1111,
+          "diffractionCoefficient": 11.0
+        }
+      ],
+      "thickness": 0.1,
+      "lowerEdge": 0.0,
+      "id": "86d18242-846b-4b57-b8a7-2cf9bc142e82",
+      "status": "CREATED",
+      "calculatedAttenuation": 2.0,
+      "assignedAttenuation": 67.0
+    },
+    {
+      "name": "Door, Solid Wood",
+      "key": "SolidWoodDoor",
+      "color": "#78512D",
+      "propagationProperties": [
+        {
+          "band": "TWO",
+          "attenuationFactor": 150.0,
+          "reflectionCoefficient": 0.25,
+          "diffractionCoefficient": 11.0
+        },
+        {
+          "band": "FIVE",
+          "attenuationFactor": 150.0,
+          "reflectionCoefficient": 0.25,
+          "diffractionCoefficient": 11.0
+        },
+        {
+          "band": "SIX",
+          "attenuationFactor": 150.0,
+          "reflectionCoefficient": 0.25,
+          "diffractionCoefficient": 11.0
+        }
+      ],
+      "thickness": 0.04,
+      "lowerEdge": 0.0,
+      "id": "4e352f3e-0c4b-4561-b355-f211cfd91835",
+      "status": "CREATED",
+      "calculatedAttenuation": 6.0,
+      "assignedAttenuation": 3.0
+    },
+    {
+      "name": "Marble",
+      "key": "Marble",
+      "color": "#E09B8E",
+      "propagationProperties": [
+        {
+          "band": "TWO",
+          "attenuationFactor": 120.0,
+          "reflectionCoefficient": 0.5,
+          "diffractionCoefficient": 11.0
+        },
+        {
+          "band": "FIVE",
+          "attenuationFactor": 120.0,
+          "reflectionCoefficient": 0.5,
+          "diffractionCoefficient": 11.0
+        },
+        {
+          "band": "SIX",
+          "attenuationFactor": 120.0,
+          "reflectionCoefficient": 0.5,
+          "diffractionCoefficient": 11.0
+        }
+      ],
+      "thickness": 0.05,
+      "lowerEdge": 0.0,
+      "id": "757db344-cf56-4c01-9238-56eb75d50322",
+      "status": "CREATED",
+      "calculatedAttenuation": 6.0,
+      "assignedAttenuation": 3.0
+    },
+    {
+      "name": "Unknown",
+      "key": "Unknown",
+      "color": "#FFDEDE",
+      "propagationProperties": [
+        {
+          "band": "TWO",
+          "attenuationFactor": 0.0,
+          "reflectionCoefficient": 0.5,
+          "diffractionCoefficient": 11.0
+        },
+        {
+          "band": "FIVE",
+          "attenuationFactor": 0.0,
+          "reflectionCoefficient": 0.5,
+          "diffractionCoefficient": 11.0
+        },
+        {
+          "band": "SIX",
+          "attenuationFactor": 0.0,
+          "reflectionCoefficient": 0.5,
+          "diffractionCoefficient": 11.0
+        }
+      ],
+      "thickness": 0.04,
+      "lowerEdge": 0.0,
+      "id": "8cf0a1be-7144-4ef4-a611-7cc61289596b",
+      "status": "CREATED",
+      "calculatedAttenuation": 0.0,
+      "assignedAttenuation": 0.0
+    },
+    {
+      "name": "Wall, Dry",
+      "key": "DryWall",
+      "color": "#C3A480",
+      "propagationProperties": [
+        {
+          "band": "TWO",
+          "attenuationFactor": 30.0,
+          "reflectionCoefficient": 0.1111,
+          "diffractionCoefficient": 11.0
+        },
+        {
+          "band": "FIVE",
+          "attenuationFactor": 30.0,
+          "reflectionCoefficient": 0.11,
+          "diffractionCoefficient": 11.0
+        },
+        {
+          "band": "SIX",
+          "attenuationFactor": 30.0,
+          "reflectionCoefficient": 0.11,
+          "diffractionCoefficient": 11.0
+        }
+      ],
+      "thickness": 0.1,
+      "lowerEdge": 0.0,
+      "keybindNumber": 1,
+      "id": "b57761df-db3d-43dd-a24d-878fd9e09c45",
+      "status": "CREATED",
+      "calculatedAttenuation": 3.0,
+      "assignedAttenuation": 3.0
+    },
+    {
+      "name": "Door, Steel Rollup",
+      "key": "SteelRollupDoor",
+      "color": "#646D7E",
+      "propagationProperties": [
+        {
+          "band": "TWO",
+          "attenuationFactor": 289.47,
+          "reflectionCoefficient": 0.405,
+          "diffractionCoefficient": 11.0
+        },
+        {
+          "band": "FIVE",
+          "attenuationFactor": 289.47,
+          "reflectionCoefficient": 0.405,
+          "diffractionCoefficient": 11.0
+        },
+        {
+          "band": "SIX",
+          "attenuationFactor": 289.47,
+          "reflectionCoefficient": 0.405,
+          "diffractionCoefficient": 11.0
+        }
+      ],
+      "thickness": 0.038,
+      "lowerEdge": 0.0,
+      "id": "672a3148-6276-49c9-b89a-e3ed7a7b6de2",
+      "status": "CREATED",
+      "calculatedAttenuation": 11.0,
+      "assignedAttenuation": 3.0
+    },
+    {
+      "name": "Shelf, Retail",
+      "key": "RetailShelf",
+      "color": "#00FA9A",
+      "propagationProperties": [
+        {
+          "band": "TWO",
+          "attenuationFactor": 5.0,
+          "reflectionCoefficient": 0.5,
+          "diffractionCoefficient": 11.0
+        },
+        {
+          "band": "FIVE",
+          "attenuationFactor": 5.0,
+          "reflectionCoefficient": 0.5,
+          "diffractionCoefficient": 11.0
+        },
+        {
+          "band": "SIX",
+          "attenuationFactor": 5.0,
+          "reflectionCoefficient": 0.5,
+          "diffractionCoefficient": 11.0
+        }
+      ],
+      "thickness": 1.0,
+      "lowerEdge": 0.0,
+      "id": "7901132a-2839-4f58-a307-19ce56b42221",
+      "status": "CREATED",
+      "calculatedAttenuation": 5.0,
+      "assignedAttenuation": 3.0
+    },
+    {
+      "name": "Shelf, Warehouse",
+      "key": "WarehouseRack",
+      "color": "#404040",
+      "propagationProperties": [
+        {
+          "band": "TWO",
+          "attenuationFactor": 18.0,
+          "reflectionCoefficient": 0.5,
+          "diffractionCoefficient": 11.0
+        },
+        {
+          "band": "FIVE",
+          "attenuationFactor": 18.0,
+          "reflectionCoefficient": 0.5,
+          "diffractionCoefficient": 11.0
+        },
+        {
+          "band": "SIX",
+          "attenuationFactor": 18.0,
+          "reflectionCoefficient": 0.5,
+          "diffractionCoefficient": 11.0
+        }
+      ],
+      "thickness": 1.5,
+      "lowerEdge": 0.0,
+      "id": "9619754d-4a52-4d55-a47c-329e6b39fdbf",
+      "status": "CREATED",
+      "calculatedAttenuation": 27.0,
+      "assignedAttenuation": 3.0
+    },
+    {
+      "name": "Wall, Concrete",
+      "key": "Concrete",
+      "color": "#8E8E8E",
+      "propagationProperties": [
+        {
+          "band": "TWO",
+          "attenuationFactor": 24.0,
+          "reflectionCoefficient": 0.4982,
+          "diffractionCoefficient": 17.0
+        },
+        {
+          "band": "FIVE",
+          "attenuationFactor": 24.0,
+          "reflectionCoefficient": 0.4982,
+          "diffractionCoefficient": 17.0
+        },
+        {
+          "band": "SIX",
+          "attenuationFactor": 24.0,
+          "reflectionCoefficient": 0.4982,
+          "diffractionCoefficient": 17.0
+        }
+      ],
+      "thickness": 0.5,
+      "lowerEdge": 0.0,
+      "keybindNumber": 5,
+      "id": "057f80a7-80d5-4f57-a67c-3cc0424707bb",
+      "status": "CREATED",
+      "calculatedAttenuation": 12.0,
+      "assignedAttenuation": 3.0
+    },
+    {
+      "name": "Door, Thin",
+      "key": "ThinDoor",
+      "color": "#205070",
+      "propagationProperties": [
+        {
+          "band": "TWO",
+          "attenuationFactor": 25.0,
+          "reflectionCoefficient": 0.6944,
+          "diffractionCoefficient": 11.0
+        },
+        {
+          "band": "FIVE",
+          "attenuationFactor": 25.0,
+          "reflectionCoefficient": 0.6944,
+          "diffractionCoefficient": 11.0
+        },
+        {
+          "band": "SIX",
+          "attenuationFactor": 25.0,
+          "reflectionCoefficient": 0.6944,
+          "diffractionCoefficient": 11.0
+        }
+      ],
+      "thickness": 0.08,
+      "lowerEdge": 0.0,
+      "keybindNumber": 7,
+      "id": "d6ed04b5-c60a-4856-993d-e4d502bfb429",
+      "status": "CREATED",
+      "calculatedAttenuation": 2.0,
+      "assignedAttenuation": 3.0
+    },
+    {
+      "name": "Door, Hollow Wood",
+      "key": "HollowWoodDoor",
+      "color": "#966F33",
+      "propagationProperties": [
+        {
+          "band": "TWO",
+          "attenuationFactor": 100.0,
+          "reflectionCoefficient": 0.25,
+          "diffractionCoefficient": 11.0
+        },
+        {
+          "band": "FIVE",
+          "attenuationFactor": 100.0,
+          "reflectionCoefficient": 0.25,
+          "diffractionCoefficient": 11.0
+        },
+        {
+          "band": "SIX",
+          "attenuationFactor": 100.0,
+          "reflectionCoefficient": 0.25,
+          "diffractionCoefficient": 11.0
+        }
+      ],
+      "thickness": 0.04,
+      "lowerEdge": 0.0,
+      "id": "a4efd62f-ee37-4133-8548-9cfbf942264f",
+      "status": "CREATED",
+      "calculatedAttenuation": 4.0,
+      "assignedAttenuation": 3.0
+    },
+    {
+      "name": "Door, Interior Office",
+      "key": "InteriorOfficeDoor",
+      "color": "#969063",
+      "propagationProperties": [
+        {
+          "band": "TWO",
+          "attenuationFactor": 100.0,
+          "reflectionCoefficient": 0.6944,
+          "diffractionCoefficient": 11.0
+        },
+        {
+          "band": "FIVE",
+          "attenuationFactor": 100.0,
+          "reflectionCoefficient": 0.6944,
+          "diffractionCoefficient": 11.0
+        },
+        {
+          "band": "SIX",
+          "attenuationFactor": 100.0,
+          "reflectionCoefficient": 0.6944,
+          "diffractionCoefficient": 11.0
+        }
+      ],
+      "thickness": 0.04,
+      "lowerEdge": 0.0,
+      "keybindNumber": 3,
+      "id": "cd7fe020-178c-4c1f-b79c-3a18b6668b14",
+      "status": "CREATED",
+      "calculatedAttenuation": 4.0,
+      "assignedAttenuation": 3.0
+    },
+    {
+      "name": "Cubicle",
+      "key": "Cubicle",
+      "color": "#DCDCDC",
+      "propagationProperties": [
+        {
+          "band": "TWO",
+          "attenuationFactor": 10.0,
+          "reflectionCoefficient": 0.5,
+          "diffractionCoefficient": 11.0
+        },
+        {
+          "band": "FIVE",
+          "attenuationFactor": 10.0,
+          "reflectionCoefficient": 0.5,
+          "diffractionCoefficient": 11.0
+        },
+        {
+          "band": "SIX",
+          "attenuationFactor": 10.0,
+          "reflectionCoefficient": 0.5,
+          "diffractionCoefficient": 11.0
+        }
+      ],
+      "thickness": 0.1,
+      "lowerEdge": 0.0,
+      "keybindNumber": 8,
+      "id": "d89c984a-0834-46aa-b162-ca633d68b47a",
+      "status": "CREATED",
+      "calculatedAttenuation": 1.0,
+      "assignedAttenuation": 3.0
+    },
+    {
+      "name": "Wall, Cinder Block",
+      "key": "CinderBlockWall",
+      "color": "#BDBDBD",
+      "propagationProperties": [
+        {
+          "band": "TWO",
+          "attenuationFactor": 20.0,
+          "reflectionCoefficient": 0.405,
+          "diffractionCoefficient": 11.0
+        },
+        {
+          "band": "FIVE",
+          "attenuationFactor": 20.0,
+          "reflectionCoefficient": 0.405,
+          "diffractionCoefficient": 11.0
+        },
+        {
+          "band": "SIX",
+          "attenuationFactor": 20.0,
+          "reflectionCoefficient": 0.405,
+          "diffractionCoefficient": 11.0
+        }
+      ],
+      "thickness": 0.25,
+      "lowerEdge": 0.0,
+      "id": "d2a29afa-5b29-4324-ac98-54bd798d1ca3",
+      "status": "CREATED",
+      "calculatedAttenuation": 5.0,
+      "assignedAttenuation": 3.0
+    },
+    {
+      "name": "Window, Thick",
+      "key": "ThickWindow",
+      "color": "#ADE1FF",
+      "propagationProperties": [
+        {
+          "band": "TWO",
+          "attenuationFactor": 200.0,
+          "reflectionCoefficient": 0.6944,
+          "diffractionCoefficient": 11.0
+        },
+        {
+          "band": "FIVE",
+          "attenuationFactor": 200.0,
+          "reflectionCoefficient": 0.6944,
+          "diffractionCoefficient": 11.0
+        },
+        {
+          "band": "SIX",
+          "attenuationFactor": 200.0,
+          "reflectionCoefficient": 0.6944,
+          "diffractionCoefficient": 11.0
+        }
+      ],
+      "thickness": 0.015,
+      "lowerEdge": 0.0,
+      "keybindNumber": 9,
+      "id": "8e6dd5f7-ca67-4128-98d3-acc3fa7f7c24",
+      "status": "CREATED",
+      "calculatedAttenuation": 3.0,
+      "assignedAttenuation": 3.0
+    },
+    {
+      "name": "Elevator Shaft",
+      "key": "ElevatorShaft",
+      "color": "#5A5A5A",
+      "propagationProperties": [
+        {
+          "band": "TWO",
+          "attenuationFactor": 150.0,
+          "reflectionCoefficient": 0.405,
+          "diffractionCoefficient": 11.0
+        },
+        {
+          "band": "FIVE",
+          "attenuationFactor": 150.0,
+          "reflectionCoefficient": 0.405,
+          "diffractionCoefficient": 11.0
+        },
+        {
+          "band": "SIX",
+          "attenuationFactor": 150.0,
+          "reflectionCoefficient": 0.405,
+          "diffractionCoefficient": 11.0
+        }
+      ],
+      "thickness": 0.2,
+      "lowerEdge": 0.0,
+      "keybindNumber": 6,
+      "id": "2fa1b638-f154-4ed0-a473-cfffba22562d",
+      "status": "CREATED",
+      "calculatedAttenuation": 30.0,
+      "assignedAttenuation": 3.0
+    }
+  ]
+}
