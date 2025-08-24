@@ -85,6 +85,11 @@ namespace Create
             this.DialogResult = false;
             this.Close();
         }
+
+        public bool IsCropMethodChecked
+        {
+            get { return chkCropMethod.IsChecked == true; }
+        }
     }
 }
 
