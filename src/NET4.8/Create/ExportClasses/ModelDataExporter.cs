@@ -28,6 +28,8 @@ namespace Create.ExportClasses
                 return Result.Cancelled;
             }
 
+            bool cropMethodEnabled = window.IsCropMethodChecked;
+
             string assemblyFolder = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
             string buildFilesDir = Path.Combine(assemblyFolder, "build_files");
             string tempFolderPath = Path.Combine(buildFilesDir, "tempFolder");
@@ -46,7 +48,7 @@ namespace Create.ExportClasses
                 View view = doc.GetElement(viewId) as View;
                 if (view == null) continue;
 
-                AnnotationHandler.HideAnnotations(doc, view);
+                if (cropMethodEnabled) AnnotationHandler.HideAnnotations(doc, view);
 
                 string viewName = view.Name.Replace(":", "_").Replace(" ", "_");
 
@@ -202,7 +204,7 @@ namespace Create.ExportClasses
             // and creates the corresponding JSON file containing metadata about those images.
             ImageExporter.CreateViewImagesAndReport(commandData, tempFolderPath, window.SelectedViewIds, viewInfo);
 
-            AnnotationHandler.ShowAnnotations(doc, window);
+            if (cropMethodEnabled) AnnotationHandler.ShowAnnotations(doc, window);
 
             //FileDumper.DumpViewInfo(viewInfo, modelData);
 

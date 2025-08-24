@@ -9,12 +9,15 @@
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
 
-        <!-- <GroupBox Header="Select Categories" Grid.Row="0" Margin="0,0,0,10">
-            <StackPanel>
-                <CheckBox x:Name="chkStairs" Content="Stairs"/>
-                <CheckBox x:Name="chkElevators" Content="Elevators"/>
+        <!-- Crop Method Section -->
+        <GroupBox Header="Crop Method" Grid.Row="0" Margin="0,0,0,10">
+            <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                <CheckBox x:Name="chkCropMethod" Margin="5,0"
+                  VerticalAlignment="Center"/>
+                <Label Content="Automatic Crop" VerticalAlignment="Center"
+               Margin="5,0,0,0"/>
             </StackPanel>
-        </GroupBox> -->
+        </GroupBox>
 
         <GroupBox Header="Select Views" Grid.Row="1" Margin="0,0,0,10">
             <ScrollViewer VerticalScrollBarVisibility="Auto">
